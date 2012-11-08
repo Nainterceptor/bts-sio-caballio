@@ -1,0 +1,155 @@
+{% extends 's4aUserBundle:User:layout.html.twig' %}
+{% block title %}{{ 'user.show.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
+{% block subtitle %}{{ 'user.show.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+ <li class="current">
+      <a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ 'user.show.title'|trans([], 'backoffice') }}</a>
+ </li>
+ {% endblock %}
+{% block submenu2 %}
+<div class="line mt30"></div>
+<div class="statsRow">
+        <div class="wrapper">
+        
+        	<div class="controlB">
+            	<ul>
+                    <li><a href="{{ path('s4admin_user') }}"><img src="/images/Backoffice/icons/control/32/backtolist.png"><span>{{ 'user.nav.backtolist'|trans([], 'backoffice') }}</span></a></li>
+                    <li><a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}"><img src="/images/Backoffice/icons/control/32/edit.png"><span>{{ 'user.edit.title'|trans([], 'backoffice') }}</span></a></li>
+                    <li>
+				        <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
+				            {{ form_widget(delete_form) }}
+				            <a href="javascript:void(0)" class="submit-parent-form">
+				            <img src="/images/Backoffice/icons/control/32/corbeille.png">
+				            <span>{{ 'user.delete.title'|trans([], 'backoffice') }}</span>
+				            </a>
+				            {#<button class="button-link" type="submit">{{ 'user.delete.title'|trans([], 'backoffice') }}</button>#}
+				        </form>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+<div class="line"></div>
+{% endblock %}
+{% block body %}
+<div class="widgets">
+	<div class="oneTwo">
+		<div class="widget">
+			<div class="title">
+				<h6>{{ 'user.show.genericInformations'|trans([], 'backoffice') }}</h6>
+			</div>
+			<table width="100%" cellspacing="0" cellpadding="0" class="sTable">
+			    <tbody>
+			        <tr>
+			            <td>{{ 'user.label.id'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.id }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.username }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.email }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.enabled'|trans([], 'backoffice') }}</td>
+			            <td>
+			            	{% if entity.enabled %}
+			            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+			            	{% else %}
+			            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+			            	{% endif %}
+			            </td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.lastlogin'|trans([], 'backoffice') }}</td>
+			            <td>
+			            	{% if entity.lastLogin is not empty %}
+			            		{{ entity.lastLogin|date('datetime'|trans) }}
+			            	{% else %}
+			            		{{ 'never'|trans }}
+			            	{% endif %}
+			            </td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.locked'|trans([], 'backoffice') }}</td>
+			            <td>
+			            	{% if entity.locked %}
+			            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+			            	{% else %}
+			            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+			            	{% endif %}
+			            </td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.expired'|trans([], 'backoffice') }}</td>
+			            <td>
+			            	{% if entity.expired %}
+			            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+			            	{% else %}
+			            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+			            	{% endif %}
+			            </td>
+			        </tr>
+			        {% if entity.confirmationToken is not empty %}
+				        <tr>
+				            <td>{{ 'user.label.confirmationtoken'|trans([], 'backoffice') }}</td>
+				            <td>{{ entity.confirmationToken }}</td>
+				        </tr>
+			        {% endif %}
+			        <tr>
+			            <td>{{ 'user.label.roles'|trans([], 'backoffice') }}</td>
+			            <td>
+			            	<ul>
+				            	{% for role in entity.roles %}
+				            		<li>- {{ role }}</li>
+				            	{% endfor %}
+			            	</ul>
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="oneTwo">
+		<div class="widget">
+			<div class="title">
+				<h6>{{ 'user.show.personnalInformations'|trans([], 'backoffice') }}</h6>
+			</div>
+			<table width="100%" cellspacing="0" cellpadding="0" class="sTable">
+			    <tbody>
+			    	<tr>
+			            <td>{{ 'user.label.firstname'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.firstname }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.lastname'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.lastname }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.sex'|trans([], 'backoffice') }}</td>
+			            <td>{{ 'choice.sex.' ~ entity.sex }} {{ entity.sex }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.adress'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.adress }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.zipcode'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.zipcode }}</td>
+			        </tr>
+			        <tr>
+			            <td>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
+			            <td>{{ entity.city }}</td>
+			        </tr>
+			    </tbody>
+			</table>
+		</div>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+{% endblock %}

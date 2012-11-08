@@ -1,0 +1,28 @@
+{% extends '::backoffice.html.twig' %}
+{% block title %}{{ 'user.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
+{% block subtitle %}{{ 'user.subtitle'|trans([], 'backoffice') }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+ <li>
+      <a href="{{ path('s4admin_user') }}">{{ 'user.title'|trans([], 'backoffice') }}</a>
+ </li>
+{% endblock %}
+{% block submenu2 %}
+<div class="line mt30"></div>
+<div class="statsRow">
+        <div class="wrapper">
+        
+        	<div class="controlB">
+            	<ul>
+                    <li><a title="" href="{{ path('s4admin_user_new') }}"><img src="/images/Backoffice/icons/control/32/hire-me.png"><span>{{ 'user.new'|trans([], 'backoffice') }}</span></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        
+        </div>
+    </div>
+<div class="line"></div>
+{% endblock %}
+{% block body %}
+
+{% endblock %}

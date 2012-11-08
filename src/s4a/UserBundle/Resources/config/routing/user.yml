@@ -1,0 +1,41 @@
+s4admin_user:
+    pattern:  /{page}
+    defaults: { _controller: "s4aUserBundle:User:index", page:1 }
+    requirements:
+       page:  \d+
+
+s4admin_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "s4aUserBundle:User:show" }
+    requirements:
+       id:  \d+
+
+s4admin_user_new:
+    pattern:  /new
+    defaults: { _controller: "s4aUserBundle:User:new" }
+
+s4admin_user_create:
+    pattern:  /create
+    defaults: { _controller: "s4aUserBundle:User:create" }
+    requirements: { _method: post }
+
+s4admin_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "s4aUserBundle:User:edit" }
+    requirements:
+       id:  \d+
+
+s4admin_user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "s4aUserBundle:User:update" }
+    requirements:
+       _method: post
+       id: \d+
+    
+
+s4admin_user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "s4aUserBundle:User:delete" }
+    requirements:
+       _method: post
+       id: \d+

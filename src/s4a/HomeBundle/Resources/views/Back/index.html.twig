@@ -1,0 +1,11 @@
+{% extends '::backoffice.html.twig' %}
+{% block title %}{{ 'homepage.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
+{% block subtitle %}{{ 'homepage.subtitle'|trans([], 'backoffice') }}{% endblock %}
+{% block breadcrumbs %}
+ <li class="current">
+      <a href="{{ path('back_homepage') }}">{{ 'administrator.home'|trans([], 'backoffice') }}</a>
+ </li>
+ {% endblock %}
+{% block body %}
+
+{% endblock %}

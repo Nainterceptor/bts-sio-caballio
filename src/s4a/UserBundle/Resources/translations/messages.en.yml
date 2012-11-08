@@ -1,0 +1,4 @@
+choice:
+  sex:
+    0: "Girl"
+    1: "Men"

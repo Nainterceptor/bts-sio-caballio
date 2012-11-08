@@ -1,0 +1,7 @@
+parameters:
+#    s4a_home.example.class: s4a\HomeBundle\Example
+
+services:
+#    s4a_home.example:
+#        class: %s4a_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

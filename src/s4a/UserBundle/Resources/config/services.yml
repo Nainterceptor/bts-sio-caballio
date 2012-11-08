@@ -1,0 +1,16 @@
+# src/s4a/UserBundle/Resources/config/services.yml
+services:
+    s4a_user.my_provider:
+        class: s4a\UserBundle\Security\Provider\MyProvider
+        public: false
+        arguments: ["@fos_user.user_manager"]
+    s4a_user.registration.form.type:
+        class: s4a\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: s4a_user_registration }
+    s4a_user.profile.form.type:
+        class: s4a\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: s4a_user_profile }

@@ -1,0 +1,145 @@
+{% extends 's4aUserBundle:User:layout.html.twig' %}
+{% form_theme perPageForm '::backoffice_form.html.twig' %}
+{% block title %}{{ 'user.index.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
+{% block subtitle %}{{ 'user.index.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+ <li class="current">
+      <a href="{{ path('s4admin_user') }}">{{ 'user.index.title'|trans([], 'backoffice') }}</a>
+ </li>
+ {% endblock %}
+{% block submenu2 %}
+<div class="line mt30"></div>
+<div class="statsRow">
+        <div class="wrapper">
+        
+        	<div class="controlB">
+            	<ul>
+                    <li><a title="" href="{{ path('s4admin_user_new') }}"><img src="/images/Backoffice/icons/control/32/hire-me.png"><span>{{ 'user.nav.new'|trans([], 'backoffice') }}</span></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        
+        </div>
+    </div>
+<div class="line"></div>
+{% endblock %}
+{% block body %}
+<div class="widget">
+    <div class="title"><img src="/images/Backoffice/icons/dark/user.png" alt="" class="titleIcon" />
+    <h6>{{ 'user.title'|trans([], 'backoffice') }}</h6></div>
+    <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
+        <thead>
+            <tr>
+            	<td style="width: 60px;" class="sortCol"><div>{{ 'user.label.id'|trans([], 'backoffice') }}<span></span></div></td>
+                <td class="sortCol"><div>{{ 'user.label.username'|trans([], 'backoffice') }}<span></span></div></td>
+                <td class="sortCol"><div>{{ 'user.label.city'|trans([], 'backoffice') }}<span></span></div></td>
+                <td class="sortCol"><div>{{ 'user.label.email'|trans([], 'backoffice') }}<span></span></div></td>
+                <td style="width: 65px;">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+		    {% for entity in entities %}
+		        <tr>
+		        	<td>{{ entity.id }}</td>
+		        	<td><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+		        	<td>{{ entity.city }}</td>
+		        	<td>{{ entity.email }}</td>
+		            <td>
+		            	<a class="smallButton" title="Edit" href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}"><img alt="Edit" src="/images/Backoffice/icons/dark/pencil.png"></a>
+		            	<a class="smallButton" title="Show" href="{{ path('s4admin_user_show', { 'id': entity.id }) }}"><img alt="Show" src="/images/Backoffice/icons/dark/magnify.png"></a>
+		            </td>
+		        </tr>
+		    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% if numberPages > 1 %}
+    <div class="pagination">
+			<ul class="pages">
+				{% if currentPage > 1 %}
+					<li class="prev"><a href="{{ path('s4admin_user', {page:1})}}">&lt;&lt;</a></li>
+					<li class="prev"><a href="{{ path('s4admin_user', {page:(currentPage-1)})}}">&lt;</a></li>
+				{% else %}
+					<li class="prev">&lt;&lt;</li>
+					<li class="prev">&lt;</li>
+				{% endif %}
+
+				{% if numberPages < 10 %}
+					{% for i in range(1, numberPages) %}
+						<li><a {% if i == currentPage %}class="active" {% endif %}href="{{ path('s4admin_user', {page:i}) }}">{{ i }}</a></li>
+					{% endfor %}
+				{% else %}
+					{% if currentPage < 4 %}
+						{% for i in range(1, 6) %}
+							<li><a {% if i == currentPage %}class="active" {% endif %}href="{{ path('s4admin_user', {page:i}) }}">{{ i }}</a></li>
+						{% endfor %}
+						<li>...</li>
+						<li><a href="{{ path('s4admin_user', {page:(numberPages-1)}) }}">{{ (numberPages-1) }}</a></li>
+						<li><a href="{{ path('s4admin_user', {page:numberPages}) }}">{{ numberPages }}</a></li>
+					{% elseif (numberPages-4) > currentPage and currentPage > 4 %}
+						<li><a href="{{ path('s4admin_user', {page:1}) }}">1</a></li>
+						<li><a href="{{ path('s4admin_user', {page:2}) }}">2</a></li>
+						<li>...</li>
+						{% for i in range(currentPage-1, currentPage+1) %}
+							<li><a {% if i == currentPage %}class="active" {% endif %}href="{{ path('s4admin_user', {page:i}) }}">{{ i }}</a></li>
+						{% endfor %}
+						<li>...</li>
+						<li><a href="{{ path('s4admin_user', {page:(numberPages-1)}) }}">{{ (numberPages-1) }}</a></li>
+						<li><a href="{{ path('s4admin_user', {page:numberPages}) }}">{{ numberPages }}</a></li>
+					{% else %}
+						<li><a href="{{ path('s4admin_user', {page:1}) }}">1</a></li>
+						<li><a href="{{ path('s4admin_user', {page:2}) }}">2</a></li>
+						<li>...</li>
+						{% for i in range(numberPages-4, numberPages) %}
+							<li><a {% if i == currentPage %}class="active" {% endif %}href="{{ path('s4admin_user', {page:i}) }}">{{ i }}</a></li>
+						{% endfor %}
+					{% endif %}
+				{% endif %}
+
+				{% if currentPage != numberPages %}
+					<li class="next"><a href="{{ path('s4admin_user', {page:(currentPage+1)})}}">&gt;</a></li>
+					<li class="next"><a href="{{ path('s4admin_user', {page:numberPages})}}">&gt;&gt;</a></li>
+				{% else %}
+					<li class="next">&gt;</li>
+					<li class="next">&gt;&gt;</li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="widgets">
+			<div class="oneFour">
+				<div class="widget">
+					<form action="{{ path('s4admin_user') }}" method="post" class="form">
+						<div class="title">
+							<h6>{{ form_label(perPageForm.perpage) }}</h6>
+						</div>
+						<div class="formSubmit" style="float: right;">
+							<input type="submit" value="Envoyer" class="redB">
+						</div>
+						<div class="formRight" style="margin-top: 15px; margin-left: 15px;">
+		    				{{ form_widget(perPageForm.perpage) }}
+							<span class="formNote">{{ form_errors(perPageForm.perpage) }}</span>
+						</div>
+						{{ form_rest(perPageForm) }}
+		
+						<div class="clear"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+{% endif %}
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/plugins/spinner/ui.spinner.js') }}" type="text/javascript" /></script>
+	<script src="{{ asset('js/plugins/tables/resizable.min.js') }}" type="text/javascript" /></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#perPage_perpage').spinner({ min: 0, max: 1000 });
+			$("#res1.sTable").colResizable({
+				liveDrag:true,
+				draggingClass:"dragging" 
+			});
+		});
+	</script>
+{% endblock %}

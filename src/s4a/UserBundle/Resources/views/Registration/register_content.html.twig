@@ -1,0 +1,27 @@
+{% form_theme form theme %}
+<h1>Inscription</h1>
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+	<h2>Informations de connexion</h2>
+    {{ form_label(form.username) }}
+    {{ form_widget(form.username) }}<br />
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }}<br />
+    {{ form_label(form.plainPassword.first) }}
+    {{ form_widget(form.plainPassword.first) }}<br />
+    {{ form_label(form.plainPassword.second) }}
+    {{ form_widget(form.plainPassword.second) }}
+	<h2>Informations supplémentaires requises</h2>
+	{{ form_label(form.sexe, "Sexe") }}
+    {{ form_widget(form.sexe) }}<br />
+	{{ form_label(form.age, "Âge") }}
+    {{ form_widget(form.age) }}<br />
+    {{ form_label(form.prenom, "Prénom") }}
+    {{ form_widget(form.prenom) }}<br />
+    {{ form_label(form.nom, "Nom") }}
+    {{ form_widget(form.nom) }}<br />
+    {{ form_rest(form) }}
+	<p>Par la validation de l'inscription, vous acceptez les <a href="{{ path('cgv') }}">conditions générales de vente</a>.</p>
+    <div class="submit">
+        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

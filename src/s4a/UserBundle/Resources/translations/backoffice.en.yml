@@ -1,0 +1,54 @@
+user: 
+  title: "User management"
+  subtitle: "You can manage your users : add, edit, delete..."
+  index:
+    title: "Index"
+    subtitle: "On index, you have a summary of all users registered on your website."
+  new:
+    title: "New"
+    subtitle: "Create a new user."
+  show:
+    title: "View"
+    subtitle: "View user."
+    genericInformations: "Generic Informations"
+    personnalInformations: "Personnal Informations"
+  edit:
+    title: "Edit"
+    subtitle: "Edit user."
+  delete:
+    title: "Delete"
+    confirm: "Are you sure to delete ?"
+  label:
+    id: "ID"
+    actions: "Actions"
+    username: "Username"
+    password: "Password"
+    email: "E-mail"
+    sex: "Sex"
+    firstname: "Firstname"
+    lastname: "Lastname"
+    adress: "Adress"
+    zipcode: "Zip code"
+    city: "City"
+    editPassword: "Edit Password"
+    enabled: "Enabled"
+    lastlogin: "Last login"
+    locked: "Locked"
+    expired: "Expired"
+    expiredAt: "Expiré le %date%"
+    confirmationtoken: "Confirmation token"
+    roles: "Roles"
+  nav:
+    backtolist: "Back to the list"
+    create: "Create"
+    new: "New User"
+  errors:
+    nomorepage: "Error 404; There are only %num% pages of users"
+    notfound: "User \"%id%\" not found."
+perPage:
+  perpage: "Users per page"
+success:
+  new: "Creation has been successfull."
+  update: "Update has been successfull."
+  updatePassword: "Password update has been successfully."
+  delete: "Removal has been successfull."

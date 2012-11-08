@@ -1,0 +1,30 @@
+{% form_theme form theme %}
+<h2>Mes informations</h2>
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+	{{ form_errors(form) }}
+	<fieldset>
+		<legend><h3>Informations numériques</h3></legend>
+		{{ form_row(form.user.username) }}
+		{{ form_row(form.user.email) }}
+		{{ form_row(form.user.skype) }}
+	</fieldset>
+	<fieldset>
+		<legend><h3>Informations personnelles</h3></legend>
+		{{ form_row(form.user.sexe) }}
+		{{ form_row(form.user.age) }}
+		{{ form_row(form.user.prenom) }}
+		{{ form_row(form.user.nom) }}
+		{{ form_row(form.user.adresse) }}
+		{{ form_row(form.user.codepostal) }}
+		{{ form_row(form.user.ville) }}
+		{{ form_row(form.user.telephone) }}
+		{{ form_row(form.user.contactable) }}
+	</fieldset>
+	<fieldset>
+		<legend><h3>Vérifiez votre identité</h3></legend>
+		{{ form_row(form.current) }}
+	</fieldset>
+    {{ form_rest(form) }}
+        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" /> 
+</form>
+<div style="text-align: right;"><a class="button" href="{{ path('fos_user_profile_show') }}"><button>Retour</button></a> <a class="button" href="{{ path('fos_user_change_password') }}"><button>Modifier le mot de passe</button></a></div>

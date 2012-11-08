@@ -2,3 +2,10 @@
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #    prefix:   /_internal
+homepage_pattern:
+    resource: "@s4aHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+s4aUserBundle:
+    resource: "@s4aUserBundle/Resources/config/routing.yml"
+    prefix:   /

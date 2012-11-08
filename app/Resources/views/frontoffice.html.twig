@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Poney{% endblock %}</title>
+        {% block stylesheets %}
+        	{# 'http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300,200,400|Oswald:400,300' #}
+	        {% stylesheets 	
+	        				'css/reset.css'
+	        				'css/frontoffice.css.less'
+	        				
+				output='css/front.css'
+				combine=true
+			%}
+			    <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+			{% endstylesheets %}
+        {% endblock %}
+		<!--[if lt IE 9]>
+			<script src="{{ asset('js/html5shiv.js') }}"></script>
+		<![endif]-->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    	<header>
+    		<a href="{{ path('front_homepage') }}"><h1>Poney</h1></a>
+    		<nav>
+    			<ul>
+    				<li>
+    					<a href="#">
+    						<div class="home">&nbsp;</div>
+    						<span>Accueil</span>
+    					</a>
+    				</li>
+
+    				<li>
+    					<a href="#">
+    						<div class="contact">&nbsp;</div>
+    						<span>Contact</span>
+    					</a>
+    				</li>
+    			</ul>
+    		</nav>
+    		<div class="clear">&nbsp;</div>
+    	</header>
+    	<section id="main">
+	    		{% block body %}{% endblock %}
+    	</section>
+		<footer>
+			<a href="{{ path('front_homepage') }}"><div class="logo">poney</div></a>
+			<ul>
+				<li>{{ 'copyright'|trans({'%year%':"now"|date("Y")}, 'frontoffice') }}</li>
+			</ul>
+		</footer>
+	    {% block javascripts %}
+	        {% javascripts 'js/jquery-1.8.1.min.js'
+	        			   'js/frontoffice.js' 
+	        		output='js/front.js'
+					combine=true%}
+	        	<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+	    {% endblock %}
+    </body>
+</html>

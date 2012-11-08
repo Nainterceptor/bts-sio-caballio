@@ -1,0 +1,39 @@
+{% extends 's4aUserBundle:User:layout.html.twig' %}
+{% form_theme form '::backoffice_form.html.twig' %}
+{% block title %}{{ 'user.new.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
+{% block subtitle %}{{ 'user.new.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li class="current">
+     <a href="{{ path('s4admin_user_new') }}">{{ 'user.new.title'|trans([], 'backoffice') }}</a>
+</li>
+{% endblock %}
+{% block submenu2 %}
+<div class="line mt30"></div>
+<div class="statsRow">
+        <div class="wrapper">
+        
+        	<div class="controlB">
+            	<ul>
+                    <li><a title="" href="{{ path('s4admin_user') }}"><img src="/images/Backoffice/icons/control/32/backtolist.png"><span>{{ 'user.nav.backtolist'|trans([], 'backoffice') }}</span></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+<div class="line"></div>
+{% endblock %}
+{% block body %}
+<form class="form" action="{{ path('s4admin_user_create') }}" method="post" {{ form_enctype(form) }}>
+	<fieldset>
+	    <div class="widget">
+	        <div class="title"><img src="/images/Backoffice/icons/dark/list.png" alt="" class="titleIcon" /><h6>{{ 'user.new.title'|trans([], 'backoffice') }}</h6></div>
+	       {{ form_rest(form) }}
+			<div class="formSubmit">
+				<input type="submit" class="redB" value="{{ 'user.nav.create'|trans([], 'backoffice') }}">
+			</div>
+			<div class="clear"></div>
+	    </div>
+	</fieldset>
+</form>
+{% endblock %}

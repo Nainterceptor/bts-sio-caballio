@@ -1,0 +1,6 @@
+front_homepage:
+    pattern:  /
+    defaults: { _controller: s4aHomeBundle:Front:index }
+#back_homepage_nolocale:
+#    pattern:  /s4admin/
+#    defaults: { _controller: s4aHomeBundle:Back:index }

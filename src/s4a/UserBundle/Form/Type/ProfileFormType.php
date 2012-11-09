@@ -28,6 +28,6 @@ class ProfileFormType extends BaseType
 
     public function getName()
     {
-        return 'user_profile';
+        return 's4a_user_profile';
     }
 }

@@ -22,6 +22,6 @@ class RegistrationFormType extends BaseType
 
     public function getName()
     {
-        return 'user_registration';
+        return 's4a_user_registration';
     }
 }

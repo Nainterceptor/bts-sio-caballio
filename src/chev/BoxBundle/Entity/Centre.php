@@ -3,6 +3,7 @@
 namespace chev\BoxBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * chev\ChevalBundle\Entity\Centre
@@ -25,6 +26,8 @@ class Centre
      * @var string $nom
      *
      * @ORM\Column(name="nom", type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(limit=100, message="Le nom doit comporter {{ limit }} caractères maximum")
      */
     private $nom;
 
@@ -32,6 +35,8 @@ class Centre
      * @var string $adresse
      *
      * @ORM\Column(name="adresse", type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(limit=100, message="L'adresse doit comporter {{ limit }} caractères maximum")
      */
     private $adresse;
 
@@ -39,6 +44,8 @@ class Centre
      * @var string $codePostal
      *
      * @ORM\Column(name="codePostal", type="string", length=5)
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(limit=5, message="Le code postal doit comporter {{ limit }} caractères maximum")
      */
     private $codePostal;
 
@@ -46,12 +53,15 @@ class Centre
      * @var string $ville
      *
      * @ORM\Column(name="ville", type="string", length=50)
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(limit=50, message="La ville doit comporter {{ limit }} caractères maximum")
      */
     private $ville;
 
     /**
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
 	 * @ORM\JoinColumn()
+     * @Assert\NotBlank()
      */
     private $gerant;
 
@@ -59,6 +69,8 @@ class Centre
      * @var \DateTime $date
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     private $date;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace chev\ChevalBundle\Entity;
+namespace chev\BoxBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

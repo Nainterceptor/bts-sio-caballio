@@ -1,0 +1,7 @@
+parameters:
+#    chev_cheval.example.class: chev\ChevalBundle\Example
+
+services:
+#    chev_cheval.example:
+#        class: %chev_cheval.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

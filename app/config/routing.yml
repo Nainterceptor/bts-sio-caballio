@@ -1,3 +1,15 @@
+chev_pension:
+    resource: "@chevPensionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+chev_cheval:
+    resource: "@chevChevalBundle/Resources/config/routing.yml"
+    prefix:   /
+
+chev_box:
+    resource: "@chevBoxBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

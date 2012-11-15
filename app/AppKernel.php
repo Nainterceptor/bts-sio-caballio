@@ -22,6 +22,9 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new s4a\HomeBundle\s4aHomeBundle(),
             new s4a\UserBundle\s4aUserBundle(),
+            new chev\BoxBundle\chevBoxBundle(),
+            new chev\ChevalBundle\chevChevalBundle(),
+            new chev\PensionBundle\chevPensionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,3 @@
+chev_cheval_homepage:
+    pattern:  /cheval
+    defaults: { _controller: chevChevalBundle:Default:index }

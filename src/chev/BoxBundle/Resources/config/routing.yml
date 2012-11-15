@@ -1,0 +1,3 @@
+chev_box_homepage:
+    pattern:  /box
+    defaults: { _controller: chevBoxBundle:Default:index }

@@ -1,0 +1,3 @@
+chev_pension_homepage:
+    pattern:  /pension
+    defaults: { _controller: chevPensionBundle:Default:index }

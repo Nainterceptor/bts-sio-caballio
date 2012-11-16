@@ -32,7 +32,6 @@ class Cheval
     private $nom;
 
     /**
-     * @var integer $race
      *
      * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Race")
      * @ORM\JoinColumn()
@@ -50,7 +49,6 @@ class Cheval
     private $date;
 
     /**
-     * @var integer $proprietaire
      *
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
      * @ORM\JoinColumn()

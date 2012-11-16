@@ -23,7 +23,6 @@ class Cheval_Vaccin
     private $id;
 
     /**
-     * @var integer $cheval
      *
      * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
      * @ORM\JoinColumn()
@@ -32,7 +31,6 @@ class Cheval_Vaccin
     private $cheval;
 
     /**
-     * @var integer $vaccin
      *
      * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Vaccin")
      * @ORM\JoinColumn()

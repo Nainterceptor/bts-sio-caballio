@@ -7,7 +7,7 @@
         	{# 'http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300,200,400|Oswald:400,300' #}
 	        {% stylesheets 	
 	        				'css/reset.css'
-	        				'css/frontoffice.css.less'
+	        				'css/style.css'
 	        				
 				output='css/front.css'
 				combine=true
@@ -18,39 +18,70 @@
 		<!--[if lt IE 9]>
 			<script src="{{ asset('js/html5shiv.js') }}"></script>
 		<![endif]-->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" />
     </head>
     <body>
-    	<header>
-    		<a href="{{ path('front_homepage') }}"><h1>Poney</h1></a>
-    		<nav>
-    			<ul>
-    				<li>
-    					<a href="#">
-    						<div class="home">&nbsp;</div>
-    						<span>Accueil</span>
-    					</a>
-    				</li>
-
-    				<li>
-    					<a href="#">
-    						<div class="contact">&nbsp;</div>
-    						<span>Contact</span>
-    					</a>
-    				</li>
-    			</ul>
-    		</nav>
-    		<div class="clear">&nbsp;</div>
-    	</header>
-    	<section id="main">
+        <header>
+            <div class="container">
+                <div id="search-container">
+                    <form method="post" action="" accept-charset="UTF-8">
+                        <input type="text" value="" placeholder="Sur GooGoole ..." name="">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <a href="{{ path('front_homepage') }}"><img id="header-logo" src="/images/logo.png"/></a>
+            </div>
+        </header>
+    	<nav id="top-nav">
+            <ul>
+                <li><a href="{{ path('front_homepage') }}">home</a></li>
+                <li><a href="#">truc</a></li>
+                <li><a href="#">cheval</a></li>
+                <li><a href="#">muche</a></li>
+                <li><a href="#">contact</a></li>
+                <li id="login-container">
+                    <form method="post" action="" accept-charset="UTF-8">
+                        <input type="text" value="" placeholder="Login" name=""/>
+                        <input type="text" value="" placeholder="Mot de passe" name=""/>
+                        <button type="submit">Connexion</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <div class="page-info">
+            <div class="container">
+                <div id="breadcrumbs">
+                    <a href="{{ path('front_homepage') }}">Poney</a> \ 
+                    <a href="{{ path('front_homepage') }}">Home</a> \ 
+                </div>
+                <h1 class="page-title">Poney</h1>
+            </div>
+        </div>
+    	<div id="main-container">
+            <div class="container">
 	    		{% block body %}{% endblock %}
-    	</section>
-		<footer>
-			<a href="{{ path('front_homepage') }}"><div class="logo">poney</div></a>
-			<ul>
-				<li>{{ 'copyright'|trans({'%year%':"now"|date("Y")}, 'frontoffice') }}</li>
-			</ul>
-		</footer>
+    	   </div>
+        </div>
+		<div id="footer">
+            <div class="container">
+                <div class="copyright">
+        			<p>
+                        <span>
+                            COPYRIGHT &copy; 2012 <a href="#">Toto Factory</a>
+                        </span>|
+                        <span>
+                            <a href="#">TERMS OF USAGE</a>
+                        </span>|
+                        <span>
+                            <a href="#">SUPPORT/HELP</a>
+                        </span>|
+                        <span>
+                            ICONS BY <a href="http://TotoFactory.fr">TotoFactory</a> + <a href="https://www.google.fr/imghp?hl=fr&tab=wi">Google Images</a>
+                        </span>
+                    </p>
+        		</div>
+            </div>
+        </div>
 	    {% block javascripts %}
 	        {% javascripts 'js/jquery-1.8.1.min.js'
 	        			   'js/frontoffice.js' 

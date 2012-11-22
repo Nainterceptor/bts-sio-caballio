@@ -1,4 +1,11 @@
-<h1>Centre edit</h1>
+{% extends 'chevBoxBundle:Centre:layout.html.twig' %}
+{% block breadcrumbs %}
+{{ parent() }}
+    <li><a href="{{ path('centre')}}">Index</a></li>
+    <li><a href="{{ path('centre_edit')}}">edit</a></li>
+{% endblock %}
+{% block body %}
+<h2>Centre edit</h2>
 
 <form action="{{ path('centre_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
@@ -21,3 +28,4 @@
         </form>
     </li>
 </ul>
+{% endblock %}

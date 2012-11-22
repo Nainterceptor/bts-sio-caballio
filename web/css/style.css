@@ -125,11 +125,11 @@ header .container {
 }
 #search-container button[type="submit"] {
 	display: inline-block;
-    background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
     border: 0 none;
     border-radius: 5px 5px 5px 5px;
     margin: 0;
@@ -141,11 +141,11 @@ header .container {
     cursor: pointer;
 }
 #search-container button[type="submit"]:active {
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
-	background: url("/images/common-e4e988031f.png") no-repeat scroll 7px -775px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
 }
 
 /*
@@ -219,7 +219,7 @@ nav#top-nav {
     border-top: 1px solid #868776;
 }
 .page-info .container {
-	overflow: hidden;
+    overflow: hidden;
     padding-bottom: 10px;
 }
 #breadcrumbs {

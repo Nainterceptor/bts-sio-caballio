@@ -65,14 +65,14 @@ input {
     padding-top: 6px;
     padding: 5px 0 6px 8px;
 }
-button[type="submit"] {
+button[type="submit"], input[type="submit"] {
 	background: -webkit-linear-gradient(#727531, #565831);
 	background: -moz-linear-gradient(#727531, #565831);
 	background: -ms-linear-gradient(#727531, #565831);
 	background: -o-linear-gradient(#727531, #565831);
 	background: linear-gradient(#727531, #565831);
 }
-button[type="submit"]:active {
+button[type="submit"]:active, input[type="submit"]:active {
 	background: -webkit-linear-gradient(#565831, #727531);
 	background: -moz-linear-gradient(#565831, #727531);
 	background: -ms-linear-gradient(#565831, #727531);
@@ -156,7 +156,7 @@ nav#top-nav {
 	background-color: #B3B496;
 	border-top: 1px solid #ECE8DD;
     display: block;
-    height: 52px;
+    height: 48px;
     min-width: 984px;
     position: relative;
     z-index: 3100;
@@ -180,12 +180,16 @@ nav#top-nav {
     letter-spacing: 1.5px;
     height: 19px;
     margin-top: 9px;
-    padding-top: 8px;
+    padding: 6px 0 5px 0;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     width: 81px;
     position: relative;
+}
+#top-nav li a:hover {
+    background: #727531;
+    border-radius: 5px 5px 5px 5px;
 }
 #top-nav li#login-container {
 	display: block;

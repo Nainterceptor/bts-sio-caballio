@@ -52,8 +52,9 @@
             <div class="container">
                 <div id="breadcrumbs">
                     <ul>
-                        <li><a href="{{ path('front_homepage') }}">Poney</a></li>
-                        <li><a href="{{ path('front_homepage') }}">Home</a></li>
+                        {% block breadcrumbs %}
+                            <li><a href="{{ path('front_homepage') }}">Poney</a></li>
+                        {% endblock %}
                     </ul>
                 </div>
                 <h1 class="page-title">Poney</h1>

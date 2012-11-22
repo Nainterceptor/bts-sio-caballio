@@ -1,0 +1,53 @@
+{% extends 'chevBoxBundle:Centre:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="{{ path('centre')}}">Index</a></li>
+{% endblock %}
+{% block body %}<h1>Centre list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Codepostal</th>
+            <th>Ville</th>
+            <th>Date</th>
+            <th>Dateajout</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nom }}</td>
+            <td>{{ entity.adresse }}</td>
+            <td>{{ entity.codePostal }}</td>
+            <td>{{ entity.ville }}</td>
+            <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('centre_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('centre_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('centre_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

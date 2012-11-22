@@ -1,3 +1,6 @@
 chev_box_homepage:
     pattern:  /box
     defaults: { _controller: chevBoxBundle:Default:index }
+chevBoxBundle_centre:
+    resource: "@chevBoxBundle/Resources/config/routing/centre.yml"
+    prefix:   /centre

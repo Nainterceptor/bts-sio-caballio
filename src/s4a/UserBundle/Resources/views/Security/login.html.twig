@@ -9,17 +9,17 @@
 		
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 	
-	    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+	    <label for="username">Nom d'utilisateur</label>
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" /><br />
 	
-	    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+	    <label for="password">Mot de passe</label>
 	    <input type="password" id="password" name="_password" /><br />
 	
-		<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+		<label for="remember_me">Se souvenir de moi</label>
 	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
 	    <br />
 	
-	    <input class="submit" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+	    <input class="submit" type="submit" id="_submit" name="_submit" value="Envoyer" />
 	</form>
 </div>
 {% endblock fos_user_content %}

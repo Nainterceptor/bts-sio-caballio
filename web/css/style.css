@@ -62,8 +62,8 @@ input {
     font-family: Tahoma,sans-serif;
     font-size: 13px;
     line-height: 18px;
-    padding-top: 6px;
     padding: 5px 0 6px 8px;
+    margin: 5px 0;
 }
 button[type="submit"], input[type="submit"] {
 	background: -webkit-linear-gradient(#727531, #565831);
@@ -121,7 +121,7 @@ header .container {
 #search-container input {
     width: 150px;
     height: 18px;
-    position: relative; 
+    position: relative;
 }
 #search-container button[type="submit"] {
 	display: inline-block;
@@ -132,7 +132,7 @@ header .container {
 	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
     border: 0 none;
     border-radius: 5px 5px 5px 5px;
-    margin: 0;
+    margin: 5px 0 0 0;
     width: 32px;
     float: right;
     height: 30px;
@@ -194,7 +194,7 @@ nav#top-nav {
 #top-nav li#login-container {
 	display: block;
     float: right;
-    padding: 10px 0;
+    padding: 5px 0;
     padding-right: 5px;
     position: relative;
 }
@@ -226,6 +226,15 @@ nav#top-nav {
 	color: #868776;
     font-size: 9px;
     padding-top: 15px;
+}
+#breadcrumbs li, #breadcrumbs ul {
+    display: inline-block;
+}
+#breadcrumbs li:after {
+    content: " \\ ";
+}
+#breadcrumbs li:last-child:after {
+    content: "";
 }
 h1.page-title {
 	float: left;

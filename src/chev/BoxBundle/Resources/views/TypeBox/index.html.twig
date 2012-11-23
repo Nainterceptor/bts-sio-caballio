@@ -1,0 +1,52 @@
+{% extends 'chevBoxBundle:TypeBox:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="{{ path('centre_typebox')}}">Index</a></li>
+{% endblock %}
+{% block body %}
+<h2>TypeBox list</h2>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>Volume</th>
+            <th>Nombrechevaux</th>
+            <th>Prix</th>
+            <th>Dateajout</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.libelle }}</td>
+            <td>{{ entity.volume }}</td>
+            <td>{{ entity.nombreChevaux }}</td>
+            <td>{{ entity.prix }}</td>
+            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('centre_typebox_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('centre_typebox_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

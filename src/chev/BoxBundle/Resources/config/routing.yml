@@ -4,3 +4,9 @@ chev_box_homepage:
 chevBoxBundle_centre:
     resource: "@chevBoxBundle/Resources/config/routing/centre.yml"
     prefix:   /centre
+chevBoxBundle_centre_box:
+    resource: "@chevBoxBundle/Resources/config/routing/box.yml"
+    prefix:   /centre/box
+chevBoxBundle_centre_typebox:
+    resource: "@chevBoxBundle/Resources/config/routing/typebox.yml"
+    prefix:   /centre/typebox

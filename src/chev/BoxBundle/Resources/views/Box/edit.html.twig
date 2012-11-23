@@ -1,12 +1,13 @@
-{% extends 'chevBoxBundle:Centre:layout.html.twig' %}
+{% extends 'chevBoxBundle:Box:layout.html.twig' %}
 {% block breadcrumbs %}
-{{ parent() }}
-    <li><a href="{{ path('centre_edit')}}">edit</a></li>
+    {{ parent() }}
+    <li><a href="{{ path('centre_box_edit')}}">Edit</a></li>
 {% endblock %}
 {% block body %}
-<h2>Centre edit</h2>
+<h2>Box edit</h2>
 
-<form action="{{ path('centre_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('centre_box_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <input type="hidden" name="_method" value="PUT" />
     {{ form_widget(edit_form) }}
     <p>
         <button type="submit">Edit</button>
@@ -15,12 +16,12 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('centre') }}">
+        <a href="{{ path('centre_box') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <form action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>

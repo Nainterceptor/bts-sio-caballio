@@ -1,0 +1,30 @@
+centre_typebox:
+    pattern:  /
+    defaults: { _controller: "chevBoxBundle:TypeBox:index" }
+
+centre_typebox_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevBoxBundle:TypeBox:show" }
+
+centre_typebox_new:
+    pattern:  /new
+    defaults: { _controller: "chevBoxBundle:TypeBox:new" }
+
+centre_typebox_create:
+    pattern:  /create
+    defaults: { _controller: "chevBoxBundle:TypeBox:create" }
+    requirements: { _method: post }
+
+centre_typebox_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevBoxBundle:TypeBox:edit" }
+
+centre_typebox_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevBoxBundle:TypeBox:update" }
+    requirements: { _method: post }
+
+centre_typebox_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevBoxBundle:TypeBox:delete" }
+    requirements: { _method: post }

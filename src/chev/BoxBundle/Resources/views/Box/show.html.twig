@@ -1,0 +1,45 @@
+{% extends 'chevBoxBundle:Box:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="{{ path('centre_box_edit')}}">Show</a></li>
+{% endblock %}
+{% block body %}
+<h2>Box</h2>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Dateajout</th>
+            <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('centre_box') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('centre_box_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

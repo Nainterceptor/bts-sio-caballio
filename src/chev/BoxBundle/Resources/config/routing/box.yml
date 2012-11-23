@@ -1,0 +1,30 @@
+centre_box:
+    pattern:  /
+    defaults: { _controller: "chevBoxBundle:Box:index" }
+
+centre_box_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevBoxBundle:Box:show" }
+
+centre_box_new:
+    pattern:  /new
+    defaults: { _controller: "chevBoxBundle:Box:new" }
+
+centre_box_create:
+    pattern:  /create
+    defaults: { _controller: "chevBoxBundle:Box:create" }
+    requirements: { _method: post }
+
+centre_box_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevBoxBundle:Box:edit" }
+
+centre_box_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevBoxBundle:Box:update" }
+    requirements: { _method: post }
+
+centre_box_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevBoxBundle:Box:delete" }
+    requirements: { _method: post }

@@ -3,51 +3,43 @@
     {{ parent() }}
     <li><a href="{{ path('centre')}}">Index</a></li>
 {% endblock %}
-{% block body %}<h2>Centre list</h2>
+{% block body %}
+<h2>Liste des centres</h2>
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Codepostal</th>
-            <th>Ville</th>
-            <th>Date</th>
-            <th>Dateajout</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.nom }}</td>
-            <td>{{ entity.adresse }}</td>
-            <td>{{ entity.codePostal }}</td>
-            <td>{{ entity.ville }}</td>
-            <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('centre_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('centre_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<ul>
-    <li>
-        <a href="{{ path('centre_new') }}">
-            Create a new entry
-        </a>
+<div class="page-controls">
+    Zone pour "trier par" et page 1, 2 etc si besion
+</div>
+<ul class="item-list">
+{% for entity in entities %}
+    <li class="list-centre">
+        <div class="block-list">
+            <a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+        </div>
+        <div class="block-list">
+            <p>
+                <a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.nom }}</a>
+            </p>
+            <p>
+                Gerant : <a href="#">{{ entity.gerant }}</a>
+            </p>
+        </div>
+        <div  class="block-list address">
+            <p>{{ entity.adresse }}</p>
+            <p>{{ entity.codePostal }}</p>
+            <p>{{ entity.ville }}</p>
+        </div>
+        <div  class="block-list date">
+            <p>Date d'ajout : {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</p>
+            <p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p>
+        </div>
+        <div  class="block-list action">
+            <p><a href="{{ path('centre_show', { 'id': entity.id }) }}">show</a></p>
+            <p><a href="{{ path('centre_edit', { 'id': entity.id }) }}">edit</a></p>
+        </div>
     </li>
+{% endfor %}
 </ul>
+<a class="lien-new" href="{{ path('centre_new') }}">
+    Create a new entry
+</a>
 {% endblock %}

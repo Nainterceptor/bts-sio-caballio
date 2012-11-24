@@ -1,5 +1,6 @@
 {% extends '::frontoffice.html.twig' %}
 {% block breadcrumbs %}
     {{ parent() }}
+    <li><a href="{{ path('centre')}}">Gestion des centres</a></li>
     <li><a href="{{ path('centre_typebox')}}">Gestion des types de box</a></li>
 {% endblock %}

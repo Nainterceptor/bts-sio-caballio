@@ -1,6 +1,6 @@
 user-management_pattern:
     resource: "@s4aUserBundle/Resources/config/routing/user.yml"
-    prefix:   /admin/user-management
+    prefix:   /user-management
 
 #FOS
 fos_user_security:

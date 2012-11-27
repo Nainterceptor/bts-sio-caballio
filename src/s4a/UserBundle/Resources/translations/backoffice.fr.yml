@@ -1,0 +1,55 @@
+user: 
+  title: "Gestion d'utilisateurs"
+  subtitle: "Vous permet de gérer les utilisateurs, en ajouter, en supprimer, les éditer..."
+  index:
+    title: "Index"
+    subtitle: "Sur l'index, vous avez un aperçu rapide de tous les utilisateurs enregistrés."
+  new:
+    title: "Nouveau"
+    subtitle: "Créer un nouvel utilisateur."
+  show:
+    title: "Voir"
+    subtitle: "Voir l'utilisateur."
+    genericInformations: "Informations génériques"
+    personnalInformations: "Informations personnelles"
+  edit:
+    title: "Modifier"
+    subtitle: "Modifier un utilisateur."
+  delete:
+    title: "Supprimer"
+    confirm: "Sur de vouloir supprimer ?"
+  label:
+    id: "ID"
+    actions: "Actions"
+    username: "Nom d'utilisateur"
+    password: "Mot de passe"
+    email: "E-mail"
+    sex: "Sexe"
+    firstname: "Prénom"
+    lastname: "Nom"
+    adress: "Adresse"
+    zipcode: "Code Postal"
+    city: "Ville"
+    editPassword: "Modifier le mot de passe"
+    enabled: "Activé"
+    lastlogin: "Dernière connexion"
+    locked: "Bloqué"
+    expired: "Expiré"
+    expiredAt: "Expired at %date%"
+    confirmationtoken: "Jeton de confirmation"
+    roles: "Rôles"
+    actions: "Actions"
+  nav:
+    backtolist: "Retour à la liste"
+    create: "Créer"
+    new: "Nouvel Utilisateur"
+  errors:
+    nomorepage: "Erreur 404; Il n'y a que %num% pages d'utilisateurs"
+    notfound: "Aucun utilisateur d'id %id% trouvé."
+perPage:
+  perpage: "Utilisateurs par page"
+success:
+  new: "Création de l'utilisateur réussie."
+  update: "Mise à jour de l'utilisateur réussie."
+  updatePassword: "La mise à jour du mot de passe a été réussie."
+  delete: "Suppression réussie."

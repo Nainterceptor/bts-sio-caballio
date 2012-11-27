@@ -1,0 +1,23 @@
+#Inscription
+fos_user_registration_form_prenom: "Prénom"
+fos_user_registration_form_nom: "Nom"
+fos_user_registration_form_sexe: "Sexe"
+fos_user_registration_form_age: "Âge"
+
+#Profil
+fos_user_profile_form_user_username: "Nom d'utilisateur"
+fos_user_profile_form_user_email: "Adresse e-mail"
+fos_user_profile_form_user_prenom: "Prénom"
+fos_user_profile_form_user_nom: "Nom"
+fos_user_profile_form_user_adresse: "Adresse"
+fos_user_profile_form_user_codepostal: "Code Postale"
+fos_user_profile_form_user_ville: "Ville"
+fos_user_profile_form_user_telephone: "Numéro de téléphone"
+fos_user_profile_form_user_contactable: "Accepte d'être contacté par téléphone"
+fos_user_profile_form_current: "Confirmez votre mot de passe"
+fos_user_profile_form_user_skype: "Pseudonyme skype"
+fos_user_profile_form_user_sexe: "Sexe"
+fos_user_profile_form_user_age: "Date de naissance"
+
+sexe0: "Femme"
+sexe1: "Homme"

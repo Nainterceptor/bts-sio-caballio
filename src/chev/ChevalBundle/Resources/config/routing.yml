@@ -1,3 +1,7 @@
 chev_cheval_homepage:
     pattern:  /cheval
     defaults: { _controller: chevChevalBundle:Default:index }
+
+chevChevalBundle_cheval_race:
+    resource: "@chevChevalBundle/Resources/config/routing/race.yml"
+    prefix:   /cheval/race

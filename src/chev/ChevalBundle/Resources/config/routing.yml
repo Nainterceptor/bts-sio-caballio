@@ -5,3 +5,7 @@ chev_cheval_homepage:
 chevChevalBundle_cheval_race:
     resource: "@chevChevalBundle/Resources/config/routing/race.yml"
     prefix:   /cheval/race
+    
+chevChevalBundle_cheval_vaccin:
+    resource: "@chevChevalBundle/Resources/config/routing/vaccin.yml"
+    prefix:   /cheval/vaccin

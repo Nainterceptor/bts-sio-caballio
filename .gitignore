@@ -19,3 +19,4 @@ app/bootstrap.php.cache
 *.php~
 web/bundles
 !web/bundles/.gitkeep
+bin/*

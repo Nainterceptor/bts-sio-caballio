@@ -6,31 +6,39 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * chev\PensionBundle\Entity\Facture
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="chev\PensionBundle\Entity\FactureRepository")
  */
 class Facture
 {
     /**
      * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string $libelle
-     */
-    private $libelle;
-
-    /**
-     * @var \DateTime $dureeSejour
-     */
-    private $dureeSejour;
-
-    /**
      * @var \DateTime $datePaiement
+     *
+     * @ORM\Column(name="datePaiement", type="datetime")
      */
     private $datePaiement;
 
     /**
+     * @var integer $pension
+     *
+     * @ORM\Column(name="pension", type="integer")
+     */
+    private $pension;
+
+    /**
      * @var float $montant
+     *
+     * @ORM\Column(name="montant", type="float")
      */
     private $montant;
 
@@ -43,52 +51,6 @@ class Facture
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set libelle
-     *
-     * @param string $libelle
-     * @return Facture
-     */
-    public function setLibelle($libelle)
-    {
-        $this->libelle = $libelle;
-    
-        return $this;
-    }
-
-    /**
-     * Get libelle
-     *
-     * @return string 
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
-    }
-
-    /**
-     * Set dureeSejour
-     *
-     * @param \DateTime $dureeSejour
-     * @return Facture
-     */
-    public function setDureeSejour($dureeSejour)
-    {
-        $this->dureeSejour = $dureeSejour;
-    
-        return $this;
-    }
-
-    /**
-     * Get dureeSejour
-     *
-     * @return \DateTime 
-     */
-    public function getDureeSejour()
-    {
-        return $this->dureeSejour;
     }
 
     /**
@@ -112,6 +74,29 @@ class Facture
     public function getDatePaiement()
     {
         return $this->datePaiement;
+    }
+
+    /**
+     * Set pension
+     *
+     * @param integer $pension
+     * @return Facture
+     */
+    public function setPension($pension)
+    {
+        $this->pension = $pension;
+    
+        return $this;
+    }
+
+    /**
+     * Get pension
+     *
+     * @return integer 
+     */
+    public function getPension()
+    {
+        return $this->pension;
     }
 
     /**

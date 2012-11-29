@@ -1,0 +1,30 @@
+cheval:
+    pattern:  /
+    defaults: { _controller: "chevChevalBundle:Cheval:index" }
+
+cheval_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevChevalBundle:Cheval:show" }
+
+cheval_new:
+    pattern:  /new
+    defaults: { _controller: "chevChevalBundle:Cheval:new" }
+
+cheval_create:
+    pattern:  /create
+    defaults: { _controller: "chevChevalBundle:Cheval:create" }
+    requirements: { _method: post }
+
+cheval_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevChevalBundle:Cheval:edit" }
+
+cheval_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevChevalBundle:Cheval:update" }
+    requirements: { _method: post }
+
+cheval_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevChevalBundle:Cheval:delete" }
+    requirements: { _method: post }

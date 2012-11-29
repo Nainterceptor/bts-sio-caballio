@@ -20,3 +20,5 @@ app/bootstrap.php.cache
 web/bundles
 !web/bundles/.gitkeep
 .DS_Store
+bin/*
+

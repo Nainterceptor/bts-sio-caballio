@@ -3,6 +3,7 @@
 namespace chev\PensionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * chev\PensionBundle\Entity\Facture
@@ -21,27 +22,46 @@ class Facture
      */
     private $id;
 
-    /**
-     * @var \DateTime $datePaiement
+	 /**
+     * @var \DateTime $dateDebut
      *
-     * @ORM\Column(name="datePaiement", type="datetime")
-     */
-    private $datePaiement;
+     * @ORM\Column(name="dateDebut", type="datetime")
+	 * @Assert\NotBlank()
+	 * @Assert\DateTime()
+     */	
+    private $dateDebut;
 
-    /**
-     * @var integer $pension
+	 /**
+     * @var \DateTime $dateFin
      *
-     * @ORM\Column(name="pension", type="integer")
+     * @ORM\Column(name="dateFin", type="datetime")
+	 * @Assert\NotBlank()
+	 * @Assert\DateTime()
      */
-    private $pension;
+    private $dateFin;
 
-    /**
-     * @var float $montant
+	 /**
+     * @var \DateTime $dateFacture
      *
-     * @ORM\Column(name="montant", type="float")
-     */
-    private $montant;
+     * @ORM\Column(name="dateFacture", type="datetime")
+	 * @Assert\NotBlank()
+	 * @Assert\DateTime()
+     */	
+    private $dateFacture;
 
+	/**
+     * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+	private $cheval;
+
+	/**
+	 *ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+	private $box;
 
     /**
      * Get id
@@ -54,71 +74,94 @@ class Facture
     }
 
     /**
-     * Set datePaiement
+     * Set dateDebut
      *
-     * @param \DateTime $datePaiement
+     * @param \DateTime $dateDebut
      * @return Facture
      */
-    public function setDatePaiement($datePaiement)
+    public function setDateDebut($dateDebut)
     {
-        $this->datePaiement = $datePaiement;
+        $this->dateDebut = $dateDebut;
     
         return $this;
     }
 
     /**
-     * Get datePaiement
+     * Get dateDebut
      *
      * @return \DateTime 
      */
-    public function getDatePaiement()
+    public function getDateDebut()
     {
-        return $this->datePaiement;
+        return $this->dateDebut;
     }
 
     /**
-     * Set pension
+     * Set dateFin
      *
-     * @param integer $pension
+     * @param \DateTime $dateFin
      * @return Facture
      */
-    public function setPension($pension)
+    public function setDateFin($dateFin)
     {
-        $this->pension = $pension;
+        $this->dateFin = $dateFin;
     
         return $this;
     }
 
     /**
-     * Get pension
+     * Get dateFin
      *
-     * @return integer 
+     * @return \DateTime 
      */
-    public function getPension()
+    public function getDateFin()
     {
-        return $this->pension;
+        return $this->dateFin;
     }
 
     /**
-     * Set montant
+     * Set dateFacture
      *
-     * @param float $montant
+     * @param \DateTime $dateFacture
      * @return Facture
      */
-    public function setMontant($montant)
+    public function setDateFacture($dateFacture)
     {
-        $this->montant = $montant;
+        $this->dateFacture = $dateFacture;
     
         return $this;
     }
 
     /**
-     * Get montant
+     * Get dateFacture
      *
-     * @return float 
+     * @return \DateTime 
      */
-    public function getMontant()
+    public function getDateFacture()
     {
-        return $this->montant;
+        return $this->dateFacture;
+    }
+
+    /**
+     * Set cheval
+     *
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
+     * @return Facture
+     */
+    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
+    {
+        $this->cheval = $cheval;
+    
+        return $this;
+    }
+
+    /**
+     * Get cheval
+     *
+     * @return \chev\ChevalBundle\Entity\Cheval 
+     */
+    public function getCheval()
+    {
+        return $this->cheval;
     }
 }

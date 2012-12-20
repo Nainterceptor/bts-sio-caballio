@@ -3,6 +3,7 @@
 namespace chev\PensionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TypePaiement
@@ -25,6 +26,7 @@ class TypePaiement
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $libelle;
 

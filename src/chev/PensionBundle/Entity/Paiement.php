@@ -21,6 +21,15 @@ class Paiement
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\ManyToOne(targetEntity="chev\PensionBundle\Entity\Facture")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+     */
+    private $facture;
 
     /**
      *
@@ -135,6 +144,29 @@ class Paiement
     public function getMontant()
     {
         return $this->montant;
+    }
+
+    /**
+     * Set facture
+     *
+     * @param \chev\PensionBundle\Entity\Facture $facture
+     * @return Paiement
+     */
+    public function setFacture(\chev\PensionBundle\Entity\Facture $facture = null)
+    {
+        $this->facture = $facture;
+    
+        return $this;
+    }
+
+    /**
+     * Get facture
+     *
+     * @return \chev\PensionBundle\Entity\Facture 
+     */
+    public function getFacture()
+    {
+        return $this->facture;
     }
 
     /**

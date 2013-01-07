@@ -1,4 +1,5 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
+{% form_theme form 's4aUserBundle:Form:form.html.twig' %}
 {% block title %}{{ 'user.new.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
 {% block subtitle %}{{ 'user.new.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}

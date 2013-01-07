@@ -118,6 +118,9 @@ table thead tr th {
 table tbody td {
 	padding: 5px;
 }
+table tbody th {
+	padding: 5px;
+}
 table tbody tr:nth-child(odd) {
 	background-color: #f6f3ea;
 	width: 100%;
@@ -324,7 +327,7 @@ h1.page-title {
     border: 1px solid #BABABA;
     background: #FBF9F1;
 }
-.item-list li {
+ul.item-list li {
     overflow: hidden;
     display: block;
     padding: 20px;

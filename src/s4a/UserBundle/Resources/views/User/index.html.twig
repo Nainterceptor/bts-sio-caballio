@@ -1,5 +1,4 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
-{% form_theme perPageForm '::backoffice_form.html.twig' %}
 {% block title %}{{ 'user.index.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
 {% block subtitle %}{{ 'user.index.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
@@ -8,34 +7,21 @@
       <a href="{{ path('s4admin_user') }}">{{ 'user.index.title'|trans([], 'backoffice') }}</a>
  </li>
  {% endblock %}
-{% block submenu2 %}
-<div class="line mt30"></div>
-<div class="statsRow">
-        <div class="wrapper">
-        
-        	<div class="controlB">
-            	<ul>
-                    <li><a title="" href="{{ path('s4admin_user_new') }}"><img src="/images/Backoffice/icons/control/32/hire-me.png"><span>{{ 'user.nav.new'|trans([], 'backoffice') }}</span></a></li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        
-        </div>
-    </div>
-<div class="line"></div>
-{% endblock %}
+
 {% block body %}
 <div class="widget">
-    <div class="title"><img src="/images/Backoffice/icons/dark/user.png" alt="" class="titleIcon" />
-    <h6>{{ 'user.title'|trans([], 'backoffice') }}</h6></div>
-    <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
+    <h2>{{ 'user.title'|trans([], 'backoffice') }}</h2>
+	<ul class="float right">
+	    <li><a title="{{ 'user.nav.new'|trans([], 'backoffice') }}" href="{{ path('s4admin_user_new') }}"><img title="{{ 'user.nav.new'|trans([], 'backoffice') }}" src="{{ asset('images/user_new_32x32.png') }}"></a></li>
+	</ul>
+    <table cellpadding="0" cellspacing="0" width="100%" class="item-list clear">
         <thead>
             <tr>
-            	<td style="width: 60px;" class="sortCol"><div>{{ 'user.label.id'|trans([], 'backoffice') }}<span></span></div></td>
-                <td class="sortCol"><div>{{ 'user.label.username'|trans([], 'backoffice') }}<span></span></div></td>
-                <td class="sortCol"><div>{{ 'user.label.city'|trans([], 'backoffice') }}<span></span></div></td>
-                <td class="sortCol"><div>{{ 'user.label.email'|trans([], 'backoffice') }}<span></span></div></td>
-                <td style="width: 65px;">Actions</td>
+            	<th style="width: 60px;">{{ 'user.label.id'|trans([], 'backoffice') }}</th>
+                <th>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
+                <th>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
+                <th>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
+                <th style="width: 65px;">Actions</td>
             </tr>
         </thead>
         <tbody>
@@ -46,8 +32,12 @@
 		        	<td>{{ entity.city }}</td>
 		        	<td>{{ entity.email }}</td>
 		            <td>
-		            	<a class="smallButton" title="Edit" href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}"><img alt="Edit" src="/images/Backoffice/icons/dark/pencil.png"></a>
-		            	<a class="smallButton" title="Show" href="{{ path('s4admin_user_show', { 'id': entity.id }) }}"><img alt="Show" src="/images/Backoffice/icons/dark/magnify.png"></a>
+		            	<a title="Edit" href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}">
+		            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
+		            	</a>
+		            	<a title="Show" href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">
+		            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+		            	</a>
 		            </td>
 		        </tr>
 		    {% endfor %}
@@ -128,18 +118,4 @@
 			</div>
 		</div>
 {% endif %}
-{% endblock %}
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset('js/plugins/spinner/ui.spinner.js') }}" type="text/javascript" /></script>
-	<script src="{{ asset('js/plugins/tables/resizable.min.js') }}" type="text/javascript" /></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#perPage_perpage').spinner({ min: 0, max: 1000 });
-			$("#res1.sTable").colResizable({
-				liveDrag:true,
-				draggingClass:"dragging" 
-			});
-		});
-	</script>
 {% endblock %}

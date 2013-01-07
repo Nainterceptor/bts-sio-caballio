@@ -22,7 +22,7 @@
 </div>
 <form class="form" action="{{ path('s4admin_user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 	<fieldset>
-        <div class="title"><img src="/images/Backoffice/icons/dark/list.png" alt="" class="titleIcon" /><h6>{{ 'user.edit.title'|trans([], 'backoffice') }}</h6></div>
+        <h2>{{ 'user.edit.title'|trans([], 'backoffice') }}</h2>
 	    {{ form_rest(edit_form) }}
 		<input type="submit" class="float right" value="{{ 'user.edit.title'|trans([], 'backoffice') }}">
 	</fieldset>

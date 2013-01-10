@@ -47,43 +47,46 @@
                 </li>
             </ul>
         </nav>
-        <div class="page-info">
-            <div class="container">
-                <h1 class="page-title">Poney</h1>
-	            <div id="breadcrumbs">
-	                <ul>
-	                    {% block breadcrumbs %}
-	                        <li><a href="{{ path('front_homepage') }}">Poney</a></li>
-	                    {% endblock %}
-	                </ul>
-	            </div>
+        <section>
+            <div class="page-info">
+                <div class="container">
+                    <h1 class="page-title">Poney</h1>
+                    <div id="breadcrumbs">
+                        <ul>
+                            {% block breadcrumbs %}
+                                <li><a href="{{ path('front_homepage') }}">Poney</a></li>
+                            {% endblock %}
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    	<div id="main-container">
-            <div class="container">
-	    		{% block body %}{% endblock %}
-    	   </div>
-        </div>
-		<div id="footer">
-            <div class="container">
-                <div class="copyright">
-        			<p>
-                        <span>
-                            COPYRIGHT &copy; 2012 <a href="#">PITP</a>
-                        </span>|
-                        <span>
-                            <a href="#">TERMS OF USAGE</a>
-                        </span>|
-                        <span>
-                            <a href="#">SUPPORT/HELP</a>
-                        </span>|
-                        <span>
-                            ICONS BY <a href="http://PITP.fr">PITP</a> + <a href="https://www.google.fr/imghp?hl=fr&tab=wi">Google Images</a>
-                        </span>
-                    </p>
-        		</div>
+            <div id="main-container">
+                <div class="container">
+                    {% block body %}{% endblock %}
+               </div>
             </div>
-        </div>
+            <div id="footer">
+                <div class="container">
+                    <div class="copyright">
+                        <p>
+                            <span>
+                                COPYRIGHT &copy; 2012 <a href="#">PITP</a>
+                            </span>|
+                            <span>
+                                <a href="#">TERMS OF USAGE</a>
+                            </span>|
+                            <span>
+                                <a href="#">SUPPORT/HELP</a>
+                            </span>|
+                            <span>
+                                ICONS BY <a href="http://PITP.fr">PITP</a> + <a href="https://www.google.fr/imghp?hl=fr&tab=wi">Google Images</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
 	    {% block javascripts %}
 	        {% javascripts 'js/jquery-1.8.3.min.js'
 	        			   'js/ajax.js' 

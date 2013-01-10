@@ -1,5 +1,5 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
-{% form_theme edit_form '::backoffice_form.html.twig' %}
+{% form_theme edit_form 's4aUserBundle:Form:form.html.twig' %}
 {% block title %}{{ 'user.edit.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
 {% block subtitle %}{{ 'user.edit.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
@@ -8,43 +8,24 @@
       <a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}">{{ 'user.edit.title'|trans([], 'backoffice') }}</a>
  </li>
  {% endblock %}
-{% block submenu2 %}
-<div class="line mt30"></div>
-<div class="statsRow">
-        <div class="wrapper">
-        
-        	<div class="controlB">
-            	<ul>
-                    <li><a href="{{ path('s4admin_user') }}"><img src="/images/Backoffice/icons/control/32/backtolist.png"><span>{{ 'user.nav.backtolist'|trans([], 'backoffice') }}</span></a></li>
-                    <li><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}"><img src="/images/Backoffice/icons/control/32/show.png"><span>{{ 'user.show.title'|trans([], 'backoffice') }}</span></a></li>
-                    <li>
-				        <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
-				            {{ form_widget(delete_form) }}
-				            <a href="javascript:void(0)" class="submit-parent-form">
-				            <img src="/images/Backoffice/icons/control/32/corbeille.png">
-				            <span>{{ 'user.delete.title'|trans([], 'backoffice') }}</span>
-				            </a>
-				            {#<button class="button-link" type="submit">{{ 'user.delete.title'|trans([], 'backoffice') }}</button>#}
-				        </form>
-                    </li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
-<div class="line"></div>
-{% endblock %}
 {% block body %}
+<div class="menu">
+	<a href="{{ path('s4admin_user') }}">
+		<img style="float right" src="{{ asset('images/annuler_32x32.png') }}">
+	</a>
+	<a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">
+		<img style="float right" src="{{ asset('images/voir_32x32.png') }}">
+	</a>
+    <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
+        {{ form_widget(delete_form) }}
+        <input type="image" src="{{ asset('images/supprimer_32x32.png') }}" style="float right" />
+    </form>
+</div>
 <form class="form" action="{{ path('s4admin_user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 	<fieldset>
-	    <div class="widget">
-	        <div class="title"><img src="/images/Backoffice/icons/dark/list.png" alt="" class="titleIcon" /><h6>{{ 'user.edit.title'|trans([], 'backoffice') }}</h6></div>
-		    {{ form_rest(edit_form) }}
-			<div class="formSubmit">
-				<input type="submit" class="redB" value="{{ 'user.edit.title'|trans([], 'backoffice') }}">
-			</div>
-			<div class="clear"></div>
-	    </div>
+        <h2>{{ 'user.edit.title'|trans([], 'backoffice') }}</h2>
+	    {{ form_rest(edit_form) }}
+		<input type="submit" class="float right" value="{{ 'user.edit.title'|trans([], 'backoffice') }}">
 	</fieldset>
 </form>
 {% endblock %}

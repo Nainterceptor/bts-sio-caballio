@@ -60,6 +60,10 @@ input {
     padding: 5px 0 6px 8px;
     margin: 5px 0;
 }
+label {
+	width: 150px;
+	display: inline-block;
+}
 button[type="submit"], input[type="submit"] {
     background: -webkit-linear-gradient(#727531, #565831);
     background: -moz-linear-gradient(#727531, #565831);
@@ -83,6 +87,17 @@ button[type="submit"]:active, input[type="submit"]:active, .lien-new:active {
 	background: linear-gradient(#565831, #727531);
 
 }
+.delete.image.form {
+	display: inline;
+}
+.delete.image.form #form {
+	display: none;
+}
+.delete.image.form input {
+	width: 32px !important;
+	height: 32px !important;
+	padding: 0 !important;
+}
 .container {
     margin: 0 auto;
     width: 964px;
@@ -91,7 +106,32 @@ button[type="submit"]:active, input[type="submit"]:active, .lien-new:active {
 table {
     width: 100%;
     margin-bottom: 20px;
-}/*
+    display: table !important;
+}
+table thead, table tbody {
+	
+}
+table thead tr th {
+	font-weight: bold;
+	padding: 5px 10px 5px 10px;
+}
+table tbody td {
+	padding: 5px;
+}
+table tbody th {
+	padding: 5px;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #f6f3ea;
+	width: 100%;
+}
+.float.right {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+/*
 th {
     color: #565831;
     padding: 5px 0;
@@ -273,7 +313,7 @@ h1.page-title {
 }
 #main-container input {
     margin-left: 10px;
-    color: #444444;
+    padding: 5px;
 }
 
 .page-controls {
@@ -287,7 +327,7 @@ h1.page-title {
     border: 1px solid #BABABA;
     background: #FBF9F1;
 }
-.item-list li {
+ul.item-list li {
     overflow: hidden;
     display: block;
     padding: 20px;
@@ -296,7 +336,6 @@ h1.page-title {
 .block-list {
     padding-top: 10px;
     display: block;
-    float: left;
     margin-right: 90px;
     max-width: 120px;
     min-height: 50px;

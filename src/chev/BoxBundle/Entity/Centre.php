@@ -255,9 +255,9 @@ class Centre
      */
     public function setGerant(\s4a\UserBundle\Entity\User $gerant = null)
     {
-        $this->gerant = $gerant;
+       $this->gerant = $gerant;
     
-        return $this;
+       return $this;
     }
 
     /**
@@ -269,4 +269,5 @@ class Centre
     {
         return $this->gerant;
     }
+    
 }

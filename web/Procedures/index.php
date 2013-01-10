@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>TP12</title>
+        <title>Procedures</title>
 		<!--[if lt IE 9]>
 		<script src="./js/html5.js"></script>
 		<![endif]-->

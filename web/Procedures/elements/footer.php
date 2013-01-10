@@ -1,3 +1,3 @@
 	    <footer>
-	    	Par Gaël Demette
+	    	Par PITP
 	    </footer>

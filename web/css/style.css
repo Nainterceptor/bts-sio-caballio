@@ -243,11 +243,10 @@ nav#top-nav {
     letter-spacing: 1.5px;
     height: 19px;
     margin-top: 9px;
-    padding: 6px 0 5px 0;
+    padding: 6px 10px 5px 10px;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    width: 81px;
     position: relative;
 }
 #top-nav li a:hover {

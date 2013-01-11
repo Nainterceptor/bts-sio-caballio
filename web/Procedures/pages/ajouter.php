@@ -1,3 +1,11 @@
+<?php
+require '../tools.class.php';
+$truc = new tools();
+var_dump($_POST);
+if (isset($_POST['submit'])) {
+	$truc->ajouter($_POST['Nnom'], $_POST['Nage'], $_POST['Ncouleur'], $_POST['Npouvoir']);
+}
+?>
 <h2>Ajout de poney</h2>
 <p>
 	Cette page permet d'ajouter un poney à la liste.<br />
@@ -12,10 +20,3 @@
     <input type="submit" name='submit' value="Ajouter" />
 </form>
 
-<?php
-require '/Applications/XAMPP/xamppfiles/htdocs/poney/web/Procedures/tools.class.php';
-$truc = new tools();
-if (isset($_POST['submit'])) {
-	$truc->ajouter($_POST['Nnom'], $_POST['Nage'], $_POST['Ncouleur'], $_POST['Npouvoir']);
-}
-?>

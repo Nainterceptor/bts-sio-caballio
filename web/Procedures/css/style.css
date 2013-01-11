@@ -122,6 +122,10 @@ body section a:hover {
  
 body section p {line-height: 1.4em; font-size: 0.7em; margin-bottom: 20px; color: #f4f4f4;}
 
+body section table td, body section table th {
+	padding: 5px;
+}
+
 
 /***Footer***/
 

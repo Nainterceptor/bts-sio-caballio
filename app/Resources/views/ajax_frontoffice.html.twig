@@ -1,0 +1,17 @@
+<div class="page-info">
+    <div class="container">
+        <h1 class="page-title">Poney</h1>
+        <div id="breadcrumbs">
+            <ul>
+                {% block breadcrumbs %}
+                    <li><a href="{{ path('front_homepage') }}">Poney</a></li>
+                {% endblock %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="main-container">
+    <div class="container">
+        {% block body %}{% endblock %}
+   </div>
+</div>

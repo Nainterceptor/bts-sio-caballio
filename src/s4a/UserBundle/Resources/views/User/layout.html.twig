@@ -1,4 +1,4 @@
-{% extends '::frontoffice.html.twig' %}
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block title %}{{ 'user.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
 {% block subtitle %}{{ 'user.subtitle'|trans([], 'backoffice') }}{% endblock %}
 {% block breadcrumbs %}

@@ -1,4 +1,4 @@
-{% extends '::frontoffice.html.twig' %}
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block breadcrumbs %}
     {{ parent() }}
     <li><a href="{{ path('centre')}}">Gestion des centres</a></li>

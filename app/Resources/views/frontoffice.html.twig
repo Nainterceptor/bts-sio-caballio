@@ -52,28 +52,16 @@
                     {% block body %}{% endblock %}
                </div>
             </div>
-            <div id="footer">
-                <div class="container">
-                    <div class="copyright">
-                        <p>
-                            <span>
-                                COPYRIGHT &copy; 2012 <a href="#">PITP</a>
-                            </span>|
-                            <span>
-                                <a href="#">TERMS OF USAGE</a>
-                            </span>|
-                            <span>
-                                <a href="#">SUPPORT/HELP</a>
-                            </span>|
-                            <span>
-                                ICONS BY <a href="http://PITP.fr">PITP</a> + <a href="https://www.google.fr/imghp?hl=fr&tab=wi">Google Images</a>
-                            </span>
-                        </p>
-                    </div>
+        </section>
+        <div id="footer">
+            <div class="container">
+                <div class="copyright">
+                    <p>
+                        &copy; PITP {{ "now"|date('Y') }}
+                    </p>
                 </div>
             </div>
-        </section>
-        
+        </div>
 	    {% block javascripts %}
 	        {% javascripts 'js/jquery-1.8.3.min.js'
 	        			   'js/ajax.js' 

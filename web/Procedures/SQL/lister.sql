@@ -1,10 +1,6 @@
-Delimiter//
-CREATE PROCEDURE lister (in order varchar(10))
+Delimiter //
+CREATE PROCEDURE lister ()
 BEGIN
-    IF order = 0 OR order IS NULL
-        THEN SELECT * FROM poney;
-    ELSE
-        SELECT * FROM poney ORDER BY order;
-    END IF;
+    SELECT * FROM poney;
 END;//
 Delimiter ;

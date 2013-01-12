@@ -14,17 +14,12 @@
 				
 				$("form").submit(function(e){
 					var str = $("form").serialize();
-					e.preventDefault()
-					//alert('test');
-					//$(this).preventDefault();
-					$.ajax({ // ajax
-						url: page, // url de la page à charger
+					$.ajax({ 
+						url: page, 
 						data: str,
-						cache: false, // pas de mise en cache
-						success:function(html){ // si la requête est un succès
-							afficher(html);     // on execute la fonction afficher(donnees)
-						},
-						error:function(XMLHttpRequest, textStatus, errorThrows){ // erreur durant la requete
+						type: "POST",
+						success:function(html){ 
+							afficher(html);
 						}
 					});
 					return false;
@@ -36,11 +31,8 @@
 					current = $(this).attr("title");
 					$.ajax({ // ajax
 						url: page, // url de la page à charger
-						cache: false, // pas de mise en cache
 						success:function(html){ // si la requête est un succès
 							afficher(html);     // on execute la fonction afficher(donnees)
-						},
-						error:function(XMLHttpRequest, textStatus, errorThrows){ // erreur durant la requete
 						}
 					});
 					return false; // on desactive le lien

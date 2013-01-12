@@ -1,5 +1,5 @@
 <?php
-require '../tools.class.php';
+require (defined('INDEX')?'.':'..').'/tools.class.php';
 $liste = new tools();
 $donnee = $liste->lister();
 var_dump($donnee);

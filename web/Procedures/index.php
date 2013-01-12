@@ -1,3 +1,6 @@
+<?php 
+define('INDEX', true);
+?>
 <!DOCTYPE html>
 <html>
     <head>

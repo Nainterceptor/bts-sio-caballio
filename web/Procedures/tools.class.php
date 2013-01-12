@@ -25,8 +25,12 @@ if(!class_exists('tools')) {
         
         public function ajouter($nom, $age, $couleur, $pouvoir)
         {
-        	//Todo : utiliser bindparams
-            $query = $this->bdd->query('call ajouter("'.$nom.'", '.$age.', "'.$couleur.'" ,"'.$pouvoir.'")');
+            $dbo = $this->bdd->prepare('call ajouter(:nom, :age, :couleur , :pouvoir)');
+            $dbo->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $dbo->bindParam(':age', $age, PDO::PARAM_INT);
+            $dbo->bindParam(':couleur', $couleur, PDO::PARAM_STR);
+            $dbo->bindParam(':pouvoir', $pouvoir, PDO::PARAM_STR);
+            $dbo->execute();
         }
     	
     	public function lister()
@@ -45,14 +49,22 @@ if(!class_exists('tools')) {
             $dbo->bindParam(':id', $id, PDO::PARAM_INT);
             $dbo->execute();
     	}
-        public function editer($id) {
-            
+        public function editer($id, $nom, $age, $couleur, $pouvoir) {
+            $dbo = $this->bdd->prepare('call modifier(:id, :nom, :age, :couleur , :pouvoir)');
+            $dbo->bindParam(':id', $id, PDO::PARAM_INT);
+            $dbo->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $dbo->bindParam(':age', $age, PDO::PARAM_INT);
+            $dbo->bindParam(':couleur', $couleur, PDO::PARAM_STR);
+            $dbo->bindParam(':pouvoir', $pouvoir, PDO::PARAM_STR);
+            $dbo->execute();
         }
         public function voir($id) {
             $dbo = $this->bdd->prepare('call voir(:id)');
             $dbo->bindParam(':id', $id, PDO::PARAM_INT);
             $dbo->execute();
-            return $dbo->fetch(PDO::FETCH_ASSOC);
+            $row = $dbo->fetch(PDO::FETCH_ASSOC);
+            $dbo->closeCursor();
+            return $row;
         }
     }
 }

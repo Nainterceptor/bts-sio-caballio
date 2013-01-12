@@ -14,7 +14,7 @@ define('INDEX', true);
 			var current;
 			var page;
 			function formAtUpdate() {
-				
+			    lienAjax();
 				$("form").submit(function(e){
 					var str = $("form").serialize();
 					$.ajax({ 
@@ -28,23 +28,30 @@ define('INDEX', true);
 					return false;
 				});
 			}
-			$(document).ready(function(){   // le document est chargé
-				$("nav ul li a").click(function(){   // on selectionne tous les liens et on définit une action quand on clique dessus
-					page=('./pages/'+($(this).attr("title"))+'.php'); // on recuperer l' adresse du lien $(this).attr("href")
-					current = $(this).attr("title");
-					$.ajax({ // ajax
-						url: page, // url de la page à charger
-						success:function(html){ // si la requête est un succès
-							afficher(html);     // on execute la fonction afficher(donnees)
-						}
-					});
-					return false; // on desactive le lien
-				});
+			function lienAjax() {
+			    $("a").unbind('click');
+                $("a").click(function(){
+                    page=('./pages/'+($(this).attr("title"))+'.php');
+                    var data = '';
+                    if($(this).attr('data') != null)
+                        data = 'id='+$(this).attr('data');
+                    $.ajax({
+                        url: page,
+                        data: data,
+                        success:function(html){ 
+                            afficher(html); 
+                        }
+                    });
+                    return false;
+                });
+			}
+			$(document).ready(function(){
+                lienAjax();
 			});
-			function afficher(donnees){ // pour remplacer le contenu du div contenu
+			function afficher(donnees){
 				$('section').slideUp('slow', function(){
-					$("section").empty(); // on vide le div
-					$("section").append(donnees); // on met dans le div le résultat de la requête ajax
+					$("section").empty();
+					$("section").append(donnees);
 					$('section').slideDown('slow', formAtUpdate());
 				});
 			}

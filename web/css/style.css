@@ -379,3 +379,8 @@ ul.item-list li {
 #footer a {
     color: #565831;
 }
+
+/*Ajax ON*/
+div.ajaxOn {
+	display:none;
+}

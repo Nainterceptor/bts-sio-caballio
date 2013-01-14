@@ -35,8 +35,8 @@
                 <li><a href="{{ path('cheval')}}">Chevaux</a></li>
                 <li><a href="{{ path('cheval_vaccin')}}">Vaccins</a></li>
                 <li><a href="{{ path('cheval_race')}}">Race</a></li>
-                <li><a href="#{#{ path('') }#}">Paiement</a></li>
-                <li><a href="#{#{ path('') }#}">Type paiement</a></li>
+                {#<li><a href="{ path('') }">Paiement</a></li>
+                <li><a href="{ path('') }">Type paiement</a></li>#}
                 <li><a href="#">contacts</a></li>
             </ul>
         </nav>
@@ -64,6 +64,10 @@
                 <div class="copyright">
                     <p>&copy; PITP {{ "now"|date('Y') }}</p>
                 </div>
+            	<div class="ajaxOn">
+            		<label for="ajaxOn" selected="selected">Activer AJAX</label>
+            		<input type="checkbox" name="ajaxOn" id="ajaxOn" />
+            	</div>
             </div>
         </div>
 	    {% block javascripts %}

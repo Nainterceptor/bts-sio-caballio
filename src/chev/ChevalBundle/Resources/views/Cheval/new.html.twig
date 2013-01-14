@@ -1,4 +1,4 @@
-{% extends 's4aUserBundle:User:layout.html.twig' %}
+{% extends 'chevChevalBundle:Cheval:layout.html.twig' %}
 {% block title %}Nouveau - {{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
@@ -11,7 +11,7 @@
 	<fieldset>
         <h2>Nouveau cheval</h2>
        {{ form_rest(form) }}
-		<input class="float right" type="submit" value="{{ 'user.nav.create'|trans([], 'backoffice') }}">
+		<input class="float right" type="submit" value="Nouveau">
     	<a title="Retourner à la liste" href="{{ path('cheval') }}">
     		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retourner à la liste">
     	</a>

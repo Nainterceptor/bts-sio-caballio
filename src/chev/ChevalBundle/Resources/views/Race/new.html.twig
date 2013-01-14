@@ -1,16 +1,21 @@
-<h1>Race creation</h1>
-
+{% extends 'chevChevalBundle:Race:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li class="current">
+     <a href="{{ path('cheval_race_new') }}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
 <form action="{{ path('cheval_race_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+	<fieldset>
+        <h2>Nouvelle race</h2>
+       {{ form_rest(form) }}
+		<input class="float right" type="submit" value="Nouveau">
+    	<a title="Retourner à la liste" href="{{ path('cheval') }}">
+    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retourner à la liste">
+    	</a>
+	</fieldset>
 </form>
+{% endblock %}
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('cheval_race') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>

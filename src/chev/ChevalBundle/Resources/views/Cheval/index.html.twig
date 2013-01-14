@@ -27,14 +27,14 @@
             <td><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nom }}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-		            <td>
-		            	<a title="Edit" href="{{ path('cheval_edit', { 'id': entity.id }) }}">
-		            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
-		            	</a>
-		            	<a title="Show" href="{{ path('cheval_show', { 'id': entity.id }) }}">
-		            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
-		            	</a>
-		            </td>
+            <td>
+            	<a title="Edit" href="{{ path('cheval_edit', { 'id': entity.id }) }}">
+            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
+            	</a>
+            	<a title="Show" href="{{ path('cheval_show', { 'id': entity.id }) }}">
+            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+            	</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

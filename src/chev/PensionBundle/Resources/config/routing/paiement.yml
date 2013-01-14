@@ -1,0 +1,30 @@
+paiement:
+    pattern:  /
+    defaults: { _controller: "chevPensionBundle:Paiement:index" }
+
+paiement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevPensionBundle:Paiement:show" }
+
+paiement_new:
+    pattern:  /new
+    defaults: { _controller: "chevPensionBundle:Paiement:new" }
+
+paiement_create:
+    pattern:  /create
+    defaults: { _controller: "chevPensionBundle:Paiement:create" }
+    requirements: { _method: post }
+
+paiement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevPensionBundle:Paiement:edit" }
+
+paiement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevPensionBundle:Paiement:update" }
+    requirements: { _method: post }
+
+paiement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevPensionBundle:Paiement:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,41 @@
+<h1>Paiement</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Datepaiement</th>
+            <td>{{ entity.datePaiement|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Dateencaissement</th>
+            <td>{{ entity.dateEncaissement|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Montant</th>
+            <td>{{ entity.montant }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('paiement') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('paiement_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('paiement_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

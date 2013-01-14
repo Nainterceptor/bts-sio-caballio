@@ -5,3 +5,7 @@ chev_pension_homepage:
 chevPensionBundle_paiement_type:
     resource: "@chevPensionBundle/Resources/config/routing/typepaiement.yml"
     prefix:   /paiement/type
+
+chevPensionBundle_paiement:
+    resource: "@chevPensionBundle/Resources/config/routing/paiement.yml"
+    prefix:   /paiement

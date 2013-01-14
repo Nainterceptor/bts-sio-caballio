@@ -1,3 +1,7 @@
 chev_pension_homepage:
     pattern:  /pension
     defaults: { _controller: chevPensionBundle:Default:index }
+
+chevPensionBundle_paiement_type:
+    resource: "@chevPensionBundle/Resources/config/routing/typepaiement.yml"
+    prefix:   /paiement/type

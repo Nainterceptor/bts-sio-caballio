@@ -1,22 +1,29 @@
-<h1>TypePaiement edit</h1>
-
+{% extends 'chevPensionBundle:TypePaiement:layout.html.twig' %}
+{% block title %}Modifier - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li class="current">
+     <a href="{{ path('paiement_type_edit', { 'id': entity.id }) }}">Modifier</a>
+</li>
+{% endblock %}
+{% block body %}
+<div class="menu">
+	<a href="{{ path('paiement_type') }}">
+		<img style="float right" src="{{ asset('images/annuler_32x32.png') }}">
+	</a>
+	<a href="{{ path('paiement_type_show', { 'id': entity.id }) }}">
+		<img style="float right" src="{{ asset('images/voir_32x32.png') }}">
+	</a>
+    <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('paiement_type_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
+        {{ form_widget(delete_form) }}
+        <input type="image" src="{{ asset('images/supprimer_32x32.png') }}" style="float right" />
+    </form>
+</div>
 <form action="{{ path('paiement_type_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+	<fieldset>
+        <h2>Modifier mode de paiement</h2>
+       {{ form_rest(edit_form) }}
+		<input class="float right" type="submit" value="Modifier">
+	</fieldset>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('paiement_type') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('paiement_type_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+{% endblock %}

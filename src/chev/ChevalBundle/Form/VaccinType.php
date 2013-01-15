@@ -27,6 +27,6 @@ class VaccinType extends AbstractType
 
     public function getName()
     {
-        return 'chev_chevalbundle_vaccintype';
+        return 'vaccin';
     }
 }

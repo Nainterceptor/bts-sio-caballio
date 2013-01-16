@@ -180,7 +180,7 @@ class Facture
 	 *  Set utilisateur
 	 * 
 	 * @param string $utilisateur
-	 * @return Paiement
+	 * @return Facture
 	 */
 	 public function setUtilisateur($utilisateur)
 	 {

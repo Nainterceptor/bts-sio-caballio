@@ -1,0 +1,151 @@
+/*  
+Name: missunderstood template
+Author: will rossiter
+Date: 2/05/2006
+*/
+
+/***Misc Tags***/
+
+* {
+ margin: 0px;
+ padding: 0px;
+}
+
+body {
+ background: #222 url(../images/headergrunge.jpg) repeat-x;
+ font-family: Verdana, Arial, sans-serif;
+ font-size: 16px;
+ color: #fff;}
+ 
+a img{ border: 0px; }
+
+a { text-decoration: none;}
+
+input {
+ background: #333;
+ font-family: Verdana;
+ font-size: 0.7em;
+ padding: 3px;
+ color: #f4f4f4;
+ border: 2px solid #555;}
+	
+button {
+ background: #222;
+ font-family: Verdana;
+ font-size: 0.7em;
+ padding: 2px;
+ color: #f4f4f4;
+ border: 2px solid #444;
+ height: 2em;} 
+
+
+/**** Span class's *****/
+
+.hidden { text-indent: -9000px;}
+.br { clear: both;}
+.pink { color: #D01A71;}
+.small { font-size: x-small;}
+.large { font-size: xx-large;}
+.right { float: right;}
+.left { float: left;}
+.center { margin: 0 auto; text-align: center;}
+
+
+/**** Site Container ****/
+
+#container { width: 700px;}
+
+
+
+/***Header***/
+
+ 
+/*body header { float: left;}*/
+
+body header h1 { 
+ margin-top: 30px;
+ margin-left: 10px;
+ font-size: 1.6em;
+ letter-spacing: -0.1em;}
+ 
+
+/***left Side Bar***/
+
+body nav { float: left; width: 170px; margin-top: 30px; margin-left: 5px;}
+
+ 
+body nav ul {
+ list-style: none;
+}
+
+body nav li a{
+ display: block;
+ height: 25px;
+/*  width: 100px; */
+ padding: 9px;
+ margin: 5px;
+ background: inherit;
+ border-right: 4px solid #444;
+ color: #999;
+ text-transform: capitalize;
+ font-size: 0.9em;}
+ 
+body nav li a:hover {
+ color: #f4f4f4;
+ background: #333;
+ border-right: 4px solid #D01A71;}
+ 
+body nav li .active {
+ color: #999;
+ background: #333;
+ border-right: 4px solid #444;}
+
+
+/***Content***/
+
+body section { /*float: right; margin-top: 30px; margin-left: 2px;*/
+	position: absolute;
+	left: 200px;
+	top: 100px;
+}
+body section label {
+	width: 200px;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+body section a { color:#D01A71; font-weight: bold;}
+
+body section a:hover { 
+ color: #fff; 
+ background: #D01A71; 
+ font-weight: bold;}
+ 
+body section p {line-height: 1.4em; font-size: 0.7em; margin-bottom: 20px; color: #f4f4f4;}
+
+body section table td, body section table th {
+	padding: 5px;
+}
+
+
+/***Footer***/
+
+body footer {
+ text-align: center;
+ color: #666;
+ margin-top: 30px;
+ font-size: 0.7em;
+ }
+ 
+body footer p { color: #666;}
+ 
+body footer a { color: #666;}
+ 
+body footer a:hover { color: #f4f4f4;}
+	
+h2 {
+	margin-bottom: 15px;
+}
+article .table * {
+	text-align:center;
+}
+ 

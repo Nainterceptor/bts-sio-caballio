@@ -1,6 +1,12 @@
-<h1>Facture list</h1>
+{% extends 'chevPensionBundle:Facture:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="{{ path('Facture')}}">Index</a></li>
+{% endblock %}
+{% block body %}
+<h2>Listes des factures</h2>
 
-<table class="records_list">
+<table cellpadding="0" cellspacing="0" width="100%" class="clear">
     <thead>
         <tr>
             <th>Id</th>
@@ -13,19 +19,18 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td class="id-td"><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('facture_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                </ul>
+            	<a title="Show" href="{{ path('facture_show', { 'id': entity.id }) }}">
+            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+            	</a>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+{% endblock %}
 

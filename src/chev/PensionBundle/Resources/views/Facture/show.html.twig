@@ -1,6 +1,20 @@
-<h1>Facture</h1>
+{% extends 'chevPensionBundle:Facture:layout.html.twig' %}
+{% block title %}Voir - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li class="current">
+     <a href="{{ path('facture_show', {id: entity.id}) }}">Voir</a>
+</li>
+{% endblock %}
+{% block body %}
+<div class="menu">
+	<a href="{{ path('facture') }}">
+		<img style="float right" src="{{ asset('images/annuler_32x32.png') }}">
+	</a>
+</div>
+<h2>Voir la facture</h2>
 
-<table class="record_properties">
+<table width="100%" cellspacing="0" cellpadding="0" class="clear">
     <tbody>
         <tr>
             <th>Id</th>
@@ -21,10 +35,4 @@
     </tbody>
 </table>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('facture') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% endblock %}

@@ -57,16 +57,23 @@ class Facture
 	private $cheval;
 
 	/**
-	 *ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
+	 * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
      * @ORM\JoinColumn()
      * @Assert\NotBlank()
 	 */
 	private $box;
+		
+	/**
+	 * @ORM\Column(name="utilisateur", type="string")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+	private $utilisateur;
 
     public function __toString() {
         return (string)$this->id;
     }
-
+	 
     /**
      * Get id
      *
@@ -168,4 +175,25 @@ class Facture
     {
         return $this->cheval;
     }
+	
+	/**
+	 *  Set utilisateur
+	 * 
+	 * @param string $utilisateur
+	 * @return Paiement
+	 */
+	 public function setUtilisateur($utilisateur)
+	 {
+	 	$this->utilisateur = $utilisateur;
+	 }
+	 
+	 /**
+	  * Get utilisateur
+	  * 
+	  * @return string
+	  */
+	  public function getUtilisateur()
+	  {
+	  	return $this->utilisateur;
+	  }
 }

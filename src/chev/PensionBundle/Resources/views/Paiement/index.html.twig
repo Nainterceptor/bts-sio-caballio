@@ -1,11 +1,24 @@
-<h1>Paiement list</h1>
+{% extends 'chevPensionBundle:Paiement:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="{{ path('paiement')}}">Index</a></li>
+{% endblock %}
+{% block body %}
+<h2>Gestion de paiements</h2>
 
-<table class="records_list">
+<ul class="float right">
+    <li>
+    	<a title="Nouveau" href="{{ path('paiement_new') }}">
+    		<img title="Nouveau" src="{{ asset('images/new_32x32.png') }}">
+    	</a>
+    </li>
+</ul>
+<table cellpadding="0" cellspacing="0" width="100%" class="item-list clear">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Datepaiement</th>
-            <th>Dateencaissement</th>
+            <th>Date Paiement</th>
+            <th>Date Encaissement</th>
             <th>Montant</th>
             <th>Actions</th>
         </tr>
@@ -14,28 +27,19 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('paiement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{% if entity.datePaiement %}{{ entity.datePaiement|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateEncaissement %}{{ entity.dateEncaissement|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.montant }}</td>
+            <td>{% if entity.datePaiement %}{{ entity.datePaiement|date('d/m/Y H:i:s') }}{% endif %}</td>
+            <td>{% if entity.dateEncaissement %}{{ entity.dateEncaissement|date('d/m/Y H:i:s') }}{% endif %}</td>
+            <td>{{ entity.montant }} €</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('paiement_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('paiement_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+            	<a title="Edit" href="{{ path('paiement_edit', { 'id': entity.id }) }}">
+            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
+            	</a>
+            	<a title="Show" href="{{ path('paiement_show', { 'id': entity.id }) }}">
+            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+            	</a>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-
-<ul>
-    <li>
-        <a href="{{ path('paiement_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+{% endblock %}

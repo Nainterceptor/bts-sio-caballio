@@ -12,7 +12,16 @@ class ChevalType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('date')
+            ->add('date', 'datetime', array(
+                                                'date_widget' => 'single_text',
+                                                'time_widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                //'format' => 'dd/MM/yyyy HH:mm',
+                                                'date_format' => 'dd/MM/yyyy',
+                                                //'time_format' => 'HH:mm',
+                                                'attr' => array('class' => 'datetimepicker')
+                                        )
+                )
             ->add('race')
             ->add('proprietaire')
         ;
@@ -27,6 +36,6 @@ class ChevalType extends AbstractType
 
     public function getName()
     {
-        return 'chev_chevalbundle_chevaltype';
+        return 'cheval';
     }
 }

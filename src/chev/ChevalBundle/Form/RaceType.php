@@ -24,6 +24,6 @@ class RaceType extends AbstractType
 
     public function getName()
     {
-        return 'chev_chevalbundle_racetype';
+        return 'race';
     }
 }

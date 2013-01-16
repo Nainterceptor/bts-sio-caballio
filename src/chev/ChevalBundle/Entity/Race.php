@@ -31,7 +31,11 @@ class Race
      */
     private $libelle;
 
-
+    public function __toString() {
+        return $this->id.'. '.$this->libelle;
+    }
+    
+    
     /**
      * Get id
      *

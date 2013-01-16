@@ -1,16 +1,20 @@
-<h1>TypePaiement creation</h1>
-
+{% extends 'chevPensionBundle:TypePaiement:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li class="current">
+     <a href="{{ path('paiement_type_new') }}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
 <form action="{{ path('paiement_type_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+	<fieldset>
+        <h2>Nouveau mode de paiement</h2>
+       {{ form_rest(form) }}
+		<input class="float right" type="submit" value="Nouveau">
+    	<a title="Retourner à la liste" href="{{ path('paiement_type') }}">
+    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retourner à la liste">
+    	</a>
+	</fieldset>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('paiement_type') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% endblock %}

@@ -63,6 +63,10 @@ class Facture
 	 */
 	private $box;
 
+    public function __toString() {
+        return (string)$this->id;
+    }
+
     /**
      * Get id
      *

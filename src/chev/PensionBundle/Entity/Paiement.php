@@ -65,7 +65,11 @@ class Paiement
      * @Assert\Type(type="float", message="Ce montant : {{ value }} ,n'est pas un {{ type }}.")
      */
     private $montant;
-
+    
+    public function __construct() {
+        $this->datePaiement = new \DateTime();
+        $this->dateEncaissement = new \DateTime();
+    }
 
     /**
      * Get id

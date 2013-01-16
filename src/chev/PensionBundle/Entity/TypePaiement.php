@@ -30,7 +30,10 @@ class TypePaiement
      */
     private $libelle;
 
-
+    public function __toString() {
+        return $this->id.'. '.$this->libelle;
+    }
+    
     /**
      * Get id
      *

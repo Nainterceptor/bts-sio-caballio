@@ -103,27 +103,35 @@ button[type="submit"]:active, input[type="submit"]:active, .lien-new:active {
     width: 964px;
     padding: 0px 10px;
 }
+/*
+ * Tableau
+ */
 table {
     width: 100%;
-    margin-bottom: 20px;
     display: table !important;
+    border: 1px solid #BABABA;
+    background: #FBF9F1;
 }
 table thead, table tbody {
 	
 }
 table thead tr th {
+	color: #565831;
 	font-weight: bold;
-	padding: 5px 10px 5px 10px;
+	padding: 5px 20px 5px 20px;
 }
 table tbody td {
-	padding: 5px;
+	padding: 5px 10px;
+	vertical-align: middle;
+}
+table tbody td.id-td {
+	text-align:center;
 }
 table tbody th {
 	padding: 5px;
 }
 table tbody tr:nth-child(odd) {
 	background-color: #f6f3ea;
-	width: 100%;
 }
 .float.right {
 	float: right;
@@ -131,23 +139,6 @@ table tbody tr:nth-child(odd) {
 .clear {
 	clear: both;
 }
-/*
-th {
-    color: #565831;
-    padding: 5px 0;
-    border-bottom: 2px solid #565831;
-}
-td {
-    padding: 5px 0;
-}
-tr {
-    border-bottom: 1px solid #565656;
-}
-tbody {
-    color: #444444;
-    font-size: 16px;
-    line-height: 20px;
-}*/
 /*
  *  Header
  */
@@ -387,6 +378,7 @@ ul.item-list li {
     font-size: 16px;
 }
 .item-list p {margin-bottom: 10px;}
+
 .lien-new {
     display: inline-block;
     background: -webkit-linear-gradient(#727531, #565831);
@@ -400,6 +392,31 @@ ul.item-list li {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
     float: right;
+}
+.new-item {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+    background: -webkit-linear-gradient(#727531, #565831);
+    background: -moz-linear-gradient(#727531, #565831);
+    background: -ms-linear-gradient(#727531, #565831);
+    background: -o-linear-gradient(#727531, #565831);
+    background: linear-gradient(#727531, #565831);
+    color: #EEE;
+    padding: 5px 8px;
+    border-radius: 15px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    float: right;
+    margin-bottom: 10px;
+}
+.new-item:hover, .new-item:focus {text-decoration: none;}
+.new-item:active {
+	text-decoration: none;
+	background: -webkit-linear-gradient(#565831, #727531);
+    background: -moz-linear-gradient(#565831, #727531);
+    background: -ms-linear-gradient(#565831, #727531);
+    background: -o-linear-gradient(#565831, #727531);
+    background: linear-gradient(#565831, #727531);
 }
 
 /*

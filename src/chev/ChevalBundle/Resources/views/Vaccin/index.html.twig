@@ -6,7 +6,9 @@
 {% block body %}
 <h1>Vaccin list</h1>
 
-<table class="records_list">
+<a class="new-item" href="{{ path('cheval_vaccin_new') }}">+</a>
+
+<table cellpadding="0" cellspacing="0" width="100%" class="clear">
     <thead>
         <tr>
             <th>Id</th>
@@ -20,31 +22,21 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td class="id-td"><a href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
             <td>{{ entity.dosage }}</td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.marque }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('cheval_vaccin_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <a title="Edit" href="{{ path('cheval_vaccin_edit', { 'id': entity.id }) }}">
+            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
+            	</a>
+            	<a title="Show" href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">
+            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+            	</a>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-
-<ul>
-    <li>
-        <a href="{{ path('cheval_vaccin_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
 {% endblock %}

@@ -6,40 +6,42 @@
 {% block body %}
 <h2>Liste des centres</h2>
 
-<div class="page-controls">
-    Zone pour "trier par" et page 1, 2 etc si besion
-</div>
-<ul class="item-list">
-{% for entity in entities %}
-    <li class="list-centre">
-        <div class="block-list">
-            <a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
-        </div>
-        <div class="block-list">
-            <p>
-                <a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.nom }}</a>
-            </p>
-            <p>
-                Gerant : <a href="#">{{ entity.gerant }}</a>
-            </p>
-        </div>
-        <div  class="block-list address">
-            <p>{{ entity.adresse }}</p>
-            <p>{{ entity.codePostal }}</p>
-            <p>{{ entity.ville }}</p>
-        </div>
-        <div  class="block-list date">
-            <p>Date d'ajout : {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</p>
-            <p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p>
-        </div>
-        <div  class="block-list action">
-            <p><a href="{{ path('centre_show', { 'id': entity.id }) }}">show</a></p>
-            <p><a href="{{ path('centre_edit', { 'id': entity.id }) }}">edit</a></p>
-        </div>
-    </li>
-{% endfor %}
-</ul>
-<a class="lien-new" href="{{ path('centre_new') }}">
-    Create a new entry
-</a>
+<a class="new-item" href="{{ path('centre_new') }}">+</a>
+
+<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+    <thead>
+        <tr>
+        	<th>Id</th>
+        	<th>Libelle</th>
+        	<th>Gerant</th>
+        	<th>Adresse</th>
+        	<th>Date</th>
+        	<th>Actions</th>
+        </tr>
+	</thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+			<td class="id-td"><a href="href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        	<td>{{ entity.nom }}</td>
+        	<td>{{ entity.gerant }}</td>
+        	<td>
+        		<p>{{ entity.adresse }}</p>
+				<p>{{ entity.codePostal }}</p>
+            	<p>{{ entity.ville }}</p></td>
+        	<td>
+        		<p>Date d'ajout : {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</p>
+            	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p></td>
+        	<td>
+                <a title="Edit" href="{{ path('centre_edit', { 'id': entity.id }) }}">
+            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
+            	</a>
+            	<a title="Show" href="{{ path('centre_show', { 'id': entity.id }) }}">
+            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
+            	</a>
+            </td>
+ 		</tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

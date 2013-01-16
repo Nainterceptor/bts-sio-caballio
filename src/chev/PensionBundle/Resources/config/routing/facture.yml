@@ -1,0 +1,10 @@
+facture:
+    pattern:  /
+    defaults: { _controller: "chevPensionBundle:Facture:index" }
+
+facture_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevPensionBundle:Facture:show" }
+
+
+

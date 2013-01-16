@@ -1,0 +1,30 @@
+<h1>Facture</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Datedebut</th>
+            <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Datefin</th>
+            <td>{{ entity.dateFin|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Datefacture</th>
+            <td>{{ entity.dateFacture|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('facture') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>

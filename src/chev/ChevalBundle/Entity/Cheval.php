@@ -59,6 +59,9 @@ class Cheval
     public function __construct() {
         $this->date = new \DateTime();
     }
+	public function __toString() {
+		return $this->id.'. '.$this->nom;
+	}
 
     /**
      * Get id

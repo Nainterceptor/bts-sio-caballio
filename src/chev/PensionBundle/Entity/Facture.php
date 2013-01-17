@@ -64,7 +64,7 @@ class Facture
 	private $box;
 		
 	/**
-	 * @ORM\Column(name="utilisateur", type="string")
+	 * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
      * @ORM\JoinColumn()
      * @Assert\NotBlank()
 	 */
@@ -175,25 +175,50 @@ class Facture
     {
         return $this->cheval;
     }
-	
-	/**
-	 *  Set utilisateur
-	 * 
-	 * @param string $utilisateur
-	 * @return Facture
-	 */
-	 public function setUtilisateur($utilisateur)
-	 {
-	 	$this->utilisateur = $utilisateur;
-	 }
-	 
-	 /**
-	  * Get utilisateur
-	  * 
-	  * @return string
-	  */
-	  public function getUtilisateur()
-	  {
-	  	return $this->utilisateur;
-	  }
+
+    /**
+     * Set box
+     *
+     * @param \chev\BoxBundle\Entity\Box $box
+     * @return Facture
+     */
+    public function setBox(\chev\BoxBundle\Entity\Box $box = null)
+    {
+        $this->box = $box;
+    
+        return $this;
+    }
+
+    /**
+     * Get box
+     *
+     * @return \chev\BoxBundle\Entity\Box 
+     */
+    public function getBox()
+    {
+        return $this->box;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \s4a\UserBundle\Entity\User $utilisateur
+     * @return Facture
+     */
+    public function setUtilisateur(\s4a\UserBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \s4a\UserBundle\Entity\User 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
 }

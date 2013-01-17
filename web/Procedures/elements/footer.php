@@ -1,3 +1,0 @@
-	    <footer>
-	    	Par PITP
-	    </footer>

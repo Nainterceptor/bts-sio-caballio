@@ -4,7 +4,7 @@
     <li><a href="{{ path('cheval_vaccin')}}">Index</a></li>
 {% endblock %}
 {% block body %}
-<h1>Vaccin list</h1>
+<h1>Liste des Vaccins</h1>
 
 <a class="new-item" href="{{ path('cheval_vaccin_new') }}">+</a>
 
@@ -24,7 +24,7 @@
         <tr>
             <td class="id-td"><a href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.dosage }}</td>
+            <td>{{ entity.dosage }} mg</td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.marque }}</td>
             <td>

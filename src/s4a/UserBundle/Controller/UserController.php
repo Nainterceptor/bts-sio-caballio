@@ -46,8 +46,6 @@ class UserController extends Controller
 		
 		
 		$numPages = ceil($em->count()/$perPage);
-    	if($numPages < $page) // If the page is > of number of pages, error 404
-			throw $this->createNotFoundException($translator->trans('user.errors.nomorepage', array('%num%' => $numPages), 'backoffice'));
 
         $entities = $em->userPagination($perPage, $page);
 

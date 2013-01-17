@@ -28,41 +28,33 @@
     	<nav id="top-nav">
             <ul>
                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
-                <li><a href="{{ path('centre') }}">Centres</a></li>
-                <li><a href="{{ path('centre_box')}}">Box</a></li>
-                <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
-                <li><a href="{{ path('cheval')}}">Chevaux</a></li>
-                <li><a href="{{ path('cheval_vaccin')}}">Vaccins</a></li>
-                <li><a href="{{ path('cheval_race')}}">Race</a></li>
-                {#<li><a href="{ path('') }">Paiement</a></li>
-                <li><a href="{ path('') }">Type paiement</a></li>#}
-                <li><a href="#">contacts</a></li>
                 <li class="menu-deroulant">
-                	<a href="#">Menu deroulant</a>
+                	<a href="{{ path('centre') }}">Centres</a>
                 	<ul class="sub-menu">
+                		<li><a href="{{ path('centre_box')}}">Box</a></li>
+                		<li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
+                	</ul>
+                </li>
+                <li class="menu-deroulant">
+                	<a href="{{ path('cheval')}}">Chevaux</a>
+                	<ul class="sub-menu">
+                		<li><a href="{{ path('cheval_vaccin')}}">Vaccins</a></li>
+                		<li><a href="{{ path('cheval_race')}}">Race</a></li>
+                	</ul>
+                </li>
+                <li class="menu-deroulant">
+                	<a href="{{ path('facture') }}">Facture</a>
+                	<ul class="sub-menu">
+                		<li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
                 		<li>
-                			<a href="#">truc 1</a>
-                		</li>
-                		<li>
-                			<a href="#">truc 2</a>
+                			<a href="{{ path('paiement') }}">Paiement</a>
                 			<ul class="sub-sub-menu">
-                				<li><a href="#">truc 2 1</a></li>
-                				<li><a href="#">truc 2 2</a></li>
-                			</ul>
-                		</li>
-                		<li>
-                			<a href="#">truc 3</a>
-                			<ul class="sub-sub-menu">
-                				<li><a href="#">truc 3 1</a></li>
-                				<li><a href="#">truc 3 2</a></li>
-                				<li><a href="#">truc 3 3</a></li>
-                				<li><a href="#">truc 3 4</a></li>
-                				<li><a href="#">truc 3 5</a></li>
+                				<li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>
                 			</ul>
                 		</li>
                 	</ul>
                 </li>
+                <li><a href="#">contacts</a></li>
             </ul>
         </nav>
         <section>

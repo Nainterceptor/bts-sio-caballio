@@ -34,7 +34,7 @@ h4 {
 }
 p {
     color: #444444;
-    font-size: 11px;
+    font-size: 15px;
     line-height: 15px;
 }
 .head-p {
@@ -42,8 +42,8 @@ p {
     line-height: 20px;
 }
 a {
-    color: #A2CCD0;
-    font-size: 11px;
+    color: #727531;
+    font-size: 15px;
     font-weight: normal;
     text-decoration: none;
 }
@@ -136,9 +136,13 @@ table tbody tr:nth-child(odd) {
 .float.right {
 	float: right;
 }
+.float.left {
+	float: left;
+}
 .clear {
 	clear: both;
 }
+
 /*
  *  Header
  */
@@ -270,8 +274,9 @@ nav#top-nav {
 	display: none;
 	position: absolute;
 	width: auto;
-	padding: 8px 12px;
-	border-radius: 0px 0px 5px 5px;
+	min-width : 120px;
+	padding: 8px 12px 15px 12px;
+	border-radius: 0px 5px 5px 5px;
 }
 #top-nav li.menu-deroulant:hover ul.sub-menu {display: block;}
 #top-nav ul.sub-menu a {
@@ -371,6 +376,13 @@ h1.page-title {
     background: -ms-linear-gradient(#565831, #727531);
     background: -o-linear-gradient(#565831, #727531);
     background: linear-gradient(#565831, #727531);
+}
+
+.ul-accueil {
+	margin-left: 25px;
+	list-style: circle;
+	font-size: 15px;
+	color: #444444;
 }
 
 /*

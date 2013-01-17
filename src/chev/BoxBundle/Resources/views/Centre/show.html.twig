@@ -1,7 +1,9 @@
 {% extends 'chevBoxBundle:Centre:layout.html.twig' %}
 {% block breadcrumbs %}
 {{ parent() }}
-    <li><a href="{{ path('centre_show')}}">show</a></li>
+<li class="current">
+     <a href="{{ path('centre_show', {id: entity.id}) }}">Voir</a>
+</li>
 {% endblock %}
 {% block body %}
 <h2>Centre</h2>

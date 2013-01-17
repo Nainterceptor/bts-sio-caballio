@@ -69,6 +69,13 @@ class Facture
      * @Assert\NotBlank()
 	 */
 	private $utilisateur;
+	
+	public function __construct()
+	{
+		$this->dateDebut = new \DateTime();
+		$this->dateFin = new \DateTime();
+		$this->dateFacture = new \DateTime();
+	}
 
     public function __toString() {
         return (string)$this->id;

@@ -13,7 +13,6 @@ class TypeBoxType extends AbstractType
         $builder
             ->add('libelle')
             ->add('volume')
-            ->add('nombreChevaux')
             ->add('prix')
         ;
     }

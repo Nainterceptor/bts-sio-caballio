@@ -40,14 +40,6 @@ class TypeBox
     private $volume;
 
     /**
-     * @var integer $nombreChevaux
-     *
-     * @ORM\Column(name="nombreChevaux", type="smallint")
-     * @Assert\NotBlank()
-     */
-    private $nombreChevaux;
-
-    /**
      * @var float $prix
      *
      * @ORM\Column(name="prix", type="float")
@@ -134,29 +126,6 @@ class TypeBox
     public function getVolume()
     {
         return $this->volume;
-    }
-
-    /**
-     * Set nombreChevaux
-     *
-     * @param integer $nombreChevaux
-     * @return TypeBox
-     */
-    public function setNombreChevaux($nombreChevaux)
-    {
-        $this->nombreChevaux = $nombreChevaux;
-    
-        return $this;
-    }
-
-    /**
-     * Get nombreChevaux
-     *
-     * @return integer 
-     */
-    public function getNombreChevaux()
-    {
-        return $this->nombreChevaux;
     }
 
     /**

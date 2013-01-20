@@ -1,7 +1,7 @@
 {% extends 'chevBoxBundle:Box:layout.html.twig' %}
 {% block breadcrumbs %}
     {{ parent() }}
-    <li><a href="{{ path('centre_box_edit', {id: entity.id})}}">Show</a></li>
+    <li><a href="{{ path('centre_box_edit', {id: entity.id})}}">Apperçu</a></li>
 {% endblock %}
 {% block body %}
 <h2>Box</h2>
@@ -26,20 +26,19 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('centre_box') }}">
-            Back to the list
+            Revenir à la liste
         </a>
     </li>
     <li>
         <a href="{{ path('centre_box_edit', { 'id': entity.id }) }}">
-            Edit
+            <button type="submit">Modifier</button>
         </a>
     </li>
     <li>
-        <form action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
+    <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Supprimer</button>
+    </form>
     </li>
 </ul>
 {% endblock %}

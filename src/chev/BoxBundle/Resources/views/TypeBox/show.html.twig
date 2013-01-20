@@ -43,8 +43,7 @@
         </a>
     </li>
     <li>
-        <form action="{{ path('centre_typebox_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
+        <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_typebox_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
             {{ form_widget(delete_form) }}
             <button type="submit">Supprimer</button>
         </form>

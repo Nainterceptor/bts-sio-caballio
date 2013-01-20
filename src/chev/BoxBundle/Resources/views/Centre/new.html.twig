@@ -8,16 +8,9 @@
 
 <form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+    <button class="float right" type="submit">Create</button>
+    <a href="{{ path('centre') }}">
+    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retour à la liste">
+    </a>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('centre') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% block breadcrumbs %}
 {{ parent() }}
 <li class="current">
-     <a href="{{ path('centre_show', {id: entity.id}) }}">Voir</a>
+     <a href="{{ path('centre_show', {id: entity.id}) }}">Apperçu</a>
 </li>
 {% endblock %}
 {% block body %}
@@ -35,7 +35,7 @@
             <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Dateajout</th>
+            <th>Date d'ajout</th>
             <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
         </tr>
     </tbody>
@@ -44,18 +44,18 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('centre') }}">
-            Back to the list
+            Revenir à la liste
         </a>
     </li>
     <li>
         <a href="{{ path('centre_edit', { 'id': entity.id }) }}">
-            Edit
+            <button type="submit">Modifier</button>
         </a>
     </li>
     <li>
         <form action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Supprimer</button>
         </form>
     </li>
 </ul>

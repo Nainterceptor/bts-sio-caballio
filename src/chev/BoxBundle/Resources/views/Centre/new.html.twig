@@ -4,11 +4,11 @@
     <li><a href="{{ path('centre_new')}}">new</a></li>
 {% endblock %}
 {% block body %}
-<h2>Centre creation</h2>
+<h2>Création d'un centre</h2>
 
 <form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <button class="float right" type="submit">Create</button>
+    <button class="float right" type="submit">Nouveau</button>
     <a href="{{ path('centre') }}">
     		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retour à la liste">
     </a>

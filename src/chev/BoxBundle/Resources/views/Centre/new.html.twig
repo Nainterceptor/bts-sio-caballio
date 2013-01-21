@@ -9,8 +9,5 @@
 <form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <button class="float right" type="submit">Nouveau</button>
-    <a href="{{ path('centre') }}">
-    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retour à la liste">
-    </a>
 </form>
 {% endblock %}

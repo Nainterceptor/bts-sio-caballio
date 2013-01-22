@@ -28,12 +28,8 @@
             <td>{{ entity.prix }}</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
-				<a title="Edit" href="{{ path('centre_typebox_edit', { 'id': entity.id }) }}">
-            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
-            	</a>
-            	<a title="Show" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">
-            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
-            	</a>
+				<a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a>
+    			<a title="Modifier" class="modif-item" href="{{ path('centre_typebox_edit', { 'id': entity.id }) }}">Modifier</a>
             </td>
         </tr>
     {% endfor %}

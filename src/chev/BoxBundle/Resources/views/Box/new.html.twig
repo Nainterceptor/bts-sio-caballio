@@ -4,20 +4,14 @@
     <li><a href="{{ path('centre_box_new')}}">Nouveau</a></li>
 {% endblock %}
 {% block body %}
+
 <h2>Création d'un box</h2>
 
 <form action="{{ path('centre_box_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Nouveau</button>
-    </p>
+    <ul class="form-menu float right">
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_box') }}">return</a></li>
+		<li><button type="submit">Nouveau</button></li>
+	</ul>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('centre_box') }}">
-            Revenir à la liste
-        </a>
-    </li>
-</ul>
 {% endblock %}

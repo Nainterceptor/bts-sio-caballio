@@ -1,9 +1,9 @@
 {% extends 'chevBoxBundle:Centre:layout.html.twig' %}
 {% block breadcrumbs %}
-{{ parent() }}
-<li class="current">
-     <a href="{{ path('centre_show', {id: entity.id}) }}">Apperçu</a>
-</li>
+	{{ parent() }}
+	<li>
+    	<a href="{{ path('centre_show', {id: entity.id}) }}">Aperçu</a>
+	</li>
 {% endblock %}
 {% block body %}
 <h2>Centre</h2>
@@ -41,22 +41,14 @@
     </tbody>
 </table>
 
-<ul class="record_actions">
+<ul class="form-menu float right">
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('centre') }}">return</a></li>
+    <li><a title="Modifier" class="modif-item" href="{{ path('centre_edit', { 'id': entity.id }) }}">Modifier</a></li>
     <li>
-        <a href="{{ path('centre') }}">
-            Revenir à la liste
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('centre_edit', { 'id': entity.id }) }}">
-            <button type="submit">Modifier</button>
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Supprimer</button>
-        </form>
-    </li>
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
+        	{{ form_widget(delete_form) }}
+        	<button type="submit" title="Supprimer" class="delete-item">+</button>
+    	</form>
+	</li>
 </ul>
 {% endblock %}

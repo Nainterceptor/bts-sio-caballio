@@ -4,20 +4,14 @@
     <li><a href="{{ path('centre_typebox_new')}}">Nouveau</a></li>
 {% endblock %}
 {% block body %}
+
 <h2>TypeBox creation</h2>
 
 <form action="{{ path('centre_typebox_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Nouveau</button>
-    </p>
+    <ul class="form-menu float right">
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">return</a></li>
+		<li><button type="submit">Nouveau</button></li>
+	</ul>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('centre_typebox') }}">
-            Revenir à la liste
-        </a>
-    </li>
-</ul>
 {% endblock %}

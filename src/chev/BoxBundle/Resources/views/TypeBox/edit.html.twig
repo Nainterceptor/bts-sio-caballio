@@ -7,23 +7,23 @@
 </li>
 {% endblock %}
 {% block body %}
-<div class="menu">
-	<a href="{{ path('centre_typebox') }}">
-		<img style="float right" src="{{ asset('images/annuler_32x32.png') }}">
-	</a>
-	<a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">
-		<img style="float right" src="{{ asset('images/voir_32x32.png') }}">
-	</a>
-    <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_typebox_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
-        {{ form_widget(delete_form) }}
-        <input type="image" src="{{ asset('images/supprimer_32x32.png') }}" style="float right" />
-    </form>
-</div>
+
+<ul class="form-menu">
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">return</a></li>
+	<li><a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a></li>
+	<li>
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_typebox_delete', { 'id': entity.id }) }}" method="post">
+        	{{ form_widget(delete_form) }}
+        	<button type="submit" title="Supprimer" class="delete-item">+</button>
+    	</form>
+	</li>
+</ul>
+
 <form action="{{ path('centre_typebox_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 	<fieldset>
         <h2>Modifier ce type de box</h2>
        {{ form_rest(edit_form) }}
-		<input class="float right" type="submit" value="Modifier">
+		<input class="float right" title="Confirmer la modification" type="submit" value="Modifier">
 	</fieldset>
 </form>
 {% endblock %}

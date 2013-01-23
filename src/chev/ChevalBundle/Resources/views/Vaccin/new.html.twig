@@ -2,19 +2,19 @@
 {% block title %}Nouveau - {{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
-<li class="current">
+<li>
      <a href="{{ path('cheval_vaccin_new') }}">Nouveau</a>
 </li>
 {% endblock %}
 {% block body %}
+
+<h2>Nouveau vaccin</h2>
+
 <form action="{{ path('cheval_vaccin_create') }}" method="post" {{ form_enctype(form) }}>
-	<fieldset>
-        <h2>Nouveau vaccin</h2>
-       {{ form_rest(form) }}
-		<input class="float right" type="submit" value="Nouveau">
-    	<a title="Retourner à la liste" href="{{ path('cheval') }}">
-    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="Retourner à la liste">
-    	</a>
-	</fieldset>
+	{{ form_widget(form) }}
+    <ul class="form-menu float right">
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('cheval_vaccin') }}">return</a></li>
+		<li><button type="submit">Nouveau</button></li>
+	</ul>
 </form>
 {% endblock %}

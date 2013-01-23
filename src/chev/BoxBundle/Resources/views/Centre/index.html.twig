@@ -1,14 +1,16 @@
 {% extends 'chevBoxBundle:Centre:layout.html.twig' %}
 {% block breadcrumbs %}
-    {{ parent() }}
-    <li><a href="{{ path('centre')}}">Index</a></li>
+{{ parent() }}
+<li>
+	<a href="{{ path('centre')}}">Index</a>
+</li>
 {% endblock %}
 {% block body %}
 <h2>Liste des centres</h2>
 
 <a class="new-item" href="{{ path('centre_new') }}">+</a>
 
-<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+<table class="record_properties">
     <thead>
         <tr>
         	<th>Id</th>
@@ -31,7 +33,8 @@
             	<p>{{ entity.ville }}</p></td>
         	<td>
         		<p>Date d'ajout : {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</p>
-            	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p></td>
+            	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p>
+            </td>
         	<td>
                 <a title="Voir" class="show-item" href="{{ path('centre_show', { 'id': entity.id }) }}">show</a>
     			<a title="Modifier" class="modif-item" href="{{ path('centre_edit', { 'id': entity.id }) }}">Modifier</a>

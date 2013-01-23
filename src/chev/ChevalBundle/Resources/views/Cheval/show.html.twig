@@ -2,25 +2,14 @@
 {% block title %}Voir - {{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
-<li class="current">
+<li>
      <a href="{{ path('cheval_show', {id: entity.id}) }}">Voir</a>
 </li>
 {% endblock %}
 {% block body %}
-<div class="menu">
-	<a href="{{ path('cheval') }}">
-		<img style="float right" src="{{ asset('images/annuler_32x32.png') }}">
-	</a>
-	<a href="{{ path('cheval_edit', { 'id': entity.id }) }}">
-		<img style="float right" src="{{ asset('images/editer_32x32.png') }}">
-	</a>
-    <form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_delete', { 'id': entity.id }) }}" method="post" class="delete image form">
-        {{ form_widget(delete_form) }}
-        <input type="image" src="{{ asset('images/supprimer_32x32.png') }}" style="float right" />
-    </form>
-</div>
 <h2>Voir le cheval</h2>
-<table width="100%" cellspacing="0" cellpadding="0" class="item-list clear">
+
+<table class="record_properties">
     <tbody>
         <tr>
             <th>Id</th>
@@ -37,4 +26,14 @@
     </tbody>
 </table>
 
+<ul class="form-menu float right">
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('cheval') }}">return</a></li>
+    <li><a title="Modifier" class="modif-item" href="{{ path('cheval_edit', { 'id': entity.id }) }}">Modifier</a></li>
+    <li>
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_delete', { 'id': entity.id }) }}" method="post">
+        	{{ form_widget(delete_form) }}
+        	<button type="submit" title="Supprimer" class="delete-item">+</button>
+    	</form>
+	</li>
+</ul>
 {% endblock %}

@@ -1,7 +1,9 @@
 {% extends 'chevChevalBundle:Cheval:layout.html.twig' %}
 {% block breadcrumbs %}
-    {{ parent() }}
-    <li><a href="{{ path('cheval')}}">Index</a></li>
+{{ parent() }}
+<li>
+	<a href="{{ path('cheval')}}">Index</a>
+</li>
 {% endblock %}
 {% block body %}
 <h2>Gestion de chevaux</h2>
@@ -23,13 +25,9 @@
             <td class="id-td"><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nom }}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-            <td>
-            	<a title="Edit" href="{{ path('cheval_edit', { 'id': entity.id }) }}">
-            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
-            	</a>
-            	<a title="Show" href="{{ path('cheval_show', { 'id': entity.id }) }}">
-            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
-            	</a>
+           <td>
+                <a title="Voir" class="show-item" href="{{ path('cheval_show', { 'id': entity.id }) }}">show</a>
+    			<a title="Modifier" class="modif-item" href="{{ path('cheval_edit', { 'id': entity.id }) }}">Modifier</a>
             </td>
         </tr>
     {% endfor %}

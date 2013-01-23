@@ -1,14 +1,16 @@
 {% extends 'chevChevalBundle:Vaccin:layout.html.twig' %}
 {% block breadcrumbs %}
-    {{ parent() }}
-    <li><a href="{{ path('cheval_vaccin')}}">Index</a></li>
+{{ parent() }}
+<li>
+	<a href="{{ path('cheval_vaccin')}}">Index</a>
+</li>
 {% endblock %}
 {% block body %}
 <h2>Liste des Vaccins</h2>
 
 <a class="new-item" href="{{ path('cheval_vaccin_new') }}">+</a>
 
-<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+<table class="record_properties">
     <thead>
         <tr>
             <th>Id</th>
@@ -28,12 +30,8 @@
             <td>{{ entity.description }}</td>
             <td>{{ entity.marque }}</td>
             <td>
-                <a title="Edit" href="{{ path('cheval_vaccin_edit', { 'id': entity.id }) }}">
-            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
-            	</a>
-            	<a title="Show" href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">
-            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
-            	</a>
+                <a title="Voir" class="show-item" href="{{ path('cheval_vaccin_show', { 'id': entity.id }) }}">show</a>
+    			<a title="Modifier" class="modif-item" href="{{ path('cheval_vaccin_edit', { 'id': entity.id }) }}">Modifier</a>
             </td>
         </tr>
     {% endfor %}

@@ -1,8 +1,6 @@
 *.class
 *.pyc
 *.pyo
-.settings/*
-.project
 app/cache/*
 !app/cache/.gitkeep
 app/logs/*
@@ -21,4 +19,3 @@ web/bundles
 !web/bundles/.gitkeep
 .DS_Store
 bin/*
-

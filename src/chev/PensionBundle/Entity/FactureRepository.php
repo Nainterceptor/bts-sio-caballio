@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class FactureRepository extends EntityRepository
 {
+	public function getMontantFacture($id) {
+		$em = $this->getEntityManager();
+		$facture = $em->createQuery('
+								SELECT f.dateDebut, f.dateFin, t.prix 
+								FROM chevPensionBundle:Facture f 
+								JOIN f.box b JOIN b.type t 
+								WHERE f.id = :id')
+					->setParameter('id', $id)
+					->getOneOrNullResult();
+		$interval = date_diff($facture['dateDebut'], $facture['dateFin']);
+		if ($interval->days > 0 && $interval->days != 0) {
+			$montant = $facture['prix'] * $interval->days . " euros";
+			return $montant;
+		}
+	}
 }

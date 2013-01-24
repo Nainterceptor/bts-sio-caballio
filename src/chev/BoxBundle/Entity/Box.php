@@ -61,7 +61,7 @@ class Box
      */
      public function __toString()
      {
-        return $this->centre->getNom().' - '.$this->id;
+        return $this->id;
      }
      
     /**

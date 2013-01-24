@@ -9,8 +9,8 @@
 {% block body %}
 
 <ul class="form-menu">
-	<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">return</a></li>
-	<li><a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a></li>
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">Revenir à la liste</a></li>
+	<li><a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">Aperçu</a></li>
 	<li>
 		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_typebox_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}

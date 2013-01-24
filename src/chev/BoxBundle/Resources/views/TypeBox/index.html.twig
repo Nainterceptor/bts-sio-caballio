@@ -25,7 +25,7 @@
             <td class="id-td"><a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
             <td>{{ entity.volume }}</td>
-            <td>{{ entity.prix }}</td>
+            <td>{{ entity.prix }} / mois</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
 				<a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a>

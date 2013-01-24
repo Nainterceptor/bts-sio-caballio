@@ -23,13 +23,6 @@ class Box
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
-     * @ORM\JoinColumn()
-     * @Assert\NotBlank()
-     */
-    private $centre;
-
-    /**
      * @var \DateTime $date
      *
      * @ORM\Column(name="date", type="datetime")
@@ -125,29 +118,6 @@ class Box
     public function getDateAjout()
     {
         return $this->dateAjout;
-    }
-
-    /**
-     * Set centre
-     *
-     * @param chev\BoxBundle\Entity\Centre $centre
-     * @return Box
-     */
-    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
-    {
-        $this->centre = $centre;
-    
-        return $this;
-    }
-
-    /**
-     * Get centre
-     *
-     * @return chev\BoxBundle\Entity\Centre 
-     */
-    public function getCentre()
-    {
-        return $this->centre;
     }
 
     /**

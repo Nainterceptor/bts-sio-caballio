@@ -1,0 +1,10 @@
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block title %}Gestion de paiements - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+ <li>Erreur {{ status_code }}</li>
+{% endblock %}
+{% block body %}
+	<h2>Une erreur est survenue</h2>
+    <p>Une erreur <b>{{ status_code }}</b> ({{ status_text }}) s'est produite, si cette dernière persiste, veuillez nous contacter.</p>
+{% endblock %}

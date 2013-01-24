@@ -5,12 +5,12 @@
 {% endblock %}
 {% block body %}
 
-<h2>TypeBox creation</h2>
+<h2>Nouveau type de box</h2>
 
 <form action="{{ path('centre_typebox_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <ul class="form-menu float right">
-		<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">return</a></li>
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_typebox') }}">Revenir à la liste</a></li>
 		<li><button type="submit">Nouveau</button></li>
 	</ul>
 </form>

@@ -13,7 +13,7 @@
         <tr>
             <th>Id</th>
             <th>Libelle</th>
-            <th>Volume</th>
+            <th>Taille</th>
             <th>Prix</th>
             <th>Date d'ajout</th>
             <th>Actions</th>
@@ -24,8 +24,8 @@
         <tr>
             <td class="id-td"><a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.volume }}</td>
-            <td>{{ entity.prix }}</td>
+            <td>{{ entity.volume }} m²</td>
+            <td>{{ entity.prix }} / mois</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
 				<a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a>

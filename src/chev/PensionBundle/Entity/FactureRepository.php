@@ -31,8 +31,14 @@ class FactureRepository extends EntityRepository
             return null;
         $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
         $intervalJours = $intervalDates->days;
-        $facture['montant'] = $intervalJours*$facture['prix'];
-        return $facture;
-
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			$facture['montant'] = $intervalJours*$facture['prix'];
+        	return $facture;
+		}
+		else {
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+			
 	}
 }

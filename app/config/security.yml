@@ -4,7 +4,6 @@ jms_security_extra:
 
 security:
     encoders:
-        #Symfony\Component\Security\Core\User\User: plaintext
         "FOS\UserBundle\Model\UserInterface": sha512
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -15,12 +14,6 @@ security:
             id: fos_user.user_manager
         custom:
             id: s4a_user.my_provider
-#        in_memory:
-#            memory:
-#                users:
-#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -43,11 +36,6 @@ security:
                 key:         %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.ini)
             anonymous:       true            # On autorise les utilisateurs anonymes (non identifiés)
             logout:          true            # On autorise la déconnexion manuelle (désactivé par défaut)
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

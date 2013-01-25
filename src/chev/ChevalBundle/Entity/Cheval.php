@@ -193,4 +193,5 @@ class Cheval
     {
         return $this->centre;
     }
+	
 }

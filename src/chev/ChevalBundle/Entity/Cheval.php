@@ -49,12 +49,18 @@ class Cheval
     private $date;
 
     /**
-     *
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
      * @ORM\JoinColumn()
      * @Assert\NotBlank()
      */
     private $proprietaire;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+    private $centre;
        	
     public function __construct() {
         $this->date = new \DateTime();
@@ -163,5 +169,28 @@ class Cheval
     public function getProprietaire()
     {
         return $this->proprietaire;
+    }
+
+    /**
+     * Set centre
+     *
+     * @param \chev\BoxBundle\Entity\Centre $centre
+     * @return Cheval
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
+
+    /**
+     * Get centre
+     *
+     * @return \chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
     }
 }

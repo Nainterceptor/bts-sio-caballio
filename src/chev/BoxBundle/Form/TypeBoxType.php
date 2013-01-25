@@ -14,6 +14,7 @@ class TypeBoxType extends AbstractType
             ->add('libelle')
             ->add('volume')
             ->add('prix')
+            ->add('centre')
         ;
     }
 

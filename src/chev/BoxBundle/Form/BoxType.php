@@ -22,6 +22,7 @@ class BoxType extends AbstractType
                                         )
                 )
             ->add('type')
+			->add('cheval')
         ;
     }
 

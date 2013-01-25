@@ -44,6 +44,13 @@ class Box
      * @Assert\NotBlank()
      */
     private $type;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
+	 * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+	private $cheval;
 
     /**
      * Constructeur du centre
@@ -141,5 +148,28 @@ class Box
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set cheval
+     *
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
+     * @return Box
+     */
+    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
+    {
+        $this->cheval = $cheval;
+    
+        return $this;
+    }
+
+    /**
+     * Get cheval
+     *
+     * @return \chev\ChevalBundle\Entity\Cheval 
+     */
+    public function getCheval()
+    {
+        return $this->cheval;
     }
 }

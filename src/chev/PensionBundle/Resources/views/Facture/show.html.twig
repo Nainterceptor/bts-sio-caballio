@@ -3,7 +3,7 @@
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-     <a href="{{ path('facture_show', {id: entity.id}) }}">Voir</a>
+     <a href="{{ path('facture_show', {id: entity.id}) }}">Aperçu</a>
 </li>
 {% endblock %}
 {% block body %}
@@ -21,15 +21,15 @@
             <td>{{ montant }}</td>
         </tr>
         <tr>
-            <th>Datedebut</th>
+            <th>Date de debut</th>
             <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Datefin</th>
+            <th>Date de fin</th>
             <td>{{ entity.dateFin|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Datefacture</th>
+            <th>Date de facturation</th>
             <td>{{ entity.dateFacture|date('Y-m-d H:i:s') }}</td>
         </tr>
     </tbody>

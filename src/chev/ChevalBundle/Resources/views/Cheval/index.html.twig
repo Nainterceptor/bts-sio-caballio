@@ -16,6 +16,7 @@
             <th>Id</th>
             <th>Nom</th>
             <th>Race</th>
+            <th>Centre</th>
             <th>Date</th>
             <th>Actions</th>
         </tr>
@@ -25,7 +26,8 @@
         <tr>
             <td class="id-td"><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nom }}</td>
-            <td>{{ entity.race.libelle}}</td>
+            <td>{% if entity.race %}{{ entity.race.libelle }} {% else %}Pas de race{% endif %}</td>
+            <td>{% if entity.centre %}{{ entity.centre.nom }} {% else %}Pas de centre{% endif %}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
            <td>
                 <a title="Voir" class="show-item" href="{{ path('cheval_show', { 'id': entity.id }) }}">show</a>

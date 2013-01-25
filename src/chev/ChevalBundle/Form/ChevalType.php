@@ -24,6 +24,7 @@ class ChevalType extends AbstractType
                 )
             ->add('race')
             ->add('proprietaire')
+			->add('centre')
         ;
     }
 

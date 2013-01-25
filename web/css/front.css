@@ -1,0 +1,547 @@
+/*The goal of a reset stylesheet is to reduce browser inconsistencies in things like 
+default line heights, margins and font sizes of headings, and so on.*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {line-height: 1;}
+
+ol, ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {outline: 0;}
+
+/* remember to highlight inserts somehow! */
+ins {    text-decoration: none;}
+
+del {text-decoration: line-through;}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body {
+    background: #ECE8DD;
+    margin: 0 auto;
+    text-align: left;
+    font-family: Georgia,Palatino,serif;
+}
+
+/* 
+ * -------------------------------------------------
+ *  Element de base
+ * -------------------------------------------------
+ */
+h1, h2, h3, h4 {
+    font-weight: normal;
+    letter-spacing: 1.5px;
+}
+h1 {
+    color: #727531;
+    font-size: 50px;
+    padding: 10px 0;
+}
+h2 {
+    color: #565831;
+    font-size: 34px;
+    padding: 8px 0;
+}
+h3 {
+    color: #A2CCD0;
+    font-size: 24px;
+    padding: 5px 0;
+}
+h4 {
+    color: #B3B496;
+    font-size: 16px;
+    padding: 3px 0;
+}
+p {
+    color: #444444;
+    font-size: 15px;
+    line-height: 15px;
+}
+.head-p {
+    font-size: 16px;
+    line-height: 20px;
+}
+a {
+    color: #727531;
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: none;
+}
+a:active, a:focus, a:hover {
+    text-decoration: underline;
+}
+
+/* 
+ * Elements des formulaires
+ */
+label {
+	width: 150px;
+	display: inline-block;
+}
+input {
+    color: #999;
+    border: none;
+    border-radius: 5px;
+    font-family: Tahoma,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px 0 6px 8px;
+    margin: 5px 0 5px 10px;
+}
+div.datetimepicker {
+	width: 200px;
+	display: inline-block;
+}
+div.datetimepicker input {max-width: 75px;}
+select {
+	color: #999;
+	border: none;
+	border-radius: 3px;
+	font-family: Tahoma,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 3px;
+    margin: 5px 0 5px 10px;
+}
+button[type="submit"], input[type="submit"] {
+    background: -webkit-linear-gradient(#727531, #565831);
+    background: -moz-linear-gradient(#727531, #565831);
+    background: -ms-linear-gradient(#727531, #565831);
+    background: -o-linear-gradient(#727531, #565831);
+    background: linear-gradient(#727531, #565831);
+    color: #EEE;
+    border: 0 none;
+    border-radius: 5px;
+    margin: 0;
+    height: 25px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    cursor: pointer;
+}
+input[type="submit"] {padding: 2px 5px 5px 5px;}
+button[type="submit"]:active, input[type="submit"]:active, .lien-new:active {
+	background: -webkit-linear-gradient(#565831, #727531);
+	background: -moz-linear-gradient(#565831, #727531);
+	background: -ms-linear-gradient(#565831, #727531);
+	background: -o-linear-gradient(#565831, #727531);
+	background: linear-gradient(#565831, #727531);
+
+}
+.new-item {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+    background: -webkit-linear-gradient(#727531, #565831);
+    background: -moz-linear-gradient(#727531, #565831);
+    background: -ms-linear-gradient(#727531, #565831);
+    background: -o-linear-gradient(#727531, #565831);
+    background: linear-gradient(#727531, #565831);
+    color: #EEE;
+    padding: 5px 8px 6px 8px;
+    border-radius: 15px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    float: right;
+    margin-bottom: 10px;
+}
+.show-item, .return-item, .modif-item, button.delete-item {
+	width: 32px;
+    height: 30px;
+    text-indent: -9999px;
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    margin: 2px;
+}
+.show-item {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
+}
+.return-item {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
+}
+.modif-item {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
+}
+button.delete-item {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -webkit-linear-gradient(#A60000, #7D1F1F) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -moz-linear-gradient(#A60000, #7D1F1F) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -ms-linear-gradient(#A60000, #7D1F1F) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -o-linear-gradient(#A60000, #7D1F1F) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, linear-gradient(#A60000, #7D1F1F) repeat scroll 0 0%;
+}
+button.delete-item:active {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -webkit-linear-gradient(#7D1F1F, #A60000) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -moz-linear-gradient(#7D1F1F, #A60000) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -ms-linear-gradient(#7D1F1F, #A60000) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, -o-linear-gradient(#7D1F1F, #A60000) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -72px, linear-gradient(#7D1F1F, #A60000) repeat scroll 0 0%;
+}
+.modif-item:active {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -589px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
+}
+.show-item:active {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
+}
+.return-item:active {
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -183px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
+}
+.new-item:hover, .new-item:focus {text-decoration: none;}
+.new-item:active {
+	text-decoration: none;
+	background: -webkit-linear-gradient(#565831, #727531);
+    background: -moz-linear-gradient(#565831, #727531);
+    background: -ms-linear-gradient(#565831, #727531);
+    background: -o-linear-gradient(#565831, #727531);
+    background: linear-gradient(#565831, #727531);
+}
+.delete.image.form {
+	display: inline;
+}
+.delete.image.form #form {
+	display: none;
+}
+.delete.image.form input {
+	width: 32px !important;
+	height: 32px !important;
+	padding: 0 !important;
+}
+.container {
+    margin: 0 auto;
+    width: 964px;
+    padding: 0px 10px;
+}
+/* 
+ * Tableau
+ */
+table {
+    width: 100%;
+    display: table !important;
+    border: 1px solid #BABABA;
+    background: #FBF9F1;
+}
+table thead, table tbody {
+	
+}
+table thead tr th {
+	color: #565831;
+	font-weight: bold;
+	padding: 5px 20px 5px 20px;
+}
+table tbody td {
+	padding: 5px 10px;
+	vertical-align: middle;
+}
+table tbody td.id-td {
+	text-align:center;
+}
+table tbody th {
+	padding: 5px;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #f6f3ea;
+}
+.float.right {
+	float: right;
+}
+.float.left {
+	float: left;
+}
+.clear {
+	clear: both;
+}
+
+/* 
+ * -------------------------------------------------
+ *  Header
+ * -------------------------------------------------
+ */
+
+header {
+    background: -webkit-linear-gradient(#B3B496, #D8DABE);
+    background: -moz-linear-gradient(#B3B496, #D8DABE);
+    background: -ms-linear-gradient(#B3B496, #D8DABE);
+    background: -o-linear-gradient(#B3B496, #D8DABE);
+    background: linear-gradient(#B3B496, #D8DABE);
+    display: block;
+    min-width: 984px;
+    position: relative;
+}
+header .container {
+    height: 160px;
+    position: relative;
+}
+#header-logo {
+    display: block;
+    margin: 0 auto;
+    padding-top: 35px;
+    overflow: hidden !important;
+    width: 231px;
+}
+#search-container {
+    position: absolute;
+    background: #B3B496;
+    padding: 5px;
+    border-radius: 0px 0px 5px 5px;
+    width: 20%;
+    right: 0%;
+}
+#search-container input {
+    width: 150px;
+    height: 18px;
+    position: relative;
+}
+#search-container button[type="submit"] {
+    display: inline-block;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#727531, #565831) repeat scroll 0 0%;
+    border: 0 none;
+    border-radius: 5px;
+    margin: 5px 0;
+    width: 32px;
+    float: right;
+    height: 30px;
+    text-indent: -9999px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    cursor: pointer;
+}
+#search-container button[type="submit"]:active {
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -webkit-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -moz-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -ms-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, -o-linear-gradient(#565831, #727531) repeat scroll 0 0%;
+    background: url("/images/sprite-icon.png") no-repeat scroll 7px -775px, linear-gradient(#565831, #727531) repeat scroll 0 0%;
+}
+
+/* 
+ * -------------------------------------------------
+ *  Menu du haut
+ * -------------------------------------------------
+ */
+
+nav#top-nav {
+    background-color: #B3B496;
+    border-top: 1px solid #ECE8DD;
+    display: block;
+    height: 48px;
+    min-width: 984px;
+    position: relative;
+    z-index: 3100;
+}
+#top-nav ul {
+    margin: 0 auto;
+    width: 984px;
+    position: relative;
+}
+#top-nav li {
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    line-height: 18px;
+    position: relative;
+}
+#top-nav li a {
+    color: #F4E6CC;
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    height: 19px;
+    margin-top: 9px;
+    padding: 6px 10px 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+}
+#top-nav li:hover a {
+    background: #727531;
+    border-radius: 5px;
+}
+#top-nav li#login-container {
+    display: block;
+    float: right;
+    padding: 5px 0;
+    padding-right: 5px;
+    position: relative;
+}
+#top-nav li#login-container button[type="submit"] {
+    color: #EEE;
+    display: inline-block;
+    border: 0 none;
+    border-radius: 5px 5px 5px 5px;
+    margin: 0;
+    height: 30px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+    cursor: pointer;
+}
+/*
+ * Sous-menu
+ */
+#top-nav li.menu-deroulant:hover a {border-radius: 5px 5px 0px 0px;}
+#top-nav ul.sub-menu {
+	background: #727531;
+	display: none;
+	position: absolute;
+	width: auto;
+	min-width : 120px;
+	padding: 8px 12px 15px 12px;
+	border-radius: 0px 5px 5px 5px;
+}
+#top-nav li.menu-deroulant:hover ul.sub-menu {display: block;}
+#top-nav ul.sub-menu a {
+	color: #B3B496;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    text-align: left;
+}
+#top-nav ul.sub-menu a:hover {text-decoration: underline;}
+#top-nav ul.sub-menu li {
+	padding: 5px 0;
+	width: 100%;
+}
+#top-nav ul.sub-sub-menu {width: auto;}
+#top-nav ul.sub-sub-menu li {
+	padding: 0;
+	display: block;
+	padding-left: 8px;
+	width: 100%;
+}
+#top-nav ul.sub-sub-menu a {
+	color: #A2CCD0;
+    font-size: 10px;
+    margin: 0;
+}
+#top-nav ul.sub-sub-menu a:hover {text-decoration: underline;}
+
+/* 
+ * -------------------------------------------------
+ * Page Info
+ * -------------------------------------------------
+ */
+.page-info {
+    background: #F6F3EA;
+    border-bottom: 1px solid #BABABA;
+    border-top: 1px solid #868776;
+}
+.page-info .container {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+#breadcrumbs {
+    color: #868776;
+    font-size: 9px;
+    padding-top: 15px;
+}
+#breadcrumbs li, #breadcrumbs ul {
+    display: inline-block;
+}
+#breadcrumbs li:after {
+    content: " \\ ";
+}
+#breadcrumbs li:last-child:after {
+    content: "";
+}
+h1.page-title {
+    letter-spacing: -1px;
+}
+
+/* 
+ * -------------------------------------------------
+ * Contenu Principal
+ * -------------------------------------------------
+ */
+
+#main-container {
+    border-top: 1px solid #F6F3EA;
+    padding: 20px 0 30px;
+}
+.page-controls {
+    margin-bottom: 20px;
+}
+.ul-accueil {
+	margin-left: 25px;
+	list-style: circle;
+	font-size: 15px;
+	color: #444444;
+}
+ul.form-menu {
+	display: inline-block;
+	width: auto;
+}
+ul.form-menu li {
+	float: left;
+}
+/* 
+ * -------------------------------------------------
+ * Footer
+ * -------------------------------------------------
+ */
+footer {
+    background-color: #B3B496;
+    border-top: 1px solid #868776;
+    height: 95px;
+    min-width: 984px;
+    padding-top: 35px;
+    margin-top: 20px;
+}
+footer a {
+    color: #565831;
+}
+
+/*Ajax ON*/
+div.ajaxOn {
+	display:none;
+}

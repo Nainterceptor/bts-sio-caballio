@@ -12,8 +12,10 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Cheval</th>
+            <th>Type de box</th>
             <th>Date</th>
-            <th>Dateajout</th>
+            <th>Date d'ajout</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -21,6 +23,8 @@
     {% for entity in entities %}
         <tr>
             <td class="id-td"><a href="{{ path('centre_box_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.cheval.nom }}</td>
+            <td>{{ entity.type.libelle }}</td>
             <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>

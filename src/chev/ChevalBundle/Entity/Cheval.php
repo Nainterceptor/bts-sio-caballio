@@ -55,7 +55,7 @@ class Cheval
      * @Assert\NotBlank()
      */
     private $proprietaire;
-
+       	
     public function __construct() {
         $this->date = new \DateTime();
     }

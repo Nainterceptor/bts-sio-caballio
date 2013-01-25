@@ -15,11 +15,19 @@
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
+            <th>Cheval</th>
+            <td>{{ entity.cheval.nom }}</td>
+        </tr>
+        <tr>
+            <th>Type de box</th>
+            <td>{{ entity.type.libelle }}</td>
+        </tr>
+        <tr>
             <th>Date</th>
             <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Dateajout</th>
+            <th>Date d'ajout</th>
             <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
         </tr>
     </tbody>

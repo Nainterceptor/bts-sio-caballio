@@ -37,8 +37,7 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Facture')->find($id);
-
+        $entity = $em->getRepository('chevPensionBundle:Facture')->findAvecMontant($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
@@ -46,7 +45,8 @@ class FactureController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Facture:show.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $entity['facture'],
+            'montant'     => $entity['montant'],
             'delete_form' => $deleteForm->createView(),        ));
     }
 	
@@ -128,7 +128,7 @@ class FactureController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new ChevalType(), $entity);
+        $editForm = $this->createForm(new FactureType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

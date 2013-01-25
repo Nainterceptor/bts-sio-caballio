@@ -3,7 +3,7 @@
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-     <a href="{{ path('cheval_show', {id: entity.id}) }}">Voir</a>
+     <a href="{{ path('cheval_show', {id: entity.id}) }}">Aperçu</a>
 </li>
 {% endblock %}
 {% block body %}
@@ -18,6 +18,10 @@
         <tr>
             <th>Nom</th>
             <td>{{ entity.nom }}</td>
+        </tr>
+        <tr>
+        	<th>Race</th>
+        	<td>{{ entity.race.libelle }}</td>
         </tr>
         <tr>
             <th>Date</th>

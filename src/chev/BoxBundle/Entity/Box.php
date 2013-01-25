@@ -23,13 +23,6 @@ class Box
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
-     * @ORM\JoinColumn()
-     * @Assert\NotBlank()
-     */
-    private $centre;
-
-    /**
      * @var \DateTime $date
      *
      * @ORM\Column(name="date", type="datetime")
@@ -51,6 +44,13 @@ class Box
      * @Assert\NotBlank()
      */
     private $type;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
+	 * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+	private $cheval;
 
     /**
      * Constructeur du centre
@@ -68,7 +68,7 @@ class Box
      */
      public function __toString()
      {
-        return $this->centre->getNom().' - '.$this->id;
+        return (string)$this->id;
      }
      
     /**
@@ -128,29 +128,6 @@ class Box
     }
 
     /**
-     * Set centre
-     *
-     * @param chev\BoxBundle\Entity\Centre $centre
-     * @return Box
-     */
-    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
-    {
-        $this->centre = $centre;
-    
-        return $this;
-    }
-
-    /**
-     * Get centre
-     *
-     * @return chev\BoxBundle\Entity\Centre 
-     */
-    public function getCentre()
-    {
-        return $this->centre;
-    }
-
-    /**
      * Set type
      *
      * @param chev\BoxBundle\Entity\TypeBox $type
@@ -171,5 +148,28 @@ class Box
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set cheval
+     *
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
+     * @return Box
+     */
+    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
+    {
+        $this->cheval = $cheval;
+    
+        return $this;
+    }
+
+    /**
+     * Get cheval
+     *
+     * @return \chev\ChevalBundle\Entity\Cheval 
+     */
+    public function getCheval()
+    {
+        return $this->cheval;
     }
 }

@@ -38,7 +38,14 @@ class TypeBox
      * @Assert\NotBlank()
      */
     private $volume;
-
+	
+    /**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+     */
+    private $centre;
+	
     /**
      * @var float $prix
      *
@@ -127,7 +134,30 @@ class TypeBox
     {
         return $this->volume;
     }
+	
+    /**
+     * Set centre
+     *
+     * @param chev\BoxBundle\Entity\Centre $centre
+     * @return Box
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
 
+    /**
+     * Get centre
+     *
+     * @return chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
+    }
+	
     /**
      * Set prix
      *

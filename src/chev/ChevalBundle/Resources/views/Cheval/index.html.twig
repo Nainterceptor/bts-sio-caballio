@@ -15,6 +15,7 @@
         <tr>
             <th>Id</th>
             <th>Nom</th>
+            <th>Race</th>
             <th>Date</th>
             <th>Actions</th>
         </tr>
@@ -24,6 +25,7 @@
         <tr>
             <td class="id-td"><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nom }}</td>
+            <td>{{ entity.race.libelle}}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
            <td>
                 <a title="Voir" class="show-item" href="{{ path('cheval_show', { 'id': entity.id }) }}">show</a>

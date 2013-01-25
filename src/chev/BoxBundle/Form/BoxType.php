@@ -21,8 +21,8 @@ class BoxType extends AbstractType
                                                 'attr' => array('class' => 'datetimepicker')
                                         )
                 )
-            ->add('centre')
             ->add('type')
+			->add('cheval')
         ;
     }
 

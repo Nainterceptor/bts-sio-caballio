@@ -37,13 +37,6 @@ class Box
      * @ORM\Column(name="dateAjout", type="datetime")
      */
     private $dateAjout;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\TypeBox")
-     * @ORM\JoinColumn()
-     * @Assert\NotBlank()
-     */
-    private $type;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")

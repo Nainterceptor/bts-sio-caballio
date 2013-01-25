@@ -2,11 +2,11 @@
 
 namespace chev\BoxBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use chev\BoxBundle\Entity\Centre;
-use chev\BoxBundle\Form\CentreType;
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    
+    chev\BoxBundle\Entity\Centre,
+    chev\BoxBundle\Form\CentreType;
 
 /**
  * Centre controller.
@@ -21,8 +21,8 @@ class CentreController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('chevBoxBundle:Centre')->findAll();
+        
+        $entities = $this->getCentres($em);
 
         return $this->render('chevBoxBundle:Centre:index.html.twig', array(
             'entities' => $entities,
@@ -75,8 +75,8 @@ class CentreController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        
+        $entity = $this->getCentre($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -96,8 +96,8 @@ class CentreController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        
+        $entity = $this->getCentre($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -120,8 +120,8 @@ class CentreController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        
+        $entity = $this->getCentre($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -156,7 +156,8 @@ class CentreController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+            
+            $entity = $this->getCentre($em, $id);;
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -182,5 +183,36 @@ class CentreController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    /**
+     * Récupérer la liste des centres suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @return Entity
+     */
+    private function getCentres(&$em) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Centre')->findAll();
+        
+        return $em->getRepository('chevBoxBundle:Centre')->findByGerant($user);
+    } 
+    /**
+     * Récupérer un centre suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+    private function getCentre(&$em, $id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Centre')->find($id);
+        
+        return $em->getRepository('chevBoxBundle:Centre')->findBy(array('id' => $id, 'gerant' => $user));
+
     }
 }

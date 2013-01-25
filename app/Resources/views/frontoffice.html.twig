@@ -28,6 +28,7 @@
     	<nav id="top-nav">
             <ul>
                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+                {% if is_granted('ROLE_GERANT') %}
                 <li class="menu-deroulant">
                 	<a href="{{ path('centre') }}">Centres</a>
                 	<ul class="sub-menu">
@@ -38,6 +39,7 @@
                 		</ul>
                 	</ul>
                 </li>
+                {% endif %}
                 <li class="menu-deroulant">
                 	<a href="{{ path('cheval')}}">Chevaux</a>
                 	<ul class="sub-menu">
@@ -60,6 +62,11 @@
                 </li>
                 <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
                 <li><a href="#">contacts</a></li>
+                {% if is_granted('ROLE_USER') %}
+                	<li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                {% else %}
+               		<li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                {% endif %}
             </ul>
         </nav>
         <section>
@@ -84,7 +91,7 @@
         <footer>
             <div class="container">
                 <div class="copyright">
-                    <p>&copy; PITP {{ "now"|date('Y') }}</p>
+                    <p>&copy; PITP 2012 - {{ "now"|date('Y') }}</p>
                 </div>
             	<div class="ajaxOn">
             		<label for="ajaxOn" selected="selected">Activer AJAX</label>

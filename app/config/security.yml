@@ -40,3 +40,5 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/centre/(new|create), roles: ROLE_ADMIN }
+        - { path: ^/centre, roles: ROLE_GERANT }

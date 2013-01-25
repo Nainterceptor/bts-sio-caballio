@@ -211,8 +211,7 @@ class CentreController extends Controller
         
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:Centre')->find($id);
-        
-        return $em->getRepository('chevBoxBundle:Centre')->findBy(array('id' => $id, 'gerant' => $user));
+        return $em->getRepository('chevBoxBundle:Centre')->findOneBy(array('id' => $id, 'gerant' => $user));
 
     }
 }

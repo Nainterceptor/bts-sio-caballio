@@ -70,7 +70,7 @@ class Box
      {
         return (string)$this->id;
      }
-     
+
     /**
      * Get id
      *
@@ -130,7 +130,7 @@ class Box
     /**
      * Set type
      *
-     * @param chev\BoxBundle\Entity\TypeBox $type
+     * @param \chev\BoxBundle\Entity\TypeBox $type
      * @return Box
      */
     public function setType(\chev\BoxBundle\Entity\TypeBox $type = null)
@@ -143,7 +143,7 @@ class Box
     /**
      * Get type
      *
-     * @return chev\BoxBundle\Entity\TypeBox 
+     * @return \chev\BoxBundle\Entity\TypeBox 
      */
     public function getType()
     {

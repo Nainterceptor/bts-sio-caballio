@@ -27,6 +27,10 @@
             <td>{{ entity.prix }} / mois</td>
         </tr>
         <tr>
+        	<th>Centre</th>
+        	<td>{% if entity.centre %}{{ entity.centre }}{% endif %}</td>
+        </tr>
+        <tr>
             <th>Date d'ajout</th>
             <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
         </tr>

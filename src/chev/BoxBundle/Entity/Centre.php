@@ -99,6 +99,7 @@ class Centre
 	 {
 	 	return $this->nom;
 	 }
+
     /**
      * Get id
      *
@@ -250,24 +251,23 @@ class Centre
     /**
      * Set gerant
      *
-     * @param s4a\UserBundle\Entity\User $gerant
+     * @param \s4a\UserBundle\Entity\User $gerant
      * @return Centre
      */
     public function setGerant(\s4a\UserBundle\Entity\User $gerant = null)
     {
-       $this->gerant = $gerant;
+        $this->gerant = $gerant;
     
-       return $this;
+        return $this;
     }
 
     /**
      * Get gerant
      *
-     * @return s4a\UserBundle\Entity\User 
+     * @return \s4a\UserBundle\Entity\User 
      */
     public function getGerant()
     {
         return $this->gerant;
     }
-    
 }

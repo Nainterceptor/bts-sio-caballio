@@ -76,9 +76,9 @@ class TypeBox
      */
      public function __toString()
      {
-        return $this->libelle;
+        return $this->centre.' - '.$this->id.'. '.$this->libelle;
      }
-     
+
     /**
      * Get id
      *
@@ -134,30 +134,7 @@ class TypeBox
     {
         return $this->volume;
     }
-	
-    /**
-     * Set centre
-     *
-     * @param chev\BoxBundle\Entity\Centre $centre
-     * @return Box
-     */
-    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
-    {
-        $this->centre = $centre;
-    
-        return $this;
-    }
 
-    /**
-     * Get centre
-     *
-     * @return chev\BoxBundle\Entity\Centre 
-     */
-    public function getCentre()
-    {
-        return $this->centre;
-    }
-	
     /**
      * Set prix
      *
@@ -202,5 +179,28 @@ class TypeBox
     public function getDateAjout()
     {
         return $this->dateAjout;
+    }
+
+    /**
+     * Set centre
+     *
+     * @param \chev\BoxBundle\Entity\Centre $centre
+     * @return TypeBox
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
+
+    /**
+     * Get centre
+     *
+     * @return \chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
     }
 }

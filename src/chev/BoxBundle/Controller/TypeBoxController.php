@@ -22,7 +22,7 @@ class TypeBoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevBoxBundle:TypeBox')->findAll();
+        $entities = $this->getTypesBox($em);
 
         return $this->render('chevBoxBundle:TypeBox:index.html.twig', array(
             'entities' => $entities,
@@ -36,7 +36,9 @@ class TypeBoxController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new TypeBox();
-        $form = $this->createForm(new TypeBoxType(), $entity);
+        $typeBoxType = new TypeBoxType();
+        $typeBoxType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($typeBoxType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -60,7 +62,9 @@ class TypeBoxController extends Controller
     public function newAction()
     {
         $entity = new TypeBox();
-        $form   = $this->createForm(new TypeBoxType(), $entity);
+        $typeBoxType = new TypeBoxType();
+        $typeBoxType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($typeBoxType, $entity);
 
         return $this->render('chevBoxBundle:TypeBox:new.html.twig', array(
             'entity' => $entity,
@@ -76,7 +80,7 @@ class TypeBoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:TypeBox')->find($id);
+        $entity = $this->getTypeBox($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypeBox entity.');
@@ -102,8 +106,10 @@ class TypeBoxController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypeBox entity.');
         }
-
-        $editForm = $this->createForm(new TypeBoxType(), $entity);
+        $typeBoxType = new TypeBoxType();
+        $typeBoxType->setUser($this->get('security.context')->getToken()->getUser());
+        
+        $editForm = $this->createForm($typeBoxType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevBoxBundle:TypeBox:edit.html.twig', array(
@@ -126,9 +132,11 @@ class TypeBoxController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypeBox entity.');
         }
-
+        $typeBoxType = new TypeBoxType();
+        $typeBoxType->setUser($this->get('security.context')->getToken()->getUser());
+        
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new TypeBoxType(), $entity);
+        $editForm = $this->createForm($typeBoxType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -182,5 +190,36 @@ class TypeBoxController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Récupérer la liste des centres suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @return Entity
+     */
+    private function getTypesBox(&$em) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:TypeBox')->findAll();
+        
+        return $em->getRepository('chevBoxBundle:TypeBox')->findByCentreGerant($user);
+    } 
+    /**
+     * Récupérer un centre suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id l'id du type de box
+     * 
+     * @return Entity
+     */
+    private function getTypeBox(&$em, $id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:TypeBox')->find($id);
+        return $em->getRepository('chevBoxBundle:TypeBox')->findOneByCentreGerant($user, $id);
+
     }
 }

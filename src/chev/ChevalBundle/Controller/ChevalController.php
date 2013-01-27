@@ -21,8 +21,8 @@ class ChevalController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('chevChevalBundle:Cheval')->findAll();
+		
+		$entities = $this->getChevaux($em);
 
         return $this->render('chevChevalBundle:Cheval:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class ChevalController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Cheval')->find($id);
+        $entity = $this->getCheval($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Cheval entity.');
@@ -97,7 +97,7 @@ class ChevalController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Cheval')->find($id);
+        $entity = $this->getCheval($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Cheval entity.');
@@ -121,8 +121,8 @@ class ChevalController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Cheval')->find($id);
-
+        $entity = $this->getCheval($em, $id);
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Cheval entity.');
         }
@@ -156,7 +156,7 @@ class ChevalController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevChevalBundle:Cheval')->find($id);
+            $entity = $this->getCheval($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Cheval entity.');
@@ -168,7 +168,7 @@ class ChevalController extends Controller
 
         return $this->redirect($this->generateUrl('cheval'));
     }
-
+	
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))
@@ -176,4 +176,39 @@ class ChevalController extends Controller
             ->getForm()
         ;
     }
+
+	/**
+     * Récupérer la liste des chevaux suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+	 * 
+     * @return Entity
+     */
+    private function getChevaux(&$em) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevChevalBundle:Cheval')->findAll();
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Cheval')->findByCentre($user);
+		
+		return $em->getRepository('chevChevalBundle:Cheval')->findByProprietaire($user);
+	}
+
+    /**
+     * Récupérer un cheval suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+	private function getCheval(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Cheval')->find($id);
+		
+		return $em->getRepository('chevChevalBundle:Cheval')->findOneBy(array('id' => $id, 'proprietaire' => $user));
+	}
 }

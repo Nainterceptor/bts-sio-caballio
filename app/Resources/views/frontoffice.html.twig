@@ -40,12 +40,16 @@
                 	</ul>
                 </li>
                 {% endif %}
+                {% if is_granted('ROLE_USER') %}
                 <li class="menu-deroulant">
                 	<a href="{{ path('cheval')}}">Chevaux</a>
                 	<ul class="sub-menu">
                 		<li><a href="{{ path('cheval')}}">Chevaux</a></li>
+                		{% endif %}
+                		{% if is_granted('ROLE_GERANT') %}
                 		<li><a href="{{ path('cheval_vaccin')}}">Vaccins</a></li>
                 		<li><a href="{{ path('cheval_race')}}">Race</a></li>
+                		{% endif %}
                 	</ul>
                 </li>
                 <li class="menu-deroulant">

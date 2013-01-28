@@ -5,3 +5,6 @@ chevChevalBundle_cheval_race:
 chevChevalBundle_cheval:
     resource: "@chevChevalBundle/Resources/config/routing/cheval.yml"
     prefix:   /cheval
+    
+chevChevalBundle_equipement:
+    resource: "@cheChevalBundle/Resource/config/routing/equipement.yml"

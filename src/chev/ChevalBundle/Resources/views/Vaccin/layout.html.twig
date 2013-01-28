@@ -1,8 +1,0 @@
-{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block title %}Gestion des vaccins - {{ parent() }}{% endblock %}
-{% block breadcrumbs %}
-{{ parent() }}
- <li>
-      <a href="{{ path('cheval_vaccin') }}">Gestion des vaccins</a>
- </li>
-{% endblock %}

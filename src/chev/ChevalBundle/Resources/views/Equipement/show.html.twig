@@ -1,4 +1,13 @@
-<h1>Equipement</h1>
+{% extends 'chevChevalBundle:Equipement:layout.html.twig' %}
+{% block title %}Voir - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+     <a href="{{ path('equipement_show', {id: entity.id}) }}">Aperçu</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Voir l'équipement</h2>
 
 <table class="record_properties">
     <tbody>
@@ -11,27 +20,20 @@
             <td>{{ entity.libelle }}</td>
         </tr>
         <tr>
-            <th>Dateajout</th>
-            <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
+            <th>Date d'ajout</th>
+            <td>{{ entity.dateAjout|date('d/m/Y H:i:s') }}</td>
         </tr>
     </tbody>
 </table>
 
-<ul class="record_actions">
+<ul class="form-menu float right">
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('equipement') }}">Revenir à la liste</a></li>
+    <li><a title="Modifier" class="modif-item" href="{{ path('equipement_edit', { 'id': entity.id }) }}">Modifier</a></li>
     <li>
-        <a href="{{ path('equipement') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('equipement_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('equipement_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('equipement_delete', { 'id': entity.id }) }}" method="post">
+        	{{ form_widget(delete_form) }}
+        	<button type="submit" title="Supprimer" class="delete-item">+</button>
+    	</form>
+	</li>
 </ul>
+{% endblock %}

@@ -1,16 +1,20 @@
-<h1>Equipement creation</h1>
+{% extends 'chevChevalBundle:Equipement:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+     <a href="{{ path('equipement_new') }}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
+
+<h2>Nouvel équipement</h2>
 
 <form action="{{ path('equipement_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+	{{ form_widget(form) }}
+    <ul class="form-menu float right">
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('equipement') }}">Revenir à la liste</a></li>
+		<li><button type="submit">Nouveau</button></li>
+	</ul>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('equipement') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% endblock %}

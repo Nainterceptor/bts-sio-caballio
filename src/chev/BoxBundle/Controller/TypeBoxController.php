@@ -204,7 +204,7 @@ class TypeBoxController extends Controller
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:TypeBox')->findAll();
         
-        return $em->getRepository('chevBoxBundle:TypeBox')->findByCentreGerant($user);
+        return $em->getRepository('chevBoxBundle:TypeBox')->findByCentreNom($user);
     } 
     /**
      * Récupérer un centre suivant les règles de gestion

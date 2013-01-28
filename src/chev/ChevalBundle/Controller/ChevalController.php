@@ -190,7 +190,7 @@ class ChevalController extends Controller
 		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
 		    return $em->getRepository('chevChevalBundle:Cheval')->findAll();
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
-		    return $em->getRepository('chevChevalBundle:Cheval')->findByCentre($user);
+		    return $em->getRepository('chevChevalBundle:Cheval')->findByCentreGerant($user);
 		
 		return $em->getRepository('chevChevalBundle:Cheval')->findByProprietaire($user);
 	}
@@ -208,7 +208,9 @@ class ChevalController extends Controller
 		
 		if($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevChevalBundle:Cheval')->find($id);
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Cheval')->findByCentreGerant($user, $id);
 		
-		return $em->getRepository('chevChevalBundle:Cheval')->findOneBy(array('id' => $id, 'proprietaire' => $user));
+		return $em->getRepository('chevChevalBundle:Cheval')->findOneByProprietaire($user, $id);
 	}
 }

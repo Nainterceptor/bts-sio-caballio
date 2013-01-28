@@ -3,9 +3,10 @@
 namespace chev\ChevalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Equipement
+ * chev\ChevalBundle\Entity\Equipement
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="chev\ChevalBundle\Entity\EquipementRepository")
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Equipement
 {
     /**
-     * @var integer
+     * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,16 +23,20 @@ class Equipement
     private $id;
 
     /**
-     * @var string
+     * @var string $libelle
      *
      * @ORM\Column(name="libelle", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(limit=100, message="Le nom doit comporter {{ limit }} caractères maximum")
      */
     private $libelle;
 
     /**
-     * @var \DateTime
+     * @var \DateTime $dateAjout
      *
      * @ORM\Column(name="dateAjout", type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     private $dateAjout;
 
@@ -41,6 +46,10 @@ class Equipement
 	 * @Assert\NotBlank()
      */
     private $proprietaire;
+	
+	public function __construct() {
+        $this->dateAjout = new \DateTime();
+	}
 
     /**
      * Get id

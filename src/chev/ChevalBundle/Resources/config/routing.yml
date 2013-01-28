@@ -8,3 +8,4 @@ chevChevalBundle_cheval:
     
 chevChevalBundle_equipement:
     resource: "@cheChevalBundle/Resource/config/routing/equipement.yml"
+    prefix:   /equipement

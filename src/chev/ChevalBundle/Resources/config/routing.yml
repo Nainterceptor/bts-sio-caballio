@@ -7,5 +7,5 @@ chevChevalBundle_cheval:
     prefix:   /cheval
     
 chevChevalBundle_equipement:
-    resource: "@cheChevalBundle/Resource/config/routing/equipement.yml"
+    resource: "@chevChevalBundle/Resources/config/routing/equipement.yml"
     prefix:   /equipement

@@ -22,7 +22,7 @@ class BoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevBoxBundle:Box')->findAll();
+        $entities = $this->getAllBox($em);
 
         return $this->render('chevBoxBundle:Box:index.html.twig', array(
             'entities' => $entities,
@@ -36,7 +36,9 @@ class BoxController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Box();
-        $form = $this->createForm(new BoxType(), $entity);
+        $boxType = new BoxType();
+        $boxType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($boxType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -60,7 +62,9 @@ class BoxController extends Controller
     public function newAction()
     {
         $entity = new Box();
-        $form   = $this->createForm(new BoxType(), $entity);
+        $boxType = new BoxType();
+        $boxType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($boxType, $entity);
 
         return $this->render('chevBoxBundle:Box:new.html.twig', array(
             'entity' => $entity,
@@ -76,7 +80,7 @@ class BoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Box')->find($id);
+        $entity = $this->getBox($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Box entity.');
@@ -97,13 +101,14 @@ class BoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Box')->find($id);
+        $entity = $this->getBox($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Box entity.');
         }
-
-        $editForm = $this->createForm(new BoxType(), $entity);
+        $boxType = new BoxType();
+        $boxType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($boxType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevBoxBundle:Box:edit.html.twig', array(
@@ -121,14 +126,16 @@ class BoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Box')->find($id);
+        $entity = $this->getBox($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Box entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new BoxType(), $entity);
+        $boxType = new BoxType();
+        $boxType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($boxType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -156,7 +163,7 @@ class BoxController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevBoxBundle:Box')->find($id);
+            $entity = $this->getBox($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Box entity.');
@@ -182,5 +189,36 @@ class BoxController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Récupérer la liste des types suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @return Entity
+     */
+    private function getAllBox(&$em) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Box')->findAll();
+        
+        return $em->getRepository('chevBoxBundle:Box')->findByTypeBoxAndCentreGerant($user);
+    } 
+    /**
+     * Récupérer un type suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id l'id du type de box
+     * 
+     * @return Entity
+     */
+    private function getBox(&$em, $id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Box')->find($id);
+        return $em->getRepository('chevBoxBundle:Box')->findOneByTypeBoxAndCentreGerant($user, $id);
+
     }
 }

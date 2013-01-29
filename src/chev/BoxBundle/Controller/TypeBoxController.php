@@ -80,7 +80,7 @@ class TypeBoxController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $this->getTypeBox($em, $id);
+        $entity = $em->getRepository('chevBoxBundle:TypeBox')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypeBox entity.');
@@ -204,7 +204,7 @@ class TypeBoxController extends Controller
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:TypeBox')->findAll();
         
-        return $em->getRepository('chevBoxBundle:TypeBox')->findByCentreNom($user);
+        return $em->getRepository('chevBoxBundle:TypeBox')->findByCentreGerant($user);
     } 
     /**
      * Récupérer un centre suivant les règles de gestion

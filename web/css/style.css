@@ -52,7 +52,12 @@ a {
 a:active, a:focus, a:hover {
     text-decoration: underline;
 }
-
+.container {
+    margin: 0 auto;
+    width: 964px;
+    padding: 0px 10px;
+    color: #444444;
+}
 /* 
  * Elements des formulaires
  */
@@ -198,6 +203,18 @@ button.delete-item:active {
     background: -o-linear-gradient(#565831, #727531);
     background: linear-gradient(#565831, #727531);
 }
+form div ul {
+	display: inline-block;
+	background: url("/images/sprite-icon.png") no-repeat scroll 7px -1653px, #D8DABE;
+	border: 1px solid #868776;
+	border-radius: 8px;
+	max-width: 400px;
+	padding: 4px 10px 4px 40px;
+}
+form div ul li {
+	padding: 3px 0;
+}
+
 .delete.image.form {
 	display: inline;
 }
@@ -209,11 +226,7 @@ button.delete-item:active {
 	height: 32px !important;
 	padding: 0 !important;
 }
-.container {
-    margin: 0 auto;
-    width: 964px;
-    padding: 0px 10px;
-}
+
 /* 
  * Tableau
  */
@@ -244,6 +257,7 @@ table tbody th {
 table tbody tr:nth-child(odd) {
 	background-color: #f6f3ea;
 }
+
 .float.right {
 	float: right;
 }

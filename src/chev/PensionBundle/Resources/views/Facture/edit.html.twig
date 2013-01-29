@@ -20,7 +20,36 @@
 <form action="{{ path('facture_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 	<fieldset>
         <h2>Modifier les factures</h2>
-        {{ form_rest(edit_form) }}
+        <div>
+		    {{ form_label(edit_form.dateDebut) }}
+		    {{ form_widget(edit_form.dateDebut) }}
+		    {{ form_errors(edit_form.dateDebut) }}
+		</div>
+		<div>
+		    {{ form_label(edit_form.dateFin) }}
+		    {{ form_widget(edit_form.dateFin) }}
+		    {{ form_errors(edit_form.dateFin) }}
+		</div>
+		<div>
+		    {{ form_label(edit_form.dateFacture) }}
+		    {{ form_widget(edit_form.dateFacture) }}
+		    {{ form_errors(edit_form.dateFacture) }}
+		</div>
+		<div>
+		    {{ form_label(edit_form.cheval) }}
+		    {{ form_widget(edit_form.cheval) }}
+		    {{ form_errors(edit_form.cheval) }}
+		</div>
+		<div>
+		    {{ form_label(edit_form.box) }}
+		    {{ form_widget(edit_form.box) }}
+		    {{ form_errors(edit_form.box) }}
+		</div>
+		<div>
+		    {{ form_label(edit_form.utilisateur) }}
+		    {{ form_widget(edit_form.utilisateur) }}
+		    {{ form_errors(edit_form.utilisateur) }}
+		</div>
 		<input class="float right" title="Confirmer la modification" type="submit" value="Modifier">
 	</fieldset>
 </form>

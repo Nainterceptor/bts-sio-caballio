@@ -23,6 +23,7 @@ class EquipementType extends AbstractType
                                         )
                 )
             ->add('proprietaire')
+			->add('centre')
         ;
     }
 

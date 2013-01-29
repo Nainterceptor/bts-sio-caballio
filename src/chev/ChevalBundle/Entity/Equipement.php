@@ -47,6 +47,13 @@ class Equipement
      */
     private $proprietaire;
 	
+    /**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
+     * @ORM\JoinColumn()
+	 * @Assert\NotBlank()
+     */
+    private $centre;	
+	
 	public function __construct() {
         $this->dateAjout = new \DateTime();
 	}
@@ -129,5 +136,28 @@ class Equipement
     public function getProprietaire()
     {
         return $this->proprietaire;
+    }
+
+    /**
+     * Set centre
+     *
+     * @param \chev\BoxBundle\Entity\Centre $centre
+     * @return Equipement
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
+
+    /**
+     * Get centre
+     *
+     * @return \chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
     }
 }

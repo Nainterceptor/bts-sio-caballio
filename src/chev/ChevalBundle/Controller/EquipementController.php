@@ -22,7 +22,7 @@ class EquipementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevChevalBundle:Equipement')->findAll();
+        $entities = $this->getEquipements($em);
 
         return $this->render('chevChevalBundle:Equipement:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class EquipementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Equipement')->find($id);
+        $entity = $this->getEquipement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
@@ -97,7 +97,7 @@ class EquipementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Equipement')->find($id);
+        $entity = $this->getEquipement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
@@ -121,7 +121,7 @@ class EquipementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Equipement')->find($id);
+        $entity = $this->getEquipement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
@@ -156,7 +156,7 @@ class EquipementController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevChevalBundle:Equipement')->find($id);
+            $entity = $this->getEquipement($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Equipement entity.');
@@ -176,4 +176,41 @@ class EquipementController extends Controller
             ->getForm()
         ;
     }
+	
+    /**
+     * Récupérer la liste des équipements suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+	 * 
+     * @return Entity
+     */
+    private function getEquipements(&$em) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevChevalBundle:Equipement')->findAll();
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Equipement')->findByCentreGerant($user);
+		
+		return $em->getRepository('chevChevalBundle:Equipement')->findByProprietaire($user);
+	}
+
+    /**
+     * Récupérer un équipement suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+	private function getEquipement(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Equipement')->find($id);
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevChevalBundle:Equipement')->findOneByCentreGerant($user, $id);
+		
+		return $em->getRepository('chevChevalBundle:Equipement')->findOneByProprietaire($user);
+	}
 }

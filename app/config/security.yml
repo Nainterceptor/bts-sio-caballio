@@ -40,8 +40,9 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/race, roles: ROLE_GERANT }
         - { path: ^/equipement/(new|create), roles: ROLE_GERANT }
-        - { path: ^/equipement/(id$)/(edit|update), roles: ROLE_GERANT }
+        - { path: ^/equipement/\d+/(edit|update), roles: ROLE_GERANT }
         - { path: ^/equipement, roles: ROLE_USER }
         - { path: ^/cheval/(new|create), roles: ROLE_GERANT }
         - { path: ^/cheval, roles: ROLE_USER }

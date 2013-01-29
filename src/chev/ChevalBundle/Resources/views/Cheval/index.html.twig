@@ -7,9 +7,9 @@
 {% endblock %}
 {% block body %}
 <h2>Gestion de chevaux</h2>
-
+{% if is_granted('ROLE_GERANT') %}
 <a class="new-item" href="{{ path('cheval_new') }}">+</a>
-
+{% endif %}
 <table cellpadding="0" cellspacing="0" width="100%" class="clear">
     <thead>
         <tr>
@@ -31,9 +31,11 @@
             <td>{{ entity.proprietaire }}</td>
             <td>{% if entity.centre %}{{ entity.centre.nom }} {% else %}Pas de centre{% endif %}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-           <td>
+            <td>
                 <a title="Voir" class="show-item" href="{{ path('cheval_show', { 'id': entity.id }) }}">show</a>
+                {% if is_granted('ROLE_GERANT') %}
     			<a title="Modifier" class="modif-item" href="{{ path('cheval_edit', { 'id': entity.id }) }}">Modifier</a>
+    			{% endif %}
             </td>
         </tr>
     {% endfor %}

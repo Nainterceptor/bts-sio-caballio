@@ -40,6 +40,7 @@
 
 <ul class="form-menu float right">
 	<li><a title="Retour à la liste" class="return-item" href="{{ path('cheval') }}">return</a></li>
+	{% if is_granted('ROLE_GERANT') %}
     <li><a title="Modifier" class="modif-item" href="{{ path('cheval_edit', { 'id': entity.id }) }}">Modifier</a></li>
     <li>
 		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_delete', { 'id': entity.id }) }}" method="post">
@@ -47,5 +48,6 @@
         	<button type="submit" title="Supprimer" class="delete-item">+</button>
     	</form>
 	</li>
+	{% endif %}
 </ul>
 {% endblock %}

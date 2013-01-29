@@ -45,9 +45,9 @@
                 	<a href="{{ path('cheval')}}">Chevaux</a>
                 	<ul class="sub-menu">
                 		<li><a href="{{ path('cheval')}}">Chevaux</a></li>
+                		<li><a href="{{ path('equipement')}}">Equipement</a></li>
                 		{% endif %}
                 		{% if is_granted('ROLE_GERANT') %}
-                		<li><a href="{{ path('cheval_vaccin')}}">Vaccins</a></li>
                 		<li><a href="{{ path('cheval_race')}}">Race</a></li>
                 		{% endif %}
                 	</ul>

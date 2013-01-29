@@ -1,0 +1,30 @@
+equipement:
+    pattern:  /
+    defaults: { _controller: "chevChevalBundle:Equipement:index" }
+
+equipement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevChevalBundle:Equipement:show" }
+
+equipement_new:
+    pattern:  /new
+    defaults: { _controller: "chevChevalBundle:Equipement:new" }
+
+equipement_create:
+    pattern:  /create
+    defaults: { _controller: "chevChevalBundle:Equipement:create" }
+    requirements: { _method: post }
+
+equipement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevChevalBundle:Equipement:edit" }
+
+equipement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevChevalBundle:Equipement:update" }
+    requirements: { _method: post }
+
+equipement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevChevalBundle:Equipement:delete" }
+    requirements: { _method: post }

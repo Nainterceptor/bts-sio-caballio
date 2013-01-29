@@ -12,35 +12,38 @@ class FactureType extends AbstractType
     {
         $builder
             ->add('dateDebut', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
+		            'date_widget'		=> 'single_text',
+		            'time_widget' 		=> 'single_text',
+		            'input' 			=> 'datetime',
+		            //'format' 			=> 'dd/MM/yyyy HH:mm',
+		            'date_format' 		=> 'dd/MM/yyyy',
+		            //'time_format' 	=> 'HH:mm',
+		            'attr'	 			=> array('class' => 'datetimepicker'),
+		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+            	)
+            )
             ->add('dateFin', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
+		            'date_widget'		=> 'single_text',
+		            'time_widget' 		=> 'single_text',
+		            'input' 			=> 'datetime',
+		            //'format' 			=> 'dd/MM/yyyy HH:mm',
+		            'date_format' 		=> 'dd/MM/yyyy',
+		            //'time_format' 	=> 'HH:mm',
+		            'attr'	 			=> array('class' => 'datetimepicker'),
+		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+            	)
+            )
             ->add('dateFacture', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
+		            'date_widget'		=> 'single_text',
+		            'time_widget' 		=> 'single_text',
+		            'input' 			=> 'datetime',
+		            //'format' 			=> 'dd/MM/yyyy HH:mm',
+		            'date_format' 		=> 'dd/MM/yyyy',
+		            //'time_format' 	=> 'HH:mm',
+		            'attr'	 			=> array('class' => 'datetimepicker'),
+		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+            	)
+            )
             ->add('cheval')
             ->add('box')
             ->add('utilisateur')

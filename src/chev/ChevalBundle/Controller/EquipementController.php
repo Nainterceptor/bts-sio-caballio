@@ -57,7 +57,9 @@ class EquipementController extends Controller
     public function newAction()
     {
         $entity = new Equipement();
-        $form   = $this->createForm(new EquipementType(), $entity);
+        $EquipementType = new EquipementType();
+        $EquipementType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($EquipementType, $entity);
 
         return $this->render('chevChevalBundle:Equipement:new.html.twig', array(
             'entity' => $entity,
@@ -72,7 +74,9 @@ class EquipementController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Equipement();
-        $form = $this->createForm(new EquipementType(), $entity);
+        $EquipementType = new EquipementType();
+        $EquipementType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($EquipementType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -102,8 +106,11 @@ class EquipementController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
         }
-
-        $editForm = $this->createForm(new EquipementType(), $entity);
+        
+        $EquipementType = new EquipementType();
+        $EquipementType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($EquipementType, $entity);
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevChevalBundle:Equipement:edit.html.twig', array(
@@ -128,7 +135,11 @@ class EquipementController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new EquipementType(), $entity);
+        
+        $EquipementType = new EquipementType();
+        $EquipementType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($EquipementType, $entity);
+        
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

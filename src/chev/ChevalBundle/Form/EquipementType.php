@@ -8,22 +8,38 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class EquipementType extends AbstractType
 {
+    private $user;
+    public function setUser($user) {
+        $this->user = $user;
+        return $this;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = $this->user;
         $builder
             ->add('libelle')
             ->add('dateAjout', 'datetime', array(
                                                 'date_widget' => 'single_text',
                                                 'time_widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
                                                 'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
                                                 'attr' => array('class' => 'datetimepicker')
-                                        )
+                                           )
                 )
             ->add('proprietaire')
-			->add('centre')
+			->add('centre', 'entity', array(
+                                              'label' => 'Mes centres',
+                                              'class' => 'chevBoxBundle:Centre',
+                                              'query_builder' => function($er) use($user) {
+                                                    if($user->hasRole('ROLE_ADMIN')) {
+                                                        return $er->createQueryBuilder('c');
+                                                    }
+                                                    return $er->createQueryBuilder('c')
+                                                    ->where('c.gerant = :gerant')
+                                                    ->setParameter(':gerant', $user);
+                                              }
+                                      )
+                 )
         ;
     }
 

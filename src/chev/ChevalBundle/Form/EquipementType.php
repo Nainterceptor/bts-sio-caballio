@@ -19,6 +19,7 @@ class EquipementType extends AbstractType
         $builder
             ->add('libelle')
             ->add('dateAjout', 'datetime', array(
+                                                'label' => "Date d'ajout",
                                                 'date_widget' => 'single_text',
                                                 'time_widget' => 'single_text',
                                                 'input' => 'datetime',

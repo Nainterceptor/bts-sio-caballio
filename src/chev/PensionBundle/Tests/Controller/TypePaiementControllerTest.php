@@ -11,7 +11,7 @@ class TypePaiementControllerTest extends WebTestCase
     {
         // Create a new client to browse the application
         $client = static::createClient();
-        TEST
+        
         // Create a new entry in the database
         $crawler = $client->request('GET', '/paiement/type/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());

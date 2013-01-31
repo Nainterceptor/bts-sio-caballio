@@ -36,7 +36,7 @@ class FactureController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+		
         $entity = $this->getFactureAM($em, $id);
 		
         if (!$entity) {
@@ -226,7 +226,7 @@ class FactureController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 		
 		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
-		    return $em->getRepository('chevPensionBundle:Facture')->find($id);
+		    return $em->getRepository('chevPensionBundle:Facture')->findAM($id);
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerantAM($user, $id);
 		

@@ -48,7 +48,42 @@ class FactureRepository extends EntityRepository
                 ->setParameter(':gerant', $gerant)
                 ->setParameter(':id', $id)
                 ->getOneOrNullResult();
-    } 
+    }
+	/**
+     * Trouver une facture avec le montant par l'id
+     * 
+     * @param User $gerant Le gérant
+     * @param int $id l'id
+     * 
+     * @return Entity
+     */
+    public function findAM($id) {
+    	try {
+    		$em = $this->getEntityManager();
+            $query = 'SELECT f AS facture, t.prix'
+                   . ' FROM chevPensionBundle:Facture f'
+                   . ' JOIN f.box b'
+                   . ' JOIN b.type t'
+                   . ' AND f.id = :id';
+    		$facture = $em->createQuery($query)
+    					  ->setParameter(':id', $id)
+    					  ->getOneOrNullResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+		if($facture == null)
+            return null;
+        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+        $intervalJours = $intervalDates->days;
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			$facture['montant'] = $intervalJours*$facture['prix'];
+        	return $facture;
+		}
+		else {
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+    }
     /**
      * Trouver une facture avec le montant par le centre ayant ce gérant et l'id
      * 

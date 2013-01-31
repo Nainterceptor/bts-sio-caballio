@@ -193,7 +193,7 @@ class FactureController extends Controller
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevPensionBundle:Facture')->findByCentreGerant($user);
 		
-		return $em->getRepository('chevPensionBundle:Facture')->findByUtilitsateur($user);
+		return $em->getRepository('chevPensionBundle:Facture')->findByUtilisateur($user);
      }
 
 	/**
@@ -212,6 +212,6 @@ class FactureController extends Controller
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerant($user, $id);
 		
-		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilitsateur($user);
+		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateur($user);
 	}
 }

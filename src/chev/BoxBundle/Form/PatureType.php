@@ -8,8 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PatureType extends AbstractType
 {
+	private $user;
+    public function setUser($user) {
+        $this->user = $user;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	$user = $this->user;
         $builder
             ->add('libelle')
             ->add('taille', 'text', array(
@@ -17,7 +22,18 @@ class PatureType extends AbstractType
 												
 										)
 				)
-            ->add('centre')
+            ->add('centre', 'entity', array('label' => 'Mon Centre',
+                                            'class' => 'chevBoxBundle:Centre',
+                                            'query_builder' => function($er) use ($user) {
+                                                if($user->hasRole('ROLE_ADMIN')) {
+                                                    return $er->createQueryBuilder('c');
+                                                }
+                                                return $er->createQueryBuilder('c')
+                                                ->where('c.gerant = :gerant')
+                                                ->setParameter(':gerant', $user);
+                                            })
+                 )
+				 
             ->add('utilise', 'choice', array(
                                                 'choices' => array(true => 'oui', false => 'non')
 										)
@@ -42,6 +58,6 @@ class PatureType extends AbstractType
 
     public function getName()
     {
-        return 'chev_boxbundle_paturetype';
+        return 'pature';
     }
 }

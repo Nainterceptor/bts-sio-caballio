@@ -5,7 +5,10 @@ $(document).ready(function(){
 		$('input[type="text"]', this).timepicker({
 			altField: '#'+id+' input[type="time"]',
 			stepMinute: 5,
-			ampm: true
+			ampm: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			dateFormat: "dd/mm/yy"
 		});
 	});
 });

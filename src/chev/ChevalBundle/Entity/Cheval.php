@@ -27,7 +27,7 @@ class Cheval
      *
      * @ORM\Column(name="nom", type="string", length=50)
      * @Assert\NotBlank()
-     * @Assert\MaxLength(limit=100, message="Le nom doit comporter {{ limit }} caractères maximum")
+     * @Assert\MaxLength(limit=50, message="Le nom doit comporter {{ limit }} caractères maximum")
      */
     private $nom;
 

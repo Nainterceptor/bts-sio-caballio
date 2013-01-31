@@ -2,7 +2,9 @@
 {% block fos_user_content %}
 <h2>Se connecter</h2>
 {% if error %}
-    <div>{{ error|trans([], 's4aUserBundle') }}</div>
+<ul class="error_login">
+	<li>{{ error|trans([], 's4aUserBundle') }}</li>
+</ul>
 {% endif %}
 <div class="fos_user_login">
 	<form action="{{ path("fos_user_security_check") }}" method="post">

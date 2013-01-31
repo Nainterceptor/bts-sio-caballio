@@ -348,7 +348,6 @@ nav#top-nav {
     height: 48px;
     min-width: 984px;
     position: relative;
-    z-index: 3100;
 }
 #top-nav ul {
     margin: 0 auto;

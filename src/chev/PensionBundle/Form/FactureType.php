@@ -18,8 +18,7 @@ class FactureType extends AbstractType
 		            //'format' 			=> 'dd/MM/yyyy HH:mm',
 		            'date_format' 		=> 'dd/MM/yyyy',
 		            //'time_format' 	=> 'HH:mm',
-		            'attr'	 			=> array('class' => 'datetimepicker'),
-		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
             ->add('dateFin', 'datetime', array(
@@ -29,8 +28,7 @@ class FactureType extends AbstractType
 		            //'format' 			=> 'dd/MM/yyyy HH:mm',
 		            'date_format' 		=> 'dd/MM/yyyy',
 		            //'time_format' 	=> 'HH:mm',
-		            'attr'	 			=> array('class' => 'datetimepicker'),
-		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
             ->add('dateFacture', 'datetime', array(
@@ -40,8 +38,7 @@ class FactureType extends AbstractType
 		            //'format' 			=> 'dd/MM/yyyy HH:mm',
 		            'date_format' 		=> 'dd/MM/yyyy',
 		            //'time_format' 	=> 'HH:mm',
-		            'attr'	 			=> array('class' => 'datetimepicker'),
-		            'invalid_message' 	=> "La date et l'heure doit être au format DD/MM/YYYY HH:MM"
+		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
             ->add('cheval')

@@ -28,7 +28,16 @@ class FactureRepository extends EntityRepository
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
     }
-    
+    public function findOneByCentreGerant($gerant, $id) {
+        return $this->_em
+                ->createQuery('SELECT f FROM chevPensionBundle:Facture f
+                               JOIN f.box b JOIN b.centre c
+                               WHERE c.gerant = :gerant
+                               AND t.id = :id')
+                ->setParameter(':gerant', $gerant)
+                ->setParameter(':id', $id)
+                ->getOneOrNullResult();
+    } 
     /**
      * Trouver une facture avec le montant par le centre ayant ce gérant et l'id
      * 
@@ -37,7 +46,7 @@ class FactureRepository extends EntityRepository
      * 
      * @return Entity
      */
-    public function findOneByCentreGerant($gerant, $id) {
+    public function findOneByCentreGerantAM($gerant, $id) {
     	try {
     		$em = $this->getEntityManager();
             $query = 'SELECT f AS facture, t.prix'
@@ -67,7 +76,15 @@ class FactureRepository extends EntityRepository
 			return $facture;
 		}
     }
-	public function findOneByUtilisateur($user, $id) {
+	/**
+     * Trouver une facture avec le montant par l'utilisateur et l'id
+     * 
+     * @param User $gerant Le gérant
+     * @param int $id l'id
+     * 
+     * @return Entity
+     */
+	public function findOneByUtilisateurAM($user, $id) {
     	try {
     		$em = $this->getEntityManager();
             $query = 'SELECT f AS facture, t.prix'
@@ -96,4 +113,5 @@ class FactureRepository extends EntityRepository
 			return $facture;
 		}
     }
+	
 }

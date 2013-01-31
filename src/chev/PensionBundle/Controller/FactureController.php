@@ -37,7 +37,7 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $this->getFacture($em, $id);
+        $entity = $this->getFactureAM($em, $id);
 		
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
@@ -212,6 +212,24 @@ class FactureController extends Controller
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerant($user, $id);
 		
-		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateur($user, $id);
+		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateur($user);
+	}
+	/**
+     * Récupérer une facture avec montant suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+	private function getFactureAM(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:Facture')->find($id);
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerantAM($user, $id);
+		
+		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateurAM($user, $id);
 	}
 }

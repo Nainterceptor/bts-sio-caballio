@@ -37,6 +37,7 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="75", message="Ce prénom est trop long.", groups={"Registration", "Profile"})
      */
     private $firstname;
+    
     /**
      * @var string $lastname
      *
@@ -46,6 +47,7 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="75", message="Ce nom est trop long.", groups={"Registration", "Profile"})
      */
     private $lastname;
+    
     /**
      * @var string $adress
      *
@@ -54,6 +56,7 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="255", message="Cette adresse est trop longue.", groups={"Registration", "Profile"})
      */
     private $adress;
+    
     /**
      * @var string $zipcode
      *
@@ -62,6 +65,7 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="15", message="Ce code postal est trop long.", groups={"Registration", "Profile"})
      */
     private $zipcode;
+    
     /**
      * @var string $city
      *
@@ -70,6 +74,15 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="175", message="Cette ville est trop longue.", groups={"Registration", "Profile"})
      */
     private $city;
+    
+    /**
+     * @var string $email
+     * @Assert\Email(
+     *     message = "L'adresse '{{ value }}' n'est pas valide.",
+     *     checkMX = true
+     * )
+     */
+    protected $email;
     	
 	public function __construct() {
 		parent::__construct();

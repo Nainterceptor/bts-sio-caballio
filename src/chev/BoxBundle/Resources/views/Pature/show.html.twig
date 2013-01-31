@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <th>Utilisé</th>
-            <td>{{ entity.utilise }}</td>
+            <td>{% if entity.utilise %}oui{% else %}non{% endif %}</td>
         </tr>
         <tr>
             <th>Date</th>

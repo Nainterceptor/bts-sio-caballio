@@ -22,7 +22,7 @@ class PatureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevBoxBundle:Pature')->findAll();
+        $entities = $this->getPatures($em);
 
         return $this->render('chevBoxBundle:Pature:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class PatureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Pature')->find($id);
+        $entity = $this->getPature($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pature entity.');
@@ -97,8 +97,8 @@ class PatureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Pature')->find($id);
-
+        $entity = $this->getPature($em, $id);
+		
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pature entity.');
         }
@@ -121,7 +121,7 @@ class PatureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevBoxBundle:Pature')->find($id);
+        $entity = $this->getPature($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pature entity.');
@@ -156,7 +156,7 @@ class PatureController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevBoxBundle:Pature')->find($id);
+            $entity = $this->getPature($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Pature entity.');
@@ -175,5 +175,36 @@ class PatureController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    /**
+     * Récupérer la liste des patures suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @return Entity
+     */
+    private function getPatures(&$em) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Pature')->findAll();
+        
+        return $em->getRepository('chevBoxBundle:Pature')->findByCentreGerant($user);
+    } 
+    /**
+     * Récupérer une pature suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id l'id de la pature
+     * 
+     * @return Entity
+     */
+    private function getPature(&$em, $id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            return $em->getRepository('chevBoxBundle:Pature')->find($id);
+		
+        return $em->getRepository('chevBoxBundle:Pature')->findOneByCentreGerant($user, $id);
     }
 }

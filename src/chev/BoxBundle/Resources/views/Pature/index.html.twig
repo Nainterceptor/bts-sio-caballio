@@ -8,9 +8,7 @@
 {% block body %}
 <h2>Liste des patures</h2>
 
-{% if is_granted('ROLE_ADMIN') %}
 	<a class="new-item" href="{{ path('pature_new') }}">+</a>
-{% endif %}
 
 <table class="record_properties">
     <thead>

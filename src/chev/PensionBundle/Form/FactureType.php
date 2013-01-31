@@ -59,7 +59,20 @@ class FactureType extends AbstractType
 											 }
 											)
 			)
-            ->add('box')
+            ->add('box', 'entity', array( 'label' => 'Le Box',
+											 'class' => 'chevBoxBundle:Box',
+											 'query_builder' => function($er) use ($user) {
+												if ($user->hasRole('ROLE_ADMIN')) {
+													return $er->createQueryBuilder('b');
+												}
+												return $er->createQueryBuilder('b')
+												->join('b.type', 't')
+												->join('t.centre', 'c')
+												->where('c.gerant = :gerant')
+												->setParameter(':gerant', $user);
+											 }
+											)
+			)
             ->add('utilisateur')
         ;
     }

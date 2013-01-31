@@ -134,9 +134,11 @@ class FactureController extends Controller
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $factureType = new FactureType();
 		$factureType->setUser($this->get('security.context')->getToken()->getUser());
+		
+		$deleteForm = $this->createDeleteForm($id);
+		
         $editForm = $this->createForm($factureType, $entity);
         $editForm->bind($request);
 

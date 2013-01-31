@@ -15,7 +15,7 @@ class UserType extends AbstractType
             //->add('usernameCanonical')
             ->add('email')
             //->add('emailCanonical')
-            ->add('enabled')
+            ->add('enabled', 'checkbox', array('required'  => false))
             //->add('salt')
             ->add('password', 'password', array('required'=>false))
             //->add('lastLogin')

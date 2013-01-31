@@ -478,6 +478,7 @@ h1.page-title {
 #main-container {
     border-top: 1px solid #F6F3EA;
     padding: 20px 0 30px;
+    min-height: 200px;
 }
 .page-controls {
     margin-bottom: 20px;

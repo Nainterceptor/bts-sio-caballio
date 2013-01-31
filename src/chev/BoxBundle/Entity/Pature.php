@@ -56,7 +56,14 @@ class Pature
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
-
+	
+	/**
+	 * Constructeur de pature
+	 */
+	 public function __construct()
+	 {
+		$this->date = new \DateTime();
+	 }
 
     /**
      * Get id

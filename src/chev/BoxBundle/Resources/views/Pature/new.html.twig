@@ -1,16 +1,20 @@
-<h1>Pature creation</h1>
+{% extends 'chevBoxBundle:Pature:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('pature_new')}}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
+
+<h2>Création d'une patûre</h2>
 
 <form action="{{ path('pature_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+    <ul class="form-menu float right">
+		<li><a title="Retour à la liste" class="return-item" href="{{ path('pature') }}">Revenir à la liste</a></li>
+		<li><button type="submit">Nouveau</button></li>
+	</ul>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('pature') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% endblock %}

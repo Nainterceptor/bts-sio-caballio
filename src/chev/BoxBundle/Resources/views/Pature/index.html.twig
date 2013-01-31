@@ -1,45 +1,43 @@
-<h1>Pature list</h1>
+{% extends 'chevBoxBundle:Pature:layout.html.twig' %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('pature')}}">Index</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Liste des patures</h2>
 
-<table class="records_list">
+{% if is_granted('ROLE_ADMIN') %}
+	<a class="new-item" href="{{ path('pature_new') }}">+</a>
+{% endif %}
+
+<table class="record_properties">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Libelle</th>
-            <th>Taille</th>
-            <th>Centre</th>
-            <th>Utilise</th>
-            <th>Date</th>
-            <th>Actions</th>
+        	<th>Id</th>
+        	<th>Libelle</th>
+        	<th>Taille</th>
+        	<th>Centre</th>
+        	<th>Utilisé</th>
+        	<th>Date d'ajout</th>
         </tr>
-    </thead>
+	</thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('pature_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.libelle }}</td>
-            <td>{{ entity.taille }}</td>
-            <td>{{ entity.centre }}</td>
-            <td>{{ entity.utilise }}</td>
+			<td class="id-td"><a href="{{ path('pature_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        	<td>{{ entity.libelle }}</td>
+        	<td>{{ entity.taille }} hectare</td>
+        	<td>{{ entity.centre }}</td>
+		    <td>{% if entity.utilise %}oui{% else %}non{% endif %}</td>
             <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('pature_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('pature_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+        	<td>
+                <a title="Voir" class="show-item" href="{{ path('pature_show', { 'id': entity.id }) }}">Voir</a>
+    			<a title="Modifier" class="modif-item" href="{{ path('pature_edit', { 'id': entity.id }) }}">Modifier</a>
             </td>
-        </tr>
+ 		</tr>
     {% endfor %}
     </tbody>
 </table>
-
-<ul>
-    <li>
-        <a href="{{ path('pature_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+{% endblock %}

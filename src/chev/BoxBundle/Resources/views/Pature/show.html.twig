@@ -1,5 +1,14 @@
-<h1>Pature</h1>
+{% extends 'chevBoxBundle:Pature:layout.html.twig' %}
+{% block title %}Voir - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+    <a href="{{ path('pature_show', {id: entity.id}) }}">Aperçu</a>
+</li>
+{% endblock %}
+{% block body %}
 
+<h2>Voir la patûre</h2>
 <table class="record_properties">
     <tbody>
         <tr>
@@ -7,19 +16,19 @@
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <th>Libelle</th>
+            <th>Nom</th>
             <td>{{ entity.libelle }}</td>
         </tr>
         <tr>
             <th>Taille</th>
-            <td>{{ entity.taille }}</td>
+            <td>{{ entity.taille }} hectare(s)</td>
         </tr>
         <tr>
             <th>Centre</th>
             <td>{{ entity.centre }}</td>
         </tr>
         <tr>
-            <th>Utilise</th>
+            <th>Utilisé</th>
             <td>{{ entity.utilise }}</td>
         </tr>
         <tr>
@@ -29,21 +38,14 @@
     </tbody>
 </table>
 
-<ul class="record_actions">
+<ul class="form-menu float right">
+	<li><a title="Retour à la liste" class="return-item" href="{{ path('pature') }}">Revenir à la liste</a></li>
+    <li><a title="Modifier" class="modif-item" href="{{ path('pature_edit', { 'id': entity.id }) }}">Modifier</a></li>
     <li>
-        <a href="{{ path('pature') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('pature_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('pature_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('pature_delete', { 'id': entity.id }) }}" method="post">
+        	{{ form_widget(delete_form) }}
+        	<button type="submit" title="Supprimer" class="delete-item">+</button>
+    	</form>
+	</li>
 </ul>
+{% endblock %}

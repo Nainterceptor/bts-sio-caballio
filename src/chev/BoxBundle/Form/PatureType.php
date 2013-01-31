@@ -12,10 +12,24 @@ class PatureType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('taille')
+            ->add('taille', 'text', array(
+			                                    'label' => "Nombre d'hectare",
+												
+										)
+				)
             ->add('centre')
-            ->add('utilise')
-            ->add('date')
+            ->add('utilise', 'choice', array(
+                                                'choices' => array(true => 'oui', false => 'non')
+										)
+                )
+            ->add('date', 'datetime', array(
+                                                'date_widget' => 'single_text',
+                                                'time_widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'date_format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'datetimepicker')
+                                        )
+                )
         ;
     }
 

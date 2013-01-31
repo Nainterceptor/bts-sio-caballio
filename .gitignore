@@ -19,3 +19,5 @@ web/bundles
 !web/bundles/.gitkeep
 .DS_Store
 bin/*
+web/compiled/*
+!web/compiled/.gitkeep

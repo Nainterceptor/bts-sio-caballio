@@ -57,7 +57,9 @@ class PatureController extends Controller
     public function newAction()
     {
         $entity = new Pature();
-        $form   = $this->createForm(new PatureType(), $entity);
+        $patureType = new patureType();
+        $patureType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($patureType, $entity);
 
         return $this->render('chevBoxBundle:Pature:new.html.twig', array(
             'entity' => $entity,
@@ -72,7 +74,9 @@ class PatureController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Pature();
-        $form = $this->createForm(new PatureType(), $entity);
+        $patureType = new patureType();
+        $patureType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($patureType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -103,7 +107,9 @@ class PatureController extends Controller
             throw $this->createNotFoundException('Unable to find Pature entity.');
         }
 
-        $editForm = $this->createForm(new PatureType(), $entity);
+        $patureType = new patureType();
+        $patureType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($patureType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevBoxBundle:Pature:edit.html.twig', array(
@@ -128,7 +134,9 @@ class PatureController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new PatureType(), $entity);
+        $patureType = new patureType();
+        $patureType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($patureType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

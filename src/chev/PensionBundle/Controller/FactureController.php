@@ -212,6 +212,6 @@ class FactureController extends Controller
 		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
 		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerant($user, $id);
 		
-		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateur($user);
+		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilisateur($user, $id);
 	}
 }

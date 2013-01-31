@@ -12,35 +12,7 @@ use Doctrine\ORM\EntityRepository,
  * repository methods below.
  */
 class FactureRepository extends EntityRepository
-{
-	public function findAvecMontant($id) {
-	    try {
-    		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Facture f'
-                   . ' JOIN f.box b'
-                   . ' JOIN b.type t'
-                   . ' WHERE f.id = :id';
-    		$facture = $em->createQuery($query)
-    					  ->setParameter(':id', $id)
-    					  ->getOneOrNullResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return null;
-        }
-        if($facture == null)
-            return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			$facture['montant'] = $intervalJours*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
-	}
-	
+{	
 	/**
      * Trouver toutes les factures par le centre ayant ce gérant
      * 
@@ -58,7 +30,7 @@ class FactureRepository extends EntityRepository
     }
     
     /**
-     * Trouver un cheval par le centre ayant ce gérant et l'id
+     * Trouver une facture avec le montant par le centre ayant ce gérant et l'id
      * 
      * @param User $gerant Le gérant
      * @param int $id l'id
@@ -66,13 +38,62 @@ class FactureRepository extends EntityRepository
      * @return Entity
      */
     public function findOneByCentreGerant($gerant, $id) {
-        return $this->_em
-                ->createQuery('SELECT f FROM chevPensionBundle:Facture f
-                               JOIN f.box b JOIN b.centre c
-                               WHERE c.gerant = :gerant
-                               AND f.id = :id')
-                ->setParameter(':gerant', $gerant)
-                ->setParameter(':id', $id)
-                ->getOneOrNullResult();
-    } 
+    	try {
+    		$em = $this->getEntityManager();
+            $query = 'SELECT f AS facture, t.prix'
+                   . ' FROM chevPensionBundle:Facture f'
+                   . ' JOIN f.box b'
+                   . ' JOIN b.type t'
+                   . ' JOIN b.centre c'
+                   . ' WHERE c.gerant = :gerant'
+                   . ' AND f.id = :id';
+    		$facture = $em->createQuery($query)
+						  ->setParameter(':gerant', $gerant)
+    					  ->setParameter(':id', $id)
+    					  ->getOneOrNullResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+		if($facture == null)
+            return null;
+        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+        $intervalJours = $intervalDates->days;
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			$facture['montant'] = $intervalJours*$facture['prix'];
+        	return $facture;
+		}
+		else {
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+    }
+	public function findOneByUtilisateur($user, $id) {
+    	try {
+    		$em = $this->getEntityManager();
+            $query = 'SELECT f AS facture, t.prix'
+                   . ' FROM chevPensionBundle:Facture f'
+                   . ' JOIN f.box b'
+                   . ' JOIN b.type t'
+                   . ' WHERE f.utilisateur = :utilisateur'
+                   . ' AND f.id = :id';
+    		$facture = $em->createQuery($query)
+						  ->setParameter(':utilisateur', $user)
+    					  ->setParameter(':id', $id)
+    					  ->getOneOrNullResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+		if($facture == null)
+            return null;
+        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+        $intervalJours = $intervalDates->days;
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			$facture['montant'] = $intervalJours*$facture['prix'];
+        	return $facture;
+		}
+		else {
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+    }
 }

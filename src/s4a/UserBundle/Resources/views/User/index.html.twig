@@ -11,17 +11,17 @@
 {% block body %}
 <div class="widget">
     <h2>{{ 'user.title'|trans([], 'backoffice') }}</h2>
-	<ul class="float right">
-	    <li><a title="{{ 'user.nav.new'|trans([], 'backoffice') }}" href="{{ path('s4admin_user_new') }}"><img title="{{ 'user.nav.new'|trans([], 'backoffice') }}" src="{{ asset('images/user_new_32x32.png') }}"></a></li>
-	</ul>
-    <table cellpadding="0" cellspacing="0" width="100%" class="item-list clear">
+    
+    <a class="new-item" title="{{ 'user.nav.new'|trans([], 'backoffice') }}" href="{{ path('s4admin_user_new') }}">+</a>
+    
+	<table cellpadding="0" cellspacing="0" width="100%" class="item-list clear">
         <thead>
             <tr>
             	<th style="width: 60px;">{{ 'user.label.id'|trans([], 'backoffice') }}</th>
                 <th>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
                 <th>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
                 <th>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
-                <th style="width: 65px;">Actions</td>
+                <th style="width: 65px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,14 +31,10 @@
 		        	<td><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
 		        	<td>{{ entity.city }}</td>
 		        	<td>{{ entity.email }}</td>
-		            <td>
-		            	<a title="Edit" href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}">
-		            		<img alt="Edit" src="{{ asset('images/editer_32x32.png') }}">
-		            	</a>
-		            	<a title="Show" href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">
-		            		<img alt="Show" src="{{ asset('images/voir_32x32.png') }}">
-		            	</a>
-		            </td>
+		        	<td>
+		                <a title="Voir" class="show-item" href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">show</a>
+		    			<a title="Modifier" class="modif-item" href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}">Modifier</a>
+		    		</td>
 		        </tr>
 		    {% else %}
 		    	<tr>

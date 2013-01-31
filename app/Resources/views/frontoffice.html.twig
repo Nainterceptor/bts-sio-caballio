@@ -30,7 +30,6 @@
                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
                 {% if is_granted('ROLE_GERANT') %}
                 <li class="menu-deroulant">
-<<<<<<< HEAD
                 	<a href="{{ path('centre') }}">Centres</a>
                 	<ul class="sub-menu">
                 		<li><a href="{{ path('centre') }}">Centres</a></li>
@@ -40,16 +39,6 @@
                 			<li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
                 		</ul>
                 	</ul>
-=======
-                    <a href="{{ path('centre') }}">Centres</a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ path('centre') }}">Centres</a></li>
-                        <li><a href="{{ path('centre_box')}}">Box</a></li>
-                        <ul class="sub-sub-menu">
-                            <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
-                        </ul>
-                    </ul>
->>>>>>> daa41ef682d35cdfbcf06b62193cfa06496c9619
                 </li>
                 {% endif %}
                 {% if is_granted('ROLE_USER') %}

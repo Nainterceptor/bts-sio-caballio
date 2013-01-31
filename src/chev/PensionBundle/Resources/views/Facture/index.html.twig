@@ -14,9 +14,10 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Date de debut</th>
-            <th>Date de fin</th>
-            <th>Date de facturation</th>
+            <th>Client</th>
+            <th>Box</th>
+            <th>Cheval</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,9 +25,14 @@
     {% for entity in entities %}
         <tr>
             <td class="id-td"><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.utilisateur }}</td>
+            <td>{{ entity.box }}</td>
+            <td>{{ entity.cheval }}</td>
+            <td>
+            	<p>Date de debut : {% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</p>
+            	<p>Date de fin : {% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</p>
+            	<p>Date d'ajout : {% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</p>
+            </td>
             <td>
                 <a title="Voir" class="show-item" href="{{ path('facture_show', { 'id': entity.id }) }}">show</a>
     			<a title="Modifier" class="modif-item" href="{{ path('facture_edit', { 'id': entity.id }) }}">Modifier</a>

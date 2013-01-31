@@ -22,7 +22,7 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevPensionBundle:Facture')->findAll();
+        $entities = $this->getFactures($em);
 
         return $this->render('chevPensionBundle:Facture:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,8 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Facture')->findAvecMontant($id);
+        $entity = $this->getFacture($em, $id);
+		
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
@@ -97,7 +98,7 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Facture')->find($id);
+        $entity = $this->getFacture($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
@@ -121,7 +122,7 @@ class FactureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Facture')->find($id);
+        $entity = $this->getFacture($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
@@ -156,7 +157,7 @@ class FactureController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevPensionBundle:Facture')->find($id);
+            $entity = $this->getFacture($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Facture entity.');
@@ -176,5 +177,41 @@ class FactureController extends Controller
             ->getForm()
         ;
     }
+	
+	/**
+     * Récupérer la liste des factures suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+	 * 
+     * @return Entity
+     */
+     private function getFactures(&$em) {
+     	$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:Facture')->findAll();
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevPensionBundle:Facture')->findByCentreGerant($user);
+		
+		return $em->getRepository('chevPensionBundle:Facture')->findByUtilitsateur($user);
+     }
 
+	/**
+     * Récupérer une facture suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+	private function getFacture(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:Facture')->find($id);
+		elseif($this->get('security.context')->isGranted('ROLE_GERANT'))
+		    return $em->getRepository('chevPensionBundle:Facture')->findOneByCentreGerant($user, $id);
+		
+		return $em->getRepository('chevPensionBundle:Facture')->findOneByUtilitsateur($user);
+	}
 }

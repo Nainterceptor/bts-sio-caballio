@@ -52,18 +52,24 @@
                 	</ul>
                 </li>
 				{% endif %}
+				{% if is_granted('ROLE_USER') %}
                 <li class="menu-deroulant">
                 	<a href="{{ path('facture') }}">Facture</a>
                 	<ul class="sub-menu">
                 		<li><a href="{{ path('facture') }}">Facture</a></li>
+                		{% if is_granted('ROLE_GERANT') %}
                 		<li>
                 			<a href="{{ path('paiement') }}">Paiement</a>
+                			{% if is_granted('ROLE_ADMIN') %}
                 			<ul class="sub-sub-menu">
                 				<li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>
                 			</ul>
+                			{% endif %}
                 		</li>
+                		{% endif %}
                 	</ul>
                 </li>
+                {% endif %}
                 <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
                 <li><a href="#">contacts</a></li>
                 {% if is_granted('ROLE_USER') %}

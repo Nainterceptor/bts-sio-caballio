@@ -1,0 +1,30 @@
+pature:
+    pattern:  /
+    defaults: { _controller: "chevBoxBundle:Pature:index" }
+
+pature_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevBoxBundle:Pature:show" }
+
+pature_new:
+    pattern:  /new
+    defaults: { _controller: "chevBoxBundle:Pature:new" }
+
+pature_create:
+    pattern:  /create
+    defaults: { _controller: "chevBoxBundle:Pature:create" }
+    requirements: { _method: post }
+
+pature_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevBoxBundle:Pature:edit" }
+
+pature_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevBoxBundle:Pature:update" }
+    requirements: { _method: post }
+
+pature_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevBoxBundle:Pature:delete" }
+    requirements: { _method: post }

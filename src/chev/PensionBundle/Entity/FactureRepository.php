@@ -64,7 +64,7 @@ class FactureRepository extends EntityRepository
                    . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' AND f.id = :id';
+                   . ' WHERE f.id = :id';
     		$facture = $em->createQuery($query)
     					  ->setParameter(':id', $id)
     					  ->getOneOrNullResult();

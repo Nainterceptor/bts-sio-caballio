@@ -27,7 +27,7 @@ class Race
      *
      * @ORM\Column(name="libelle", type="string", length=50)
      * @Assert\NotBlank()
-     * @Assert\MaxLength(limit=100, message="Le libelle de la race doit comporter {{ limit }} caractères maximum")
+     * @Assert\MaxLength(limit=50, message="Le libelle de la race doit comporter {{ limit }} caractères maximum")
      */
     private $libelle;
 

@@ -27,7 +27,7 @@ class Equipement
      *
      * @ORM\Column(name="libelle", type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\MaxLength(limit=100, message="Le nom doit comporter {{ limit }} caractères maximum")
+     * @Assert\MaxLength(limit=255, message="Le nom doit comporter {{ limit }} caractères maximum")
      */
     private $libelle;
 

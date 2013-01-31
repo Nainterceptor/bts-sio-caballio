@@ -203,17 +203,19 @@ button.delete-item:active {
     background: -o-linear-gradient(#565831, #727531);
     background: linear-gradient(#565831, #727531);
 }
-form div ul {
+form div ul, ul.error_login {
 	display: inline-block;
 	background: url("/images/sprite-icon.png") no-repeat scroll 7px -1653px, #D8DABE;
 	border: 1px solid #868776;
 	border-radius: 8px;
 	max-width: 400px;
 	padding: 4px 10px 4px 40px;
-	position: absolute;
-	margin: 2px 0 0 200px;
 }
-form div ul li {
+form div ul {
+	position: absolute;
+	margin: 4px 0 0 200px;
+}
+form div ul li, ul.error_login li {
 	padding: 3px 0;
 }
 

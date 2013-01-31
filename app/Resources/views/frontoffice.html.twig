@@ -27,7 +27,9 @@
             </div>
         </header>
         <nav id="top-nav">
-			{% render url('_menu') %}
+            {% block menu %}
+                {% render url('_menu') %}
+            {% endblock %}
         </nav>
         <section>
             <div class="page-info">

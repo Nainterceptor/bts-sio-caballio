@@ -23,17 +23,28 @@ class FactureRepository extends EntityRepository
     public function findByCentreGerant($gerant) {
         return $this->_em
                 ->createQuery('SELECT f FROM chevPensionBundle:Facture f
-                               JOIN f.box b JOIN b.centre c
+                               JOIN f.box b 
+                               JOIN b.type t
+                               JOIN t.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
     }
+	/**
+     * Trouver une facture par le centre ayant ce gérant
+     * 
+     * @param User $gerant Le gérant
+     *
+     * @return Tableau d'entités
+     */
     public function findOneByCentreGerant($gerant, $id) {
         return $this->_em
                 ->createQuery('SELECT f FROM chevPensionBundle:Facture f
-                               JOIN f.box b JOIN b.centre c
+                               JOIN f.box b 
+                               JOIN b.type t
+                               JOIN t.centre c
                                WHERE c.gerant = :gerant
-                               AND t.id = :id')
+                               AND f.id = :id')
                 ->setParameter(':gerant', $gerant)
                 ->setParameter(':id', $id)
                 ->getOneOrNullResult();
@@ -53,7 +64,7 @@ class FactureRepository extends EntityRepository
                    . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' JOIN b.centre c'
+                   . ' JOIN t.centre c'
                    . ' WHERE c.gerant = :gerant'
                    . ' AND f.id = :id';
     		$facture = $em->createQuery($query)

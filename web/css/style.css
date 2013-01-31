@@ -210,6 +210,8 @@ form div ul {
 	border-radius: 8px;
 	max-width: 400px;
 	padding: 4px 10px 4px 40px;
+	position: absolute;
+	margin: 2px 0 0 200px;
 }
 form div ul li {
 	padding: 3px 0;

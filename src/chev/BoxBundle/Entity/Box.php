@@ -48,7 +48,6 @@ class Box
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
 	 * @ORM\JoinColumn()
-     * @Assert\NotBlank()
 	 */
 	private $cheval;
 

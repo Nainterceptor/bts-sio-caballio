@@ -24,19 +24,25 @@ class BoxType extends AbstractType
                                                 'attr' => array('class' => 'datetimepicker')
                                         )
                 )
-            ->add('type', 'entity', array('label' => 'Type de box',
-                                            'class' => 'chevBoxBundle:TypeBox',
-                                            'query_builder' => function($er) use ($user) {
-                                                if($user->hasRole('ROLE_ADMIN')) {
-                                                    return $er->createQueryBuilder('t');
-                                                }
-                                                return $er->createQueryBuilder('t')
-                                                ->join('t.centre', 'c')
-                                                ->where('c.gerant = :gerant')
-                                                ->setParameter(':gerant', $user);
+            ->add('type', 'entity', array(  
+            									'label' => 'Type de box',
+                                           	    'class' => 'chevBoxBundle:TypeBox',
+                                                'query_builder' => function($er) use ($user) {
+                                                   if($user->hasRole('ROLE_ADMIN')) {
+                                                       return $er->createQueryBuilder('t');
+	                                                }
+	                                                return $er->createQueryBuilder('t')
+	                                                ->join('t.centre', 'c')
+	                                                ->where('c.gerant = :gerant')
+	                                                ->setParameter(':gerant', $user);
                                             })
                  )
-			->add('cheval')
+			->add('cheval', 'entity', array(
+			                                   'empty_value' => 'Pas de cheval',
+			                                   'required' => false,
+			                                   'class' => 'chevBoxBundle:Box'
+			                            )
+			   )
         ;
     }
 

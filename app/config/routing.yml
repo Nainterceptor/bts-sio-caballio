@@ -1,3 +1,6 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 s4a_menu:
     resource: "@s4aMenuBundle/Resources/config/routing.yml"
     prefix:   /

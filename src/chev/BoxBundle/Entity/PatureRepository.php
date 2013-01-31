@@ -12,4 +12,38 @@ use Doctrine\ORM\EntityRepository;
  */
 class PatureRepository extends EntityRepository
 {
+	/**
+     * Trouver tous les patures par le centre ayant ce gérant
+     * 
+     * @param User $gerant Le gérant
+     *
+     * @return Tableau d'entités
+     */
+    public function findByCentreGerant($gerant) {
+        return $this->_em
+                ->createQuery('SELECT p FROM chevBoxBundle:Pature p
+                               JOIN p.centre c
+                               WHERE c.gerant = :gerant')
+                ->setParameter(':gerant', $gerant)
+                ->getResult();
+    }
+    
+    /**
+     * Trouver une pature par le centre ayant ce gérant et l'id
+     * 
+     * @param User $gerant Le gérant
+     * @param int $id l'id
+     * 
+     * @return Entity
+     */
+    public function findOneByCentreGerant($gerant, $id) {
+        return $this->_em
+                ->createQuery('SELECT p FROM chevBoxBundle:Pature p
+                               JOIN p.centre c
+                               WHERE c.gerant = :gerant
+                               AND p.id = :id')
+                ->setParameter(':gerant', $gerant)
+                ->setParameter(':id', $id)
+                ->getOneOrNullResult();
+    }
 }

@@ -12,11 +12,11 @@
 <form class="form" action="{{ path('s4admin_user_create') }}" method="post" {{ form_enctype(form) }}>
 	<fieldset>
         <h2>{{ 'user.new.title'|trans([], 'backoffice') }}</h2>
-       {{ form_rest(form) }}
-		<input class="float right" type="submit" value="{{ 'user.nav.create'|trans([], 'backoffice') }}">
-    	<a title="{{ 'user.nav.backtolist'|trans([], 'backoffice') }}" href="{{ path('s4admin_user') }}">
-    		<img class="float right" src="{{ asset('images/annuler_32x32.png') }}" alt="{{ 'user.nav.backtolist'|trans([], 'backoffice') }}">
-    	</a>
+       	{{ form_rest(form) }}
+       	<ul class="form-menu float right">
+			<li><a title="{{ 'user.nav.backtolist'|trans([], 'backoffice') }}" href="{{ path('s4admin_user') }}" class="return-item">return</a></li>
+			<li><button type="submit">Nouveau</button></li>
+		</ul>
 	</fieldset>
 </form>
 

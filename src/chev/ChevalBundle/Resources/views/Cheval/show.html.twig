@@ -21,7 +21,7 @@
         </tr>
         <tr>
         	<th>Race</th>
-        	<td>{{ entity.race.libelle }}</td>
+        	<td>{% if entity.race %}{{ entity.race.libelle }} {% else %}Pas de race{% endif %}</td>
         </tr>
         <tr>
         	<th>Propriétaire</th>

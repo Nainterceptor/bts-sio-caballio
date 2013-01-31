@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th>Cheval</th>
-            <td>{{ entity.cheval.nom }}</td>
+            <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
         </tr>
         <tr>
             <th>Type de box</th>

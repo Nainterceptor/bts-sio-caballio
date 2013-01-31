@@ -31,14 +31,15 @@
                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
                 {% if is_granted('ROLE_GERANT') %}
                 <li class="menu-deroulant">
-                    <a href="{{ path('centre') }}">Centres</a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ path('centre') }}">Centres</a></li>
-                        <li><a href="{{ path('centre_box')}}">Box</a></li>
-                        <ul class="sub-sub-menu">
-                            <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
-                        </ul>
-                    </ul>
+                	<a href="{{ path('centre') }}">Centres</a>
+                	<ul class="sub-menu">
+                		<li><a href="{{ path('centre') }}">Centres</a></li>
+                		<li><a href="{{ path('pature') }}">Patûre</a></li>
+                		<li><a href="{{ path('centre_box')}}">Box</a></li>
+                		<ul class="sub-sub-menu">
+                			<li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
+                		</ul>
+                	</ul>
                 </li>
                 {% endif %}
                 {% if is_granted('ROLE_USER') %}
@@ -72,7 +73,6 @@
                 </li>
                 {% endif %}
                 <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
-                <li><a href="#">contacts</a></li>
                 {% if is_granted('ROLE_USER') %}
                     <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
                 {% else %}

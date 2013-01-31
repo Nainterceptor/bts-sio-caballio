@@ -58,7 +58,9 @@ class FactureController extends Controller
     public function newAction()
     {
         $entity = new Facture();
-        $form   = $this->createForm(new FactureType(), $entity);
+        $factureType = new FactureType();
+		$factureType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($factureType, $entity);
 
         return $this->render('chevPensionBundle:Facture:new.html.twig', array(
             'entity' => $entity,
@@ -73,7 +75,9 @@ class FactureController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Facture();
-        $form = $this->createForm(new FactureType(), $entity);
+		$factureType = new FactureType();
+		$factureType->setUser($this->get('security.context')->getToken()->getUser());
+        $form = $this->createForm($factureType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -104,7 +108,9 @@ class FactureController extends Controller
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
 
-        $editForm = $this->createForm(new FactureType(), $entity);
+        $factureType = new FactureType();
+		$factureType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm = $this->createForm($factureType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Facture:edit.html.twig', array(
@@ -128,8 +134,12 @@ class FactureController extends Controller
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new FactureType(), $entity);
+        $factureType = new FactureType();
+		$factureType->setUser($this->get('security.context')->getToken()->getUser());
+		
+		$deleteForm = $this->createDeleteForm($id);
+		
+        $editForm = $this->createForm($factureType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

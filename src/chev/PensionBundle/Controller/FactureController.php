@@ -48,6 +48,7 @@ class FactureController extends Controller
         return $this->render('chevPensionBundle:Facture:show.html.twig', array(
             'entity'      => $entity['facture'],
             'montant'     => $entity['montant'],
+            'nbJours'     => $entity['nbJours'],
             'delete_form' => $deleteForm->createView(),        ));
     }
 	

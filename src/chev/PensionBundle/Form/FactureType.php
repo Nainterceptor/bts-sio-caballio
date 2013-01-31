@@ -8,8 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FactureType extends AbstractType
 {
+	private $user;
+	public function setUser($user) {
+		$this->user = $user;
+	}
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	$user = $this->user;
         $builder
             ->add('dateDebut', 'datetime', array(
 		            'date_widget'		=> 'single_text',
@@ -41,7 +46,19 @@ class FactureType extends AbstractType
 		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
-            ->add('cheval')
+            ->add('cheval', 'entity', array( 'label' => 'Le Cheval',
+											 'class' => 'chevChevalBundle:Cheval',
+											 'query_builder' => function($er) use ($user) {
+												if ($user->hasRole('ROLE_ADMIN')) {
+													return $er->createQueryBuilder('cheval');
+												}
+												return $er->createQueryBuilder('cheval')
+												->join('cheval.centre', 'c')
+												->where('c.gerant = :gerant')
+												->setParameter(':gerant', $user);
+											 }
+											)
+			)
             ->add('box')
             ->add('utilisateur')
         ;
@@ -56,6 +73,6 @@ class FactureType extends AbstractType
 
     public function getName()
     {
-        return 'chev_pensionbundle_facturetype';
+        return 'facture';
     }
 }

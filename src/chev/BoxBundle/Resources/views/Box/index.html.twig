@@ -23,7 +23,7 @@
     {% for entity in entities %}
         <tr>
             <td class="id-td"><a href="{{ path('centre_box_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.cheval.nom }}</td>
+            <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
             <td>{{ entity.type.libelle }}</td>
             <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</td>

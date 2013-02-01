@@ -49,6 +49,6 @@ class PaiementRepository extends EntityRepository
                                AND p.id = :id')
                 ->setParameter(':gerant', $gerant)
 				->setParameter(':id', $id)
-                ->getResult();
+                ->getOneOrNullResult();
 	}
 }

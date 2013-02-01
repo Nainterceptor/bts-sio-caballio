@@ -22,7 +22,7 @@ class PaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevPensionBundle:Paiement')->findAll();
+        $entities = $this->getPaiements($em);
 
         return $this->render('chevPensionBundle:Paiement:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class PaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Paiement')->find($id);
+        $entity = $this->getPaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Paiement entity.');
@@ -57,7 +57,9 @@ class PaiementController extends Controller
     public function newAction()
     {
         $entity = new Paiement();
-        $form   = $this->createForm(new PaiementType(), $entity);
+		$paiementType = new PaiementType();
+		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($paiementType, $entity);
 
         return $this->render('chevPensionBundle:Paiement:new.html.twig', array(
             'entity' => $entity,
@@ -72,7 +74,9 @@ class PaiementController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Paiement();
-        $form = $this->createForm(new PaiementType(), $entity);
+        $paiementType = new PaiementType();
+		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($paiementType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -97,13 +101,16 @@ class PaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Paiement')->find($id);
+        $entity = $this->getPaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Paiement entity.');
         }
-
-        $editForm = $this->createForm(new PaiementType(), $entity);
+		
+		$paiementType = new PaiementType();
+		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
+		
+        $editform   = $this->createForm($paiementType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Paiement:edit.html.twig', array(
@@ -121,14 +128,18 @@ class PaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:Paiement')->find($id);
+        $entity = $this->getPaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Paiement entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new PaiementType(), $entity);
+		
+		$paiementType = new PaiementType();
+		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
+		
+        $editform = $this->createForm($paiementType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -156,7 +167,7 @@ class PaiementController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevPensionBundle:Paiement')->find($id);
+            $entity = $this->getPaiement($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Paiement entity.');
@@ -176,4 +187,18 @@ class PaiementController extends Controller
             ->getForm()
         ;
     }
+	private function getPaiements(&$em) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:Paiement')->findAll();
+		return $em->getRepository('chevPensionBundle:Paiement')->findByGerant($user);
+	}
+	private function getPaiement(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:Paiement')->find($id);
+		return $em->getRepository('chevPensionBundle:Paiement')->findOneByGerant($user, $id);
+	}
 }

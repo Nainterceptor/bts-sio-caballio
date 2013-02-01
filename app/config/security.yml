@@ -40,6 +40,7 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user-management, roles: ROLE_ADMIN }
         - { path: ^/pature, roles: ROLE_GERANT }
         - { path: ^/race, roles: ROLE_GERANT }
         - { path: ^/equipement/(new|create), roles: ROLE_GERANT }

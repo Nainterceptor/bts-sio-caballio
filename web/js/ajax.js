@@ -1,3 +1,18 @@
+function refreshContent(html, url) {
+	$('body > section').html(html);
+	window.history.pushState(document.title, document.title, url);
+	if(url.match(/login_check|logout/) != null) {
+		$.ajax({
+			url : Routing.generate('_menu'),
+			cache : false,
+			success : function(html) {
+				$('#top-nav').html(html);
+				aInAjax();
+			},
+		});
+	}
+	aInAjax();
+}
 function aInAjax() {
     $("a").unbind("click");
 	$("a").bind("click", function() {
@@ -7,10 +22,7 @@ function aInAjax() {
 				url : targetUrl, 
 				cache : false, 
 				success : function(html) {
-					$('body > section').empty();
-					$('body > section').append(html);
-					aInAjax();
-					window.history.pushState(document.title, document.title, targetUrl);
+					refreshContent(html, targetUrl);
 				},
 			});
 			return false;
@@ -33,10 +45,7 @@ function aInAjax() {
 				data: data,
 				type: type,
 				success : function(html) {
-					$('body > section').empty();
-					$('body > section').append(html);
-					aInAjax();
-					window.history.pushState(document.title, document.title, url);
+					refreshContent(html, url);
 				}
 			});
 			return false;

@@ -1,5 +1,13 @@
+{% set error = true %}
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block title %}Gestion de paiements - {{ parent() }}{% endblock %}
+{% block title %}Erreur {{ status_code }}  - {{ parent() }}{% endblock %}
+{% block menu %}
+	{% spaceless %}
+	<ul>
+	    <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+	</ul>
+	{% endspaceless %}
+{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
  <li>Erreur {{ status_code }}</li>

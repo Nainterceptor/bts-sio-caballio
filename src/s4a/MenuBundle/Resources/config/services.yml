@@ -1,0 +1,7 @@
+parameters:
+#    s4a_menu.example.class: s4a\MenuBundle\Example
+
+services:
+#    s4a_menu.example:
+#        class: %s4a_menu.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

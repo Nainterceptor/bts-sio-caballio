@@ -1,0 +1,57 @@
+{% spaceless %}
+<ul>
+    <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+    
+    {% if error is not defined %}
+        {% if is_granted('ROLE_GERANT') %}
+        <li class="menu-deroulant">
+            <a href="{{ path('centre') }}">Centres</a>
+            <ul class="sub-menu">
+                <li><a href="{{ path('centre') }}">Centres</a></li>
+                <li><a href="{{ path('pature') }}">Patûre</a></li>
+                <li><a href="{{ path('centre_box')}}">Box</a></li>
+                <ul class="sub-sub-menu">
+                    <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
+                </ul>
+            </ul>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_USER') %}
+        <li class="menu-deroulant">
+            <a href="{{ path('cheval')}}">Chevaux</a>
+            <ul class="sub-menu">
+                <li><a href="{{ path('cheval')}}">Chevaux</a></li>
+                <li><a href="{{ path('equipement')}}">Equipement</a></li>
+                {% if is_granted('ROLE_GERANT') %}
+                <li><a href="{{ path('cheval_race')}}">Race</a></li>
+                {% endif %}
+            </ul>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_USER') %}
+        <li class="menu-deroulant">
+            <a href="{{ path('facture') }}">Facture</a>
+            <ul class="sub-menu">
+                <li><a href="{{ path('facture') }}">Facture</a></li>
+                {% if is_granted('ROLE_GERANT') %}
+                <li>
+                    <a href="{{ path('paiement') }}">Paiement</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <ul class="sub-sub-menu">
+                        <li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>
+                    </ul>
+                    {% endif %}
+                </li>
+                {% endif %}
+            </ul>
+        </li>
+        {% endif %}
+        <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+        {% else %}
+               <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+        {% endif %}
+    {% endif %}
+</ul>
+{% endspaceless %}

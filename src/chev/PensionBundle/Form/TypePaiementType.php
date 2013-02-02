@@ -24,6 +24,6 @@ class TypePaiementType extends AbstractType
 
     public function getName()
     {
-        return 'chev_pensionbundle_typepaiementtype';
+        return 'paiementtype';
     }
 }

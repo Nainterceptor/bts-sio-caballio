@@ -76,7 +76,7 @@ class PaiementController extends Controller
         $entity  = new Paiement();
         $paiementType = new PaiementType();
 		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
-        $form   = $this->createForm($paiementType, $entity);
+        $form = $this->createForm($paiementType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {

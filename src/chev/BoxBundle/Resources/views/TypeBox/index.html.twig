@@ -28,7 +28,7 @@
             <td>{{ entity.prix }}€ / mois</td>
             <td>{% if entity.centre %}{{ entity.centre }}{% endif %}</td>
             <td>
-				<a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">show</a>
+				<a title="Voir" class="show-item" href="{{ path('centre_typebox_show', { 'id': entity.id }) }}">Voir</a>
     			<a title="Modifier" class="modif-item" href="{{ path('centre_typebox_edit', { 'id': entity.id }) }}">Modifier</a>
             </td>
         </tr>

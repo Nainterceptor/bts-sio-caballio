@@ -1,6 +1,7 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block body %}
 
+<<<<<<< HEAD
 {% if is_granted ('ROLE_PREVIOUS_USER') %}
 	<p>Bienvenue sur la page d'accueil du site de gestion Equestre Caballio.</p>
 	<p>Ce site permet à nos clients propriétaires d'un ou plusieurs centres équestres de les administrer</p>
@@ -15,6 +16,8 @@
 	<br /><p>Bonne utilisation, l'équipe PITP.</p>
 {% endif %}
 
+=======
+>>>>>>> c4ba908ff8d00e10459de4c43991f5fb021901cf
 {% if is_granted ('ROLE_GERANT') %}
 	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
 	<p>Içi vous pourrez administrer votre entreprise grâce aux outils intégrés.</p>

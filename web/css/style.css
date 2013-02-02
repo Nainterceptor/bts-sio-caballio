@@ -1,5 +1,5 @@
 /*
- * CSS 2.0 pour "Caballio - Centre gestion"
+ * CSS 2.0 pour "Caballio - Centre gestion" - PIPT
  * 
  * Inspired on "Crow" by "Eugene Kopyov"
  */
@@ -127,6 +127,14 @@ a:hover {text-decoration: underline;}
 img {
     border: 0 none;
 }
+img.reverse {
+	-moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
 
 /* Diviseurs */
 .line { 
@@ -159,7 +167,7 @@ section {
 	overflow: hidden; 
 }
 footer {
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 /* Tableau */

@@ -6,7 +6,7 @@ function refreshContent(html, url) {
 			url : Routing.generate('_menu'),
 			cache : false,
 			success : function(html) {
-				$('#top-nav').html(html);
+				$('nav').html(html);
 				aInAjax();
 			},
 		});

@@ -30,6 +30,13 @@ class Race
      * @Assert\MaxLength(limit=50, message="Le libelle de la race doit comporter {{ limit }} caractères maximum")
      */
     private $libelle;
+	
+	/**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
+     * @ORM\JoinColumn()
+     * @Assert\NotBlank()
+	 */
+    private $centre;
 
     public function __toString() {
         return $this->id.'. '.$this->libelle;
@@ -67,5 +74,28 @@ class Race
     public function getLibelle()
     {
         return $this->libelle;
+    }
+
+    /**
+     * Set centre
+     *
+     * @param \chev\BoxBundle\Entity\Centre $centre
+     * @return Race
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
+
+    /**
+     * Get centre
+     *
+     * @return \chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
     }
 }

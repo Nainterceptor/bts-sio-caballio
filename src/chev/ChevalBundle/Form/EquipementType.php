@@ -53,6 +53,6 @@ class EquipementType extends AbstractType
 
     public function getName()
     {
-        return 'chev_chevalbundle_equipementtype';
+        return 'equipement';
     }
 }

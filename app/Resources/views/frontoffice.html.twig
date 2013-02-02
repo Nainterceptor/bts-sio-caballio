@@ -22,42 +22,77 @@
     </head>
     <body>
         <header>
-            <div class="container">
-                <a href="{{ path('front_homepage') }}"><img id="header-logo" src="/images/logo.png"/></a>
-            </div>
+            <div id="logo">
+    			<a href="{{ path('front_homepage') }}">
+					<img alt="" src="{{ asset('/images/logo.png') }}" width="160">
+				</a>
+    		</div>
+    		<div class="sidebarSep"></div>
+    		<div id="profile">
+    			<p>Bonjour, <a>username*</a></p>
+    			<ul>
+    				<li>
+    					<a href="#">
+    						<img src="{{ asset('/images/bouton/user.png') }}" />
+    						<span>Profile</span>
+    					</a>
+    				</li>
+    				<li>
+    					{% if is_granted('ROLE_USER') %}
+    					<a href="{{ path('fos_user_security_logout') }}">
+    						<img src="{{ asset('/images/bouton/arrowLeft.png') }}" />
+    						<span>Logout</span>
+    					</a>
+				        {% else %}
+				        <a href="{{ path('fos_user_security_login') }}">
+    						<img src="{{ asset('/images/bouton/arrowLeft.png') }}" />
+    						<span>Login</span>
+    					</a>
+				        {% endif %}
+    				</li>
+    			</ul>
+    		</div>
+    		<div class="sidebarSep"></div>
+    		<nav>
+	            {% block menu %}
+	                {% render url('_menu') %}
+	            {% endblock %}
+	        </nav>
         </header>
-        <nav id="top-nav">
-            {% block menu %}
-                {% render url('_menu') %}
-            {% endblock %}
-        </nav>
         <section>
+        	<div class="page-titre">
+				<div class="titre">
+	                <h1>Caballio</h1>
+	                <span>Le Poney Manager par excellence.</span>
+	            </div>
+    		</div>
+    		<div class="line"></div>
             <div class="page-info">
-                <div class="container">
-                    <h1 class="page-title">Caballio</h1>
-                    <div id="breadcrumbs">
-                        <ul>
+    			<div>
+                    <h5>
+	    				Acceuil
+	    			</h5>
+                    <ul class="breadcrumbs">
                             {% block breadcrumbs %}
                                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
                             {% endblock %}
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
+            <div class="line"></div>
             <div id="main-container">
-                <div class="container">
                     {% block body %}{% endblock %}
-               </div>
             </div>
+            <div class="line" style="margin-top: 50px;"></div>
         </section>
         <footer>
-            <div class="container">
+            <div class="footer-container">
                 <div class="copyright">
-                    <p>&copy; PITP 2012 - {{ "now"|date('Y') }}</p>
+                    <p>&copy; PITP 2012 - 2013</p>
                 </div>
-                <div class="ajaxOn">
-                    <label for="ajaxOn" selected="selected">Activer AJAX</label>
-                    <input type="checkbox" name="ajaxOn" id="ajaxOn" />
+                <div class="ajaxOn" style="display: block;">
+                    <label selected="selected" for="ajaxOn">Activer AJAX</label>
+                    <input type="checkbox" id="ajaxOn" name="ajaxOn">
                 </div>
             </div>
         </footer>
@@ -72,7 +107,22 @@
                            'js/datetimepicker.js'
                     output='compiled/js/front.js'
                     combine=true%}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+			<script type="text/javascript">
+				$(document).ready( function () {
+				  	$("nav .sub-menu .sub-ul").hide();
+				  	$("nav .sub-menu > a").click( function () {
+			        	if ($(this).next("nav .sub-menu .sub-ul:visible").length != 0) {
+			            	$(this).next("nav .sub-menu .sub-ul").slideUp("normal");
+			        	}
+			        	else {
+			            	$("nav .sub-menu .sub-ul").slideUp("normal");
+			            	$(this).next("nav .sub-menu .sub-ul").slideDown("normal");
+			        	}
+			        	return false;
+			    	});
+				});
+			</script>
             {% endjavascripts %}
         {% endblock %}
     </body>

@@ -8,13 +8,21 @@
 {% endblock %}
 {% block body %}
 
-<h2>Création d'un centre</h2>
+<div class="container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
+		<h6>Création d'un centre</h6>
+	</div>
+	<form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
+		<fieldset>
+		    {{ form_widget(form) }}
+		    <div class="form-bouton">
+		    	<a class="bouton basic" href="{{ path('centre') }}">Retour à la liste</a>
+				<input type="submit" value="Nouveau" class="bouton greenB">
+			</div>
+		</fieldset>
+	</form>
+</div>
 
-<form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <ul class="form-menu float right">
-		<li><a title="Retour à la liste" class="return-item" href="{{ path('centre') }}">return</a></li>
-		<li><button type="submit">Nouveau</button></li>
-	</ul>
-</form>
+
 {% endblock %}

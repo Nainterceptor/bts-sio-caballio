@@ -241,7 +241,7 @@ button, input[type="submit"], input[type="reset"], input[type="button"] {
 	background: #F2F2F2;
 }
 /* Input */
-form input[type="text"], form input[type="time"], form select, form input[type="password"], form textarea {
+form input[type="text"], form input[type="time"], form select, form input[type="password"], form input[type="email"], form textarea {
     -moz-box-sizing: border-box;
     background: none repeat scroll 0 0 white;
     border: 1px solid #DDDDDD;
@@ -423,7 +423,7 @@ nav .sub-menu ul li a:hover, nav .sub-sub-menu ul li a:hover {
 	margin: 0 3%;
     position: relative;
 }
-.container, .half-container {
+.container, .half-container, .half-container-right {
 	border-radius: 3px 3px 3px 3px;
 	background: none repeat scroll 0 0 #F9F9F9;
     border: 1px solid #CDCDCD;
@@ -436,7 +436,15 @@ nav .sub-menu ul li a:hover, nav .sub-sub-menu ul li a:hover {
     float: left;
     width: 49%;
 }
+.half-container-right {
+	clear: none;
+	border-radius: 3px 3px 3px 3px;
+	display: inline-block;
+	width: 49%;
+	float: right;
+}
 .half-container-control {
+	border-radius: 3px 3px 3px 3px;
 	clear: both;
 	margin-top: 5px;
 	display: block;
@@ -507,7 +515,7 @@ label {
 	float: right;
 }
 /* Contrage de la génération d'une div dans chaque "nouveau" */
-#centre, #box, #pature, #race, #typesBox, #cheval, #equipement, #facture, #paiement, #paiementtype {
+#centre, #box, #pature, #race, #typesBox, #cheval, #equipement, #facture, #paiement, #paiementtype, #user_label {
 	border: none;
 	padding: 0;
 }

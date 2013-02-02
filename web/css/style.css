@@ -1,5 +1,5 @@
 /*
- * CSS 2.0 pour "Caballio - Centre gestion"
+ * CSS 2.0 pour "Caballio - Centre gestion" - PIPT
  * 
  * Inspired on "Crow" by "Eugene Kopyov"
  */
@@ -504,7 +504,7 @@ label {
 ================================================== */
 .footer-container {
     margin: 0;
-    padding: 20px 0 20px 0;
+    padding: 20px 0 20px 222px;
     text-align: center;
 }
 .footer-container label {

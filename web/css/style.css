@@ -157,7 +157,7 @@ img.reverse {
 .floatR { float: right; }
 .floatL { float: left; }
 
-header { 
+header {
 	background: url(/images/backgrounds/leftTop.png) repeat-x 0 0; 
 	margin: 0 2px; 
 	float: left; 
@@ -165,10 +165,7 @@ header {
 	padding: 0 1px; 
 	padding-bottom: 60px; 
 }
-section {
-	overflow: hidden; 
-}
-footer {
+section, footer {
     overflow: hidden;
 }
 

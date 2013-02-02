@@ -15,6 +15,7 @@
         <tr>
             <th>Id</th>
             <th>Nom</th>
+            <th>Centre</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
         <tr>
             <td  class="id-td"><a href="{{ path('cheval_race_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
+            <td>{{ entity.centre }}</td>
             <td>
                 <a title="Voir" class="show-item" href="{{ path('cheval_race_show', { 'id': entity.id }) }}">show</a>
     			<a title="Modifier" class="modif-item" href="{{ path('cheval_race_edit', { 'id': entity.id }) }}">Modifier</a>

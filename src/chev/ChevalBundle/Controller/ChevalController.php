@@ -57,7 +57,9 @@ class ChevalController extends Controller
     public function newAction()
     {
         $entity = new Cheval();
-        $form   = $this->createForm(new ChevalType(), $entity);
+        $chevalType = new ChevalType();
+        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($chevalType, $entity);
 
         return $this->render('chevChevalBundle:Cheval:new.html.twig', array(
             'entity' => $entity,
@@ -72,7 +74,9 @@ class ChevalController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Cheval();
-        $form = $this->createForm(new ChevalType(), $entity);
+        $chevalType = new ChevalType();
+        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($chevalType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -103,7 +107,9 @@ class ChevalController extends Controller
             throw $this->createNotFoundException('Unable to find Cheval entity.');
         }
 
-        $editForm = $this->createForm(new ChevalType(), $entity);
+        $chevalType = new ChevalType();
+        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm   = $this->createForm($chevalType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevChevalBundle:Cheval:edit.html.twig', array(
@@ -128,7 +134,9 @@ class ChevalController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new ChevalType(), $entity);
+        $chevalType = new ChevalType();
+        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm   = $this->createForm($chevalType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -151,7 +159,9 @@ class ChevalController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $chevalType = new ChevalType();
+        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($chevalType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {

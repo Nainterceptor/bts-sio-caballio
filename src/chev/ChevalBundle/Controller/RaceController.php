@@ -22,7 +22,7 @@ class RaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevChevalBundle:Race')->findAll();
+        $entities = $this->getRaces($em);
 
         return $this->render('chevChevalBundle:Race:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class RaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Race')->find($id);
+        $entity = $this->getRace($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Race entity.');
@@ -57,7 +57,9 @@ class RaceController extends Controller
     public function newAction()
     {
         $entity = new Race();
-        $form   = $this->createForm(new RaceType(), $entity);
+        $raceType = new RaceType();
+        $raceType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($raceType, $entity);
 
         return $this->render('chevChevalBundle:Race:new.html.twig', array(
             'entity' => $entity,
@@ -72,7 +74,9 @@ class RaceController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Race();
-        $form = $this->createForm(new RaceType(), $entity);
+        $raceType = new RaceType();
+        $raceType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($raceType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -97,13 +101,15 @@ class RaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Race')->find($id);
+        $entity = $this->getRace($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Race entity.');
         }
 
-        $editForm = $this->createForm(new RaceType(), $entity);
+        $raceType = new RaceType();
+        $raceType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm   = $this->createForm($raceType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevChevalBundle:Race:edit.html.twig', array(
@@ -121,14 +127,16 @@ class RaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevChevalBundle:Race')->find($id);
+        $entity = $this->getRace($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Race entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new RaceType(), $entity);
+        $raceType = new RaceType();
+        $raceType->setUser($this->get('security.context')->getToken()->getUser());
+        $editForm   = $this->createForm($raceType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -151,7 +159,9 @@ class RaceController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $raceType = new RaceType();
+        $raceType->setUser($this->get('security.context')->getToken()->getUser());
+        $form   = $this->createForm($raceType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -176,4 +186,37 @@ class RaceController extends Controller
             ->getForm()
         ;
     }
+
+	/**
+     * Récupérer la liste des races suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+	 * 
+     * @return Entity
+     */
+    private function getRaces(&$em) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevChevalBundle:Race')->findAll();
+		
+		return $em->getRepository('chevChevalBundle:Race')->findByCentreGerant($user);
+	}
+
+    /**
+     * Récupérer une race suivant les règles de gestion
+     * 
+     * @param EntityManager $em
+     * @param int $id
+     * 
+     * @return Entity
+     */
+	private function getRace(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevChevalBundle:Race')->find($id);
+		
+		return $em->getRepository('chevChevalBundle:Race')->findOneByCentreGerant($user, $id);
+	}
 }

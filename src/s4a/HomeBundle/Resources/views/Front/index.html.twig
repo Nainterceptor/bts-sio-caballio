@@ -1,13 +1,16 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block body %}
-<p>Bienvenue sur la page d'accueil du site de gestion Equestre PITP. Içi vous pourrez administrer votre entreprise grâce
-aux outils intégrés.</p>
-<p>Vous pouvez gérer:</p>
-   <ul class="ul-accueil">
-      <li><a href="{{ path('centre')}}">Votre/Vos centre(s)</a></li>
-      <li><a href="{{ path('cheval')}}">Vos chevaux</a></li>
-      <li><a href="{{ path('facture')}}">Vos factures</a></li>
-      <li>Et bien d'autres choses encore...</li>
-   </ul>
-<br /><p>Bonne utilisation, l'équipe PITP.</p>
+
+if is_granted ('ROLE_GERANT') %}
+	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
+	<p>Içi vous pourrez administrer votre entreprise grâce aux outils intégrés.</p>
+	<p>Vous pouvez gérer:</p>
+	   <ul class="ul-accueil">
+	      <li><a href="{{ path('centre')}}">Votre/Vos centre(s)</a></li>
+	      <li><a href="{{ path('cheval')}}">Vos chevaux</a></li>
+	      <li><a href="{{ path('facture')}}">Vos factures</a></li>
+	      <li>Et bien d'autres choses encore...</li>
+	   </ul>
+	<br /><p>Bonne utilisation, l'équipe PITP.</p>
+{% endif %}
 {% endblock %}

@@ -27,6 +27,8 @@
 	* Conteneur
 	* Formulaire
 # Footer
+# Autre
+	* Ajax
 ==================================================*/ 
 
 /* #Elements de base
@@ -507,6 +509,11 @@ label {
 .form-bouton {
 	float: right;
 }
+/* Contrage de la génération d'une div dans chaque "nouveau" */
+#centre, #box, #pature, #race, #typesBox, #cheval, #equipement, #facture, #paiement, #paiementtype {
+	border: none;
+	padding: 0;
+}
 
 /* Footer
 ================================================== */
@@ -518,4 +525,11 @@ label {
 .footer-container label {
 	float: none;
 	width: inherit;
+}
+
+/* Autre
+================================================== */
+/*Ajax ON*/
+div.ajaxOn {
+	display:none;
 }

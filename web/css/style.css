@@ -159,7 +159,7 @@ section {
 	overflow: hidden; 
 }
 footer {
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 /* Tableau */
@@ -504,7 +504,7 @@ label {
 ================================================== */
 .footer-container {
     margin: 0;
-    padding: 20px 0 20px 222px;
+    padding: 20px 0 20px 0;
     text-align: center;
 }
 .footer-container label {

@@ -1,7 +1,7 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block body %}
 
-if is_granted ('ROLE_GERANT') %}
+{% if is_granted ('ROLE_GERANT') %}
 	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
 	<p>Içi vous pourrez administrer votre entreprise grâce aux outils intégrés.</p>
 	<p>Vous pouvez gérer:</p>

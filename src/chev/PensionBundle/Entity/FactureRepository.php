@@ -60,20 +60,21 @@ class FactureRepository extends EntityRepository
     public function findAM($id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Facture f'
+            $query = 'SELECT f AS facture, t.prix, p AS paiements'
+                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' WHERE f.id = :id';
+                   . ' WHERE f.id = :id'
+				   . ' AND p.facture = :id';
     		$facture = $em->createQuery($query)
     					  ->setParameter(':id', $id)
-    					  ->getOneOrNullResult();
+    					  ->getResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+        $intervalDates = $facture[1]['facture']->getDateDebut()->diff($facture[1]['facture']->getDateFin(), true);
         $intervalJours = $intervalDates->days;
 		if ($intervalJours > 0 && $intervalJours != 0) {
 			if ($intervalJours > 31) {
@@ -83,7 +84,7 @@ class FactureRepository extends EntityRepository
 				$nbMois = 1;
 			}
 			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture['prix'];
+			$facture['montant'] = $nbMois*$facture[1]['prix'];
         	return $facture;
 		}
 		else {
@@ -122,10 +123,18 @@ class FactureRepository extends EntityRepository
         $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
         $intervalJours = $intervalDates->days;
 		if ($intervalJours > 0 && $intervalJours != 0) {
-			$facture['montant'] = $intervalJours*$facture['prix'];
+			if ($intervalJours > 31) {
+				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
+			}
+			else {
+				$nbMois = 1;
+			}
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = $nbMois*$facture['prix'];
         	return $facture;
 		}
 		else {
+			$facture['nbJours'] = $intervalJours;
 			$facture['montant'] = "Erreur sur le Bail";
 			return $facture;
 		}
@@ -159,13 +168,20 @@ class FactureRepository extends EntityRepository
         $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
         $intervalJours = $intervalDates->days;
 		if ($intervalJours > 0 && $intervalJours != 0) {
-			$facture['montant'] = $intervalJours*$facture['prix'];
+			if ($intervalJours > 31) {
+				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
+			}
+			else {
+				$nbMois = 1;
+			}
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = $nbMois*$facture['prix'];
         	return $facture;
 		}
 		else {
+			$facture['nbJours'] = $intervalJours;
 			$facture['montant'] = "Erreur sur le Bail";
 			return $facture;
 		}
     }
-	
 }

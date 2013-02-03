@@ -38,7 +38,6 @@ class FactureController extends Controller
         $em = $this->getDoctrine()->getManager();
 		
         $entity = $this->getFactureAM($em, $id);
-		
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Facture entity.');
         }
@@ -46,7 +45,8 @@ class FactureController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Facture:show.html.twig', array(
-            'entity'      => $entity['facture'],
+            'entity'      => $entity[1]['facture'],
+            'paiements'   => $entity[0]['paiements'],
             'montant'     => $entity['montant'],
             'nbJours'     => $entity['nbJours'],
             'delete_form' => $deleteForm->createView(),        ));

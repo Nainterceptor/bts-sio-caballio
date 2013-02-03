@@ -54,6 +54,36 @@
 	    </tbody>
 	</table>
 </div>
+<div class="half-container-right">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
+		<h6>Liste des paiements</h6>
+	</div>
+	<table class="record_properties">
+	    <thead>
+	    	<tr>
+	    		<th>Montant</th>
+	    		<th>Type de paiement</th>
+	    		<th>Date du paiement</th>
+	    		<th>Date d'encaissement</th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    	{% for paiement in paiements %}
+	    	<tr>
+	            <td>{{ paiement.montant }}</td>
+	            <td>{{ paiement.typePaiement }}</td>
+	            <td>{{ paiement.datePaiement }}</td>
+	            <td>{{ paiement.dateEncaissement}}</td>
+	        </tr>
+	        {% else %}
+	    	<tr>
+	    		<td colspan="4">Aucun paiement effectué</td>
+	    	</tr>
+	    	{% endfor %}
+	    </tbody>
+	</table>
+</div>
 <div class="half-container-control">
 	<a href="{{ path('facture') }}" class="bouton basic">Retour à la liste</a>
 	<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>

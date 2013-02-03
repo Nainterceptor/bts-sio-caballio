@@ -1,0 +1,9 @@
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block body %}
+
+{% if is_granted ('ROLE_USER') %}
+	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
+	<p>Vous êtes administrateur de ce site internet. Vous avez donc accès à toutes les informations. De plus, vous êtes le seul à pouvoir créer des utilisateurs, des centres et des types de paiement.</p>
+	<br /><p>Bonne administration, l'équipe PITP.</p>
+{% endif %}
+{% endblock %}

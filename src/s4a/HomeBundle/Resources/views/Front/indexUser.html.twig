@@ -1,0 +1,10 @@
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block body %}
+
+{% if is_granted ('ROLE_USER') %}
+	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
+	<p>En tant que membre d'un centre équestre, vous pouvez voir les informations de vos <a href="{{ path('cheval')}}">chevaux</a>
+	ou de vos <a href="{{ path('facture')}}">factures</a>.</p>
+	<br /><p>Bonne utilisation, l'équipe PITP.</p>
+{% endif %}
+{% endblock %}

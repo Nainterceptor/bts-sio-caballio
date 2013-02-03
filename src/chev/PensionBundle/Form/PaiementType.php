@@ -18,39 +18,41 @@ class PaiementType extends AbstractType
     	$user = $this->user;
         $builder
             ->add('datePaiement', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
+		            'date_widget' 	=> 'single_text',
+		            'time_widget' 	=> 'single_text',
+		            'input' 		=> 'datetime',
+		            //'format' 		=> 'dd/MM/yyyy HH:mm',
+		            'date_format' 	=> 'dd/MM/yyyy',
+		            //'time_format' => 'HH:mm',
+		            'attr' 			=> array('class' => 'datetimepicker')
+            		)
+        	)
             ->add('dateEncaissement', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
+                    'date_widget' 	=> 'single_text',
+                    'time_widget' 	=> 'single_text',
+                    'input' 		=> 'datetime',
+                    //'format' 		=> 'dd/MM/yyyy HH:mm',
+                    'date_format' 	=> 'dd/MM/yyyy',
+                    //'time_format' => 'HH:mm',
+                    'attr' 			=> array('class' => 'datetimepicker')
+                    )
+            )
             ->add('montant')
-            ->add('facture', 'entity', array( 	'label' => 'La facture',
-												'class' => 'chevPensionBundle:Facture',
-												'query_builder' => function($er) use ($user) {
-													if ($user->hasRole('ROLE_ADMIN')) {
-														return $er->createQueryBuilder('facture');
-													}
-													return $er->createQueryBuilder('facture')
-													->join('facture.box', 'b')
-													->join('b.type', 't')
-													->join('t.centre', 'c')
-													->where('c.gerant = :gerant')
-													->setParameter(':gerant', $user);
-												}))
+            ->add('facture', 'entity', array( 	
+            		'label' 		=> 'La facture',
+					'class' 		=> 'chevPensionBundle:Facture',
+					'query_builder' => function($er) use ($user) {
+						if ($user->hasRole('ROLE_ADMIN')) {
+							return $er->createQueryBuilder('facture');
+						}
+						return $er->createQueryBuilder('facture')
+						->join('facture.box', 'b')
+						->join('b.type', 't')
+						->join('t.centre', 'c')
+						->where('c.gerant = :gerant')
+						->setParameter(':gerant', $user);
+					})
+			)
             ->add('typePaiement')
         ;
     }

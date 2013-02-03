@@ -22,7 +22,7 @@ class TypePaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('chevPensionBundle:TypePaiement')->findAll();
+        $entities = $this->getTypePaiements($em);
 
         return $this->render('chevPensionBundle:TypePaiement:index.html.twig', array(
             'entities' => $entities,
@@ -37,7 +37,7 @@ class TypePaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:TypePaiement')->find($id);
+        $entity = $this->getTypePaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypePaiement entity.');
@@ -97,7 +97,7 @@ class TypePaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:TypePaiement')->find($id);
+        $entity = $this->getTypePaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypePaiement entity.');
@@ -121,7 +121,7 @@ class TypePaiementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('chevPensionBundle:TypePaiement')->find($id);
+        $entity = $this->getTypePaiement($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TypePaiement entity.');
@@ -156,7 +156,7 @@ class TypePaiementController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('chevPensionBundle:TypePaiement')->find($id);
+            $entity = $this->getTypePaiement($em, $id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find TypePaiement entity.');
@@ -176,4 +176,16 @@ class TypePaiementController extends Controller
             ->getForm()
         ;
     }
+	private function getTypePaiements(&$em) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:TypePaiement')->findAll();
+	}
+	private function getTypePaiement(&$em, $id) {
+		$user = $this->get('security.context')->getToken()->getUser();
+		
+		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+		    return $em->getRepository('chevPensionBundle:TypePaiement')->find($id);
+	}
 }

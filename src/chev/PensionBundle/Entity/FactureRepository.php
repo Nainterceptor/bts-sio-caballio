@@ -24,7 +24,7 @@ class FactureRepository extends EntityRepository
 				$nbMois = 1;
 			}
 			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture[1]['prix'];
+			$facture['montant'] = $nbMois*$facture[1]['prix'] . " €";
         	return $facture;
 		}
 		else {
@@ -84,8 +84,9 @@ class FactureRepository extends EntityRepository
                    . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' WHERE f.id = :id'
-				   . ' AND p.facture = :id';
+                   . ' WHERE (f.id = :id'
+                   . ' AND p.facture = :id)'
+				   . ' OR (f.id =:id)';
     		$facture = $em->createQuery($query)
     					  ->setParameter(':id', $id)
     					  ->getResult();
@@ -112,9 +113,11 @@ class FactureRepository extends EntityRepository
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
                    . ' JOIN t.centre c'
-                   . ' WHERE c.gerant = :gerant'
+                   . ' WHERE (c.gerant = :gerant'
                    . ' AND f.id = :id'
-				   . ' AND p.facture = :id';
+				   . ' AND p.facture = :id'
+				   . ' OR (c.gerant = :gerant'
+                   . ' AND f.id = :id)';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':gerant', $gerant)
     					  ->setParameter(':id', $id)
@@ -141,9 +144,11 @@ class FactureRepository extends EntityRepository
                    . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' WHERE f.utilisateur = :utilisateur'
+                   . ' WHERE (f.utilisateur = :utilisateur'
                    . ' AND f.id = :id'
-				   . ' AND p.facture = :id';
+				   . ' AND p.facture = :id)'
+				   . ' OR (f.utilisateur = :utilisateur'
+                   . ' AND f.id = :id)';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':utilisateur', $user)
     					  ->setParameter(':id', $id)

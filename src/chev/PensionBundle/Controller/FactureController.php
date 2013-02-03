@@ -45,8 +45,8 @@ class FactureController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Facture:show.html.twig', array(
-            'entity'      => $entity[1]['facture'],
-            'paiements'   => $entity[0]['paiements'],
+            'entity'      => $entity['facture'],
+            'paiements'   => $entity['paiements'],
             'montant'     => $entity['montant'],
             'nbJours'     => $entity['nbJours'],
             'delete_form' => $deleteForm->createView(),        ));

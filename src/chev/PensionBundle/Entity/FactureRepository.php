@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityRepository,
 class FactureRepository extends EntityRepository
 {
 	private function retourneFacture($facture) {
-		$intervalDates = $facture[1]['facture']->getDateDebut()->diff($facture[1]['facture']->getDateFin(), true);
+		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
         $intervalJours = $intervalDates->days;
 		if ($intervalJours > 0 && $intervalJours != 0) {
 			if ($intervalJours > 31) {
@@ -24,7 +24,7 @@ class FactureRepository extends EntityRepository
 				$nbMois = 1;
 			}
 			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture[1]['prix'] . " €";
+			$facture['montant'] = $nbMois*$facture['prix'] . " €";
         	return $facture;
 		}
 		else {
@@ -80,21 +80,25 @@ class FactureRepository extends EntityRepository
     public function findAM($id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix, p AS paiements'
-                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
+            $query = ' SELECT f AS facture, t.prix'
+                   . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' WHERE (f.id = :id'
-                   . ' AND p.facture = :id)'
-				   . ' OR (f.id =:id)';
+                   . ' WHERE f.id = :id';
     		$facture = $em->createQuery($query)
     					  ->setParameter(':id', $id)
-    					  ->getResult();
+    					  ->getOneOrNullResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
 		if($facture == null)
             return null;
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
         return $this->retourneFacture($facture);
     }
     /**
@@ -108,16 +112,13 @@ class FactureRepository extends EntityRepository
     public function findOneByCentreGerantAM($gerant, $id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
+            $query = ' SELECT f AS facture, t.prix'
+                   . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
                    . ' JOIN t.centre c'
-                   . ' WHERE (c.gerant = :gerant'
-                   . ' AND f.id = :id'
-				   . ' AND p.facture = :id'
-				   . ' OR (c.gerant = :gerant'
-                   . ' AND f.id = :id)';
+                   . ' WHERE c.gerant = :gerant'
+                   . ' AND f.id = :id';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':gerant', $gerant)
     					  ->setParameter(':id', $id)
@@ -127,6 +128,12 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
         return $this->retourneFacture($facture);
     }
 	/**
@@ -141,14 +148,11 @@ class FactureRepository extends EntityRepository
     	try {
     		$em = $this->getEntityManager();
             $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
+                   . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
-                   . ' WHERE (f.utilisateur = :utilisateur'
-                   . ' AND f.id = :id'
-				   . ' AND p.facture = :id)'
-				   . ' OR (f.utilisateur = :utilisateur'
-                   . ' AND f.id = :id)';
+                   . ' WHERE f.utilisateur = :utilisateur'
+                   . ' AND f.id = :id';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':utilisateur', $user)
     					  ->setParameter(':id', $id)
@@ -158,6 +162,12 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
         return $this->retourneFacture($facture);
     }
 }

@@ -9,9 +9,7 @@ class FrontController extends Controller
 {
     
     public function indexAction()
-    {
-    	$user = $this->get('security.context')->getToken()->getUser();
-		
+    {		
 		if($this->get('security.context')->isGranted('ROLE_ADMIN'))
         return $this->render('s4aHomeBundle:Front:indexAdmin.html.twig', array());
 		

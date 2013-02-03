@@ -12,7 +12,27 @@ use Doctrine\ORM\EntityRepository,
  * repository methods below.
  */
 class FactureRepository extends EntityRepository
-{	
+{
+	private function retourneFacture($facture) {
+		$intervalDates = $facture[1]['facture']->getDateDebut()->diff($facture[1]['facture']->getDateFin(), true);
+        $intervalJours = $intervalDates->days;
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			if ($intervalJours > 31) {
+				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
+			}
+			else {
+				$nbMois = 1;
+			}
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = $nbMois*$facture[1]['prix'];
+        	return $facture;
+		}
+		else {
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+	}
 	/**
      * Trouver toutes les factures par le centre ayant ce gérant
      * 
@@ -74,24 +94,7 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture[1]['facture']->getDateDebut()->diff($facture[1]['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			if ($intervalJours > 31) {
-				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
-			}
-			else {
-				$nbMois = 1;
-			}
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture[1]['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+        return $this->retourneFacture($facture);
     }
     /**
      * Trouver une facture avec le montant par le centre ayant ce gérant et l'id
@@ -105,12 +108,13 @@ class FactureRepository extends EntityRepository
     	try {
     		$em = $this->getEntityManager();
             $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Facture f'
+                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
                    . ' JOIN t.centre c'
                    . ' WHERE c.gerant = :gerant'
-                   . ' AND f.id = :id';
+                   . ' AND f.id = :id'
+				   . ' AND p.facture = :id';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':gerant', $gerant)
     					  ->setParameter(':id', $id)
@@ -120,24 +124,7 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			if ($intervalJours > 31) {
-				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
-			}
-			else {
-				$nbMois = 1;
-			}
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+        return $this->retourneFacture($facture);
     }
 	/**
      * Trouver une facture avec le montant par l'utilisateur et l'id
@@ -151,11 +138,12 @@ class FactureRepository extends EntityRepository
     	try {
     		$em = $this->getEntityManager();
             $query = 'SELECT f AS facture, t.prix'
-                   . ' FROM chevPensionBundle:Facture f'
+                   . ' FROM chevPensionBundle:Paiement p, chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
                    . ' WHERE f.utilisateur = :utilisateur'
-                   . ' AND f.id = :id';
+                   . ' AND f.id = :id'
+				   . ' AND p.facture = :id';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':utilisateur', $user)
     					  ->setParameter(':id', $id)
@@ -165,23 +153,6 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			if ($intervalJours > 31) {
-				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
-			}
-			else {
-				$nbMois = 1;
-			}
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+        return $this->retourneFacture($facture);
     }
 }

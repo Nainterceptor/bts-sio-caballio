@@ -6,39 +6,52 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Gestion de chevaux</h2>
+
 {% if is_granted('ROLE_GERANT') %}
-<a class="new-item" href="{{ path('cheval_new') }}">+</a>
+<div class="container-control">
+	<a class="bouton greenB" href="{{ path('cheval_new') }}">Ajouter</a>
+</div>
 {% endif %}
-<table cellpadding="0" cellspacing="0" width="100%" class="clear">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Race</th>
-            <th>Propriétaire</th>
-            <th>Centre</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td class="id-td"><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.nom }}</td>
-            <td>{% if entity.race %}{{ entity.race.libelle }} {% else %}Pas de race{% endif %}</td>
-            <td>{{ entity.proprietaire }}</td>
-            <td>{% if entity.centre %}{{ entity.centre.nom }} {% else %}Pas de centre{% endif %}</td>
-            <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-            <td>
-                <a title="Voir" class="show-item" href="{{ path('cheval_show', { 'id': entity.id }) }}">show</a>
-                {% if is_granted('ROLE_GERANT') %}
-    			<a title="Modifier" class="modif-item" href="{{ path('cheval_edit', { 'id': entity.id }) }}">Modifier</a>
-    			{% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+
+<div class="container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
+		<h6>Liste des chevaux</h6>
+	</div>
+	<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+	    <thead>
+	        <tr>
+	            <th>Id</th>
+	            <th>Nom</th>
+	            <th>Race</th>
+	            <th>Propriétaire</th>
+	            <th>Centre</th>
+	            <th>Date</th>
+	            <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    {% for entity in entities %}
+	        <tr>
+	            <td class="id-td"><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+	            <td>{{ entity.nom }}</td>
+	            <td>{% if entity.race %}{{ entity.race.libelle }} {% else %}Pas de race{% endif %}</td>
+	            <td>{{ entity.proprietaire }}</td>
+	            <td>{% if entity.centre %}{{ entity.centre.nom }} {% else %}Pas de centre{% endif %}</td>
+	            <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
+	            <td>
+	                <a href="{{ path('cheval_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
+	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
+	                </a>
+	                {% if is_granted('ROLE_GERANT') %}
+	    			<a href="{{ path('cheval_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
+	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
+	    			</a>
+	    			{% endif %}
+	            </td>
+	        </tr>
+	    {% endfor %}
+	    </tbody>
+	</table>
+</div>
 {% endblock %}

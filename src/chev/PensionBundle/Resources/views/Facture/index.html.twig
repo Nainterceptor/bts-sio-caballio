@@ -6,40 +6,51 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Listes des factures</h2>
 
-<a class="new-item" href="{{ path('facture_new') }}">+</a>
+<div class="container-control">
+	<a class="bouton greenB" href="{{ path('facture_new') }}">Ajouter</a>
+</div>
 
-<table class="record_properties">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Client</th>
-            <th>Box</th>
-            <th>Cheval</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td class="id-td"><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.utilisateur }}</td>
-            <td>{{ entity.box }}</td>
-            <td>{{ entity.cheval }}</td>
-            <td>
-            	<p>Date de debut : {% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</p>
-            	<p>Date de fin : {% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</p>
-            	<p>Date d'ajout : {% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</p>
-            </td>
-            <td>
-                <a title="Voir" class="show-item" href="{{ path('facture_show', { 'id': entity.id }) }}">show</a>
-    			<a title="Modifier" class="modif-item" href="{{ path('facture_edit', { 'id': entity.id }) }}">Modifier</a>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
+		<h6>Liste des factures</h6>
+	</div>
+	<table class="record_properties">
+	    <thead>
+	        <tr>
+	            <th>Id</th>
+	            <th>Client</th>
+	            <th>Box</th>
+	            <th>Cheval</th>
+	            <th>Date</th>
+	            <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    {% for entity in entities %}
+	        <tr>
+	            <td class="id-td"><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+	            <td>{{ entity.utilisateur }}</td>
+	            <td>{{ entity.box }}</td>
+	            <td>{{ entity.cheval }}</td>
+	            <td>
+	            	<p>Date de debut : {% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</p>
+	            	<p>Date de fin : {% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</p>
+	            	<p>Date d'ajout : {% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</p>
+	            </td>
+	            <td>
+	                <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
+	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
+	                </a>
+	    			<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
+	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
+	    			</a>
+	            </td>
+	        </tr>
+	    {% endfor %}
+	    </tbody>
+	</table>
+</div>
 {% endblock %}
 

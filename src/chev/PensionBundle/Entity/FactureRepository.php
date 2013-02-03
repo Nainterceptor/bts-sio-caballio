@@ -12,7 +12,27 @@ use Doctrine\ORM\EntityRepository,
  * repository methods below.
  */
 class FactureRepository extends EntityRepository
-{	
+{
+	private function retourneFacture($facture) {
+		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+        $intervalJours = $intervalDates->days;
+		if ($intervalJours > 0 && $intervalJours != 0) {
+			if ($intervalJours > 31) {
+				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
+			}
+			else {
+				$nbMois = 1;
+			}
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = $nbMois*$facture['prix'] . " €";
+        	return $facture;
+		}
+		else {
+			$facture['nbJours'] = $intervalJours;
+			$facture['montant'] = "Erreur sur le Bail";
+			return $facture;
+		}
+	}
 	/**
      * Trouver toutes les factures par le centre ayant ce gérant
      * 
@@ -60,7 +80,7 @@ class FactureRepository extends EntityRepository
     public function findAM($id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
+            $query = ' SELECT f AS facture, t.prix'
                    . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
@@ -73,24 +93,13 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			if ($intervalJours > 31) {
-				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
-			}
-			else {
-				$nbMois = 1;
-			}
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
+        return $this->retourneFacture($facture);
     }
     /**
      * Trouver une facture avec le montant par le centre ayant ce gérant et l'id
@@ -103,7 +112,7 @@ class FactureRepository extends EntityRepository
     public function findOneByCentreGerantAM($gerant, $id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
+            $query = ' SELECT f AS facture, t.prix'
                    . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.box b'
                    . ' JOIN b.type t'
@@ -119,16 +128,13 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			$facture['montant'] = $intervalJours*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
+        return $this->retourneFacture($facture);
     }
 	/**
      * Trouver une facture avec le montant par l'utilisateur et l'id
@@ -156,16 +162,12 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-        $intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			$facture['montant'] = $intervalJours*$facture['prix'];
-        	return $facture;
-		}
-		else {
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+		$query = ' SELECT p'
+			   . ' FROM chevPensionBundle:Paiement p'
+			   . ' WHERE p.facture = :id';
+		$facture['paiements'] = $em->createQuery($query)
+								   ->setParameter(':id', $id)
+								   ->getResult();
+        return $this->retourneFacture($facture);
     }
-	
 }

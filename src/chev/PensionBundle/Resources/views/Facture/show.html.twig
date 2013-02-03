@@ -8,57 +8,88 @@
 {% endblock %}
 {% block body %}
 
-<h2>Voir la facture</h2>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Client</th>
-            <td>{{ entity.utilisateur }}</td>
-        </tr>
-        <tr>
-            <th>Box</th>
-            <td>{{ entity.box }}</td>
-        </tr>
-        <tr>
-            <th>Cheval</th>
-            <td>{{ entity.cheval }}</td>
-        </tr>
-        <tr>
-            <th>Prix Total</th>
-            <td>{{ montant }} €</td>
-        </tr>
-        <tr>
-        	<th>Durée du bail</th>
-        	<td>{{ nbJours}} jours</td>
-        </tr>
-        <tr>
-            <th>Date de debut</th>
-            <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Date de fin</th>
-            <td>{{ entity.dateFin|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Date de facturation</th>
-            <td>{{ entity.dateFacture|date('Y-m-d H:i:s') }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="form-menu float right">
-	<li><a title="Retour à la liste" class="return-item" href="{{ path('facture') }}">return</a></li>
-    <li><a title="Modifier" class="modif-item" href="{{ path('facture_edit', { 'id': entity.id }) }}">Modifier</a></li>
-    <li>
-		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('facture_delete', { 'id': entity.id }) }}" method="post">
+<div class="half-container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
+		<h6>Voir la facture</h6>
+	</div>
+	<table class="record_properties">
+	    <tbody>
+	        <tr>
+	            <th>Id</th>
+	            <td>{{ entity.id }}</td>
+	        </tr>
+	        <tr>
+	            <th>Client</th>
+	            <td>{{ entity.utilisateur }}</td>
+	        </tr>
+	        <tr>
+	            <th>Box</th>
+	            <td>{{ entity.box }}</td>
+	        </tr>
+	        <tr>
+	            <th>Cheval</th>
+	            <td>{{ entity.cheval }}</td>
+	        </tr>
+	        <tr>
+	            <th>Prix Total</th>
+	            <td>{{ montant }}</td>
+	        </tr>
+	        <tr>
+	        	<th>Durée du bail</th>
+	        	<td>{{ nbJours}} jours</td>
+	        </tr>
+	        <tr>
+	            <th>Date de debut</th>
+	            <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
+	        </tr>
+	        <tr>
+	            <th>Date de fin</th>
+	            <td>{{ entity.dateFin|date('Y-m-d H:i:s') }}</td>
+	        </tr>
+	        <tr>
+	            <th>Date de facturation</th>
+	            <td>{{ entity.dateFacture|date('Y-m-d H:i:s') }}</td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+<div class="half-container-right">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
+		<h6>Liste des paiements</h6>
+	</div>
+	<table class="record_properties">
+	    <thead>
+	    	<tr>
+	    		<th>Montant</th>
+	    		<th>Type de paiement</th>
+	    		<th>Date du paiement</th>
+	    		<th>Date d'encaissement</th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    	{% for paiement in paiements %}
+	    	<tr>
+	            <td>{{ paiement.montant }} €</td>
+	            <td>{{ paiement.typePaiement }}</td>
+	            <td colspan="2">Bug sur les dates*</td>
+	        </tr>
+	        {% else %}
+	    	<tr>
+	    		<td colspan="4">Aucun paiement effectué</td>
+	    	</tr>
+	    	{% endfor %}
+	    </tbody>
+	</table>
+</div>
+<div class="half-container-control">
+	<a href="{{ path('facture') }}" class="bouton basic">Retour à la liste</a>
+	<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
+	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('facture_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}
-        	<button type="submit" title="Supprimer" class="delete-item">+</button>
-    	</form>
-	</li>
-</ul>
+        	<button type="submit" class="redB bouton">Supprimer</button>
+    </form>
+</div>
+
 {% endblock %}

@@ -11,8 +11,7 @@ class TypePaiementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-        ;
+            ->add('libelle');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -24,6 +23,6 @@ class TypePaiementType extends AbstractType
 
     public function getName()
     {
-        return 'chev_pensionbundle_typepaiementtype';
+        return 'typePaiement';
     }
 }

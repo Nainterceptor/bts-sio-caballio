@@ -31,7 +31,7 @@ class TypePaiement
     private $libelle;
 
     public function __toString() {
-        return $this->id.'. '.$this->libelle;
+        return $this->libelle;
     }
     
     /**

@@ -6,41 +6,43 @@
     </li>
 {% endblock %}
 {% block body %}
-<h2>Box</h2>
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Cheval</th>
-            <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Type de box</th>
-            <td>{{ entity.type.libelle }}</td>
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Date d'ajout</th>
-            <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="form-menu float right">
-	<li><a title="Retour à la liste" class="return-item" href="{{ path('centre_box') }}">return</a></li>
-    <li><a title="Modifier" class="modif-item" href="{{ path('centre_box_edit', { 'id': entity.id }) }}">Modifier</a></li>
-    <li>
-		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post">
+<div class="half-container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
+		<h6>Voir le box</h6>
+	</div>
+	<table class="record_properties">
+	    <tbody>
+	        <tr>
+	            <th>Id</th>
+	            <td>{{ entity.id }}</td>
+	        </tr>
+	        <tr>
+	            <th>Cheval</th>
+	            <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
+	        </tr>
+	        <tr>
+	            <th>Type de box</th>
+	            <td>{{ entity.type.libelle }}</td>
+	        </tr>
+	        <tr>
+	            <th>Date</th>
+	            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+	        </tr>
+	        <tr>
+	            <th>Date d'ajout</th>
+	            <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+<div class="half-container-control">
+	<a href="{{ path('centre_box') }}" class="bouton basic">Retour à la liste</a>
+	<a href="{{ path('centre_box_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
+	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_box_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}
-        	<button type="submit" title="Supprimer" class="delete-item">+</button>
-    	</form>
-	</li>
-</ul>
+        	<button type="submit" class="redB bouton">Supprimer</button>
+    </form>
+</div>
 {% endblock %}

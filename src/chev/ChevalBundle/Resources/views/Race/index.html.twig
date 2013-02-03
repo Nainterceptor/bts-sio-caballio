@@ -6,31 +6,42 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Gestion de races</h2>
 
-<a class="new-item" href="{{ path('cheval_race_new') }}">+</a>
+<div class="container-control">
+	<a class="bouton greenB" href="{{ path('cheval_race_new') }}">Ajouter</a>
+</div>
 
-<table cellpadding="0" cellspacing="0" width="100%" class="clear">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Centre</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td  class="id-td"><a href="{{ path('cheval_race_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.libelle }}</td>
-            <td>{{ entity.centre }}</td>
-            <td>
-                <a title="Voir" class="show-item" href="{{ path('cheval_race_show', { 'id': entity.id }) }}">show</a>
-    			<a title="Modifier" class="modif-item" href="{{ path('cheval_race_edit', { 'id': entity.id }) }}">Modifier</a>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+	<div class="title">
+		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
+		<h6>Liste des races</h6>
+	</div>
+	<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+	    <thead>
+	        <tr>
+	            <th>Id</th>
+	            <th>Nom</th>
+	            <th>Centre</th>
+	            <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    {% for entity in entities %}
+	        <tr>
+	            <td  class="id-td"><a href="{{ path('cheval_race_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+	            <td>{{ entity.libelle }}</td>
+	            <td>{{ entity.centre }}</td>
+	            <td>
+	                <a href="{{ path('cheval_race_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
+	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
+	                </a>
+	    			<a href="{{ path('cheval_race_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
+	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
+	    			</a>
+	            </td>
+	        </tr>
+	    {% endfor %}
+	    </tbody>
+	</table>
+</div>
 {% endblock %}

@@ -463,6 +463,23 @@ nav .sub-menu ul li a:hover, nav .sub-sub-menu ul li a:hover {
 	float: left;
 	text-align: right;
 }
+.container-login {
+	border-radius: 3px 3px 3px 3px;
+	background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #CDCDCD;
+    clear: both;
+    margin: 32px 20% 0 20%;
+}
+.fos_user_login {
+	padding: 20px;
+}
+.fos_user_login div {
+	padding-top: 0;
+	border: none;
+}
+.fos_user_login input[type="checkbox"] {
+	margin-top: 8px;
+}
 .title {
 	overflow: hidden;
     background: linear-gradient(to bottom, #FAFAFA 0%, #EFEFEF 100%) repeat scroll 0 0 transparent;

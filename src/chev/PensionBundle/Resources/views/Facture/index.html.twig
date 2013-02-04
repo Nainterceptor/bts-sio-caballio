@@ -43,9 +43,11 @@
 	                <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
 	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
 	                </a>
+	                {% if is_granted('ROLE_GERANT') %}
 	    			<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
 	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
 	    			</a>
+	    			{% endif %}
 	            </td>
 	        </tr>
 	    {% endfor %}

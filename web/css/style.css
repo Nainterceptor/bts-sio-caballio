@@ -531,11 +531,14 @@ label {
 .form-bouton {
 	float: right;
 }
-form ul li {
+form ul li, .error_login {
 	color: #9F352B;
     font-weight:bold;
 }
-form ul li:after {
+.error_login {
+	padding: 20px 0 0 20px;
+}
+form ul li:after, .error_login {
 	content: " * "
 }
 /* Contrage de la génération d'une div dans chaque "nouveau" */

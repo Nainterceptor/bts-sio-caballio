@@ -41,12 +41,20 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/user-management, roles: ROLE_ADMIN }
-        - { path: ^/pature, roles: ROLE_GERANT }
+        - { path: ^/centre/(new|create), roles: ROLE_ADMIN }
+        - { path: ^/centre, roles: ROLE_GERANT }
+        - { path: ^/centre/pature, roles: ROLE_GERANT }
+        - { path: ^/centre/box, roles: ROLE_GERANT }
+        - { path: ^/centre/box/type, roles: ROLE_GERANT }
+        - { path: ^/cheval/(new|create), roles: ROLE_GERANT }
+        - { path: ^/cheval/\d+(edit|update), roles: ROLE_GERANT }
+        - { path: ^/cheval, roles: ROLE_USER }
         - { path: ^/race, roles: ROLE_GERANT }
         - { path: ^/equipement/(new|create), roles: ROLE_GERANT }
         - { path: ^/equipement/\d+/(edit|update), roles: ROLE_GERANT }
         - { path: ^/equipement, roles: ROLE_USER }
-        - { path: ^/cheval/(new|create), roles: ROLE_GERANT }
-        - { path: ^/cheval, roles: ROLE_USER }
-        - { path: ^/centre/(new|create), roles: ROLE_ADMIN }
-        - { path: ^/centre, roles: ROLE_GERANT }
+        - { path: ^/facture/(new|create), roles: ROLE_GERANT }
+        - { path: ^/facture/\d+/(edit|update), roles: ROLE_GERANT }
+        - { path: ^/facture, roles: ROLE_USER }
+        - { path: ^/paiement, roles: ROLE_GERANT }
+        - { path: ^/paiement/type, roles: ROLE_ADMIN }

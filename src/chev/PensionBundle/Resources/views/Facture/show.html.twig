@@ -87,11 +87,13 @@
 </div>
 <div class="half-container-control">
 	<a href="{{ path('facture') }}" class="bouton basic">Retour à la liste</a>
+	{% if is_granted('ROLE_GERANT') %}
 	<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
 	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('facture_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}
         	<button type="submit" class="redB bouton">Supprimer</button>
     </form>
+    {% endif %}
 </div>
 
 {% endblock %}

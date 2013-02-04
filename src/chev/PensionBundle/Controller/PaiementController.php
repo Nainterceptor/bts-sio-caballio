@@ -110,7 +110,7 @@ class PaiementController extends Controller
 		$paiementType = new PaiementType();
 		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
 		
-        $editform   = $this->createForm($paiementType, $entity);
+        $editForm   = $this->createForm($paiementType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevPensionBundle:Paiement:edit.html.twig', array(
@@ -139,7 +139,7 @@ class PaiementController extends Controller
 		$paiementType = new PaiementType();
 		$paiementType->setUser($this->get('security.context')->getToken()->getUser());
 		
-        $editform = $this->createForm($paiementType, $entity);
+        $editForm = $this->createForm($paiementType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

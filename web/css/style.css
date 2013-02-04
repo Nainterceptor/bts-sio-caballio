@@ -531,6 +531,13 @@ label {
 .form-bouton {
 	float: right;
 }
+form ul li {
+	color: #9F352B;
+    font-weight:bold;
+}
+form ul li:after {
+	content: " * "
+}
 /* Contrage de la génération d'une div dans chaque "nouveau" */
 #centre, #box, #pature, #race, #typesBox, #cheval, #equipement, #facture, #paiement, #paiementtype, #user_label {
 	border: none;

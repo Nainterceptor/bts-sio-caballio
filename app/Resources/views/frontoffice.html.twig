@@ -32,7 +32,7 @@
     			<p>Bonjour, {% if app.user %}{{ app.user.username }}{% else %}inconnu{% endif %}.</p>
     			<ul>
     				<li>
-    					<a href="{{ path('s4admin_user_show', { 'id': app.user.id }) }}">
+    					<a href="{% if app.user %}{{ path('s4admin_user_show', { 'id': app.user.id }) }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
     						<img src="{{ asset('/images/bouton/user.png') }}" />
     						<span>Profile</span>
     					</a>

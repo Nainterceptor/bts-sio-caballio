@@ -64,8 +64,7 @@
 	    	<tr>
 	    		<th>Montant</th>
 	    		<th>Type de paiement</th>
-	    		<th>Date du paiement</th>
-	    		<th>Date d'encaissement</th>
+	    		<th>Dates</th>
 	    	</tr>
 	    </thead>
 	    <tbody>
@@ -73,7 +72,10 @@
 	    	<tr>
 	            <td>{{ paiement.montant }} €</td>
 	            <td>{{ paiement.typePaiement }}</td>
-	            <td colspan="2">Bug sur les dates*</td>
+	            <td>
+	            	<p>Date Paiement : {{ paiement.datePaiement|date('d/m/Y H:i:s') }}</p>
+	            	<p>Date Encaissement : {{ paiement.dateEncaissement|date('d/m/Y H:i:s') }}</p>
+	            </td>
 	        </tr>
 	        {% else %}
 	    	<tr>

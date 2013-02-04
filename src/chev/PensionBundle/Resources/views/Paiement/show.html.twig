@@ -20,16 +20,20 @@
 	            <td>{{ entity.id }}</td>
 	        </tr>
 	        <tr>
+	            <th>Montant</th>
+	            <td>{{ entity.montant }} €</td>
+	        </tr>
+	        <tr>
+	        	<th>Type de paiement</th>
+	        	<td>{{ entity.typePaiement}}</td>
+	        </tr>
+	        <tr>
 	            <th>Date paiement</th>
 	            <td>{{ entity.datePaiement|date('d/m/Y H:i:s') }}</td>
 	        </tr>
 	        <tr>
 	            <th>Date encaissement</th>
 	            <td>{{ entity.dateEncaissement|date('d/m/Y H:i:s') }}</td>
-	        </tr>
-	        <tr>
-	            <th>Montant</th>
-	            <td>{{ entity.montant }} €</td>
 	        </tr>
 	    </tbody>
 	</table>

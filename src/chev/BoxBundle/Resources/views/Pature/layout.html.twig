@@ -1,4 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block titre %}
+<h5>
+	Patûres
+</h5>
+{% endblock %}
 {% block breadcrumbs %}
     {{ parent() }}
     <li><a href="{{ path('pature')}}">Gestion des patûres</a></li>

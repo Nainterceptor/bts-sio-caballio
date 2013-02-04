@@ -1,5 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block title %}Gestion de races - {{ parent() }}{% endblock %}
+{% block titre %}
+<h5>
+	Races
+</h5>
+{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
  <li>

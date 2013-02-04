@@ -1,4 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block titre %}
+<h5>
+	Connexion
+</h5>
+{% endblock %}
 {% block body %}
 {# On y place le contenu du layout par défaut de FOSUB : https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/views/layout.html.twig #}
 

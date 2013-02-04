@@ -1,4 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block titre %}
+<h5>
+	Accueil
+</h5>
+{% endblock %}
 {% block body %}
 	<p>Bienvenue sur la page d'accueil du site de gestion Equestre Caballio.</p>
 	<p>Ce site permet à nos clients propriétaires d'un ou plusieurs centres équestres de les administrer.<br />

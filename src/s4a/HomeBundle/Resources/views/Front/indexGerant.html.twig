@@ -1,4 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block titre %}
+<h5>
+	Accueil
+</h5>
+{% endblock %}
 {% block body %}
 
 {% if is_granted ('ROLE_GERANT') %}

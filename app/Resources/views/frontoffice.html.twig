@@ -69,9 +69,7 @@
     		<div class="line"></div>
             <div class="page-info">
     			<div>
-                    <h5>
-	    				Acceuil
-	    			</h5>
+    				{% block titre %}{% endblock %}
                     <ul class="breadcrumbs">
                             {% block breadcrumbs %}
                                 <li><a href="{{ path('front_homepage') }}">Accueil</a></li>

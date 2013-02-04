@@ -8,9 +8,9 @@
             <a href="{{ path('centre') }}">Centres</a>
             <ul class="sub-ul">
                 <li><a href="{{ path('centre') }}">Centres</a></li>
-                <li><a href="{{ path('pature') }}">Patûre</a></li>
+                <li><a href="{{ path('pature') }}">Patûres</a></li>
                 <li class="sub-sub-menu">
-                	<a href="{{ path('centre_box')}}">Box</a>
+                	<a href="{{ path('centre_box')}}">Boxes</a>
                 	<ul class="sub-sub-menu">
 	                    <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
 	                </ul>
@@ -23,21 +23,21 @@
             <a href="{{ path('cheval')}}">Chevaux</a>
             <ul class="sub-ul">
                 <li><a href="{{ path('cheval')}}">Chevaux</a></li>
-                <li><a href="{{ path('equipement')}}">Equipement</a></li>
+                <li><a href="{{ path('equipement')}}">Equipements</a></li>
                 {% if is_granted('ROLE_GERANT') %}
-                <li><a href="{{ path('cheval_race')}}">Race</a></li>
+                <li><a href="{{ path('cheval_race')}}">Races</a></li>
                 {% endif %}
             </ul>
         </li>
         {% endif %}
         {% if is_granted('ROLE_USER') %}
         <li class="sub-menu">
-            <a href="{{ path('facture') }}">Facture</a>
+            <a href="{{ path('facture') }}">Factures</a>
             <ul class="sub-ul">
-                <li><a href="{{ path('facture') }}">Facture</a></li>
+                <li><a href="{{ path('facture') }}">Factures</a></li>
                 {% if is_granted('ROLE_GERANT') %}
                 <li class="sub-sub-menu">
-                    <a href="{{ path('paiement') }}">Paiement</a>
+                    <a href="{{ path('paiement') }}">Paiements</a>
                     {% if is_granted('ROLE_ADMIN') %}
                     <ul>
                         <li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>

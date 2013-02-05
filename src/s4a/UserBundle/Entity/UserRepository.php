@@ -10,20 +10,41 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-	function userPagination($perPage = 30, $page = 1) {
-		return $this->_em
-				->createQuery('SELECT u FROM s4aUserBundle:User u')
-		       ->setMaxResults($perPage)
-		       ->setFirstResult($perPage * ($page - 1))
-				->getResult();
-	}
-	function searchInAll(){
-		
-	}
-	function count() {
-		return (int)$this->_em
-				->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u')
-				->getSingleScalarResult();
-	}
+    function userPagination($perPage = 30, $page = 1, $user = null) {
+        if($user != null && !$user->hasRole('ROLE_ADMIN'))
+            return $this->_em
+                    ->createQuery('SELECT u FROM s4aUserBundle:User u
+                                  JOIN u.factures f
+                                  JOIN f.box b
+                                  JOIN b.type t
+                                  JOIN t.centre c
+                                  WHERE c.gerant = :gerant
+                                  ')
+                    ->setParameter(':gerant', $user)
+                    ->setMaxResults($perPage)
+                    ->setFirstResult($perPage * ($page - 1))
+                    ->getResult();
+        return $this->_em
+                ->createQuery('SELECT u FROM s4aUserBundle:User u')
+                ->setMaxResults($perPage)
+                ->setFirstResult($perPage * ($page - 1))
+                ->getResult();
+    }
+    function count($user = null) {
+        if($user != null && !$user->hasRole('ROLE_ADMIN'))
+            return (int)$this->_em
+                ->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u
+                                  JOIN u.factures f
+                                  JOIN f.box b
+                                  JOIN b.type t
+                                  JOIN t.centre c
+                                  WHERE c.gerant = :gerant
+                                  ')
+                ->setParameter(':gerant', $user)
+                ->getSingleScalarResult();
+        return (int)$this->_em
+                ->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u')
+                ->getSingleScalarResult();
+    }
 
 }

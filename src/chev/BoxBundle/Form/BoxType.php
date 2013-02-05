@@ -40,7 +40,7 @@ class BoxType extends AbstractType
 			->add('cheval', 'entity', array(
 			                                   'empty_value' => 'Pas de cheval',
 			                                   'required' => false,
-			                                   'class' => 'chevBoxBundle:Box'
+			                                   'class' => 'chevChevalBundle:Cheval'
 			                            )
 			   )
         ;

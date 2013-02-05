@@ -24,6 +24,7 @@ class UserController extends Controller
     public function indexAction($page=1)
     {
         $em = $this->getDoctrine()->getManager()->getRepository('s4aUserBundle:User');
+        $user = $this->get('security.context')->getToken()->getUser();
 		$translator = $this->get('translator');
 		$request = $this->get('request');
 		$session = $request->getSession();
@@ -47,7 +48,7 @@ class UserController extends Controller
 		
 		$numPages = ceil($em->count()/$perPage);
 
-        $entities = $em->userPagination($perPage, $page);
+        $entities = $em->userPagination($perPage, $page, $user);
 
         return $this->render('s4aUserBundle:User:index.html.twig', array(
             'entities' => $entities,

@@ -17,31 +17,20 @@
         <!--[if lt IE 9]>
             <script src="{{ asset('js/html5shiv.js') }}"></script>
         <![endif]-->
-        <style>
-        	body {
-        		padding-top: 60px;
-        	}
-        </style>
         <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" />
     </head>
     <body>
     	<div class="navbar navbar-inverse navbar-fixed-top">
     		<div class="navbar-inner">
     			<div class="container-fluid">
-    				<a class="brand" href="#">Caballio</a>
+    				<a class="brand" href="{{ path('front_homepage') }}">Caballio</a>
     				<div class="nav-collapse collapse">
     					<p class="navbar-text pull-right">
-    						Zone Login info
+    						<a class="btn btn-primary" href="{{ path('s4admin_user')}}">Login</a>
     					</p>
-    					<ul class="nav">
-    						<li><a>Home</a></li>
-    						<li><a>Centre</a></li>
-    						<li><a>Cheval</a></li>
-    						<li><a>Facture</a></li>
-    						<li><a>Administration</a></li>
-    						<li><a>About</a></li>
-    						<li><a>Contact</a></li>
-    					</ul>
+    					{% block menuTop %}
+		                	{% render url('_menuTop') %}
+		            	{% endblock %}
     				</div>
     			</div>
     		</div>
@@ -65,15 +54,15 @@
     				</div>
     			</div>
     		</div>
+    		<hr>
+	        <footer>
+	        	<p>&copy; PITP 2012 - 2013</p>
+	            <div class="ajaxOn" style="display: block;">
+	                <label selected="selected" for="ajaxOn">Activer AJAX</label>
+	                <input type="checkbox" id="ajaxOn" name="ajaxOn">
+	            </div>
+	        </footer>
     	</div>
-    	<hr>
-        <footer>
-        	<p>&copy; PITP 2012 - 2013</p>
-            <div class="ajaxOn" style="display: block;">
-                <label selected="selected" for="ajaxOn">Activer AJAX</label>
-                <input type="checkbox" id="ajaxOn" name="ajaxOn">
-            </div>
-        </footer>
         {% block javascripts %}
 			<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 			<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>

@@ -1,0 +1,17 @@
+{% spaceless %}
+<ul class="nav">
+	<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+	{% if is_granted('ROLE_GERANT') %}
+	<li><a href="{{ path('centre') }}">Centre</a></li>
+	{% endif %}
+	{% if is_granted('ROLE_USER') %}
+	<li><a href="{{ path('cheval') }}">Cheval</a></li>
+	<li><a href="{{ path('facture')}}">Facture</a></li>
+	{% endif %}
+	{% if is_granted('ROLE_ADMIN') %}
+	<li><a href="{{ path('fos_user_security_login') }}">Administration</a></li>
+	{% endif %}
+	<li><a href="#">About</a></li>
+	<li><a href="#">Contact</a></li>
+</ul>
+{% endspaceless %}

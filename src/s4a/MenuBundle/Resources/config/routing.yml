@@ -3,3 +3,9 @@ _menu:
     defaults: { _controller: s4aMenuBundle:Menu:index }
     options:
         expose: true
+        
+_menuTop:
+   pattern: /_menuTop
+   defaults: { _controller: s4aMenuBundle:MenuTop:index }
+   options:
+        expose: tue

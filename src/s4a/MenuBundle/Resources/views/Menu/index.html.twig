@@ -1,56 +1,43 @@
 {% spaceless %}
-<ul>
+<ul class="nav nav-list">
     <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-    
     {% if error is not defined %}
-        {% if is_granted('ROLE_GERANT') %}
-        <li class="sub-menu">
-            <a href="{{ path('centre') }}">Centres</a>
-            <ul class="sub-ul">
-                <li><a href="{{ path('centre') }}">Centres</a></li>
-                <li><a href="{{ path('pature') }}">Patûres</a></li>
-                <li class="sub-sub-menu">
-                	<a href="{{ path('centre_box')}}">Boxes</a>
-                	<ul class="sub-sub-menu">
-	                    <li><a href="{{ path('centre_typebox') }}">Types de box</a></li>
-	                </ul>
-                </li>
-            </ul>
-        </li>
-        {% endif %}
-        {% if is_granted('ROLE_USER') %}
-        <li class="sub-menu">
-            <a href="{{ path('cheval')}}">Chevaux</a>
-            <ul class="sub-ul">
-                <li><a href="{{ path('cheval')}}">Chevaux</a></li>
-                <li><a href="{{ path('equipement')}}">Equipements</a></li>
-                {% if is_granted('ROLE_GERANT') %}
-                <li><a href="{{ path('cheval_race')}}">Races</a></li>
-                {% endif %}
-            </ul>
-        </li>
-        {% endif %}
-        {% if is_granted('ROLE_USER') %}
-        <li class="sub-menu">
-            <a href="{{ path('facture') }}">Factures</a>
-            <ul class="sub-ul">
-                <li><a href="{{ path('facture') }}">Factures</a></li>
-                {% if is_granted('ROLE_GERANT') %}
-                <li class="sub-sub-menu">
-                    <a href="{{ path('paiement') }}">Paiements</a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <ul>
-                        <li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>
-                    </ul>
-                    {% endif %}
-                </li>
-                {% endif %}
-            </ul>
-        </li>
-        {% endif %}
-        {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
-        {% endif %}
+	    {% if is_granted('ROLE_GERANT') %}
+	    <li class="nav-header">Centre</li>
+	    <li><a href="{{ path('centre') }}">Centre</a></li>
+	    <li><a href="{{ path('pature') }}">Patûre</a></li>
+		<li>
+			<a href="{{ path('centre_box')}}">Box</a>
+			<ul>
+		        <li><a href="{{ path('centre_typebox') }}">Type de box</a></li>
+		    </ul>
+		</li>
+	    {% endif %}
+	    {% if is_granted('ROLE_USER') %}
+	    <li class="nav-header">Cheval</li>
+	    <li><a href="{{ path('cheval')}}">Cheval</a></li>
+	    <li><a href="{{ path('cheval')}}">Chevaux</a></li>
+	    <li><a href="{{ path('equipement')}}">Equipements</a></li>
+		    {% if is_granted('ROLE_GERANT') %}
+		    <li><a href="{{ path('cheval_race')}}">Races</a></li>
+		    {% endif %}
+	   	{% endif %}
+	    {% if is_granted('ROLE_USER') %}
+        <li class="nav-header">Facture</li>
+        <li><a href="{{ path('facture') }}">Facture</a></li>
+	        {% if is_granted('ROLE_GERANT') %}
+	        <li><a href="{{ path('paiement') }}">Paiements</a></li>
+		        {% if is_granted('ROLE_ADMIN') %}
+		        <ul>
+		            <li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>
+		        </ul>
+		        {% endif %}
+	        {% endif %}
+	    {% endif %}
+	    {% if is_granted('ROLE_ADMIN') %}
+	    <li class="nav-header">Administration</li>
+	    <li><a href="{{ path('s4admin_user') }}">Utilisateurs</a></li>
+	    {% endif %}
     {% endif %}
 </ul>
 {% endspaceless %}

@@ -29,7 +29,7 @@
     		</div>
     		<div class="sidebarSep"></div>
     		<div id="profile">
-    			<p>Bonjour, {% if app.user %}{{ app.user.username }}{% else %}inconnu{% endif %}.</p>
+    			<p>Bonjour {% if app.user %}{{ app.user.username }}{% else %}{% endif %}.</p>
     			<ul>
     				<li>
     					<a href="{% if app.user %}{{ path('s4admin_user_show', { 'id': app.user.id }) }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
@@ -63,7 +63,6 @@
         	<div class="page-titre">
 				<div class="titre">
 	                <h1>Caballio</h1>
-	                <span>Le Poney Manager par excellence.</span>
 	            </div>
     		</div>
     		<div class="line"></div>

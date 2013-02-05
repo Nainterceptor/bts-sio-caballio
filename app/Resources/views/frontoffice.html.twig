@@ -5,8 +5,7 @@
         <title>{% block title %}Caballio{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets     
-                            'css/reset.css'
-                            'css/style.css'
+                            'css/bootstrap.css'
                             'css/jquery-ui-1.10.0.custom.min.css'
                             'css/jquery-ui-timepicker-addon.css'
                 output='compiled/css/front.css'
@@ -18,86 +17,68 @@
         <!--[if lt IE 9]>
             <script src="{{ asset('js/html5shiv.js') }}"></script>
         <![endif]-->
+        <style>
+        	body {
+        		padding-top: 60px;
+        	}
+        </style>
         <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" />
     </head>
     <body>
-        <header>
-            <div id="logo">
-    			<a href="{{ path('front_homepage') }}">
-					<img alt="" src="{{ asset('/images/logo.png') }}" width="160">
-				</a>
+    	<div class="navbar navbar-inverse navbar-fixed-top">
+    		<div class="navbar-inner">
+    			<div class="container-fluid">
+    				<a class="brand" href="#">Caballio</a>
+    				<div class="nav-collapse collapse">
+    					<p class="navbar-text pull-right">
+    						Zone Login info
+    					</p>
+    					<ul class="nav">
+    						<li><a>Home</a></li>
+    						<li><a>Centre</a></li>
+    						<li><a>Cheval</a></li>
+    						<li><a>Facture</a></li>
+    						<li><a>Administration</a></li>
+    						<li><a>About</a></li>
+    						<li><a>Contact</a></li>
+    					</ul>
+    				</div>
+    			</div>
     		</div>
-    		<div class="sidebarSep"></div>
-    		<div id="profile">
-    			<p>Bonjour, {% if app.user %}{{ app.user.username }}{% else %}inconnu{% endif %}.</p>
-    			<ul>
-    				<li>
-    					<a href="{% if app.user %}{{ path('s4admin_user_show', { 'id': app.user.id }) }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
-    						<img src="{{ asset('/images/bouton/user.png') }}" />
-    						<span>Profile</span>
-    					</a>
-    				</li>
-    				<li>
-    					{% if is_granted('ROLE_USER') %}
-    					<a href="{{ path('fos_user_security_logout') }}">
-    						<img src="{{ asset('/images/bouton/arrowLeft.png') }}" />
-    						<span>Logout</span>
-    					</a>
-				        {% else %}
-				        <a href="{{ path('fos_user_security_login') }}">
-    						<img class="reverse" src="{{ asset('/images/bouton/arrowLeft.png') }}" />
-    						<span>Login</span>
-    					</a>
-				        {% endif %}
-    				</li>
-    			</ul>
+    	</div>
+    	<div class="container-fluid">
+    		<div class="row-fluid">
+    			<div class="span3">
+    				<div class="well sidebar-nav">
+    					{% block menu %}
+		                	{% render url('_menu') %}
+		            	{% endblock %}
+    				</div>
+    			</div>
+    			<div class="span9">
+    				<div class="hero-unit">
+    					<h1>Bienvenue sur Caballio !</h1>
+    					<p>Text de présentation inutile de l'application ou un message de bienvenue pour faire genre.</p>
+    				</div>
+    				<div class="row-fluid">
+    					{% block body %}{% endblock %}
+    				</div>
+    			</div>
     		</div>
-    		<div class="sidebarSep"></div>
-    		<nav>
-	            {% block menu %}
-	                {% render url('_menu') %}
-	            {% endblock %}
-	        </nav>
-        </header>
-        <section>
-        	<div class="page-titre">
-				<div class="titre">
-	                <h1>Caballio</h1>
-	                <span>Le Poney Manager par excellence.</span>
-	            </div>
-    		</div>
-    		<div class="line"></div>
-            <div class="page-info">
-    			<div>
-    				{% block titre %}{% endblock %}
-                    <ul class="breadcrumbs">
-                            {% block breadcrumbs %}
-                                <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-                            {% endblock %}
-                    </ul>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div id="main-container">
-                    {% block body %}{% endblock %}
-            </div>
-            <div class="line" style="margin-top: 50px;"></div>
-        </section>
+    	</div>
+    	<hr>
         <footer>
-            <div class="footer-container">
-                <div class="copyright">
-                    <p>&copy; PITP 2012 - 2013</p>
-                </div>
-                <div class="ajaxOn" style="display: block;">
-                    <label selected="selected" for="ajaxOn">Activer AJAX</label>
-                    <input type="checkbox" id="ajaxOn" name="ajaxOn">
-                </div>
+        	<p>&copy; PITP 2012 - 2013</p>
+            <div class="ajaxOn" style="display: block;">
+                <label selected="selected" for="ajaxOn">Activer AJAX</label>
+                <input type="checkbox" id="ajaxOn" name="ajaxOn">
             </div>
         </footer>
         {% block javascripts %}
 			<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 			<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
             {% javascripts 'js/jquery-1.9.0.min.js'
+            			   'js/bootstrap.js'
                            'js/jquery-ui-1.10.0.custom.min.js'
                            'js/jquery-ui-timepicker-addon.js'
                            'js/jquery-ui-timepicker-fr.js'
@@ -106,21 +87,6 @@
                     output='compiled/js/front.js'
                     combine=true%}
             <script type="text/javascript" src="{{ asset_url }}"></script>
-			<script type="text/javascript">
-				$(document).ready( function () {
-				  	$("nav .sub-menu .sub-ul").hide();
-				  	$("nav .sub-menu > a").click( function () {
-			        	if ($(this).next("nav .sub-menu .sub-ul:visible").length != 0) {
-			            	$(this).next("nav .sub-menu .sub-ul").slideUp("normal");
-			        	}
-			        	else {
-			            	$("nav .sub-menu .sub-ul").slideUp("normal");
-			            	$(this).next("nav .sub-menu .sub-ul").slideDown("normal");
-			        	}
-			        	return false;
-			    	});
-				});
-			</script>
             {% endjavascripts %}
         {% endblock %}
     </body>

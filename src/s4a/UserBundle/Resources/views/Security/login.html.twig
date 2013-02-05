@@ -1,33 +1,25 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block fos_user_content %}
-<div class="container-login">
-	<div class="title">
-		<img class="titleIcon" src="{{ asset('/images/bouton/user.png') }}" />
-		<h6>Se connecter</h6>
-	</div>
+<div class="container">
 	{% if error %}
 	<ul class="error_login">
 		<li>{{ error|trans([], 's4aUserBundle') }}</li>
 	</ul>
 	{% endif %}
-	<div class="fos_user_login">
-		<form action="{{ path("fos_user_security_check") }}" method="post">
-			
-		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-			<div>
-				<label for="username">Nom d'utilisateur</label>
-		    	<input type="text" id="username" name="_username" value="{{ last_username }}" /><br />
-			</div>
-		    <div>
-		    	<label for="password">Mot de passe</label>
-		    	<input type="password" id="password" name="_password" /><br />
-		    </div>
-		    <div>
-		    	<label for="remember_me">Se souvenir de moi</label>
-		    	<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-		    </div>
-		    <input class="bouton greenB" type="submit" id="_submit" name="_submit" value="Envoyer" />
-		</form>
-	</div>
+	<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+		<h2>Se connecter</h2>
+		
+	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	    
+    	<input class="input-block-level" type="text" id="username" name="_username" value="{{ last_username }}" />
+    	<input class="input-block-level" type="password" id="password" name="_password" />
+    	
+    	<label class="checkbox" for="_remembre_me">
+    		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    		Se souvenir de moi
+    	</label>
+    	
+	    <input class="btn btn-large btn-primary" type="submit" id="_submit" name="_submit" value="Envoyer" />
+	</form>
 </div>
 {% endblock fos_user_content %}

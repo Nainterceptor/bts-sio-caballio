@@ -26,7 +26,11 @@
     				<a class="brand" href="{{ path('front_homepage') }}">Caballio</a>
     				<div class="nav-collapse collapse">
     					<p class="navbar-text pull-right">
-    						<a class="btn btn-primary" href="{{ path('s4admin_user')}}">Login</a>
+    						{% if is_granted('ROLE_USER') %}
+    						<a class="btn btn-primary" href="{{ path('fos_user_security_logout')}}">Logout</a>
+    						{% else %}
+    						<a class="btn btn-primary" href="{{ path('fos_user_security_login')}}">Login</a>
+    						{% endif %}
     					</p>
     					{% block menuTop %}
 		                	{% render url('_menuTop') %}

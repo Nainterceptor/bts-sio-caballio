@@ -3,7 +3,7 @@
  */
 
 .sidebar-nav {
-	padding: 9px 0;
+	padding: 9px 0 !important;
 }
 body {
 	padding-top: 60px;

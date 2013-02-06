@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
 <h2>Création d'un centre</h2>
-<div class="span8">
+<div class="span6">
 	<form action="{{ path('centre_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}

@@ -54,8 +54,8 @@ function aInAjax() {
 	
 }
 function styleAjax() {
-	$("div.ajaxOn label").click(function() {
-		if($("div.ajaxOn input#ajaxOn").is(':checked')) {
+	$("div.ajaxOn label").stop(true, true).click(function() {
+		if($(this).hasClass('btn-success')) {
 			$("div.ajaxOn input#ajaxOn").attr('checked', false);
 			$(this).removeClass('btn-success');
 			$(this).addClass('btn-danger');

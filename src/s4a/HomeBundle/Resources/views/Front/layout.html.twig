@@ -1,0 +1,7 @@
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block hero %}
+					<div class="hero-unit">
+    					<h1>Bienvenue sur Caballio !</h1>
+    					<p>Text de présentation inutile de l'application ou un message de bienvenue pour faire genre.</p>
+    				</div>
+{% endblock %}

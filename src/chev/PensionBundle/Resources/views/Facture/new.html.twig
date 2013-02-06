@@ -3,25 +3,20 @@
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-     <a href="{{ path('facture_new') }}">Nouveau</a>
+    <a href="{{ path('facture_new') }}">Nouveau</a>
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>Nouvelle facture</h6>
-	</div>
+<h2>Nouvelle facture</h2>
+<div class="span8">
 	<form action="{{ path('facture_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}
-		    <div class="form-bouton">
-		    	<a class="bouton basic" href="{{ path('facture') }}">Retour à la liste</a>
-				<input type="submit" value="Nouveau" class="bouton greenB">
+		    <div class="pagination-right">
+		    	<a class="btn" href="{{ path('facture') }}">Retour à la liste</a>
+				<input class="btn btn-success" type="submit" value="Nouveau" >
 			</div>
 		</fieldset>
 	</form>
 </div>
-
 {% endblock %}

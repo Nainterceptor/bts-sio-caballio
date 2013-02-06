@@ -1,24 +1,6 @@
-			<div class="page-titre">
-				<div class="titre">
-	                <h1>Caballio</h1>
-	                <span>Le Poney Manager par excellence.</span>
-	            </div>
-    		</div>
-    		<div class="line"></div>
-            <div class="page-info">
-    			<div>
-                    <h5>
-	    				Acceuil
-	    			</h5>
-                    <ul class="breadcrumbs">
-                            {% block breadcrumbs %}
-                                <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-                            {% endblock %}
-                    </ul>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div id="main-container">
-                    {% block body %}{% endblock %}
-            </div>
-            <div class="line" style="margin-top: 50px;"></div>
+<ul class="breadcrumb">
+{% block breadcrumbs %}
+	<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+{% endblock %}
+</ul>
+{% block body %}{% endblock %}

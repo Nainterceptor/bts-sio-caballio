@@ -6,12 +6,9 @@
 </li>
 {% endblock %}
 {% block body %}
-
 <h2>Listes des centres</h2>
 {% if is_granted('ROLE_ADMIN') %}
-
 <a class="btn btn-success pull-right" href="{{ path('centre_new') }}">Ajouter</a>
-
 {% endif %}
 <table class="table table-striped">
     <thead>
@@ -50,5 +47,4 @@
     {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}

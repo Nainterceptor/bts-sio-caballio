@@ -1,8 +1,8 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block titre %}
-<h5>
-	Centres
-</h5>
+{% block hero %}
+<div class="page-header">
+    <h1>Centre</h1>
+</div>
 {% endblock %}
 {% block breadcrumbs %}
     {{ parent() }}

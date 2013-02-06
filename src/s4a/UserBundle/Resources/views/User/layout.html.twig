@@ -1,10 +1,9 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block titre %}
-<h5>
-	{{ 'user.title'|trans([], 'backoffice') }}
-</h5>
+{% block hero %}
+<div class="page-header">
+    <h1>{{ 'user.title'|trans([], 'backoffice') }}<br><small>{{ 'user.subtitle'|trans([], 'backoffice') }}</small></h1>
+</div>
 {% endblock %}
-{% block subtitle %}{{ 'user.subtitle'|trans([], 'backoffice') }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
  <li>

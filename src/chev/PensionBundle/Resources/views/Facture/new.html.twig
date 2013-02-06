@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
 <h2>Nouvelle facture</h2>
-<div class="span8">
+<div class="span6">
 	<form action="{{ path('facture_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}

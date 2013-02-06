@@ -83,6 +83,11 @@ class User extends BaseUser
      * )
      */
     protected $email;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Facture", mappedBy="utilisateur")
+     */
+    protected $factures;
     	
 	public function __construct() {
 		parent::__construct();

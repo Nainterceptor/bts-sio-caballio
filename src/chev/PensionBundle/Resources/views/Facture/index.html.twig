@@ -33,11 +33,11 @@
 	            <td class="id-td"><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 	            <td>{{ entity.utilisateur }}</td>
 	            <td>{{ entity.box }}</td>
-	            <td>{{ entity.cheval }}</td>
+	            <td>{{ entity.box.cheval }}</td>
 	            <td>
-	            	<p>Date de debut : {% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</p>
-	            	<p>Date de fin : {% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</p>
-	            	<p>Date d'ajout : {% if entity.dateFacture %}{{ entity.dateFacture|date('Y-m-d H:i:s') }}{% endif %}</p>
+	            	{% if entity.dateDebut %}<p>Date de debut : {{ entity.dateDebut|date('Y-m-d H:i:s') }}</p>{% endif %}
+	            	{% if entity.dateFin %}<p>Date de fin : {{ entity.dateFin|date('Y-m-d H:i:s') }}</p>{% endif %}
+	            	{% if entity.dateFacture %}<p>Date d'ajout : {{ entity.dateFacture|date('Y-m-d H:i:s') }}</p>{% endif %}
 	            </td>
 	            <td>
 	                <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">

@@ -40,7 +40,8 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/user-management, roles: ROLE_ADMIN }
+        - { path: ^/user-management/\d+/(edit|update|delete), roles: ROLE_ADMIN }
+        - { path: ^/user-management, roles: ROLE_GERANT }
         - { path: ^/centre/(new|create), roles: ROLE_ADMIN }
         - { path: ^/centre, roles: ROLE_GERANT }
         - { path: ^/centre/pature, roles: ROLE_GERANT }

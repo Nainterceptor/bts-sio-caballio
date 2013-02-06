@@ -46,19 +46,6 @@ class FactureType extends AbstractType
 		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
-            ->add('cheval', 'entity', array( 'label' => 'Le Cheval',
-											 'class' => 'chevChevalBundle:Cheval',
-											 'query_builder' => function($er) use ($user) {
-												if ($user->hasRole('ROLE_ADMIN')) {
-													return $er->createQueryBuilder('cheval');
-												}
-												return $er->createQueryBuilder('cheval')
-												->join('cheval.centre', 'c')
-												->where('c.gerant = :gerant')
-												->setParameter(':gerant', $user);
-											 }
-											)
-			)
             ->add('box', 'entity', array( 'label' => 'Le Box',
 											 'class' => 'chevBoxBundle:Box',
 											 'query_builder' => function($er) use ($user) {

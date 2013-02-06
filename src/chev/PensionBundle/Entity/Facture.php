@@ -50,13 +50,6 @@ class Facture
     private $dateFacture;
 
 	/**
-     * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
-     * @ORM\JoinColumn()
-     * @Assert\NotBlank()
-	 */
-	private $cheval;
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
      * @ORM\JoinColumn()
      * @Assert\NotBlank()
@@ -64,8 +57,8 @@ class Facture
 	private $box;
 		
 	/**
-	 * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
-     * @ORM\JoinColumn()
+	 * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User", inversedBy="factures")
+     * @ORM\JoinColumn(referencedColumnName="id")
      * @Assert\NotBlank()
 	 */
 	private $utilisateur;
@@ -158,29 +151,6 @@ class Facture
     public function getDateFacture()
     {
         return $this->dateFacture;
-    }
-
-    /**
-     * Set cheval
-     *
-     * @param \chev\ChevalBundle\Entity\Cheval $cheval
-     * @return Facture
-     */
-    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
-    {
-        $this->cheval = $cheval;
-    
-        return $this;
-    }
-
-    /**
-     * Get cheval
-     *
-     * @return \chev\ChevalBundle\Entity\Cheval 
-     */
-    public function getCheval()
-    {
-        return $this->cheval;
     }
 
     /**

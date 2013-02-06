@@ -1,17 +1,4 @@
-{% set error = true %}
-{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
-{% block title %}Erreur {{ status_code }}  - {{ parent() }}{% endblock %}
-{% block menu %}
-	{% spaceless %}
-	<ul>
-	    <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-	</ul>
-	{% endspaceless %}
-{% endblock %}
-{% block breadcrumbs %}
-{{ parent() }}
- <li>Erreur {{ status_code }}</li>
-{% endblock %}
+{% extends app.request.isXmlHttpRequest ?'::ajax_simpleoffice.html.twig':'::simpleoffice.html.twig' %}
 {% block body %}
 	<h2>Une erreur est survenue</h2>
     <p>Une erreur <b>{{ status_code }}</b> ({{ status_text }}) s'est produite, si cette dernière persiste, veuillez nous contacter.</p>

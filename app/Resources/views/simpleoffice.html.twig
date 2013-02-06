@@ -27,37 +27,19 @@
     			<div class="container-fluid">
     				<a class="brand" href="{{ path('front_homepage') }}">Caballio</a>
     				<div class="nav-collapse collapse">
-    					<div class="ajaxOn pull-right" style="display: none;">
-			                <label for="ajaxOn" class="btn btn-danger">AJAX</label>
-			                <input type="checkbox" id="ajaxOn" name="ajaxOn" style="display: none;">
-			            </div>
-			            <nav id="top">
-	    					{% block menuTop %}
-			                	{% render url('_menuTop') %}
-			            	{% endblock %}
-		            	</nav>
+						<ul class="nav">
+							<li><a href="{{ path('front_homepage') }}">Retour à l'accueil</a></li>
+						</ul>
     				</div>
     			</div>
     		</div>
     	</div>
     	<div class="container-fluid">
     		<div class="row-fluid">
-    			<div class="span3">
-    				<div class="well sidebar-nav">
-    					{% block menu %}
-		                	{% render url('_menu') %}
-		            	{% endblock %}
-    				</div>
-    			</div>
-    			<div class="span9">
+    			<div class="span12">
     				{% block hero %}
     				{% endblock %}
     				<div class="row-fluid">
-    					<ul class="breadcrumb">
-    					{% block breadcrumbs %}
-    						<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-                        {% endblock %}
-    					</ul>
     					{% block body %}{% endblock %}
     				</div>
     			</div>

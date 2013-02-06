@@ -8,4 +8,4 @@ _menuTop:
    pattern: /_menuTop
    defaults: { _controller: s4aMenuBundle:MenuTop:index }
    options:
-        expose: tue
+        expose: true

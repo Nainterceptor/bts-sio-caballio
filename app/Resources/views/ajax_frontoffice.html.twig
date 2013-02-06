@@ -1,6 +1,10 @@
-<ul class="breadcrumb">
-{% block breadcrumbs %}
-	<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+{% block hero %}
 {% endblock %}
-</ul>
-{% block body %}{% endblock %}
+<div class="row-fluid">
+	<ul class="breadcrumb">
+	{% block breadcrumbs %}
+		<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+    {% endblock %}
+	</ul>
+	{% block body %}{% endblock %}
+</div>

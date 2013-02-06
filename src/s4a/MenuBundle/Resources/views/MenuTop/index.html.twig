@@ -1,4 +1,11 @@
 {% spaceless %}
+<p class="navbar-text pull-right cab-login">
+	{% if is_granted('ROLE_USER') %}
+	<a class="btn btn-primary" href="{{ path('fos_user_security_logout')}}">Déconnexion</a>
+	{% else %}
+	<a class="btn btn-primary" href="{{ path('fos_user_security_login')}}">Connexion</a>
+	{% endif %}
+</p>
 <ul class="nav">
 	<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
 	{% if is_granted('ROLE_GERANT') %}

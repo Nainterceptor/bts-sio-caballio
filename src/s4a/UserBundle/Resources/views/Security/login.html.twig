@@ -1,10 +1,7 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-{% block fos_user_content %}
-<div class="row">
+{% extends app.request.isXmlHttpRequest ?'::ajax_simpleoffice.html.twig':'::simpleoffice.html.twig' %}
+{% block body %}
 	{% if error %}
-	<ul class="error_login">
-		<li>{{ error|trans([], 's4aUserBundle') }}</li>
-	</ul>
+	<div class="alert alert-error">{{ error|trans([], 's4aUserBundle') }}</div>
 	{% endif %}
 	<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
 		<h2>Se connecter</h2>
@@ -21,5 +18,4 @@
     	
 	    <input class="btn btn-large btn-primary" type="submit" id="_submit" name="_submit" value="Envoyer" />
 	</form>
-</div>
-{% endblock fos_user_content %}
+{% endblock %}

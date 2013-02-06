@@ -6,18 +6,11 @@
 </li>
 {% endblock %}
 {% block body %}
-
+<h2>Liste des équipements</h2>
 {% if is_granted('ROLE_GERANT') %}
-<div class="container-control">
-	<a class="bouton greenB" href="{{ path('equipement_new') }}">Ajouter</a>
-</div>
+<a class="btn btn-success pull-right" href="{{ path('equipement_new') }}">Ajouter</a>
 {% endif %}
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
-		<h6>Liste des équipements</h6>
-	</div>
-	<table cellpadding="0" cellspacing="0" width="100%" class="clear">
+<table class="table table-striped">
 	    <thead>
 	        <tr>
 	            <th>Id</th>
@@ -37,15 +30,14 @@
 	            <td>{{ entity.centre }}</td>
 	            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y H:i:s') }}{% endif %}</td>
 	            <td>
-	                <a href="{{ path('equipement_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
-	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
-	                </a>
-	                {% if is_granted('ROLE_GERANT') %}
-	    			<a href="{{ path('equipement_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
-	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
-	    			</a>
-	    			{% endif %}
-	            </td>
+                <a href="{{ path('equipement_show', { 'id': entity.id }) }}" class="btn">
+                	Voir
+                </a>
+                {% if is_granted('ROLE_GERANT') %}
+    			<a href="{{ path('equipement_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+    				Modifier
+    			</a>
+    			{% endif %}
 	        </tr>
 	    {% endfor %}
 	    </tbody>

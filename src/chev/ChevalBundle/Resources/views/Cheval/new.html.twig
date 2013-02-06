@@ -3,23 +3,19 @@
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-     <a href="{{ path('cheval_new') }}">Nouveau</a>
+    <a href="{{ path('cheval_new') }}">Nouveau</a>
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>Nouveau cheval</h6>
-	</div>
+<h2>Nouveau cheval</h2>
+<div class="span6">
 	<form action="{{ path('cheval_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}
-		    <div class="form-bouton">
-		    	<a class="bouton basic" href="{{ path('cheval') }}">Retour à la liste</a>
-				<input type="submit" value="Nouveau" class="bouton greenB">
-			</div>
+		    <div class="pagination-right">
+		    	<a class="btn" href="{{ path('cheval') }}">Retour à la liste</a>
+				<input class="btn btn-success" type="submit" value="Nouveau" >
+		    </div>
 		</fieldset>
 	</form>
 </div>

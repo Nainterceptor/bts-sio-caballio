@@ -19,7 +19,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td class="id-td"><a href="{{ path('paiement_type_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('paiement_type_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
             <td>
                 <a href="{{ path('paiement_type_show', { 'id': entity.id }) }}" class="btn" title="Voir">

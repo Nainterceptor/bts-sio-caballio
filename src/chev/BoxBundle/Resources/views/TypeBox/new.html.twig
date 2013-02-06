@@ -1,22 +1,18 @@
 {% extends 'chevBoxBundle:TypeBox:layout.html.twig' %}
 {% block breadcrumbs %}
-    {{ parent() }}
+{{ parent() }}
     <li><a href="{{ path('centre_typebox_new')}}">Nouveau</a></li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>Création d'un type de box</h6>
-	</div>
+<h2>Création d'un type de box</h2>
+<div class="span6">
 	<form action="{{ path('centre_typebox_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}
-		    <div class="form-bouton">
-		    	<a class="bouton basic" href="{{ path('centre_typebox') }}">Retour à la liste</a>
-				<input type="submit" value="Nouveau" class="bouton greenB">
-			</div>
+		    <div class="pagination-right">
+		    	<a class="btn" href="{{ path('centre_typebox') }}">Retour à la liste</a>
+				<input class="btn btn-success" type="submit" value="Nouveau" >
+		    </div>
 		</fieldset>
 	</form>
 </div>

@@ -7,18 +7,12 @@
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>Modifier le type de paiement</h6>
-	</div>
+<h2>Modifier le type de paiement</h2>
+<div class="6">
 	<form action="{{ path('paiement_type_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 		<fieldset>
 	       	{{ form_rest(edit_form) }}
-	       	<div class="form-bouton">
-				<input type="submit" value="Modifier" class="bouton greenB">
-			</div>
+			<input type="submit" value="Modifier" class="btn btn-success">
 		</fieldset>
 	</form>
 </div>

@@ -8,12 +8,10 @@
 {% endblock %}
 {% block body %}
 
-<div class="half-container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
-		<h6>Voir le centre</h6>
-	</div>
-	<table class="record_properties">
+<h2>Voir le centre</h2>
+<row
+<div class="span6">
+	<table class="table table-hover">
 	    <tbody>
 	        <tr>
 	            <th>Id</th>
@@ -46,12 +44,16 @@
 	    </tbody>
 	</table>
 </div>
-<div class="half-container-control">
-	<a href="{{ path('centre') }}" class="bouton basic">Retour à la liste</a>
-	<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
-	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
+<div class="row-fluid">
+	<div class="span2">
+		<form class="span1" onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}
-        	<button type="submit" class="redB bouton">Supprimer</button>
-    </form>
+        	<button type="submit" class="btn btn-danger">Supprimer</button>
+    	</form>
+	</div>
+	<div class="span3 offset2">
+		<a href="{{ path('centre') }}" class="btn">Retour à la liste</a>
+		<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+	</div>
 </div>
 {% endblock %}

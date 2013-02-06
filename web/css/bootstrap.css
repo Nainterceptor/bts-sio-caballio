@@ -6057,3 +6057,9 @@ body {
 	max-width: 300px;
 	padding: 19px 29px 29px;
 }
+.breadcrumb li:after {
+    content: " / ";
+}
+.breadcrumb li:last-child:after {
+    content: "";
+}

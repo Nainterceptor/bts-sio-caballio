@@ -54,6 +54,11 @@
     					<p>Text de présentation inutile de l'application ou un message de bienvenue pour faire genre.</p>
     				</div>
     				<div class="row-fluid">
+    					<ul class="breadcrumb">
+    					{% block breadcrumbs %}
+    						<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
+                        {% endblock %}
+    					</ul>
     					{% block body %}{% endblock %}
     				</div>
     			</div>

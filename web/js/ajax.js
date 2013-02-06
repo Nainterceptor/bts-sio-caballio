@@ -16,7 +16,7 @@ function refreshContent(html, url) {
 function aInAjax() {
     $("a").unbind("click");
 	$("a").bind("click", function() {
-		if($("div.ajaxOn input#ajaxOn").is(':checked')) {
+		if($("div.ajaxOn input#ajaxOn").attr('checked') == 'checked') {
 			var targetUrl = $(this).attr('href')
 			$.ajax({
 				url : targetUrl, 
@@ -30,7 +30,7 @@ function aInAjax() {
 	});
 	$("form").unbind("submit");
 	$("form").bind("submit", function() {
-		if($("div.ajaxOn input#ajaxOn").is(':checked')) {
+		if($("div.ajaxOn input#ajaxOn").attr('checked') == 'checked') {
 			var data = $("form").serialize();
 			var type = "POST";
 			var url = "";
@@ -54,7 +54,7 @@ function aInAjax() {
 	
 }
 function styleAjax() {
-	$("div.ajaxOn label").stop(true, true).click(function() {
+	$("div.ajaxOn label").click(function() {
 		if($(this).hasClass('btn-success')) {
 			$("div.ajaxOn input#ajaxOn").attr('checked', false);
 			$(this).removeClass('btn-success');

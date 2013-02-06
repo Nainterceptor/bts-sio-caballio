@@ -1,5 +1,5 @@
 function refreshContent(html, url) {
-	$('body > section').html(html);
+	$('body .span9 .row-fluid').html(html);
 	window.history.pushState(document.title, document.title, url);
 	if(url.match(/login_check|logout/) != null) {
 		$.ajax({

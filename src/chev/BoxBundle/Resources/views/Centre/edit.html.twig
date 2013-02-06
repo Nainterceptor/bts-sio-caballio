@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
 <h2>Modifier ce centre</h2>
-<div class="span8">
+<div class="span6">
 	<form action="{{ path('centre_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 		<fieldset>
 	       	{{ form_rest(edit_form) }}

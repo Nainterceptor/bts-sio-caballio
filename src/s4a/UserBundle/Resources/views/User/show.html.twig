@@ -1,132 +1,133 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
-{% block title %}{{ 'user.show.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
-{% block subtitle %}{{ 'user.show.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
- <li class="current">
-      <a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ 'user.show.title'|trans([], 'backoffice') }}</a>
- </li>
- {% endblock %}
+<li class="current">
+	<a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ 'user.show.title'|trans([], 'backoffice') }}</a>
+</li>
+{% endblock %}
 {% block body %}
-<div class="half-container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
-		<h6>{{ 'user.show.genericInformations'|trans([], 'backoffice') }}</h6>
-	</div>
-	<table width="100%" cellspacing="0" cellpadding="0" class="item-list clear">
-	    <tbody>
-	        <tr>
-	            <th style="width: 250px;">{{ 'user.label.id'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.id }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.username'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.username }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.email'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.email }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.enabled'|trans([], 'backoffice') }}</th>
-	            <td>
-	            	{% if entity.enabled %}
-	            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
-	            	{% else %}
-	            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
-	            	{% endif %}
-	            </td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.lastlogin'|trans([], 'backoffice') }}</th>
-	            <td>
-	            	{% if entity.lastLogin is not empty %}
-	            		{{ entity.lastLogin|date('datetime'|trans) }}
-	            	{% else %}
-	            		{{ 'never'|trans }}
-	            	{% endif %}
-	            </td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.locked'|trans([], 'backoffice') }}</th>
-	            <td>
-	            	{% if entity.locked %}
-	            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
-	            	{% else %}
-	            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
-	            	{% endif %}
-	            </td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.expired'|trans([], 'backoffice') }}</th>
-	            <td>
-	            	{% if entity.expired %}
-	            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
-	            	{% else %}
-	            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
-	            	{% endif %}
-	            </td>
-	        </tr>
-	        {% if entity.confirmationToken is not empty %}
+<div class="row-fluid">
+	<div class="span6">
+		<h2>{{ 'user.show.genericInformations'|trans([], 'backoffice') }}</h2>
+		<table class="table table-hover">
+		    <tbody>
 		        <tr>
-		            <th>{{ 'user.label.confirmationtoken'|trans([], 'backoffice') }}</th>
-		            <td>{{ entity.confirmationToken }}</td>
+		            <th>{{ 'user.label.id'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.id }}</td>
 		        </tr>
-	        {% endif %}
-	        <tr>
-	            <th>{{ 'user.label.roles'|trans([], 'backoffice') }}</th>
-	            <td>
-	            	<ul>
-		            	{% for role in entity.roles %}
-		            		<li>- {{ role }}</li>
-		            	{% endfor %}
-	            	</ul>
-	            </td>
-	        </tr>
-	    </tbody>
-	</table>
-</div>
-<div class="half-container-right">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
-		<h6>{{ 'user.show.personnalInformations'|trans([], 'backoffice') }}</h6>
+		        <tr>
+		            <th>{{ 'user.label.username'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.username }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.email'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.email }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.enabled'|trans([], 'backoffice') }}</th>
+		            <td>
+		            	{% if entity.enabled %}
+		            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+		            	{% else %}
+		            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+		            	{% endif %}
+		            </td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.lastlogin'|trans([], 'backoffice') }}</th>
+		            <td>
+		            	{% if entity.lastLogin is not empty %}
+		            		{{ entity.lastLogin|date('datetime'|trans) }}
+		            	{% else %}
+		            		{{ 'never'|trans }}
+		            	{% endif %}
+		            </td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.locked'|trans([], 'backoffice') }}</th>
+		            <td>
+		            	{% if entity.locked %}
+		            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+		            	{% else %}
+		            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+		            	{% endif %}
+		            </td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.expired'|trans([], 'backoffice') }}</th>
+		            <td>
+		            	{% if entity.expired %}
+		            		<img alt="{{ 'yes'|trans }}" src="/images/Backoffice/icons/dark/check.png">
+		            	{% else %}
+		            		<img alt="{{ 'no'|trans }}" src="/images/Backoffice/icons/dark/close.png">
+		            	{% endif %}
+		            </td>
+		        </tr>
+		        {% if entity.confirmationToken is not empty %}
+			        <tr>
+			            <th>{{ 'user.label.confirmationtoken'|trans([], 'backoffice') }}</th>
+			            <td>{{ entity.confirmationToken }}</td>
+			        </tr>
+		        {% endif %}
+		        <tr>
+		            <th>{{ 'user.label.roles'|trans([], 'backoffice') }}</th>
+		            <td>
+		            	<ul>
+			            	{% for role in entity.roles %}
+			            		<li>{{ role }}</li>
+			            	{% endfor %}
+		            	</ul>
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
 	</div>
-	<table width="100%" cellspacing="0" cellpadding="0" class="item-list clear">
-	    <tbody>
-	    	<tr>
-	            <th style="width: 250px;">{{ 'user.label.firstname'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.firstname }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.lastname'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.lastname }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.sex'|trans([], 'backoffice') }}</th>
-	            <td>{{ ('choice.sex.' ~ entity.sex)|trans }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.adress'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.adress }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.zipcode'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.zipcode }}</td>
-	        </tr>
-	        <tr>
-	            <th>{{ 'user.label.city'|trans([], 'backoffice') }}</th>
-	            <td>{{ entity.city }}</td>
-	        </tr>
-	    </tbody>
-	</table>
+	<div class="span6">
+		<h2>{{ 'user.show.personnalInformations'|trans([], 'backoffice') }}</h2>
+		<table class="table table-hover">
+		    <tbody>
+		    	<tr>
+		            <th>{{ 'user.label.firstname'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.firstname }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.lastname'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.lastname }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.sex'|trans([], 'backoffice') }}</th>
+		            <td>{{ ('choice.sex.' ~ entity.sex)|trans }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.adress'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.adress }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.zipcode'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.zipcode }}</td>
+		        </tr>
+		        <tr>
+		            <th>{{ 'user.label.city'|trans([], 'backoffice') }}</th>
+		            <td>{{ entity.city }}</td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
 </div>
-<div class="container-control">
-	<a href="{{ path('s4admin_user') }}" class="bouton basic">Retour à la liste</a>
-	{% if is_granted('ROLE_ADMIN')%}<a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
-	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
+<div class="row-fluid">
+	<div class="span6">
+		{% if is_granted('ROLE_ADMIN')%}
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
         	{{ form_widget(delete_form) }}
-        	<button type="submit" class="redB bouton">Supprimer</button>
-    </form>{% endif %}
+        	<button type="submit" class="btn btn-danger">Supprimer</button>
+    	</form>
+    	{% endif %}
+	</div>
+	<div class="span6 pagination-right">
+		<a href="{{ path('s4admin_user') }}" class="btn">Retour à la liste</a>
+		{% if is_granted('ROLE_ADMIN')%}
+		<a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+		{% endif %}
+	</div>
 </div>
-
 {% endblock %}

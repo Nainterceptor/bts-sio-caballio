@@ -43,7 +43,7 @@
 	</table>
 	<div class="row-fluid">
 		<div class="span6">
-			<form class="span1" onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
 	        	{{ form_widget(delete_form) }}
 	        	<button type="submit" class="btn btn-danger">Supprimer</button>
 	    	</form>

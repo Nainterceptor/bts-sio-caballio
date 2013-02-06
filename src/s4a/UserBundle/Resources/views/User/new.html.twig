@@ -1,29 +1,22 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
 {% form_theme form 's4aUserBundle:Form:form.html.twig' %}
-{% block title %}{{ 'user.new.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
-{% block subtitle %}{{ 'user.new.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
-<li class="current">
-     <a href="{{ path('s4admin_user_new') }}">{{ 'user.new.title'|trans([], 'backoffice') }}</a>
+<li>
+    <a href="{{ path('s4admin_user_new') }}">{{ 'user.new.title'|trans([], 'backoffice') }}</a>
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>{{ 'user.new.title'|trans([], 'backoffice') }}</h6>
-	</div>
+<h2>{{ 'user.new.title'|trans([], 'backoffice') }}</h2>
+<div class="span8">
 	<form action="{{ path('s4admin_user_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}
-		    <div class="form-bouton">
-		    	<a class="bouton basic" href="{{ path('s4admin_user') }}">Retour à la liste</a>
-				<input type="submit" value="Nouveau" class="bouton greenB">
+		    <div class="pagination-right">
+		    	<a class="btn" href="{{ path('s4admin_user') }}">Retour à la liste</a>
+				<input type="submit" value="Nouveau" class="btn btn-success">
 			</div>
 		</fieldset>
 	</form>
 </div>
-
 {% endblock %}

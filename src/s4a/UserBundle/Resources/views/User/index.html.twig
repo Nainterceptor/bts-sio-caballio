@@ -1,61 +1,51 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
-{% block title %}{{ 'user.index.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
-{% block subtitle %}{{ 'user.index.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
- <li class="current">
-      <a href="{{ path('s4admin_user') }}">{{ 'user.index.title'|trans([], 'backoffice') }}</a>
- </li>
- {% endblock %}
-
+<li>
+	<a href="{{ path('s4admin_user') }}">{{ 'user.index.title'|trans([], 'backoffice') }}</a>
+</li>
+{% endblock %}
 {% block body %}
-
-<div class="container-control">
-	<a class="bouton greenB" href="{{ path('s4admin_user_new') }}">Ajouter</a>
-</div>
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/frames.png') }}">
-		<h6>{{ 'user.title'|trans([], 'backoffice') }}</h6>
-	</div>
-	<table cellpadding="0" cellspacing="0" width="100%" class="item-list clear">
-        <thead>
-            <tr>
-            	<th>{{ 'user.label.id'|trans([], 'backoffice') }}</th>
-                <th>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
-                <th>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
-                <th>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-		    {% for entity in entities %}
-	        <tr>
-	        	<td>{{ entity.id }}</td>
-	        	<td><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
-	        	<td>{{ entity.city }}</td>
-	        	<td>{{ entity.email }}</td>
-	    		<td>
-	                <a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}" class="smallButton" title="Voir">
-	                	<img src="{{ asset('/images/bouton/magnify.png') }}" />
-	                </a>
-	    			{% if is_granted('ROLE_ADMIN')%}<a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}" class="smallButton" title="Modifier">
-	    				<img src="{{ asset('/images/bouton/pencil.png') }}" />
-	    			</a>{% endif %}
-	            </td>
-	        </tr>
-		    {% else %}
-	    	<tr>
-	    		<td colspan="5">Aucun utilisateur existant</td>
-	    	</tr>
-		    {% endfor %}
-        </tbody>
-    </table>
-</div>
+<h2>{{ 'user.title'|trans([], 'backoffice') }}</h2>
+<a class="btn btn-success pull-right" href="{{ path('s4admin_user_new') }}">Ajouter</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        	<th>{{ 'user.label.id'|trans([], 'backoffice') }}</th>
+            <th>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
+            <th>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
+            <th>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+	    {% for entity in entities %}
+        <tr>
+        	<td>{{ entity.id }}</td>
+        	<td><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+        	<td>{{ entity.city }}</td>
+        	<td>{{ entity.email }}</td>
+    		<td>
+                <a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}" class="btn">
+                	Voir
+                </a>
+    			{% if is_granted('ROLE_ADMIN')%}
+    			<a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+    				Modifier
+    			</a>
+    			{% endif %}
+            </td>
+        </tr>
+	    {% else %}
+    	<tr>
+    		<td colspan="5">Aucun utilisateur existant</td>
+    	</tr>
+	    {% endfor %}
+    </tbody>
+</table>
 {% if numberPages > 1 %}
     <div class="pagination">
-			<ul class="pages">
+			<ul>
 				{% if currentPage > 1 %}
 					<li class="prev"><a href="{{ path('s4admin_user', {page:1})}}">&lt;&lt;</a></li>
 					<li class="prev"><a href="{{ path('s4admin_user', {page:(currentPage-1)})}}">&lt;</a></li>

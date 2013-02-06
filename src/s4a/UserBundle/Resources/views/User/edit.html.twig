@@ -1,38 +1,33 @@
 {% extends 's4aUserBundle:User:layout.html.twig' %}
 {% form_theme edit_form 's4aUserBundle:Form:form.html.twig' %}
-{% block title %}{{ 'user.edit.title'|trans([], 'backoffice') }} - {{ parent() }}{% endblock %}
-{% block subtitle %}{{ 'user.edit.subtitle'|trans([], 'backoffice') }}<br />{{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
-<li class="current">
+<li>
 	<a href="{{ path('s4admin_user_edit', { 'id': entity.id }) }}">{{ 'user.edit.title'|trans([], 'backoffice') }}</a>
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/list.png') }}">
-		<h6>{{ 'user.edit.title'|trans([], 'backoffice') }}</h6>
-	</div>
+<h2>{{ 'user.edit.title'|trans([], 'backoffice') }}</h2>
+<div class="span8">
 	<form action="{{ path('s4admin_user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 		<fieldset>
-	       	{{ form_rest(edit_form) }}
-	       	<div class="form-bouton">
-				<input type="submit" value="{{ 'user.edit.title'|trans([], 'backoffice') }}" class="bouton greenB">
-			</div>
+		   	{{ form_rest(edit_form) }}
+			<input class="btn btn-success pull-right" type="submit" value="{{ 'user.edit.title'|trans([], 'backoffice') }}">
 		</fieldset>
 	</form>
+	<div class="row-fluid">
+		<div class="span6">
+		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
+	    	{{ form_widget(delete_form) }}
+	    	<button type="submit" class="btn btn-danger">Supprimer</button>
+		</form>
+		</div>
+		<div class="span6 pagination-right">
+			<a href="{{ path('s4admin_user') }}" class="btn">Retour à la liste</a>
+			<a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}" class="btn btn-primary">Voir</a>
+		</div>
+	</div>
 </div>
-<div class="container-control">
-	<a href="{{ path('s4admin_user') }}" class="bouton basic">Retour à la liste</a>
-	<a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}" class="bouton blueB">Voir</a>
-	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('s4admin_user_delete', { 'id': entity.id }) }}" method="post">
-    	{{ form_widget(delete_form) }}
-    	<button type="submit" class="bouton redB">Supprimer</button>
-	</form>
-</div>
-
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}

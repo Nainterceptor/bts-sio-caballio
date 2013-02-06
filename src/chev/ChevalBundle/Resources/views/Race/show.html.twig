@@ -7,13 +7,9 @@
 </li>
 {% endblock %}
 {% block body %}
-
-<div class="half-container">
-	<div class="title">
-		<img class="titleIcon" alt="" src="{{ asset('/images/preview.png') }}">
-		<h6>Voir la race</h6>
-	</div>
-	<table class="record_properties">
+<h2>Voir la race</h2>
+<div class="span6">
+	<table class="table table-hover">
 	    <tbody>
 	        <tr>
 	            <th>Id</th>
@@ -29,13 +25,17 @@
 	        </tr>
 	    </tbody>
 	</table>
-</div>
-<div class="half-container-control">
-	<a href="{{ path('cheval_race') }}" class="bouton basic">Retour à la liste</a>
-	<a href="{{ path('cheval_race_edit', { 'id': entity.id }) }}" class="bouton brownB">Editer</a>
-	<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_race_delete', { 'id': entity.id }) }}" method="post">
-        	{{ form_widget(delete_form) }}
-        	<button type="submit" class="redB bouton">Supprimer</button>
-    </form>
+	<div class="row-fluid">
+		<div class="span6">
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_race_delete', { 'id': entity.id }) }}" method="post">
+	        	{{ form_widget(delete_form) }}
+	        	<button type="submit" class="btn btn-danger">Supprimer</button>
+	    	</form>
+		</div>
+		<div class="span6 pagination-right">
+			<a href="{{ path('cheval_race') }}" class="btn">Retour à la liste</a>
+			<a href="{{ path('cheval_race_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+		</div>
+	</div>
 </div>
 {% endblock %}

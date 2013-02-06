@@ -53,7 +53,21 @@ function aInAjax() {
 	});
 	
 }
+function styleAjax() {
+	$("div.ajaxOn label").click(function() {
+		if($("div.ajaxOn input#ajaxOn").is(':checked')) {
+			$("div.ajaxOn input#ajaxOn").attr('checked', false);
+			$(this).removeClass('btn-success');
+			$(this).addClass('btn-danger');
+		} else {
+			$("div.ajaxOn input#ajaxOn").attr('checked', true);
+			$(this).removeClass('btn-danger');
+			$(this).addClass('btn-success');
+		}
+	});
+}
 $(document).ready(function() {
 	aInAjax();
 	$("div.ajaxOn").show();
+	styleAjax();
 });

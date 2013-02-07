@@ -47,4 +47,26 @@ body {
 #blackWait .row-fluid {
 	position:fixed;
 	top: 10%;
+	margin: 0 auto;
+}
+#blackWait .row-fluid.poneyAngry {
+	background: url(/images/upset_poney.png) 10px center no-repeat white;
+	padding-left: 225px;
+	min-height: 230px;
+	width: 250px;
+	left: 30px;
+}
+#blackWait .row-fluid.poneyAngry:after { 
+	bottom: 100%; 
+	border: solid transparent; 
+	content: " "; 
+	height: 0; 
+	width: 0; 
+	position: absolute; 
+	pointer-events: none; 
+	border-color: rgba(255, 255, 255, 0); 
+	border-bottom-color: #fff; 
+	border-width: 30px; 
+	left: 50%; 
+	margin-left: -30px;
 }

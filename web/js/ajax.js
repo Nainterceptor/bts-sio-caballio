@@ -11,7 +11,7 @@ function refreshContent(html, url) {
 			url : Routing.generate('_menuTop'),
 			cache : false,
 			success : function(html) {
-				$('nav.top').html(html);
+				$('nav#top').html(html);
 				aInAjax();
 			},
 		});
@@ -19,7 +19,7 @@ function refreshContent(html, url) {
 			url : Routing.generate('_menu'),
 			cache : false,
 			success : function(html) {
-				$('well sidebar-nav').html(html);
+				$('.well.sidebar-nav').html(html);
 				aInAjax();
 			},
 		});
@@ -35,9 +35,17 @@ function aInAjax() {
 			$.ajax({
 				url : targetUrl, 
 				cache : false, 
-				complete : function(html) {
+				success : function(html) {
 					refreshContent(html, targetUrl);
 				},
+				error: function(XHR, textStatus) {
+					toggleBlackGround(true);
+					$('#blackWait').html(generateError(XHR.status, XHR.statusText));
+					$('#blackWait').unbind('click');
+					$('#blackWait').bind('click', function() {
+						$('#blackWait').remove();
+					});
+				}
 			});
 			return false;
 		}
@@ -59,8 +67,16 @@ function aInAjax() {
 				url: url,
 				data: data,
 				type: type,
-				complete : function(html) {
+				success : function(html) {
 					refreshContent(html, url);
+				},
+				error: function(XHR, textStatus) {
+					toggleBlackGround(true);
+					$('#blackWait').html(generateError(XHR.status, XHR.statusText));
+					$('#blackWait').unbind('click');
+					$('#blackWait').bind('click', function() {
+						$('#blackWait').remove();
+					});
 				}
 			});
 			return false;
@@ -103,6 +119,9 @@ function toggleLoading(force) {
 		$('#blackWait').remove();
 		return false;
 	}
+}
+function generateError(code, message) {
+	return '<div class="row-fluid poneyAngry form-signin"><h2>Erreur ' + code + '</h2><p>' + message + '</p></div>'
 }
 $(document).ready(function() {
 	aInAjax();

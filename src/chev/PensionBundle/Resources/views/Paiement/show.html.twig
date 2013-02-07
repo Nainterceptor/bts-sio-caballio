@@ -16,6 +16,10 @@
 	            <td>{{ entity.id }}</td>
 	        </tr>
 	        <tr>
+	        	<th>Facture</th>
+	        	<td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">{{ entity.facture }}</a></td>
+	        </tr>
+	        <tr>
 	            <th>Montant</th>
 	            <td>{{ entity.montant }} €</td>
 	        </tr>

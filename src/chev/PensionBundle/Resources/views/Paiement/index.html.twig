@@ -12,6 +12,7 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Facture</th>
             <th>Date de paiement</th>
             <th>Date d'encaissement</th>
             <th>Montant</th>
@@ -22,6 +23,7 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('paiement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">{{ entity.facture }}</a></td>
             <td>{% if entity.datePaiement %}{{ entity.datePaiement|date('d/m/Y H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateEncaissement %}{{ entity.dateEncaissement|date('d/m/Y H:i:s') }}{% endif %}</td>
             <td>{{ entity.montant }} €</td>

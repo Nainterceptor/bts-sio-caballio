@@ -70,3 +70,6 @@ body {
 	left: 50%; 
 	margin-left: -30px;
 }
+#ui-datepicker-div {
+	z-index: 2000!important;
+}

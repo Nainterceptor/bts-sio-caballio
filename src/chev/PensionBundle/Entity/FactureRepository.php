@@ -15,20 +15,18 @@ class FactureRepository extends EntityRepository
 {
 	private function retourneFacture($facture) {
 		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-        $intervalJours = $intervalDates->days;
-		if ($intervalJours > 0 && $intervalJours != 0) {
-			if ($intervalJours > 31) {
-				$nbMois = round($intervalJours/30, 0, PHP_ROUND_HALF_UP);
+		if ($intervalDates->days > 0 && $intervalDates->days != 0) {
+			$intervalJours = $intervalDates->d;
+			$intervalMois = $intervalDates->m;
+			if ($intervalJours > 0) {
+				$intervalMois ++;
 			}
-			else {
-				$nbMois = 1;
-			}
-			$facture['nbJours'] = $intervalJours;
-			$facture['montant'] = $nbMois*$facture['prix'] . " €";
+			$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
+			$facture['montant'] = $intervalMois*$facture['prix'] . " €";
         	return $facture;
 		}
 		else {
-			$facture['nbJours'] = $intervalJours;
+			$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
 			$facture['montant'] = "Erreur sur le Bail";
 			return $facture;
 		}

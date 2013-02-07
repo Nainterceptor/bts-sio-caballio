@@ -8,7 +8,7 @@
 
 {% if is_granted ('ROLE_GERANT') %}
 	<p>Bienvenue {{ app.user.username }} sur la page d'accueil du site de gestion Equestre Caballio.</p>
-	<p>Içi vous pourrez administrer votre entreprise grâce aux outils intégrés.</p>
+	<p>Ici vous pourrez administrer votre entreprise grâce aux outils intégrés.</p>
 	<p>Vous pouvez gérer:</p>
 	   <ul class="ul-accueil">
 	      <li><a href="{{ path('centre')}}">Votre/Vos centre(s)</a></li>

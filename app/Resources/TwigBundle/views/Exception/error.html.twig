@@ -1,5 +1,8 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_simpleoffice.html.twig':'::simpleoffice.html.twig' %}
 {% block body %}
-	<h2>Une erreur est survenue</h2>
-    <p>Une erreur <b>{{ status_code }}</b> ({{ status_text }}) s'est produite, si cette dernière persiste, veuillez nous contacter.</p>
+<div class="span12 pagination-centered">
+	<img src="{{ asset('/images/upset_poney.png') }}" />
+	<h1>ooops ! Une erreur est survenue</h1>
+	<h2>Une erreur <b>{{ status_code }}</b> ({{ status_text }}) s'est produite, si cette dernière persiste, veuillez nous contacter.}</h2>
+</div>
 {% endblock %}

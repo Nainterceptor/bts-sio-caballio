@@ -48,3 +48,6 @@ body {
 	position:fixed;
 	top: 10%;
 }
+#ui-datepicker-div {
+	z-index: 2000!important;
+}

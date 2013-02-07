@@ -32,8 +32,8 @@
 	            <td>{% if entity.utilise %}oui{% else %}non{% endif %}</td>
 	        </tr>
 	        <tr>
-	            <th>Date</th>
-	            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+	            <th>Date d'ajout</th>
+	            <td>{{ entity.date|date('d/m/Y') }}</td>
 	        </tr>
 	    </tbody>
 	</table>

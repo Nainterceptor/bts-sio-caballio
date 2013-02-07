@@ -23,12 +23,8 @@
 	            <td>{{ entity.type.libelle }}</td>
 	        </tr>
 	        <tr>
-	            <th>Date</th>
-	            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
-	        </tr>
-	        <tr>
 	            <th>Date d'ajout</th>
-	            <td>{{ entity.dateAjout|date('Y-m-d H:i:s') }}</td>
+	            <td>{{ entity.dateAjout|date('d-m-Y') }}</td>
 	        </tr>
 	    </tbody>
 	</table>

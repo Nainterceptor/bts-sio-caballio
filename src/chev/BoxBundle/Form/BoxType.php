@@ -16,14 +16,6 @@ class BoxType extends AbstractType
     {
         $user = $this->user;
         $builder
-            ->add('date', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
             ->add('type', 'entity', array(  
             									'label' => 'Type de box',
                                            	    'class' => 'chevBoxBundle:TypeBox',

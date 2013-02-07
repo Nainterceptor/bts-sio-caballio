@@ -38,14 +38,6 @@ class PatureType extends AbstractType
                                                 'choices' => array(true => 'oui', false => 'non')
 										)
                 )
-            ->add('date', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
         ;
     }
 

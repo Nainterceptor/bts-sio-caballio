@@ -68,9 +68,9 @@ class Centre
     /**
      * @var \DateTime $date
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date")
      * @Assert\NotBlank()
-     * @Assert\DateTime()
+     * @Assert\Date()
      */
     private $date;
 

@@ -15,13 +15,10 @@ class CentreType extends AbstractType
             ->add('adresse')
             ->add('codePostal')
             ->add('ville')
-            ->add('date', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
+            ->add('date', 'date', array(
+            									'widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
+                                                'format' => 'dd/MM/yyyy',
                                                 'attr' => array('class' => 'datetimepicker')
                                         )
                 )

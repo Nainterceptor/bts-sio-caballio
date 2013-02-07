@@ -32,8 +32,8 @@
 				<p>{{ entity.codePostal }}</p>
             	<p>{{ entity.ville }}</p></td>
         	<td>
-        		<p>Date d'ajout : {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</p>
-            	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('Y-m-d H:i:s') }}{% endif %}</p>
+        		<p>Date d'ajout : {% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</p>
+            	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</p>
             </td>
             <td>
                 <a href="{{ path('centre_show', { 'id': entity.id }) }}" class="btn">

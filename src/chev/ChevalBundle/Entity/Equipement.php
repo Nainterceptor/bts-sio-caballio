@@ -35,8 +35,6 @@ class Equipement
      * @var \DateTime $dateAjout
      *
      * @ORM\Column(name="dateAjout", type="datetime")
-     * @Assert\NotBlank()
-     * @Assert\DateTime()
      */
     private $dateAjout;
 

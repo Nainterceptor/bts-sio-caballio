@@ -16,6 +16,7 @@
 	            <th>Taille</th>
 	            <th>Prix</th>
 	            <th>Centre</th>
+	            <th>Date d'ajout</th>
 	            <th>Actions</th>
 	        </tr>
 	    </thead>
@@ -27,6 +28,7 @@
 	            <td>{{ entity.volume }} m²</td>
 	            <td>{{ entity.prix }}€ / mois</td>
 	            <td>{% if entity.centre %}{{ entity.centre }}{% endif %}</td>
+	            <td>{{ entity.dateAjout|date('d/m/Y') }}</td>
 	            <td>
 	                <a href="{{ path('centre_typebox_show', { 'id': entity.id }) }}" class="btn">
 	                	Voir

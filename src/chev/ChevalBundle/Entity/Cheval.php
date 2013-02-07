@@ -43,8 +43,6 @@ class Cheval
      * @var \DateTime $date
      *
      * @ORM\Column(name="date", type="datetime")
-     * @Assert\NotBlank()
-     * @Assert\DateTime()
      */
     private $date;
 

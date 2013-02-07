@@ -25,18 +25,18 @@ class Facture
 	 /**
      * @var \DateTime $dateDebut
      *
-     * @ORM\Column(name="dateDebut", type="datetime")
+     * @ORM\Column(name="dateDebut", type="date")
 	 * @Assert\NotBlank()
-	 * @Assert\DateTime(message="La date et l'heure doit être au format DD/MM/YYYY HH:MM")
+	 * @Assert\Date()
      */	
     private $dateDebut;
 
 	 /**
      * @var \DateTime $dateFin
      *
-     * @ORM\Column(name="dateFin", type="datetime")
+     * @ORM\Column(name="dateFin", type="date")
 	 * @Assert\NotBlank()
-	 * @Assert\DateTime(message="La date et l'heure doit être au format DD/MM/YYYY HH:MM")
+	 * @Assert\Date()
      */
     private $dateFin;
 
@@ -44,8 +44,6 @@ class Facture
      * @var \DateTime $dateFacture
      *
      * @ORM\Column(name="dateFacture", type="datetime")
-	 * @Assert\NotBlank()
-	 * @Assert\DateTime(message="La date et l'heure doit être au format DD/MM/YYYY HH:MM")
      */	
     private $dateFacture;
 

@@ -18,16 +18,6 @@ class ChevalType extends AbstractType
     	$user = $this->user;
         $builder
             ->add('nom')
-            ->add('date', 'datetime', array(
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                //'format' => 'dd/MM/yyyy HH:mm',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                //'time_format' => 'HH:mm',
-                                                'attr' => array('class' => 'datetimepicker')
-                                        )
-                )
             ->add('race', 'entity', array(
                                               'label' => 'Mes races',
                                               'class' => 'chevChevalBundle:Race',

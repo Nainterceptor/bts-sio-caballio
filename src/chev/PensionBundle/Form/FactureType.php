@@ -18,31 +18,15 @@ class FactureType extends AbstractType
         $builder
             ->add('dateDebut', 'datetime', array(
 		            'date_widget'		=> 'single_text',
-		            'time_widget' 		=> 'single_text',
 		            'input' 			=> 'datetime',
-		            //'format' 			=> 'dd/MM/yyyy HH:mm',
-		            'date_format' 		=> 'dd/MM/yyyy',
-		            //'time_format' 	=> 'HH:mm',
+		            'format' 		=> 'dd/MM/yyyy',
 		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )
             ->add('dateFin', 'datetime', array(
 		            'date_widget'		=> 'single_text',
-		            'time_widget' 		=> 'single_text',
 		            'input' 			=> 'datetime',
-		            //'format' 			=> 'dd/MM/yyyy HH:mm',
-		            'date_format' 		=> 'dd/MM/yyyy',
-		            //'time_format' 	=> 'HH:mm',
-		            'attr'	 			=> array('class' => 'datetimepicker')
-            	)
-            )
-            ->add('dateFacture', 'datetime', array(
-		            'date_widget'		=> 'single_text',
-		            'time_widget' 		=> 'single_text',
-		            'input' 			=> 'datetime',
-		            //'format' 			=> 'dd/MM/yyyy HH:mm',
-		            'date_format' 		=> 'dd/MM/yyyy',
-		            //'time_format' 	=> 'HH:mm',
+		            'format' 		=> 'dd/MM/yyyy',
 		            'attr'	 			=> array('class' => 'datetimepicker')
             	)
             )

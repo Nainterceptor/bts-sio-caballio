@@ -28,7 +28,7 @@
 	            <td>{{ entity.libelle }}</td>
 	            <td>{{ entity.proprietaire }}</td>
 	            <td>{{ entity.centre }}</td>
-	            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y H:i:s') }}{% endif %}</td>
+	            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</td>
 	            <td>
                 <a href="{{ path('equipement_show', { 'id': entity.id }) }}" class="btn">
                 	Voir

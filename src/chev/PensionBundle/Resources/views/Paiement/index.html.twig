@@ -13,9 +13,9 @@
         <tr>
             <th>Id</th>
             <th>Facture</th>
-            <th>Date de paiement</th>
-            <th>Date d'encaissement</th>
             <th>Montant</th>
+            <th>Type de paiement</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,9 +24,12 @@
         <tr>
             <td><a href="{{ path('paiement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">{{ entity.facture }}</a></td>
-            <td>{% if entity.datePaiement %}{{ entity.datePaiement|date('d/m/Y H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateEncaissement %}{{ entity.dateEncaissement|date('d/m/Y H:i:s') }}{% endif %}</td>
             <td>{{ entity.montant }} €</td>
+            <td>{{ entity.typePaiement }}</td>
+            <td>
+            	<p>Date du paiement : {% if entity.datePaiement %}{{ entity.datePaiement|date('d/m/Y') }}{% endif %}</p>
+				<p>Date d'encaissement : {% if entity.dateEncaissement %}{{ entity.dateEncaissement|date('d/m/Y') }}{% endif %}</p>
+			</td>
             <td>
                 <a href="{{ path('paiement_show', { 'id': entity.id }) }}" class="btn">
                 	Voir

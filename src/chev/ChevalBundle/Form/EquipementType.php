@@ -18,15 +18,6 @@ class EquipementType extends AbstractType
         $user = $this->user;
         $builder
             ->add('libelle')
-            ->add('dateAjout', 'datetime', array(
-                                                'label' => "Date d'ajout",
-                                                'date_widget' => 'single_text',
-                                                'time_widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                'date_format' => 'dd/MM/yyyy',
-                                                'attr' => array('class' => 'datetimepicker')
-                                           )
-                )
             ->add('proprietaire')
 			->add('centre', 'entity', array(
                                               'label' => 'Mes centres',

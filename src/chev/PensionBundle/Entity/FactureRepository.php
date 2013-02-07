@@ -13,6 +13,18 @@ use Doctrine\ORM\EntityRepository,
  */
 class FactureRepository extends EntityRepository
 {
+	/**
+	 * Retoune la facture suivi de plusieurs parametres :	
+	 * 	- nbMois le nombre de mois à facturé
+	 * 	- nbJours la durée exacte du bail
+	 * 	- montant
+	 * 	- TVA
+	 * 	- montantTVA
+	 * 
+	 * @param Facture $facture La facture
+	 * 
+	 * @return entity suivi tableau de parametre
+	 */
 	private function retourneFacture($facture) {
 		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
 		$intervalJours = $intervalDates->d;
@@ -50,7 +62,7 @@ class FactureRepository extends EntityRepository
      * 
      * @param User $gerant Le gérant
      *
-     * @return Tableau d'entités
+     * @return entity
      */
     public function findOneByCentreGerant($gerant, $id) {
         return $this->_em

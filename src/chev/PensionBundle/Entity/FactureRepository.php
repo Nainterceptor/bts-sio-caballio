@@ -22,9 +22,9 @@ class FactureRepository extends EntityRepository
 		}
 		$facture['nbMois'] = $moisTotal. " mois";
 		$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
-		$facture['montant'] = $intervalMois*$facture['prix'] . " €";
-		$facture['TVA'] = ($intervalMois*$facture['prix']) * 0.196;
-		$facture['montantTVA'] = ($intervalMois*$facture['prix']) * 1.196;
+		$facture['montant'] = $moisTotal*$facture['prix'] . " €";
+		$facture['TVA'] = ($moisTotal*$facture['prix']) * 0.196;
+		$facture['montantTVA'] = ($$moisTotal*$facture['prix']) * 1.196;
 		
     	return $facture;
 	}

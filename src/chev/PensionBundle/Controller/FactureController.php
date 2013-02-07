@@ -49,6 +49,9 @@ class FactureController extends Controller
             'paiements'   => $entity['paiements'],
             'montant'     => $entity['montant'],
             'nbJours'     => $entity['nbJours'],
+            'nbMois'	  => $entity['nbMois'],
+            'TVA'		  => $entity['TVA'],
+            'montantTVA'  => $entity['montantTVA'],
             'delete_form' => $deleteForm->createView(),        ));
     }
 	

@@ -15,21 +15,18 @@ class FactureRepository extends EntityRepository
 {
 	private function retourneFacture($facture) {
 		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-		if ($intervalDates->days > 0 && $intervalDates->days != 0) {
-			$intervalJours = $intervalDates->d;
-			$intervalMois = $intervalDates->m;
-			if ($intervalJours > 0) {
-				$intervalMois ++;
-			}
-			$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
-			$facture['montant'] = $intervalMois*$facture['prix'] . " €";
-        	return $facture;
+		$intervalJours = $intervalDates->d;
+		$intervalMois = $intervalDates->m;
+		if ($intervalJours > 0) {
+			$moisTotal = $intervalMois + 1;
 		}
-		else {
-			$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
-			$facture['montant'] = "Erreur sur le Bail";
-			return $facture;
-		}
+		$facture['nbMois'] = $moisTotal. " mois";
+		$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
+		$facture['montant'] = $intervalMois*$facture['prix'] . " €";
+		$facture['TVA'] = ($intervalMois*$facture['prix']) * 0.196;
+		$facture['montantTVA'] = ($intervalMois*$facture['prix']) * 1.196;
+		
+    	return $facture;
 	}
 	/**
      * Trouver toutes les factures par le centre ayant ce gérant

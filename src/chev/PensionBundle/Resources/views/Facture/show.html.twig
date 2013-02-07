@@ -8,94 +8,224 @@
 {% endblock %}
 {% block body %}
 <div class="row-fluid">
-	<div class="span6">
-		<h2>Voir la facture</h2>
-		<table class="table table-hover">
-		    <tbody>
-		        <tr>
-		            <th>Id</th>
-		            <td>{{ entity.id }}</td>
-		        </tr>
-		        <tr>
-		            <th>Client</th>
-		            <td>{{ entity.utilisateur }}</td>
-		        </tr>
-		        <tr>
-		            <th>Box</th>
-		            <td>{{ entity.box }}</td>
-		        </tr>
-		        <tr>
-		            <th>Cheval</th>
-		            <td>{{ entity.box.cheval }}</td>
-		        </tr>
-		        <tr>
-		            <th>Prix Total</th>
-		            <td>{{ montant }}</td>
-		        </tr>
-		        <tr>
-		        	<th>Durée du bail</th>
-		        	<td>{{ nbJours}}</td>
-		        </tr>
-		        <tr>
-		            <th>Date de debut</th>
-		            <td>{{ entity.dateDebut|date('d/m/Y') }}</td>
-		        </tr>
-		        <tr>
-		            <th>Date de fin</th>
-		            <td>{{ entity.dateFin|date('d/m/Y') }}</td>
-		        </tr>
-		        <tr>
-		            <th>Date de facturation</th>
-		            <td>{{ entity.dateFacture|date('d/m/Y H:i:s') }}</td>
-		        </tr>
-		    </tbody>
+	<h2 class="pagination-centered">Facture n° {{ entity.id }}</h2>
+	<div class="row-fluid">
+		<div class="span6">
+			<h3>Info du client</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>Nom : </th>
+						<td>{{ entity.utilisateur.lastname }}</td>
+					</tr>
+					<tr>
+						<th>Prenom : </th>
+						<td>{{ entity.utilisateur.firstname }}</td>
+					</tr>
+					<tr>
+						<th>Adresse : </th>
+						<td>
+							{{ entity.utilisateur.adress }}<br>
+							{{ entity.utilisateur.zipcode }}
+							{{ entity.utilisateur.city }}
+						</td>
+					</tr>
+					<tr>
+						<th>Email : </th>
+						<td>{{ entity.utilisateur.email }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<h3>Info du gérant</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>Nom : </th>
+						<td>{{ entity.box.type.centre.gerant.lastname }}</td>
+					</tr>
+					<tr>
+						<th>Prenom : </th>
+						<td>{{ entity.box.type.centre.gerant.firstname }}</td>
+					</tr>
+					<tr>
+						<th>Email : </th>
+						<td>{{ entity.box.type.centre.gerant.email }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3>Info du centre</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>Centre : </th>
+						<td>{{ entity.box.type.centre }}</td>
+					</tr>
+					<tr>
+						<th>Adresse : </th>
+						<td>
+							{{ entity.box.type.centre.adresse }}<br>
+							{{ entity.box.type.centre.codepostal }}
+							{{ entity.box.type.centre.ville }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+			<h3>Info sur le cheval</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>N° : </th>
+						<td>{{ entity.box.cheval.id }}</td>
+					</tr>
+					<tr>
+						<th>Nom : </th>
+						<td>{{ entity.box.cheval.nom }}</td>
+					</tr>
+					<tr>
+						<th>Race : </th>
+						<td>{{ entity.box.cheval.race.libelle }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<h3>Info du box</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>N° : </th>
+						<td>{{ entity.box }}</td>
+					</tr>
+					<tr>
+						<th>Libelle : </th>
+						<td>{{ entity.box }} - "{{ entity.box.cheval.nom }}"</td>
+					</tr>
+					<tr>
+						<th>Type : </th>
+						<td>{{ entity.box.type.libelle }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<h3>Facturation</h3>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<td>Date de la facturation : {{ entity.dateFacture|date('d/m/Y H:i:s') }}</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<th>Durée du bail</th>
+					<th>Tarif unitaire</th>
+					<th>Prix total H.T.</th>
+				</tr>
+				<tr>
+					<td>
+						<p>Location du box : {{ entity.box }}</p>
+						<p>Type : {{entity.box.type.libelle }}</p>
+						<p>Date de debut : {{ entity.dateDebut|date('d/m/Y') }}</p>
+						<p>Date de fin : {{ entity.dateFin|date('d/m/Y') }}</p>
+					</td>
+					<td>
+						<p>Durée :</p>
+						<p>{{ nbJours}} </p>
+						<h5>Total de mois : {{ nbMois }}</h5>
+					</td>
+					<td>
+						{{ entity.box.type.prix }} €
+					</td>
+					<td>
+						{{ montant }}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						
+					</td>
+					<td>
+						Total H.T :
+					</td>
+					<td>
+						{{ montant }} €
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						
+					</td>
+					<td>
+						TVA 19,6 % :
+					</td>
+					<td>
+						{{ TVA }} €
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						
+					</td>
+					<td>
+					 	<h4>Total TTC :</h4>
+					</td>
+					<td>
+						<h4>{{ montantTVA }} €</h4>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
-	<div class="span6">
-		<h2>Liste des paiements</h2>
-		<table class="table table-sprited">
-		    <thead>
-		    	<tr>
-		    		<th>Montant</th>
-		    		<th>Type de paiement</th>
-		    		<th>Dates</th>
-		    	</tr>
-		    </thead>
-		    <tbody>
-		    	{% for paiement in paiements %}
-		    	<tr>
-		            <td>{{ paiement.montant }} €</td>
-		            <td>{{ paiement.typePaiement }}</td>
-		            <td>
-		            	<p>Date Paiement : <br>
-		            		{{ paiement.datePaiement|date('d/m/Y H:i:s') }}</p>
-		            	<p>Date Encaissement : <br>
-		            		{{ paiement.dateEncaissement|date('d/m/Y H:i:s') }}</p>
-		            </td>
-		        </tr>
-		        {% else %}
-		    	<tr>
-		    		<td colspan="4">Aucun paiement effectué</td>
-		    	</tr>
-		    	{% endfor %}
-		    </tbody>
-		</table>
+	<div class="row-fluid">
+		<div class="span12">
+			<h3>Historique des paiements</h3>
+			<table class="table table-sprited">
+			    <thead>
+			    	<tr>
+			    		<th>Montant</th>
+			    		<th>Type de paiement</th>
+			    		<th>Date du paiement</th>
+			    		<th>Date d'encaissement</th>
+			    	</tr>
+			    </thead>
+			    <tbody>
+			    	{% for paiement in paiements %}
+			    	<tr>
+			            <td>{{ paiement.montant }} €</td>
+			            <td>{{ paiement.typePaiement }}</td>
+			            <td>{{ paiement.datePaiement|date('d/m/Y H:i:s') }}</td>
+			            <td>{{ paiement.dateEncaissement|date('d/m/Y H:i:s') }} </td>
+			        </tr>
+			        {% else %}
+			    	<tr>
+			    		<td colspan="4">Aucun paiement effectué</td>
+			    	</tr>
+			    	{% endfor %}
+			    </tbody>
+			</table>
+		</div>
 	</div>
-</div>
-<div class="row-fluid">
-	<div class="span6">
-		{% if is_granted('ROLE_GERANT') %}
-		<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('facture_delete', { 'id': entity.id }) }}" method="post">
-        	{{ form_widget(delete_form) }}
-        	<button type="submit" class="btn btn-danger">Supprimer</button>
-    	</form>
-    	{% endif %}
-	</div>
-	<div class="span6 pagination-right">
-		<a href="{{ path('facture') }}" class="btn">Retour à la liste</a>
-		{% if is_granted('ROLE_GERANT') %}
-		<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
-	    {% endif %}
+	<div class="row-fluid">
+		<div class="span6">
+			{% if is_granted('ROLE_GERANT') %}
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('facture_delete', { 'id': entity.id }) }}" method="post">
+	        	{{ form_widget(delete_form) }}
+	        	<button type="submit" class="btn btn-danger">Supprimer</button>
+	    	</form>
+	    	{% endif %}
+		</div>
+		<div class="span6 pagination-right">
+			<a href="{{ path('facture') }}" class="btn">Retour à la liste</a>
+			{% if is_granted('ROLE_GERANT') %}
+			<a href="{{ path('facture_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+		    {% endif %}
+		</div>
 	</div>
 </div>
 {% endblock %}

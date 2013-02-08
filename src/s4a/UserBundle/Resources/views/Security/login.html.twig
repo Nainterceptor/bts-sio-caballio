@@ -1,8 +1,5 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_simpleoffice.html.twig':'::simpleoffice.html.twig' %}
 {% block body %}
-	{% if error %}
-	<div class="alert alert-error">{{ error|trans([], 's4aUserBundle') }}</div>
-	{% endif %}
 	<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
 		<h2>Se connecter</h2>
 		
@@ -15,7 +12,9 @@
     		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     		Se souvenir de moi
     	</label>
-    	
+    	{% if error %}
+		<div class="alert alert-error">{{ error|trans([], 's4aUserBundle') }}</div>
+		{% endif %}
 	    <input class="btn btn-large btn-primary" type="submit" id="_submit" name="_submit" value="Envoyer" />
 	</form>
 {% endblock %}

@@ -15,6 +15,7 @@ class CentreType extends AbstractType
             ->add('adresse')
             ->add('codePostal')
             ->add('ville')
+			->add('telephone')
             ->add('date', 'date', array(
             									'widget' => 'single_text',
                                                 'input' => 'datetime',

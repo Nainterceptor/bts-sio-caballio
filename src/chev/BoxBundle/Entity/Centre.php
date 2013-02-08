@@ -57,7 +57,16 @@ class Centre
      * @Assert\MaxLength(limit=50, message="La ville doit comporter {{ limit }} caractères maximum")
      */
     private $ville;
-
+	
+	/**
+	 * @var string $telephone
+	 * 
+	 * @ORM\Column(name="telephone", type="string", length=10)
+	 * @Assert\MaxLength(limit=10, groups={"full"})
+     * @Assert\NotBlank(groups={"full"})
+	 */
+	private $telephone;
+	
     /**
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
 	 * @ORM\JoinColumn()
@@ -202,6 +211,29 @@ class Centre
         return $this->ville;
     }
 
+	/**
+     * Set telephone
+     *
+     * @param string $telephone
+     * @return Centre
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string 
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+	
     /**
      * Set date
      *

@@ -1,0 +1,13 @@
+WSpature:
+    pattern:  /index.json
+    defaults: { _controller: "chevBoxBundle:WSPature:index", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON
+
+WSpature_show:
+    pattern:  /{id}/show.json
+    defaults: { _controller: "chevBoxBundle:WSPature:show", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON

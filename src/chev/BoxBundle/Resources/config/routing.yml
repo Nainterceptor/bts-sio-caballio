@@ -1,6 +1,3 @@
-chev_box_homepage:
-    pattern:  /box
-    defaults: { _controller: chevBoxBundle:Default:index }
 chevBoxBundle_centre:
     resource: "@chevBoxBundle/Resources/config/routing/centre.yml"
     prefix:   /centre
@@ -13,7 +10,16 @@ chevBoxBundle_centre_typebox:
 chevBoxBundle_centre_pature:
     resource: "@chevBoxBundle/Resources/config/routing/pature.yml"
     prefix:   /centre/pature
-    
+
 WSchevBoxBundle_centre:
     resource: "@chevBoxBundle/Resources/config/routing/WScentre.yml"
     prefix:   /ws/centre
+WSchevBoxBundle_centre_box:
+    resource: "@chevBoxBundle/Resources/config/routing/WSbox.yml"
+    prefix:   /ws/centre/box
+WSchevBoxBundle_centre_typebox:
+    resource: "@chevBoxBundle/Resources/config/routing/WStypebox.yml"
+    prefix:   /ws/centre/typebox
+WSchevBoxBundle_centre_pature:
+    resource: "@chevBoxBundle/Resources/config/routing/WSpature.yml"
+    prefix:   /ws/centre/pature

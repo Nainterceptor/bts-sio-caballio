@@ -1,0 +1,13 @@
+WStypebox:
+    pattern:  /index.json
+    defaults: { _controller: "chevBoxBundle:WSTypeBox:index", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON
+
+WStypebox_show:
+    pattern:  /{id}/show.json
+    defaults: { _controller: "chevBoxBundle:WSTypeBox:show", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON

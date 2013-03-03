@@ -19,7 +19,8 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "friendsofsymfony/user-bundle": "*",
-        "friendsofsymfony/jsrouting-bundle": "1.1.*"
+        "friendsofsymfony/jsrouting-bundle": "1.1.*",
+        "symfony/serializer": "2.1.7"
     },
     "scripts": {
         "post-install-cmd": [

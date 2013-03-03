@@ -1,6 +1,6 @@
 <?php
 
-namespace chev\BoxBundle\Controller;
+namespace chev\ChevalBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request,
 	Symfony\Component\HttpFoundation\Response,
@@ -9,22 +9,22 @@ use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer,
     Symfony\Component\Serializer\Encoder\JsonEncoder,
     
-    chev\BoxBundle\Entity\Pature,
-    chev\BoxBundle\Form\PatureType;
+    chev\ChevalBundle\Entity\Cheval,
+    chev\ChevalBundle\Form\ChevalType;
 	
 /**
- * WebService Pature controller.
+ * WebService Cheval controller.
  *
  */
-class WSPatureController extends Controller
+class WSChevalController extends Controller
 {
 	/*
-	 * Liste toutes les Patures sous format Json
+	 * Liste tous les Chevaux sous format Json
 	 */
 	public function indexAction()
 	{
 		$em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('chevBoxBundle:Pature')->findAll();
+        $entities = $em->getRepository('chevChevalBundle:Cheval')->findAll();
 		
 		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array(
 			'json'	=>	new JsonEncoder()));
@@ -34,12 +34,12 @@ class WSPatureController extends Controller
 	}
 	
 	/*
-	 * Retourne le Pature par l'id sous format Json
+	 * Retourne le Cheval par l'id sous format Json
 	 */
 	public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('chevBoxBundle:Pature')->find($id);
+        $entity = $em->getRepository('chevChevalBundle:Cheval')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');

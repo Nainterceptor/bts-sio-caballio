@@ -13,13 +13,13 @@ use Symfony\Component\HttpFoundation\Request,
     chev\BoxBundle\Form\TypeBoxType;
 	
 /**
- * WebService Centre controller.
+ * WebService TypeBox controller.
  *
  */
 class WSTypeBoxController extends Controller
 {
 	/*
-	 * Liste tout les TypeBoxes sous format Json
+	 * Liste tous les TypeBoxes sous format Json
 	 */
 	public function indexAction()
 	{

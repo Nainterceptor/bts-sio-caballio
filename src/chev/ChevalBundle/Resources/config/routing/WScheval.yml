@@ -1,0 +1,13 @@
+WScheval:
+    pattern:  /index.json
+    defaults: { _controller: "chevChevalBundle:WSCheval:index", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON
+
+WScheval_show:
+    pattern:  /{id}/show.json
+    defaults: { _controller: "chevChevalBundle:WSCheval:show", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON

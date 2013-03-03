@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request,
 class WSCentreController extends Controller
 {
 	/*
-	 * Liste tout les centres sous format Json
+	 * Liste tous les centres sous format Json
 	 */
 	public function indexAction()
 	{

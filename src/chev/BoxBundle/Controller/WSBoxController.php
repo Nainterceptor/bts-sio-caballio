@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request,
 class WSBoxController extends Controller
 {
 	/*
-	 * Liste tout les boxes sous format Json
+	 * Liste tous les boxes sous format Json
 	 */
 	public function indexAction()
 	{

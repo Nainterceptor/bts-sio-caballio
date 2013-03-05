@@ -26,14 +26,18 @@ class FactureRepository extends EntityRepository
 	 * @return entity suivi tableau de parametre
 	 */
 	private function retourneFacture($facture) {
-		$intervalDates = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
-		$intervalJours = $intervalDates->d;
-		$intervalMois = $intervalDates->m;
-		if ($intervalJours > 0) {
-			$moisTotal = $intervalMois + 1;
+		$interval = $moisTotal = 0;
+		
+		$interval = $facture['facture']->getDateDebut()->diff($facture['facture']->getDateFin(), true);
+		if ($interval->days > 0) {
+			if ($interval->d == 0)
+				$moisTotal = $interval->m;
+			else
+				$moisTotal = $interval->m + 1;
 		}
+		
 		$facture['nbMois'] = $moisTotal. " mois";
-		$facture['nbJours'] = $intervalMois." mois et ".$intervalJours." jours.";
+		$facture['nbJours'] = $interval->m." mois et ".$interval->d." jours.";
 		$facture['montant'] = $moisTotal*$facture['prix'] . " €";
 		$facture['TVA'] = ($moisTotal*$facture['prix']) * 0.196;
 		$facture['montantTVA'] = ($moisTotal*$facture['prix']) * 1.196;

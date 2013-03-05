@@ -58,6 +58,9 @@ class Box
      */
      public function __toString()
      {
+     	if ($this->cheval == null) {
+			 return (string)$this->id . ', "Vide box"';
+		 }
         return (string)$this->id . '. '.'"'.$this->cheval->getNom().'"';
      }
 

@@ -52,7 +52,10 @@ class ChevalType extends AbstractType
                                               }
                                       )
                  )
-			->add('description','textarea', array('required' => false))
+			->add('description','textarea', array(
+												 	'required' => false
+												)
+				 )
         ;
     }
 

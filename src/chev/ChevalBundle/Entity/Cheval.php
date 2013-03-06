@@ -59,6 +59,22 @@ class Cheval
      * @Assert\NotBlank()
 	 */
     private $centre;
+	
+	/**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="string", length=1000)
+     * @Assert\MaxLength(limit=1000, message="La description doit comporter {{ limit }} caractères maximum")
+     */
+	private $description;
+	
+	/**
+     * @var string $sexe
+     *
+     * @ORM\Column(name="sexe", type="string", length=10)
+     * @Assert\NotBlank()
+     */
+	private $sexe;
        	
     public function __construct() {
         $this->date = new \DateTime();
@@ -192,4 +208,50 @@ class Cheval
         return $this->centre;
     }
 	
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Cheval
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     * @return Cheval
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+    
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string 
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
 }

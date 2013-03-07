@@ -1,6 +1,10 @@
 $(document).ready(function(){
+	datetimepicker();
+});
+
+function datetimepicker() {
 	var id;
-	$('.datetimepicker').each(function(){
+	$('.datetimepicker').each(function(){	
 		id = $(this).attr('id');
 		$('input[type="text"]', this).datetimepicker({
 			altField: '#'+id+' input[type="time"]',
@@ -11,4 +15,7 @@ $(document).ready(function(){
 			dateFormat: "dd/mm/yy"
 		});
 	});
-});
+	$('.datepicker').each(function(){
+		$(this).datepicker();
+	});
+}

@@ -6,7 +6,7 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Liste des patûres</h2>
+<h2>Liste des pâtures</h2>
 <a class="btn btn-success pull-right" href="{{ path('pature_new') }}">Ajouter</a>
 <table class="table table-striped">
     <thead>
@@ -37,6 +37,12 @@
     				Modifier
     			</a>
             </td>
+ 		</tr>
+ 	{% else %}
+ 		<tr>
+ 			<td colspan="7">
+ 				Il n'y a aucune pâture existante.
+ 			</td>
  		</tr>
     {% endfor %}
     </tbody>

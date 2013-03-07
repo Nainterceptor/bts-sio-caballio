@@ -1,0 +1,13 @@
+WSequipement:
+    pattern:  /index.json
+    defaults: { _controller: "chevChevalBundle:WSEquipement:index", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON
+
+WSequipement_show:
+    pattern:  /{id}/show.json
+    defaults: { _controller: "chevChevalBundle:WSEquipement:show", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON

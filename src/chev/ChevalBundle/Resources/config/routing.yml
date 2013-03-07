@@ -7,3 +7,13 @@ chevChevalBundle_cheval_race:
 chevChevalBundle_equipement:
     resource: "@chevChevalBundle/Resources/config/routing/equipement.yml"
     prefix:   /equipement
+
+WSchevChevalBundle_cheval:
+    resource: "@chevChevalBundle/Resources/config/routing/WScheval.yml"
+    prefix:   /ws/cheval
+WSchevChevalBundle_cheval_race:
+    resource: "@chevChevalBundle/Resources/config/routing/WSrace.yml"
+    prefix:   /ws/cheval/race
+WSchevChevalBundle_equipement:
+    resource: "@chevChevalBundle/Resources/config/routing/WSequipement.yml"
+    prefix:   /ws/equipement

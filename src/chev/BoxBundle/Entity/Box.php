@@ -31,14 +31,14 @@ class Box
 
     /**
      * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\TypeBox")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $type;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
-	 * @ORM\JoinColumn()
+	 * @ORM\JoinColumn(onDelete="SET NULL")
 	 */
 	private $cheval;
 

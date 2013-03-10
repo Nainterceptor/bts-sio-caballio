@@ -69,7 +69,7 @@ class Centre
 	
     /**
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
-	 * @ORM\JoinColumn()
+	 * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $gerant;

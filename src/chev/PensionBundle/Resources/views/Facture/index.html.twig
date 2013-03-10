@@ -49,6 +49,12 @@
     			{% endif %}
             </td>
         </tr>
+ 	{% else %}
+ 		<tr>
+ 			<td colspan="7">
+ 				Il n'y a aucune facture existante.
+ 			</td>
+ 		</tr>
     {% endfor %}
     </tbody>
 </table>

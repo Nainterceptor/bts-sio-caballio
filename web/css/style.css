@@ -6,7 +6,7 @@
 	padding: 9px 0 !important;
 }
 body {
-	padding-top: 60px;
+	padding-top: 70px;
 }
 .form-signin {
 	background-color: #FFFFFF;
@@ -24,6 +24,7 @@ body {
     content: "";
 }
 .cab-login {
+	margin-top: 10px !important;
 	margin-right: 10px !important; 
 	line-height: 37px !important;
 }

@@ -49,14 +49,14 @@ class Facture
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
 	 */
 	private $box;
 		
 	/**
 	 * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User", inversedBy="factures")
-     * @ORM\JoinColumn(referencedColumnName="id")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      * @Assert\NotBlank()
 	 */
 	private $utilisateur;

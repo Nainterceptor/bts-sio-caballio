@@ -41,7 +41,7 @@ class TypeBox
 	
     /**
      * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $centre;

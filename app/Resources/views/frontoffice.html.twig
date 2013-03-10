@@ -6,7 +6,7 @@
         {% block stylesheets %}
             {% stylesheets  
             				'css/style.css'
-                            'css/bootstrap.css'
+                            'css/bootstrap.green.css'
                             'css/bootstrap-responsive.css'
                             'css/jquery-ui-1.10.0.custom.min.css'
                             'css/jquery-ui-timepicker-addon.css'
@@ -22,14 +22,14 @@
         <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" />
     </head>
     <body>
-    	<div class="navbar navbar-inverse navbar-fixed-top">
+    	<div class="navbar navbar-fixed-top">
     		<div class="navbar-inner">
     			<div class="container-fluid">
     				<a class="brand" href="{{ path('front_homepage') }}">Caballio</a>
     				<div class="nav-collapse collapse">
     					<div class="ajaxOn pull-right" style="display: none;">
-			                <label for="ajaxOn" class="btn btn-danger">AJAX</label>
-			                <input type="checkbox" id="ajaxOn" name="ajaxOn" style="display: none;">
+			                <label for="ajaxOn" class="btn btn-success">AJAX</label>
+			                <input checked="checked" type="checkbox" id="ajaxOn" name="ajaxOn" style="display: none;">
 			            </div>
 			            <nav id="top">
 	    					{% block menuTop %}

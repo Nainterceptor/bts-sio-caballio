@@ -26,7 +26,7 @@ class Paiement
      * @var integer
      * 
      * @ORM\ManyToOne(targetEntity="chev\PensionBundle\Entity\Facture")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $facture;
@@ -34,7 +34,7 @@ class Paiement
     /**
      *
      * @ORM\ManyToOne(targetEntity="chev\PensionBundle\Entity\TypePaiement")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $typePaiement;

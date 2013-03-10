@@ -31,14 +31,14 @@ class Box
 
     /**
      * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\TypeBox")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
     private $type;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
-	 * @ORM\JoinColumn()
+	 * @ORM\JoinColumn(onDelete="SET NULL")
 	 */
 	private $cheval;
 
@@ -58,6 +58,9 @@ class Box
      */
      public function __toString()
      {
+     	if ($this->cheval == null) {
+			 return (string)$this->id . ', "Vide box"';
+		 }
         return (string)$this->id . '. '.'"'.$this->cheval->getNom().'"';
      }
 
@@ -69,29 +72,6 @@ class Box
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Box
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**

@@ -20,7 +20,7 @@ class CentreType extends AbstractType
             									'widget' => 'single_text',
                                                 'input' => 'datetime',
                                                 'format' => 'dd/MM/yyyy',
-                                                'attr' => array('class' => 'datetimepicker')
+                                                'attr' => array('class' => 'datepicker')
                                         )
                 )
             ->add('gerant')

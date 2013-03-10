@@ -17,17 +17,19 @@ class FactureType extends AbstractType
     	$user = $this->user;
         $builder
             ->add('dateDebut', 'datetime', array(
-		            'date_widget'		=> 'single_text',
-		            'input' 			=> 'datetime',
-		            'format' 		=> 'dd/MM/yyyy',
-		            'attr'	 			=> array('class' => 'datetimepicker')
+												'date_widget' => 'single_text',
+												'time_widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'date_format' => 'dd/MM/yyyy',
+                                            	'attr' => array('class' => 'datetimepicker')
             	)
             )
             ->add('dateFin', 'datetime', array(
-		            'date_widget'		=> 'single_text',
-		            'input' 			=> 'datetime',
-		            'format' 		=> 'dd/MM/yyyy',
-		            'attr'	 			=> array('class' => 'datetimepicker')
+												'date_widget' => 'single_text',
+												'time_widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'date_format' => 'dd/MM/yyyy',
+                                            	'attr' => array('class' => 'datetimepicker')
             	)
             )
             ->add('box', 'entity', array( 'label' => 'Le Box',

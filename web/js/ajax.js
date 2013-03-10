@@ -25,6 +25,7 @@ function refreshContent(html, url) {
 		});
 	}
 	aInAjax();
+	datetimepicker();
 }
 function aInAjax() {
     $("a").unbind("click");

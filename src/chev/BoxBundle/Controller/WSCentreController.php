@@ -21,25 +21,28 @@ class WSCentreController extends Controller
 	/*
 	 * Liste tous les centres sous format Json
 	 */
-	public function indexAction()
+	public function listAction()
 	{
 		$em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('chevBoxBundle:Centre')->findAll();
+        $centres = $em->getRepository('chevBoxBundle:Centre')->WSCentres();
 		
-		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array(
-			'json'	=>	new JsonEncoder()));
-		$json = $serializer->serialize($entities, 'json');
-		
+		$serializer = new Serializer(
+		                              array(new GetSetMethodNormalizer()), 
+		                              array('json'	=>	new JsonEncoder())
+                                     );
+
+		$json = $serializer->serialize($centres, 'json');
+
 		return new Response($json);
 	}
 	
 	/*
 	 * Retourne le centre par l'id sous format Json
 	 */
-	public function showAction($id)
+	public function infosAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        $entity = $em->getRepository('chevBoxBundle:Centre')->WSCentre($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');

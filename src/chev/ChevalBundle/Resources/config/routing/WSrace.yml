@@ -1,0 +1,13 @@
+WSrace:
+    pattern:  /index.json
+    defaults: { _controller: "chevChevalBundle:WSRace:index", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON
+
+WSrace_show:
+    pattern:  /{id}/show.json
+    defaults: { _controller: "chevChevalBundle:WSRace:show", _format: json }
+    requirements:
+      _method:  GET
+      _format: JSON

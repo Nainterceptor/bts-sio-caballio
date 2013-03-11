@@ -10,3 +10,7 @@ chevBoxBundle_centre_typebox:
 chevBoxBundle_centre_pature:
     resource: "@chevBoxBundle/Resources/config/routing/pature.yml"
     prefix:   /centre/pature
+
+BoxBundle_Webservices:
+    resource: "@chevBoxBundle/Resources/config/routing/webservices.yml"
+    prefix:   /ws

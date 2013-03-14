@@ -8,9 +8,7 @@
 </p>
 <ul class="nav">
 	<li><a href="{{ path('front_homepage') }}">Accueil</a></li>
-	{% if is_granted('ROLE_GERANT') %}
 	<li><a href="{{ path('centre') }}">Centre</a></li>
-	{% endif %}
 	{% if is_granted('ROLE_USER') %}
 	<li><a href="{{ path('cheval') }}">Cheval</a></li>
 	<li><a href="{{ path('facture')}}">Facture</a></li>

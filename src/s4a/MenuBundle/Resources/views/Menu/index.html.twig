@@ -2,9 +2,9 @@
 <ul class="nav nav-list">
     <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
     {% if error is not defined %}
-	    {% if is_granted('ROLE_GERANT') %}
 	    <li class="nav-header">Centre</li>
 	    <li><a href="{{ path('centre') }}">Centre</a></li>
+	    {% if is_granted('ROLE_GERANT') %}
 	    <li><a href="{{ path('pature') }}">Pâture</a></li>
 		<li>
 			<a href="{{ path('centre_box')}}">Box</a>
@@ -12,7 +12,7 @@
 		        <li><a href="{{ path('centre_typebox') }}">Type de box</a></li>
 		    </ul>
 		</li>
-	    {% endif %}
+		{% endif %}
 	    {% if is_granted('ROLE_USER') %}
 	    <li class="nav-header">Cheval</li>
 	    <li><a href="{{ path('cheval')}}">Cheval</a></li>

@@ -1,6 +1,6 @@
 <?php
 
-namespace chev\BoxBundle\Controller;
+namespace s4a\WebServiceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request,
 	Symfony\Component\HttpFoundation\Response,
@@ -24,15 +24,15 @@ class WSCentreController extends Controller
 	public function listAction()
 	{
 		$em = $this->getDoctrine()->getManager();
-        $centres = $em->getRepository('chevBoxBundle:Centre')->WSCentres();
 		
 		$serializer = new Serializer(
 		                              array(new GetSetMethodNormalizer()), 
-		                              array('json'	=>	new JsonEncoder())
+		                              	array('json'	=>	new JsonEncoder())
                                      );
 
-		$json = $serializer->serialize($centres, 'json');
-
+		$entity = $em->getRepository('chevBoxBundle:Centre')->WSCentres();
+		$json = $serializer->serialize($entity, 'json');
+			
 		return new Response($json);
 	}
 	
@@ -42,16 +42,15 @@ class WSCentreController extends Controller
 	public function infosAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('chevBoxBundle:Centre')->WSCentre($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Centre entity.');
-		}
-		
-		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array(
-			'json'	=>	new JsonEncoder()));
+		$serializer = new Serializer(
+		                              array(new GetSetMethodNormalizer()), 
+		                              	array('json'	=>	new JsonEncoder())
+                                     );
+									 
+		$entity = $em->getRepository('chevBoxBundle:Centre')->WSCentre($id);
 		$json = $serializer->serialize($entity, 'json');
-		
+      	
 		return new Response($json);
     }
 }

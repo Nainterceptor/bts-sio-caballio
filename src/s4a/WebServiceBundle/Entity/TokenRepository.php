@@ -12,23 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class TokenRepository extends EntityRepository
 {
-	public function checkToken($user, $token)
+	public function checkToken($token)
 	{
-		$entity = $this->findOneByUser($user);
+		$entity = $this->findOneByToken($token);
 		
 		if (!$entity) {
 			return false;
 		}
 		else {
-			if ($entity->getToken() == $token) {
-				$dateTime = new \DateTime;
-				$sessionToken = $entity->getDatetime()->diff($dateTime, true);
-				if ($sessionToken->h < 6) {
-					return true;
-				}
-				else {
-					return false;
-				}
+			$dateTime = new \DateTime;
+			$sessionToken = $entity->getDatetime()->diff($dateTime, true);
+			if ($sessionToken->h < 6) {
+				return true;
 			}
 			else {
 				return false;

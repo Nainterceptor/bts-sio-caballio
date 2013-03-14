@@ -21,19 +21,17 @@ class WSChevalController extends Controller
 	/*
 	 * Liste tous les Chevaux sous format Json
 	 */
-	public function listAction($username, $token)
+	public function listAction($token)
 	{
 		$em = $this->getDoctrine()->getManager();
-		
-		$userManager = $this->get('fos_user.user_manager');
-		$user = $userManager->findUserBy(array('username' => $username));
 		
 		$serializer = new Serializer(
 		                              array(new GetSetMethodNormalizer()), 
 		                              	array('json'	=>	new JsonEncoder())
                                      );
 		
-		if ($em->getRepository('s4aWebServiceBundle:Token')->checkToken($user, $token) == true) {
+		if ($em->getRepository('s4aWebServiceBundle:Token')->checkToken($token) == true) {
+			$user = $em->getRepository('s4aWebServiceBundle:Token')->findOneByToken($token)->getUser();
 			$entity = $em->getRepository('chevChevalBundle:Cheval')->WSChevaux($user);
 			$json = $serializer->serialize($entity, 'json');
 		}
@@ -47,19 +45,17 @@ class WSChevalController extends Controller
 	/*
 	 * Retourne le Cheval par l'id sous format Json
 	 */
-	public function infosAction($username, $token, $id)
+	public function infosAction($token, $id)
     {
         $em = $this->getDoctrine()->getManager();
-		
-		$userManager = $this->get('fos_user.user_manager');
-		$user = $userManager->findUserBy(array('username' => $username));
 		
 		$serializer = new Serializer(
 		                              array(new GetSetMethodNormalizer()), 
 		                              	array('json'	=>	new JsonEncoder())
                                      );
 		
-		if ($em->getRepository('s4aWebServiceBundle:Token')->checkToken($user, $token) == true) {
+		if ($em->getRepository('s4aWebServiceBundle:Token')->checkToken($token) == true) {
+			$user = $em->getRepository('s4aWebServiceBundle:Token')->findOneByToken($token)->getUser();
 			$entity = $em->getRepository('chevChevalBundle:Cheval')->WSCheval($user, $id);
 			$json = $serializer->serialize($entity, 'json');
 		}

@@ -189,7 +189,7 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<h3>Historique des paiements</h3>
-			<table class="table table-sprited">
+			<table class="table table-bordered">
 			    <thead>
 			    	<tr>
 			    		<th>Montant</th>
@@ -211,6 +211,11 @@
 			    		<td colspan="4">Aucun paiement effectué</td>
 			    	</tr>
 			    	{% endfor %}
+			    	<tr>
+			    		<td colspan="2"></td>
+			            <td><h4>Restant à payer :</h4></td>
+			            <td><h4>{{ entity.RAP }} €</h4></td>
+			    	</tr>
 			    </tbody>
 			</table>
 		</div>

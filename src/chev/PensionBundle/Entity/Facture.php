@@ -61,6 +61,11 @@ class Facture
 	 */
 	private $utilisateur;
 	
+	/**
+     * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Paiement", mappedBy="facture")
+     */
+    protected $paiements;
+	
 	public function __construct()
 	{
 		$this->dateDebut = new \DateTime();
@@ -71,6 +76,27 @@ class Facture
     public function __toString() {
         return (string)$this->id;
     }
+    
+	public function getRAP()
+	{
+		$interval = $moisTotal = 0;
+		$interval = $this->dateDebut->diff($this->dateFin, true);
+		if ($interval->days > 0) {
+			if ($interval->d == 0)
+				$moisTotal = $interval->m;
+			else
+				$moisTotal = $interval->m + 1;
+		}
+		$montantTVA = ($moisTotal*$this->box->getType()->getPrix()) * 1.196;
+		
+		$RAP = 0;
+		foreach ($this->paiements as $paiement) {
+			$RAP += $paiement->getMontant();
+		}
+		$RAP = $montantTVA - $RAP;
+		
+		return $RAP;
+	}
 	 
     /**
      * Get id

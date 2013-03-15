@@ -44,6 +44,7 @@ class FactureRepository extends EntityRepository
 		
     	return $facture;
 	}
+	
 	/**
      * Trouver toutes les factures par le centre ayant ce gérant
      * 
@@ -61,6 +62,7 @@ class FactureRepository extends EntityRepository
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
     }
+	
 	/**
      * Trouver une facture par le centre ayant ce gérant
      * 
@@ -104,12 +106,14 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
+		
 		$query = ' SELECT p'
 			   . ' FROM chevPensionBundle:Paiement p'
 			   . ' WHERE p.facture = :id';
 		$facture['paiements'] = $em->createQuery($query)
 								   ->setParameter(':id', $id)
 								   ->getResult();
+		
         return $this->retourneFacture($facture);
     }
     /**
@@ -139,12 +143,14 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
+		
 		$query = ' SELECT p'
 			   . ' FROM chevPensionBundle:Paiement p'
 			   . ' WHERE p.facture = :id';
 		$facture['paiements'] = $em->createQuery($query)
 								   ->setParameter(':id', $id)
 								   ->getResult();
+		
         return $this->retourneFacture($facture);
     }
 	/**
@@ -173,12 +179,14 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
+		
 		$query = ' SELECT p'
 			   . ' FROM chevPensionBundle:Paiement p'
 			   . ' WHERE p.facture = :id';
 		$facture['paiements'] = $em->createQuery($query)
 								   ->setParameter(':id', $id)
 								   ->getResult();
+		
         return $this->retourneFacture($facture);
     }
 }

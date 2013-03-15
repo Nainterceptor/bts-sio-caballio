@@ -19,6 +19,7 @@
             <th>Emplacement</th>
             <th>Date du bail</th>
             <th>Date d'ajout</th>
+            <th>Restant à payer</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -38,6 +39,7 @@
             	{% if entity.dateFin %}<p>Date de fin : {{ entity.dateFin|date('d/m/Y') }}</p>{% endif %}
             </td>
             <td>{% if entity.dateFacture %}{{ entity.dateFacture|date('d/m/Y') }}{% endif %}</td>
+            <td>{{ entity.RAP }}</td>
             <td>
                 <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="btn" title="Voir">
                 	Voir

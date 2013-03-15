@@ -52,7 +52,8 @@ class FactureController extends Controller
             'nbMois'	  => $entity['nbMois'],
             'TVA'		  => $entity['TVA'],
             'montantTVA'  => $entity['montantTVA'],
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),        
+		));
     }
 	
 	/**

@@ -39,4 +39,7 @@
 	    {% endif %}
     {% endif %}
 </ul>
+{% if not is_granted('ROLE_USER') %}
+	<li class="nav-header">Vous pouvez d'ors et déjà consulter la liste des centres inscrits</li>
+{% endif %}
 {% endspaceless %}

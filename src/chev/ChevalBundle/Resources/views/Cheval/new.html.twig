@@ -8,15 +8,15 @@
 {% endblock %}
 {% block body %}
 <h2>Nouveau cheval</h2>
-<div class="span6">
+<div class="row-fluid">
 	<form action="{{ path('cheval_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
-		    {{ form_widget(form) }}
-		    <div class="pagination-right">
-		    	<a class="btn" href="{{ path('cheval') }}">Retour à la liste</a>
-				<input class="btn btn-success" type="submit" value="Nouveau" >
-		    </div>
+			{{ form_widget(form) }}
 		</fieldset>
+		<div class="pagination-right">
+		    <a class="btn" href="{{ path('cheval') }}">Retour à la liste</a>
+			<input class="btn btn-success" type="submit" value="Nouveau" >
+		</div>
 	</form>
 </div>
 {% endblock %}

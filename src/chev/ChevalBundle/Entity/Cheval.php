@@ -74,6 +74,14 @@ class Cheval
      * @Assert\NotBlank()
      */
 	private $sexe;
+	
+	/**
+	 * @var float $quantite
+	 * 
+	 * @ORM\Column(name="quantite", type="float", length=10)
+	 * @Assert\NotBlank()
+	 */
+	private $quantite;
        	
     public function __construct() {
         $this->date = new \DateTime();
@@ -252,5 +260,28 @@ class Cheval
     public function getNourriture()
     {
         return $this->nourriture;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param float $quantite
+     * @return Cheval
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return float 
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
     }
 }

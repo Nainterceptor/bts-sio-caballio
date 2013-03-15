@@ -38,6 +38,7 @@ class ChevalType extends AbstractType
                                               }
                                       )
                  )
+			->add('quantite')
             ->add('proprietaire')
 			->add('centre', 'entity', array(
                                               'label' => 'Mon centre',

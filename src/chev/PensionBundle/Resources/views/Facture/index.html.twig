@@ -10,6 +10,18 @@
 {% if is_granted('ROLE_GERANT') %}
 <a class="btn btn-success pull-right" href="{{ path('facture_new') }}">Ajouter</a>
 {% endif %}
+<div class="row-fluid">
+	<div class="span4">
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<th>Total restant à payer : </th>
+					<td>{{ montantRAP }} €</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -39,7 +51,7 @@
             	{% if entity.dateFin %}<p>Date de fin : {{ entity.dateFin|date('d/m/Y') }}</p>{% endif %}
             </td>
             <td>{% if entity.dateFacture %}{{ entity.dateFacture|date('d/m/Y') }}{% endif %}</td>
-            <td>{{ entity.RAP }}</td>
+            <td>{{ entity.RAP }} €</td>
             <td>
                 <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="btn" title="Voir">
                 	Voir

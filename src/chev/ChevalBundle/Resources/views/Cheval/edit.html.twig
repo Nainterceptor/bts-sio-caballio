@@ -9,11 +9,47 @@
 {% block body %}
 <h2>Modifier un cheval</h2>
 <div class="span6">
-	<form action="{{ path('cheval_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-		<fieldset>
-	       	{{ form_rest(edit_form) }}
-			<input type="submit" value="Modifier" class="btn btn-success pull-right">
-		</fieldset>
+	<form class="form-horizontal" action="{{ path('cheval_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+		{{ form_errors(edit_form) }}
+		<div class="control-group">
+			{{ form_label(edit_form.nom, 'Nom' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.nom) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(edit_form.sexe, 'Sexe' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.sexe) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(edit_form.nourriture, 'Aliment' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.nourriture) }} / {{ form_widget(form.quantite) }} Quantité
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(edit_form.proprietaire, 'Propriétaire' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.proprietaire) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(edit_form.centre, 'Centre' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.centre) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(edit_form.description, 'Description' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(edit_form.description) }}
+			</div>
+		</div>
+		{{ form_rest(edit_form) }}
+		
+		<input type="submit" value="Modifier" class="btn btn-success pull-right">
 	</form>
 	<div class="row-fluid">
 		<div class="span6">

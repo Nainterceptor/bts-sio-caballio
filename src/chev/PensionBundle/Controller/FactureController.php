@@ -23,9 +23,15 @@ class FactureController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $this->getFactures($em);
+		
+		$totalRAP = 0;
+		foreach ($entities as $entity) {
+			$totalRAP += $entity->getRAP();
+		}
 
         return $this->render('chevPensionBundle:Facture:index.html.twig', array(
             'entities' => $entities,
+            'montantRAP' => $totalRAP
         ));
     }
 

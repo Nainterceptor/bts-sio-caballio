@@ -40,14 +40,14 @@ class Equipement
 
     /**
      * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
 	 * @Assert\NotBlank()
      */
     private $proprietaire;
 	
     /**
      * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(onDelete="CASCADE")
 	 * @Assert\NotBlank()
      */
     private $centre;	

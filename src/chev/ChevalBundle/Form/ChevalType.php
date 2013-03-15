@@ -18,6 +18,12 @@ class ChevalType extends AbstractType
     	$user = $this->user;
         $builder
             ->add('nom')
+			->add('sexe', 'choice', array(
+											  'choices' => array(
+											  'Mâle' => 'Mâle',
+											  'Femelle' => 'Femelle')
+										)
+				)
             ->add('race', 'entity', array(
                                               'label' => 'Mes races',
                                               'class' => 'chevChevalBundle:Race',
@@ -46,6 +52,10 @@ class ChevalType extends AbstractType
                                               }
                                       )
                  )
+			->add('description','textarea', array(
+												 	'required' => false
+												)
+				 )
         ;
     }
 

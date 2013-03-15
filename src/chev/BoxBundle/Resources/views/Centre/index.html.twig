@@ -39,9 +39,11 @@
                 <a href="{{ path('centre_show', { 'id': entity.id }) }}" class="btn">
                 	Voir
                 </a>
+                {% if is_granted('ROLE_GERANT') %}
     			<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">
     				Modifier
     			</a>
+    			{% endif %}
             </td>
  		</tr>
  	{% else %}

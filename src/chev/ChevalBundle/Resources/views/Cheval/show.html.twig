@@ -21,8 +21,8 @@
 		            <td>{{ entity.sexe }}</td>
 		        </tr>
 		        <tr>
-		        	<th>Nourriture</th>
-		        	<td>{% if entity.nourriture %}{{ entity.nourriture.libelle }} {% else %}Pas de nourriture{% endif %}</td>
+		        	<th>Nourriture | Quantité</th>
+		        	<td>{% if entity.nourriture %}{{ entity.nourriture.libelle }} {% else %}Pas de nourriture{% endif %} | {{ entity.quantite }} kg/jours</td>
 		        </tr>
 		        <tr>
 		        	<th>Propriétaire</th>

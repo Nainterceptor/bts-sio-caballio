@@ -29,7 +29,7 @@
 	            <td><a href="{{ path('cheval_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 	            <td>{{ entity.nom }}</td>
 	            <td>{{ entity.sexe }}</td>
-	            <td>{% if entity.nourriture %}{{ entity.nourriture.libelle }} {% else %}Pas de nourriture{% endif %}</td>
+	            <td>{% if entity.nourriture %}{{ entity.nourriture.libelle }} {% else %}Pas de nourriture{% endif %} | {% if entity.nourriture %}{{ entity.quantite }} kg {% else %}Pas de quantité{% endif %} </td>
 	            <td>{{ entity.proprietaire }}</td>
 	            <td>{% if entity.centre %}{{ entity.centre.nom }} {% else %}Pas de centre{% endif %}</td>
 	            <td>{% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</td>

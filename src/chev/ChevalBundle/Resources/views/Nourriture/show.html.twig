@@ -1,13 +1,13 @@
-{% extends 'chevChevalBundle:Race:layout.html.twig' %}
+{% extends 'chevChevalBundle:Nourriture:layout.html.twig' %}
 {% block title %}Voir - {{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-     <a href="{{ path('cheval_race_show', {id: entity.id}) }}">Aperçu</a>
+     <a href="{{ path('cheval_nourriture_show', {id: entity.id}) }}">Aperçu</a>
 </li>
 {% endblock %}
 {% block body %}
-<h2>Voir la race</h2>
+<h2>Voir l'aliment</h2>
 <div class="span6">
 	<table class="table table-hover">
 	    <tbody>
@@ -27,14 +27,14 @@
 	</table>
 	<div class="row-fluid">
 		<div class="span6">
-			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_race_delete', { 'id': entity.id }) }}" method="post">
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_nourriture_delete', { 'id': entity.id }) }}" method="post">
 	        	{{ form_widget(delete_form) }}
 	        	<button type="submit" class="btn btn-danger">Supprimer</button>
 	    	</form>
 		</div>
 		<div class="span6 pagination-right">
-			<a href="{{ path('cheval_race') }}" class="btn">Retour à la liste</a>
-			<a href="{{ path('cheval_race_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+			<a href="{{ path('cheval_nourriture') }}" class="btn">Retour à la liste</a>
+			<a href="{{ path('cheval_nourriture_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
 		</div>
 	</div>
 </div>

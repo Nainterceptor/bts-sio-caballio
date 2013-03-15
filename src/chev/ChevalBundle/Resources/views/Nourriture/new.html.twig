@@ -1,19 +1,19 @@
-{% extends 'chevChevalBundle:Race:layout.html.twig' %}
+{% extends 'chevChevalBundle:Nourriture:layout.html.twig' %}
 {% block title %}Nouveau - {{ parent() }}{% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-    <a href="{{ path('cheval_race_new') }}">Nouveau</a>
+    <a href="{{ path('cheval_nourriture_new') }}">Nouveau</a>
 </li>
 {% endblock %}
 {% block body %}
-<h2>Nouvelle race</h2>
+<h2>Nouvel aliment</h2>
 <div class="span6">
-	<form action="{{ path('cheval_race_create') }}" method="post" {{ form_enctype(form) }}>
+	<form action="{{ path('cheval_nourriture_create') }}" method="post" {{ form_enctype(form) }}>
 		<fieldset>
 		    {{ form_widget(form) }}
 		    <div class="pagination-right">
-		    	<a class="btn" href="{{ path('cheval_race') }}">Retour à la liste</a>
+		    	<a class="btn" href="{{ path('cheval_nourriture') }}">Retour à la liste</a>
 				<input class="btn btn-success" type="submit" value="Nouveau" >
 		    </div>
 		</fieldset>

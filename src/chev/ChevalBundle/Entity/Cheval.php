@@ -33,11 +33,11 @@ class Cheval
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Race")
+     * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Nourriture")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
-    private $race;
+    private $nourriture;
 
     /**
      * @var \DateTime $date
@@ -63,8 +63,7 @@ class Cheval
 	/**
      * @var string $description
      *
-     * @ORM\Column(name="description", type="string", length=1000)
-     * @Assert\MaxLength(limit=1000, message="La description doit comporter {{ limit }} caractères maximum")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
 	private $description;
 	
@@ -137,29 +136,6 @@ class Cheval
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set race
-     *
-     * @param chev\ChevalBundle\Entity\Race $race
-     * @return Cheval
-     */
-    public function setRace(\chev\ChevalBundle\Entity\Race $race = null)
-    {
-        $this->race = $race;
-    
-        return $this;
-    }
-
-    /**
-     * Get race
-     *
-     * @return chev\ChevalBundle\Entity\Race 
-     */
-    public function getRace()
-    {
-        return $this->race;
     }
 
     /**
@@ -253,5 +229,28 @@ class Cheval
     public function getSexe()
     {
         return $this->sexe;
+    }
+
+    /**
+     * Set nourriture
+     *
+     * @param \chev\ChevalBundle\Entity\Nourriture $nourriture
+     * @return Cheval
+     */
+    public function setNourriture(\chev\ChevalBundle\Entity\Nourriture $nourriture = null)
+    {
+        $this->nourriture = $nourriture;
+    
+        return $this;
+    }
+
+    /**
+     * Get nourriture
+     *
+     * @return \chev\ChevalBundle\Entity\Nourriture 
+     */
+    public function getNourriture()
+    {
+        return $this->nourriture;
     }
 }

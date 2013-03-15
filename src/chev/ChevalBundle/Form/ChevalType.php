@@ -24,9 +24,9 @@ class ChevalType extends AbstractType
 											  'Femelle' => 'Femelle')
 										)
 				)
-            ->add('race', 'entity', array(
-                                              'label' => 'Mes races',
-                                              'class' => 'chevChevalBundle:Race',
+            ->add('nourriture', 'entity', array(
+                                              'label' => 'Aliment',
+                                              'class' => 'chevChevalBundle:Nourriture',
                                               'query_builder' => function($er) use($user) {
                                                     if($user->hasRole('ROLE_ADMIN')) {
                                                         return $er->createQueryBuilder('r');

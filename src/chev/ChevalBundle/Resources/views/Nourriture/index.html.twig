@@ -1,13 +1,13 @@
-{% extends 'chevChevalBundle:Race:layout.html.twig' %}
+{% extends 'chevChevalBundle:Nourriture:layout.html.twig' %}
 {% block breadcrumbs %}
 {{ parent() }}
 <li>
-	<a href="{{ path('cheval_race')}}">Index</a>
+	<a href="{{ path('cheval_nourriture')}}">Index</a>
 </li>
 {% endblock %}
 {% block body %}
-<h2>Liste des races</h2>
-<a class="btn btn-success pull-right" href="{{ path('cheval_race_new') }}">Ajouter</a>
+<h2>Liste des aliments</h2>
+<a class="btn btn-success pull-right" href="{{ path('cheval_nourriture_new') }}">Ajouter</a>
 <table class="table table-striped">
 	    <thead>
 	        <tr>
@@ -20,14 +20,14 @@
 	    <tbody>
 	    {% for entity in entities %}
 	        <tr>
-	            <td><a href="{{ path('cheval_race_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+	            <td><a href="{{ path('cheval_nourriture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 	            <td>{{ entity.libelle }}</td>
 	            <td>{{ entity.centre }}</td>
 	            <td>
-	                <a href="{{ path('cheval_race_show', { 'id': entity.id }) }}" class="btn">
+	                <a href="{{ path('cheval_nourriture_show', { 'id': entity.id }) }}" class="btn">
 	                	Voir
 	                </a>
-	    			<a href="{{ path('cheval_race_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+	    			<a href="{{ path('cheval_nourriture_edit', { 'id': entity.id }) }}" class="btn btn-primary">
 	    				Modifier
 	    			</a>
             	</td>
@@ -35,7 +35,7 @@
 	 	{% else %}
 	 		<tr>
 	 			<td colspan="4">
-	 				Il n'y a aucune race existante.
+	 				Il n'y a aucune nourriture existante.
 	 			</td>
 	 		</tr>
 	    {% endfor %}

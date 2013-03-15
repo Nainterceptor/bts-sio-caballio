@@ -39,7 +39,7 @@ class Nourriture
     private $centre;
 
     public function __toString() {
-        return $this->id.'. '.$this->libelle;
+        return $this->libelle;
     }
     
     

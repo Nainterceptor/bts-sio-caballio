@@ -18,7 +18,7 @@
 	    <li><a href="{{ path('cheval')}}">Cheval</a></li>
 	    <li><a href="{{ path('equipement')}}">Equipement</a></li>
 		    {% if is_granted('ROLE_GERANT') %}
-		    <li><a href="{{ path('cheval_race')}}">Race</a></li>
+		    <li><a href="{{ path('cheval_nourriture')}}">Nourriture</a></li>
 		    {% endif %}
 	   	{% endif %}
 	    {% if is_granted('ROLE_USER') %}

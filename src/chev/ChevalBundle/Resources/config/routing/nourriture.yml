@@ -1,0 +1,30 @@
+cheval_nourriture:
+    pattern:  /
+    defaults: { _controller: "chevChevalBundle:Nourriture:index" }
+
+cheval_nourriture_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevChevalBundle:Nourriture:show" }
+
+cheval_nourriture_new:
+    pattern:  /new
+    defaults: { _controller: "chevChevalBundle:Nourriture:new" }
+
+cheval_nourriture_create:
+    pattern:  /create
+    defaults: { _controller: "chevChevalBundle:Nourriture:create" }
+    requirements: { _method: post }
+
+cheval_nourriture_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevChevalBundle:Nourriture:edit" }
+
+cheval_nourriture_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevChevalBundle:Nourriture:update" }
+    requirements: { _method: post }
+
+cheval_nourriture_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevChevalBundle:Nourriture:delete" }
+    requirements: { _method: post }

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RaceType extends AbstractType
+class NourritureType extends AbstractType
 {
 	    private $user;
     public function setUser($user) {
@@ -37,12 +37,12 @@ class RaceType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'chev\ChevalBundle\Entity\Race'
+            'data_class' => 'chev\ChevalBundle\Entity\Nourriture'
         ));
     }
 
     public function getName()
     {
-        return 'race';
+        return 'nourriture';
     }
 }

@@ -1,9 +1,9 @@
 chevChevalBundle_cheval:
     resource: "@chevChevalBundle/Resources/config/routing/cheval.yml"
     prefix:   /cheval
-chevChevalBundle_cheval_race:
-    resource: "@chevChevalBundle/Resources/config/routing/race.yml"
-    prefix:   /cheval/race
+chevChevalBundle_cheval_nourriture:
+    resource: "@chevChevalBundle/Resources/config/routing/nourriture.yml"
+    prefix:   /cheval/nourriture
 chevChevalBundle_equipement:
     resource: "@chevChevalBundle/Resources/config/routing/equipement.yml"
     prefix:   /equipement
@@ -11,9 +11,6 @@ chevChevalBundle_equipement:
 WSchevChevalBundle_cheval:
     resource: "@chevChevalBundle/Resources/config/routing/WScheval.yml"
     prefix:   /ws/cheval
-WSchevChevalBundle_cheval_race:
-    resource: "@chevChevalBundle/Resources/config/routing/WSrace.yml"
-    prefix:   /ws/cheval/race
 WSchevChevalBundle_equipement:
     resource: "@chevChevalBundle/Resources/config/routing/WSequipement.yml"
     prefix:   /ws/equipement

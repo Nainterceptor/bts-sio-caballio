@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * chev\ChevalBundle\Entity\Race
+ * chev\ChevalBundle\Entity\Nourriture
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="chev\ChevalBundle\Entity\RaceRepository")
+ * @ORM\Entity(repositoryClass="chev\ChevalBundle\Entity\NourritureRepository")
  */
-class Race
+class Nourriture
 {
     /**
      * @var integer $id
@@ -27,7 +27,7 @@ class Race
      *
      * @ORM\Column(name="libelle", type="string", length=50)
      * @Assert\NotBlank()
-     * @Assert\MaxLength(limit=50, message="Le libelle de la race doit comporter {{ limit }} caractères maximum")
+     * @Assert\MaxLength(limit=50, message="Le libelle de la Nourriture doit comporter {{ limit }} caractères maximum")
      */
     private $libelle;
 	
@@ -57,7 +57,7 @@ class Race
      * Set libelle
      *
      * @param string $libelle
-     * @return Race
+     * @return Nourriture
      */
     public function setLibelle($libelle)
     {
@@ -80,7 +80,7 @@ class Race
      * Set centre
      *
      * @param \chev\BoxBundle\Entity\Centre $centre
-     * @return Race
+     * @return Nourriture
      */
     public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
     {

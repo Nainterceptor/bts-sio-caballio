@@ -159,9 +159,7 @@ class ChevalController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $chevalType = new ChevalType();
-        $chevalType->setUser($this->get('security.context')->getToken()->getUser());
-        $form   = $this->createForm($chevalType, $entity);
+        $form = $this->createDeleteForm($id);
         $form->bind($request);
 
         if ($form->isValid()) {

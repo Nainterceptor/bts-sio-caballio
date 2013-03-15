@@ -1,12 +1,12 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block hero %}
 <div class="page-header">
-    <h1>Race</h1>
+    <h1>Nourriture</h1>
 </div>
 {% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
  <li>
-      <a href="{{ path('cheval_race') }}">Gestion de races</a>
+      <a href="{{ path('cheval_nourriture') }}">Gestion des aliments</a>
  </li>
 {% endblock %}

@@ -9,7 +9,7 @@
 {% block body %}
 <h2>Voir le paiement</h2>
 <div class="span6">
-	<table class="table table-hover">
+	<table class="table table-bordered">
 	    <tbody>
 	        <tr>
 	            <th>Id</th>
@@ -17,7 +17,7 @@
 	        </tr>
 	        <tr>
 	        	<th>Facture</th>
-	        	<td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">{{ entity.facture }}</a></td>
+	        	<td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">Facture n°{{ entity.facture }}</a></td>
 	        </tr>
 	        <tr>
 	            <th>Montant</th>

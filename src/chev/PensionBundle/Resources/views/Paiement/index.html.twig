@@ -23,7 +23,7 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('paiement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">{{ entity.facture }}</a></td>
+            <td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">Facture n°{{ entity.facture }}</a></td>
             <td>{{ entity.montant }} €</td>
             <td>{{ entity.typePaiement }}</td>
             <td>

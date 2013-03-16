@@ -88,6 +88,7 @@ class Facture
 				$moisTotal = $interval->m + 1;
 		}
 		$montantTVA = ($moisTotal*$this->box->getType()->getPrix()) * 1.196;
+		$montantTVA = number_format($montantTVA, 2);
 		
 		$RAP = 0;
 		foreach ($this->paiements as $paiement) {

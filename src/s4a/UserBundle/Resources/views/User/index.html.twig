@@ -12,9 +12,10 @@
     <thead>
         <tr>
         	<th>{{ 'user.label.id'|trans([], 'backoffice') }}</th>
-            <th>{{ 'user.label.username'|trans([], 'backoffice') }}</td>
-            <th>{{ 'user.label.city'|trans([], 'backoffice') }}</td>
-            <th>{{ 'user.label.email'|trans([], 'backoffice') }}</td>
+            <th>{{ 'user.label.username'|trans([], 'backoffice') }}</th>
+            <th>Nom Prenom</th>
+            <th>{{ 'user.label.city'|trans([], 'backoffice') }}</th>
+            <th>{{ 'user.label.email'|trans([], 'backoffice') }}</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
         <tr>
         	<td>{{ entity.id }}</td>
         	<td><a href="{{ path('s4admin_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+        	<td>{{ entity.lastname }} {{ entity.firstname }}</td>
         	<td>{{ entity.city }}</td>
         	<td>{{ entity.email }}</td>
     		<td>

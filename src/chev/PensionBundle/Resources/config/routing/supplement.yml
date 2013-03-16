@@ -1,0 +1,30 @@
+supplement:
+    pattern:  /
+    defaults: { _controller: "chevPensionBundle:Supplement:index" }
+
+supplement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevPensionBundle:Supplement:show" }
+
+supplement_new:
+    pattern:  /new
+    defaults: { _controller: "chevPensionBundle:Supplement:new" }
+
+supplement_create:
+    pattern:  /create
+    defaults: { _controller: "chevPensionBundle:Supplement:create" }
+    requirements: { _method: post }
+
+supplement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevPensionBundle:Supplement:edit" }
+
+supplement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevPensionBundle:Supplement:update" }
+    requirements: { _method: post }
+
+supplement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevPensionBundle:Supplement:delete" }
+    requirements: { _method: post }

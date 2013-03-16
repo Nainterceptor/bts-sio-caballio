@@ -66,6 +66,11 @@ class Facture
      */
     protected $paiements;
 	
+	/**
+     * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Supplement", mappedBy="facture")
+     */
+    protected $supplements;
+	
 	public function __construct()
 	{
 		$this->dateDebut = new \DateTime();
@@ -74,7 +79,7 @@ class Facture
 	}
 
     public function __toString() {
-        return (string)$this->id;
+        return (string) "n° ".$this->id. " : ".$this->box->getCheval();
     }
     
 	public function getRAP()
@@ -95,9 +100,34 @@ class Facture
 			$RAP += $paiement->getMontant();
 		}
 		$RAP = $montantTVA - $RAP;
+		if ($this->supplements != null) {
+			foreach ($this->supplements as $supp) {
+				$RAP += $supp->getPrix();
+			}
+		}
 		
 		return $RAP;
 	}
+	
+	/**
+     * Get paiements
+     *
+     * @return paiements 
+     */
+    public function getPaiements()
+    {
+        return $this->paiements;
+    }
+    
+	/**
+     * Get supplements
+     *
+     * @return supplements 
+     */
+    public function getSupplements()
+    {
+        return $this->supplements;
+    }
 	 
     /**
      * Get id

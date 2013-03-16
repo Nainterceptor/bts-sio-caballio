@@ -52,7 +52,7 @@ class Supplement
      * @ORM\JoinColumn(onDelete="CASCADE")
 	 * @Assert\NotBlank()
      */
-    private $centre;
+    private $facture;
 	
 	public function __toString()
 	{
@@ -139,26 +139,27 @@ class Supplement
         return $this->description;
     }
 
+
     /**
-     * Set centre
+     * Set facture
      *
-     * @param \chev\PensionBundle\Entity\Facture $centre
+     * @param \chev\PensionBundle\Entity\Facture $facture
      * @return Supplement
      */
-    public function setCentre(\chev\PensionBundle\Entity\Facture $centre = null)
+    public function setFacture(\chev\PensionBundle\Entity\Facture $facture = null)
     {
-        $this->centre = $centre;
+        $this->facture = $facture;
     
         return $this;
     }
 
     /**
-     * Get centre
+     * Get facture
      *
      * @return \chev\PensionBundle\Entity\Facture 
      */
-    public function getCentre()
+    public function getFacture()
     {
-        return $this->centre;
+        return $this->facture;
     }
 }

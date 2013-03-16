@@ -1,0 +1,12 @@
+{% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
+{% block hero %}
+<div class="page-header">
+    <h1>Suppléments</h1>
+</div>
+{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+ <li>
+      <a href="{{ path('supplement') }}">Gestion des suppléments</a>
+ </li>
+{% endblock %}

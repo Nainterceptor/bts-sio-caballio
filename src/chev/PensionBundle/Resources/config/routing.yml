@@ -8,3 +8,6 @@ chevPensionBundle_paiement:
 chevPensionBundle_facture:
     resource: "@chevPensionBundle/Resources/config/routing/facture.yml"
     prefix:   /facture
+chevPensionBundle_supplement:
+    resource: "@chevPensionBundle/Resources/config/routing/supplement.yml"
+    prefix:   /supplement

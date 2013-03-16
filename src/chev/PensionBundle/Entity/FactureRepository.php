@@ -43,6 +43,13 @@ class FactureRepository extends EntityRepository
 		$facture['montantTVA'] = ($moisTotal*$facture['prix']) * 1.196;
 		$facture['montantTVA'] = number_format($facture['montantTVA'], 2);
 		
+		if ($facture['facture']->getSupplements() != null) {
+			$facture['totalMontantTVA'] = $facture['montantTVA'];
+			foreach ($facture['facture']->getSupplements() as $supp) {
+				$facture['totalMontantTVA'] += $supp->getPrix();
+			}
+		}
+		
     	return $facture;
 	}
 	
@@ -108,13 +115,6 @@ class FactureRepository extends EntityRepository
 		if($facture == null)
             return null;
 		
-		$query = ' SELECT p'
-			   . ' FROM chevPensionBundle:Paiement p'
-			   . ' WHERE p.facture = :id';
-		$facture['paiements'] = $em->createQuery($query)
-								   ->setParameter(':id', $id)
-								   ->getResult();
-		
         return $this->retourneFacture($facture);
     }
     /**
@@ -145,13 +145,6 @@ class FactureRepository extends EntityRepository
 		if($facture == null)
             return null;
 		
-		$query = ' SELECT p'
-			   . ' FROM chevPensionBundle:Paiement p'
-			   . ' WHERE p.facture = :id';
-		$facture['paiements'] = $em->createQuery($query)
-								   ->setParameter(':id', $id)
-								   ->getResult();
-		
         return $this->retourneFacture($facture);
     }
 	/**
@@ -180,13 +173,6 @@ class FactureRepository extends EntityRepository
         }
 		if($facture == null)
             return null;
-		
-		$query = ' SELECT p'
-			   . ' FROM chevPensionBundle:Paiement p'
-			   . ' WHERE p.facture = :id';
-		$facture['paiements'] = $em->createQuery($query)
-								   ->setParameter(':id', $id)
-								   ->getResult();
 		
         return $this->retourneFacture($facture);
     }

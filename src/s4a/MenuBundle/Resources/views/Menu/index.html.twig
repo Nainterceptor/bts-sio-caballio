@@ -26,6 +26,7 @@
         <li><a href="{{ path('facture') }}">Facture</a></li>
 	        {% if is_granted('ROLE_GERANT') %}
 	        <li><a href="{{ path('paiement') }}">Paiement</a></li>
+	        <li><a href="{{ path('supplement') }}">Supplément</a></li>
 		        {% if is_granted('ROLE_ADMIN') %}
 		        <ul>
 		            <li><a href="{{ path('paiement_type') }}">Types de paiement</a></li>

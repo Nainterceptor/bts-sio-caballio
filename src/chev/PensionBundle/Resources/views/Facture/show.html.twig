@@ -179,6 +179,33 @@
 						<h4>{{ montantTVA }} €</h4>
 					</td>
 				</tr>
+				{% if entity.supplements %}
+				{% for supplement in entity.supplements %}
+				<tr>
+					<td colspan="2">
+						<p>{{ supplement.libelle }}</p>
+						<p>{{ supplement.description }}</p>
+					</td>
+					<td>
+						Prix du supplement TTC :
+					</td>
+					<td>
+						{{ supplement.prix }} €
+					</td>
+				</tr>
+				{% endfor %}
+				<tr>
+					<td colspan="2">
+						
+					</td>
+					<td>
+					 	<h4>Total avec Sup. TTC :</h4>
+					</td>
+					<td>
+						<h4>{{ totalMontantTVA }} €</h4>
+					</td>
+				</tr>
+				{% endif %}
 			</tbody>
 		</table>
 	</div>
@@ -195,7 +222,7 @@
 			    	</tr>
 			    </thead>
 			    <tbody>
-			    	{% for paiement in paiements %}
+			    	{% for paiement in entity.paiements %}
 			    	<tr>
 			            <td>{{ paiement.montant }} €</td>
 			            <td>{{ paiement.typePaiement }}</td>

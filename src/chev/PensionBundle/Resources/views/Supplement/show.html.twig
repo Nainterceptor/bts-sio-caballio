@@ -1,0 +1,49 @@
+{% extends 'chevPensionBundle:Supplement:layout.html.twig' %}
+{% block title %}Voir - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('supplement_show', {id: entity.id}) }}">Aperçu</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Voir le supplément</h2>
+<div class="span6">
+	<table class="table table-bordered">
+	    <tbody>
+	        <tr>
+	            <th>Id</th>
+	            <td>{{ entity.id }}</td>
+	        </tr>
+	        <tr>
+	        	<th>Facture</th>
+	        	<td><a href="{{ path('facture_show', { 'id': entity.facture }) }}">Facture {{ entity.facture }}</a></td>
+	        </tr>
+	        <tr>
+	            <th>Libelle</th>
+	            <td>{{ entity.libelle }}</td>
+	        </tr>
+	        <tr>
+	        	<th>Prix</th>
+	        	<td>{{ entity.prix}} €</td>
+	        </tr>
+	        <tr>
+	            <th>Description</th>
+	            <td>{{ entity.description }}</td>
+	        </tr>
+	    </tbody>
+	</table>
+	<div class="row-fluid">
+		<div class="span6">
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('supplement_delete', { 'id': entity.id }) }}" method="post">
+		        {{ form_widget(delete_form) }}
+		        <button type="submit" class="btn btn-danger">Supprimer</button>
+		    </form>
+		</div>
+		<div class="span6 pagination-right">
+			<a href="{{ path('supplement') }}" class="btn">Retour à la liste</a>
+			<a href="{{ path('supplement_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

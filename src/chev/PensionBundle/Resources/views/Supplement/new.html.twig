@@ -1,0 +1,46 @@
+{% extends 'chevPensionBundle:Supplement:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('supplement_new') }}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Nouveau supplément</h2>
+<div class="span6">
+	<form class="form-horizontal" action="{{ path('supplement_create') }}" method="post" {{ form_enctype(form) }}>
+		{{ form_errors(form) }}
+		<div class="control-group">
+			{{ form_label(form.libelle, 'Libelle' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.libelle) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.prix, 'Prix' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.prix) }} €
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.description, 'Description' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.description) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.facture, 'Facture' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.facture) }}
+			</div>
+		</div>
+		
+	    {{ form_rest(form) }}
+	    <div class="pagination-right">
+	    	<a class="btn" href="{{ path('supplement') }}">Retour à la liste</a>
+			<input class="btn btn-success" type="submit" value="Nouveau" >
+	    </div>
+	</form>
+</div>
+{% endblock %}

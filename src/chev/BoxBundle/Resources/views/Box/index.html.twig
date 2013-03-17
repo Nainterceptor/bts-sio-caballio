@@ -13,7 +13,6 @@
         <tr>
             <th>Id</th>
             <th>Cheval</th>
-            <th>Type de box</th>
             <th>Date d'ajout</th>
             <th>Actions</th>
         </tr>
@@ -23,7 +22,6 @@
         <tr>
             <td><a href="{{ path('centre_box_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
-            <td>{{ entity.type.libelle }}</td>
             <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</td>
             <td>
                 <a href="{{ path('centre_box_show', { 'id': entity.id }) }}" class="btn" title="Voir">
@@ -36,7 +34,7 @@
         </tr>
  	{% else %}
  		<tr>
- 			<td colspan="5">
+ 			<td colspan="4">
  				Il n'y a aucun box existant.
  			</td>
  		</tr>

@@ -5,8 +5,8 @@ namespace chev\BoxBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use chev\BoxBundle\Entity\Box;
-use chev\BoxBundle\Form\BoxType;
+use chev\BoxBundle\Entity\Box,
+	chev\BoxBundle\Form\BoxType;
 
 /**
  * Box controller.
@@ -36,9 +36,9 @@ class BoxController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Box();
-        $boxType = new BoxType();
+		$boxType = new boxType();
         $boxType->setUser($this->get('security.context')->getToken()->getUser());
-        $form = $this->createForm($boxType, $entity);
+        $form   = $this->createForm($boxType, $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -62,9 +62,9 @@ class BoxController extends Controller
     public function newAction()
     {
         $entity = new Box();
-        $boxType = new BoxType();
+        $boxType = new boxType();
         $boxType->setUser($this->get('security.context')->getToken()->getUser());
-        $form   = $this->createForm($boxType, $entity);
+        $form = $this->createForm($boxType, $entity);
 
         return $this->render('chevBoxBundle:Box:new.html.twig', array(
             'entity' => $entity,
@@ -106,7 +106,7 @@ class BoxController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Box entity.');
         }
-        $boxType = new BoxType();
+		$boxType = new boxType();
         $boxType->setUser($this->get('security.context')->getToken()->getUser());
         $editForm = $this->createForm($boxType, $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -133,7 +133,7 @@ class BoxController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $boxType = new BoxType();
+		$boxType = new boxType();
         $boxType->setUser($this->get('security.context')->getToken()->getUser());
         $editForm = $this->createForm($boxType, $entity);
         $editForm->bind($request);
@@ -192,7 +192,7 @@ class BoxController extends Controller
     }
     
     /**
-     * Récupérer la liste des types suivant les règles de gestion
+     * Récupérer la liste des box suivant les règles de gestion
      * 
      * @param EntityManager $em
      * @return Entity
@@ -203,13 +203,13 @@ class BoxController extends Controller
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:Box')->findAll();
         
-        return $em->getRepository('chevBoxBundle:Box')->findByTypeBoxAndCentreGerant($user);
+        return $em->getRepository('chevBoxBundle:Box')->findByBoxAndCentreGerant($user);
     } 
     /**
-     * Récupérer un type suivant les règles de gestion
+     * Récupérer un box suivant les règles de gestion
      * 
      * @param EntityManager $em
-     * @param int $id l'id du type de box
+     * @param int $id l'id du box
      * 
      * @return Entity
      */
@@ -218,7 +218,8 @@ class BoxController extends Controller
         
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:Box')->find($id);
-        return $em->getRepository('chevBoxBundle:Box')->findOneByTypeBoxAndCentreGerant($user, $id);
+		
+        return $em->getRepository('chevBoxBundle:Box')->findOneByBoxAndCentreGerant($user, $id);
 
     }
 }

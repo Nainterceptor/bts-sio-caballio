@@ -13,35 +13,33 @@ use Doctrine\ORM\EntityRepository;
 class BoxRepository extends EntityRepository
 {
     /**
-     * Trouver tous les types par le centre ayant ce gérant
+     * Trouver tous les box par le centre ayant ce gérant
      * 
      * @param User $gerant Le gérant
      *
      * @return Tableau d'entités
      */
-    public function findByTypeBoxAndCentreGerant($gerant) {
+    public function findByBoxAndCentreGerant($gerant) {
         return $this->_em
                 ->createQuery('SELECT b FROM chevBoxBundle:Box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN b.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
     }
     
     /**
-     * Trouver un type par le centre ayant ce gérant et l'id
+     * Trouver un box par le centre ayant ce gérant et l'id
      * 
      * @param User $gerant Le gérant
      * @param int $id l'id
      * 
      * @return Entity
      */
-    public function findOneByTypeBoxAndCentreGerant($gerant, $id) {
+    public function findOneByBoxAndCentreGerant($gerant, $id) {
         return $this->_em
                 ->createQuery('SELECT b FROM chevBoxBundle:Box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN b.centre c
                                WHERE c.gerant = :gerant
                                AND b.id = :id')
                 ->setParameter(':gerant', $gerant)

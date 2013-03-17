@@ -8,9 +8,6 @@
 	    <li><a href="{{ path('pature') }}">Pâture</a></li>
 		<li>
 			<a href="{{ path('centre_box')}}">Box</a>
-			<ul>
-		        <li><a href="{{ path('centre_typebox') }}">Type de box</a></li>
-		    </ul>
 		</li>
 		{% endif %}
 	    {% if is_granted('ROLE_USER') %}

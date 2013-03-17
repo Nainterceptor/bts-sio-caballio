@@ -19,10 +19,6 @@
 	            <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
 	        </tr>
 	        <tr>
-	            <th>Type de box</th>
-	            <td>{{ entity.type.libelle }}</td>
-	        </tr>
-	        <tr>
 	            <th>Date d'ajout</th>
 	            <td>{{ entity.dateAjout|date('d/m/Y') }}</td>
 	        </tr>

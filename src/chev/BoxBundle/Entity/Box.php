@@ -30,11 +30,11 @@ class Box
     private $dateAjout;
 
     /**
-     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\TypeBox")
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Centre")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      */
-    private $type;
+    private $centre;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
@@ -98,29 +98,6 @@ class Box
     }
 
     /**
-     * Set type
-     *
-     * @param \chev\BoxBundle\Entity\TypeBox $type
-     * @return Box
-     */
-    public function setType(\chev\BoxBundle\Entity\TypeBox $type = null)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return \chev\BoxBundle\Entity\TypeBox 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set cheval
      *
      * @param \chev\ChevalBundle\Entity\Cheval $cheval
@@ -141,5 +118,28 @@ class Box
     public function getCheval()
     {
         return $this->cheval;
+    }
+
+    /**
+     * Set centre
+     *
+     * @param \chev\BoxBundle\Entity\Centre $centre
+     * @return Box
+     */
+    public function setCentre(\chev\BoxBundle\Entity\Centre $centre = null)
+    {
+        $this->centre = $centre;
+    
+        return $this;
+    }
+
+    /**
+     * Get centre
+     *
+     * @return \chev\BoxBundle\Entity\Centre 
+     */
+    public function getCentre()
+    {
+        return $this->centre;
     }
 }

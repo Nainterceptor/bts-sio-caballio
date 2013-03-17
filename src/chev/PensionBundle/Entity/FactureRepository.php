@@ -63,9 +63,8 @@ class FactureRepository extends EntityRepository
     public function findByCentreGerant($gerant) {
         return $this->_em
                 ->createQuery('SELECT f FROM chevPensionBundle:Facture f
-                               JOIN f.box b 
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl 
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
@@ -81,9 +80,8 @@ class FactureRepository extends EntityRepository
     public function findOneByCentreGerant($gerant, $id) {
         return $this->_em
                 ->createQuery('SELECT f FROM chevPensionBundle:Facture f
-                               JOIN f.box b 
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant
                                AND f.id = :id')
                 ->setParameter(':gerant', $gerant)
@@ -101,10 +99,9 @@ class FactureRepository extends EntityRepository
     public function findAM($id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = ' SELECT f AS facture, t.prix'
+            $query = 'SELECT f AS facture, tl.prix'
                    . ' FROM chevPensionBundle:Facture f'
-                   . ' JOIN f.box b'
-                   . ' JOIN b.type t'
+                   . ' JOIN f.typeLogement tl'
                    . ' WHERE f.id = :id';
     		$facture = $em->createQuery($query)
     					  ->setParameter(':id', $id)
@@ -128,11 +125,10 @@ class FactureRepository extends EntityRepository
     public function findOneByCentreGerantAM($gerant, $id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = ' SELECT f AS facture, t.prix'
+            $query = 'SELECT f AS facture, tl.prix'
                    . ' FROM chevPensionBundle:Facture f'
-                   . ' JOIN f.box b'
-                   . ' JOIN b.type t'
-                   . ' JOIN t.centre c'
+                   . ' JOIN f.typeLogement tl'
+                   . ' JOIN tl.centre c'
                    . ' WHERE c.gerant = :gerant'
                    . ' AND f.id = :id';
     		$facture = $em->createQuery($query)
@@ -158,10 +154,9 @@ class FactureRepository extends EntityRepository
 	public function findOneByUtilisateurAM($user, $id) {
     	try {
     		$em = $this->getEntityManager();
-            $query = 'SELECT f AS facture, t.prix'
+            $query = 'SELECT f AS facture, tl.prix'
                    . ' FROM chevPensionBundle:Facture f'
-                   . ' JOIN f.box b'
-                   . ' JOIN b.type t'
+                   . ' JOIN f.typeLogement tl'
                    . ' WHERE f.utilisateur = :utilisateur'
                    . ' AND f.id = :id';
     		$facture = $em->createQuery($query)

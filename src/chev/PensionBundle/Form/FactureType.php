@@ -32,21 +32,32 @@ class FactureType extends AbstractType
                                             	'attr' => array('class' => 'datetimepicker')
             	)
             )
-            ->add('box', 'entity', array( 'label' => 'Le Box',
-											 'class' => 'chevBoxBundle:Box',
+			->add('typeLogement', 'entity', array( 'label' => 'Type de logement',
+											 'class' => 'chevPensionBundle:TypeLogement',
 											 'query_builder' => function($er) use ($user) {
 												if ($user->hasRole('ROLE_ADMIN')) {
-													return $er->createQueryBuilder('b');
+													return $er->createQueryBuilder('tl');
 												}
-												return $er->createQueryBuilder('b')
-												->join('b.type', 't')
-												->join('t.centre', 'c')
+												return $er->createQueryBuilder('tl')
+												->join('tl.centre', 'c')
 												->where('c.gerant = :gerant')
 												->setParameter(':gerant', $user);
 											 }
 											)
 			)
-            ->add('utilisateur')
+            ->add('cheval', 'entity', array( 'label' => 'Cheval',
+											 'class' => 'chevChevalBundle:Cheval',
+											 'query_builder' => function($er) use ($user) {
+												if ($user->hasRole('ROLE_ADMIN')) {
+													return $er->createQueryBuilder('cheval');
+												}
+												return $er->createQueryBuilder('cheval')
+												->join('cheval.centre', 'c')
+												->where('c.gerant = :gerant')
+												->setParameter(':gerant', $user);
+											 }
+											)
+			)
         ;
     }
 

@@ -1,0 +1,46 @@
+{% extends 'chevPensionBundle:TypeLogement:layout.html.twig' %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('typelogement')}}">Index</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Liste des types de logement</h2>
+<a class="btn btn-success pull-right" href="{{ path('typelogement_new') }}">Ajouter</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Tarif</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('typelogement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.libelle }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.prix }} €</td>
+            <td>
+                <a href="{{ path('typelogement_show', { 'id': entity.id }) }}" class="btn">
+                	Voir
+                </a>
+    			<a href="{{ path('typelogement_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+    				Modifier
+    			</a>
+            </td>
+        </tr>
+ 	{% else %}
+ 		<tr>
+ 			<td colspan="5">
+ 				Il n'y a aucun type de logement existant.
+ 			</td>
+ 		</tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

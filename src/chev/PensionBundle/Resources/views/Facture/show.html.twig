@@ -16,23 +16,40 @@
 				<tbody>
 					<tr>
 						<th>Nom : </th>
-						<td>{{ entity.utilisateur.lastname }}</td>
+						<td>{{ entity.cheval.proprietaire.lastname }}</td>
 					</tr>
 					<tr>
 						<th>Prenom : </th>
-						<td>{{ entity.utilisateur.firstname }}</td>
+						<td>{{ entity.cheval.proprietaire.firstname }}</td>
 					</tr>
 					<tr>
 						<th>Adresse : </th>
 						<td>
-							{{ entity.utilisateur.adress }}<br>
-							{{ entity.utilisateur.zipcode }}
-							{{ entity.utilisateur.city }}
+							{{ entity.cheval.proprietaire.adress }}<br>
+							{{ entity.cheval.proprietaire.zipcode }}
+							{{ entity.cheval.proprietaire.city }}
 						</td>
 					</tr>
 					<tr>
 						<th>Email : </th>
-						<td>{{ entity.utilisateur.email }}</td>
+						<td>{{ entity.cheval.proprietaire.email }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3>Info sur le cheval</h3>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>N° : </th>
+						<td>{{ entity.cheval.id }}</td>
+					</tr>
+					<tr>
+						<th>Nom : </th>
+						<td>{{ entity.cheval.nom }}</td>
+					</tr>
+					<tr>
+						<th>Sexe</th>
+						<td>{{ entity.cheval.sexe }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -43,15 +60,15 @@
 				<tbody>
 					<tr>
 						<th>Nom : </th>
-						<td>{{ entity.box.type.centre.gerant.lastname }}</td>
+						<td>{{ entity.typeLogement.centre.gerant.lastname }}</td>
 					</tr>
 					<tr>
 						<th>Prenom : </th>
-						<td>{{ entity.box.type.centre.gerant.firstname }}</td>
+						<td>{{ entity.typeLogement.centre.gerant.firstname }}</td>
 					</tr>
 					<tr>
 						<th>Email : </th>
-						<td>{{ entity.box.type.centre.gerant.email }}</td>
+						<td>{{ entity.typeLogement.centre.gerant.email }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -60,55 +77,32 @@
 				<tbody>
 					<tr>
 						<th>Centre : </th>
-						<td>{{ entity.box.type.centre }}</td>
+						<td>{{ entity.typeLogement.centre }}</td>
 					</tr>
 					<tr>
 						<th>Adresse : </th>
 						<td>
-							{{ entity.box.type.centre.adresse }}<br>
-							{{ entity.box.type.centre.codepostal }}
-							{{ entity.box.type.centre.ville }}
+							{{ entity.typeLogement.centre.adresse }}<br>
+							{{ entity.typeLogement.centre.codepostal }}
+							{{ entity.typeLogement.centre.ville }}
 						</td>
 					</tr>
 					<tr>
 						<th>Telephone : </th>
-						<td>{{ entity.box.type.centre.telephone }}</td>
+						<td>{{ entity.typeLogement.centre.telephone }}</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span6">
-			<h3>Info sur le cheval</h3>
+			<h3>Info du Type de Logement</h3>
 			<table class="table table-bordered">
 				<tbody>
-					<tr>
-						<th>N° : </th>
-						<td>{{ entity.box.cheval.id }}</td>
-					</tr>
-					<tr>
-						<th>Nom : </th>
-						<td>{{ entity.box.cheval.nom }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="span6">
-			<h3>Info du box</h3>
-			<table class="table table-bordered">
-				<tbody>
-					<tr>
-						<th>N° : </th>
-						<td>{{ entity.box }}</td>
-					</tr>
 					<tr>
 						<th>Libelle : </th>
-						<td>{{ entity.box }} - "{{ entity.box.cheval.nom }}"</td>
+						<td>{{ entity.typeLogement.libelle }}</td>
 					</tr>
 					<tr>
-						<th>Type : </th>
-						<td>{{ entity.box.type.libelle }}</td>
+						<th>Description : </th>
+						<td>{{ entity.typeLogement.description }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -129,8 +123,7 @@
 				</tr>
 				<tr>
 					<td>
-						<p>Location du box : {{ entity.box }}</p>
-						<p>Type : {{entity.box.type.libelle }}</p>
+						<p>Type de Logement : {{ entity.typeLogement.libelle }}</p>
 						<p>Date de debut : {{ entity.dateDebut|date('d/m/Y') }}</p>
 						<p>Date de fin : {{ entity.dateFin|date('d/m/Y') }}</p>
 					</td>
@@ -140,7 +133,7 @@
 						<h5>Total facturé : {{ nbMois }}</h5>
 					</td>
 					<td>
-						{{ entity.box.type.prix }} €
+						{{ entity.typeLogement.prix }} €
 					</td>
 					<td>
 						{{ montant }} €

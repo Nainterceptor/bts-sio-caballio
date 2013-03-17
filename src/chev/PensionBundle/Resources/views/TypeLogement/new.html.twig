@@ -1,0 +1,47 @@
+{% extends 'chevPensionBundle:TypeLogement:layout.html.twig' %}
+{% block title %}Nouveau - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('typelogement_new') }}">Nouveau</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Nouveau type de logement</h2>
+<div class="span6">
+	<form class="form-horizontal" action="{{ path('typelogement_create') }}" method="post" {{ form_enctype(form) }}>
+		{{ form_errors(form) }}
+		<div class="control-group">
+			{{ form_label(form.libelle, 'Libelle' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.libelle) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.description, 'Description' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.description) }}
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.prix, 'Tarif' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.prix) }} € / mois
+			</div>
+		</div>
+		<div class="control-group">
+			{{ form_label(form.centre, 'Centre' , {'label_attr': {'class': 'control-label'}}) }}
+			<div class="controls">
+				{{ form_widget(form.centre) }}
+			</div>
+		</div>
+		
+	    {{ form_rest(form) }}
+	    <div class="pagination-right">
+	    	<a class="btn" href="{{ path('typelogement') }}">Retour à la liste</a>
+			<input class="btn btn-success" type="submit" value="Nouveau" >
+	    </div>
+	</form>
+</div>
+{% endblock %}
+

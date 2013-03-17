@@ -48,18 +48,18 @@ class Facture
     private $dateFacture;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
+	 * @ORM\ManyToOne(targetEntity="chev\PensionBundle\Entity\TypeLogement")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
 	 */
-	private $box;
+	private $typeLogement;
 		
 	/**
-	 * @ORM\ManyToOne(targetEntity="s4a\UserBundle\Entity\User", inversedBy="factures")
-     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
 	 */
-	private $utilisateur;
+	private $cheval;
 	
 	/**
      * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Paiement", mappedBy="facture")
@@ -79,7 +79,7 @@ class Facture
 	}
 
     public function __toString() {
-        return (string) "n° ".$this->id. " : ".$this->box->getCheval();
+        return (string) "n° ".$this->id. " : ".$this->cheval;
     }
     
 	public function getRAP()
@@ -92,7 +92,7 @@ class Facture
 			else
 				$moisTotal = $interval->m + 1;
 		}
-		$montantTVA = ($moisTotal*$this->box->getType()->getPrix()) * 1.196;
+		$montantTVA = ($moisTotal*$this->typeLogement->getPrix()) * 1.196;
 		$montantTVA = number_format($montantTVA, 2);
 		
 		$RAP = 0;
@@ -207,50 +207,51 @@ class Facture
     {
         return $this->dateFacture;
     }
+	
 
     /**
-     * Set box
+     * Set typeLogement
      *
-     * @param \chev\BoxBundle\Entity\Box $box
+     * @param \chev\PensionBundle\Entity\TypeLogement $typeLogement
      * @return Facture
      */
-    public function setBox(\chev\BoxBundle\Entity\Box $box = null)
+    public function setTypeLogement(\chev\PensionBundle\Entity\TypeLogement $typeLogement = null)
     {
-        $this->box = $box;
+        $this->typeLogement = $typeLogement;
     
         return $this;
     }
 
     /**
-     * Get box
+     * Get typeLogement
      *
-     * @return \chev\BoxBundle\Entity\Box 
+     * @return \chev\PensionBundle\Entity\TypeLogement 
      */
-    public function getBox()
+    public function getTypeLogement()
     {
-        return $this->box;
+        return $this->typeLogement;
     }
 
     /**
-     * Set utilisateur
+     * Set cheval
      *
-     * @param \s4a\UserBundle\Entity\User $utilisateur
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
      * @return Facture
      */
-    public function setUtilisateur(\s4a\UserBundle\Entity\User $utilisateur = null)
+    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
     {
-        $this->utilisateur = $utilisateur;
+        $this->cheval = $cheval;
     
         return $this;
     }
 
     /**
-     * Get utilisateur
+     * Get cheval
      *
-     * @return \s4a\UserBundle\Entity\User 
+     * @return \chev\ChevalBundle\Entity\Cheval 
      */
-    public function getUtilisateur()
+    public function getCheval()
     {
-        return $this->utilisateur;
+        return $this->cheval;
     }
 }

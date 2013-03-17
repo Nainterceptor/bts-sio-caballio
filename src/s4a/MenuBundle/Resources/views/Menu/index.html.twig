@@ -25,6 +25,7 @@
         <li class="nav-header">Facture</li>
         <li><a href="{{ path('facture') }}">Facture</a></li>
 	        {% if is_granted('ROLE_GERANT') %}
+	        <li><a href="{{ path('typelogement') }}">Type de logement</a></li>
 	        <li><a href="{{ path('paiement') }}">Paiement</a></li>
 	        <li><a href="{{ path('supplement') }}">Supplément</a></li>
 		        {% if is_granted('ROLE_ADMIN') %}

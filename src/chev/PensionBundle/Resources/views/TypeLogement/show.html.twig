@@ -1,0 +1,59 @@
+{% extends 'chevPensionBundle:TypeLogement:layout.html.twig' %}
+{% block title %}Voir - {{ parent() }}{% endblock %}
+{% block breadcrumbs %}
+{{ parent() }}
+<li>
+	<a href="{{ path('typelogement_show', {id: entity.id}) }}">Aperçu</a>
+</li>
+{% endblock %}
+{% block body %}
+<h2>Voir le type de logement</h2>
+<div class="span6">
+	<table class="table table-bordered">
+	    <tbody>
+	        <tr>
+	            <th>Id</th>
+	            <td>{{ entity.id }}</td>
+	        </tr>
+	        <tr>
+	            <th>Libelle</th>
+	            <td>{{ entity.libelle }}</td>
+	        </tr>
+	        <tr>
+	            <th>Description</th>
+	            <td>{{ entity.description }}</td>
+	        </tr>
+	        <tr>
+	        	<th>Tarif</th>
+	        	<td>{{ entity.prix}} €</td>
+	        </tr>
+	        <tr>
+	        	<th>Centre</th>
+	        	<td>{{ entity.centre }}</td>
+	        </tr>
+	        <tr>
+	        	<th>Facture</th>
+	        	<td>
+	        		{% for facture in entity.factures %}
+	        		<p><a href="{{ path('facture_show', { 'id': facture.id }) }}">Facture {{ facture }}</a></p>
+	        		{% else %}
+	        		<p>Aucune facture lié à ce type de logement.</p>
+	        		{% endfor %}
+	        	</td>
+	        </tr>
+	    </tbody>
+	</table>
+	<div class="row-fluid">
+		<div class="span6">
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('typelogement_delete', { 'id': entity.id }) }}" method="post">
+		        {{ form_widget(delete_form) }}
+		        <button type="submit" class="btn btn-danger">Supprimer</button>
+		    </form>
+		</div>
+		<div class="span6 pagination-right">
+			<a href="{{ path('typelogement') }}" class="btn">Retour à la liste</a>
+			<a href="{{ path('typelogement_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

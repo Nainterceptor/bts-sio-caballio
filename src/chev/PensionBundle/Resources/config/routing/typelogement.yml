@@ -1,0 +1,30 @@
+typelogement:
+    pattern:  /
+    defaults: { _controller: "chevPensionBundle:TypeLogement:index" }
+
+typelogement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "chevPensionBundle:TypeLogement:show" }
+
+typelogement_new:
+    pattern:  /new
+    defaults: { _controller: "chevPensionBundle:TypeLogement:new" }
+
+typelogement_create:
+    pattern:  /create
+    defaults: { _controller: "chevPensionBundle:TypeLogement:create" }
+    requirements: { _method: post }
+
+typelogement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "chevPensionBundle:TypeLogement:edit" }
+
+typelogement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "chevPensionBundle:TypeLogement:update" }
+    requirements: { _method: post }
+
+typelogement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "chevPensionBundle:TypeLogement:delete" }
+    requirements: { _method: post }

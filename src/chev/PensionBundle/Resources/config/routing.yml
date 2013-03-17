@@ -11,3 +11,6 @@ chevPensionBundle_facture:
 chevPensionBundle_supplement:
     resource: "@chevPensionBundle/Resources/config/routing/supplement.yml"
     prefix:   /supplement
+chevPensionBundle_typelogement:
+    resource: "@chevPensionBundle/Resources/config/routing/typelogement.yml"
+    prefix:   /typelogement

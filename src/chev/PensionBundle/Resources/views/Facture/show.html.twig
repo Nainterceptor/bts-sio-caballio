@@ -172,7 +172,7 @@
 						<h4>{{ montantTVA }} €</h4>
 					</td>
 				</tr>
-				{% if entity.supplements %}
+				{% if entity.supplements is not empty  %}
 				{% for supplement in entity.supplements %}
 				<tr>
 					<td colspan="2">

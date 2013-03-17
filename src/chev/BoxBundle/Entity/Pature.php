@@ -58,6 +58,11 @@ class Pature
     private $date;
 	
 	/**
+     * @ORM\OneToMany(targetEntity="chev\ChevalBundle\Entity\Cheval", mappedBy="pature")
+     */
+	private $cheval;
+	
+	/**
 	 * Constructeur de pature
 	 */
 	 public function __construct()
@@ -188,5 +193,38 @@ class Pature
     public function getCentre()
     {
         return $this->centre;
+    }
+
+    /**
+     * Get cheval
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCheval()
+    {
+        return $this->cheval;
+    }
+
+    /**
+     * Add cheval
+     *
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
+     * @return Pature
+     */
+    public function addCheval(\chev\ChevalBundle\Entity\Cheval $cheval)
+    {
+        $this->cheval[] = $cheval;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cheval
+     *
+     * @param \chev\ChevalBundle\Entity\Cheval $cheval
+     */
+    public function removeCheval(\chev\ChevalBundle\Entity\Cheval $cheval)
+    {
+        $this->cheval->removeElement($cheval);
     }
 }

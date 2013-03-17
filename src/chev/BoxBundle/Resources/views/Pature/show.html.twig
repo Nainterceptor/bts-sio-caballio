@@ -21,8 +21,16 @@
 	        </tr>
 	        <tr>
 	            <th>Taille</th>
-	            <td>{{ entity.taille }} hectare(s)</td>
+	            <td>{{ entity.taille }}</td>
 	        </tr>
+	        <tr>
+	            <th>Chevaux</th>
+	        {% for cheval in entity.cheval %}
+	        	<td>{{ cheval.nom }}</td>
+	        {% else %}
+		    	<td>Aucun cheval</td>
+			{% endfor %}
+			</tr>
 	        <tr>
 	            <th>Centre</th>
 	            <td>{{ entity.centre }}</td>

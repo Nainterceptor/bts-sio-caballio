@@ -82,6 +82,20 @@ class Cheval
 	 * @Assert\NotBlank()
 	 */
 	private $quantite;
+	
+	/**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Pature")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Assert\NotBlank()
+	 */
+	private $pature;
+	
+	/**
+     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Assert\NotBlank()
+	 */
+	private $box;
        	
     public function __construct() {
         $this->date = new \DateTime();
@@ -283,5 +297,51 @@ class Cheval
     public function getQuantite()
     {
         return $this->quantite;
+    }
+
+    /**
+     * Set pature
+     *
+     * @param \chev\BoxBundle\Entity\Pature $pature
+     * @return Cheval
+     */
+    public function setPature(\chev\BoxBundle\Entity\Pature $pature = null)
+    {
+        $this->pature = $pature;
+    
+        return $this;
+    }
+
+    /**
+     * Get pature
+     *
+     * @return \chev\BoxBundle\Entity\Pature 
+     */
+    public function getPature()
+    {
+        return $this->pature;
+    }
+
+    /**
+     * Set box
+     *
+     * @param \chev\BoxBundle\Entity\Box $box
+     * @return Cheval
+     */
+    public function setBox(\chev\BoxBundle\Entity\Box $box = null)
+    {
+        $this->box = $box;
+    
+        return $this;
+    }
+
+    /**
+     * Get box
+     *
+     * @return \chev\BoxBundle\Entity\Box 
+     */
+    public function getBox()
+    {
+        return $this->box;
     }
 }

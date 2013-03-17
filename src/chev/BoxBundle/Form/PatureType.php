@@ -38,6 +38,7 @@ class PatureType extends AbstractType
                                                 'choices' => array(true => 'oui', false => 'non')
 										)
                 )
+			->add('cheval')
         ;
     }
 

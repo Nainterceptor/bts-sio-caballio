@@ -104,7 +104,20 @@ class ChevalType extends AbstractType
 				'required' => false
 				)
 			)
-			->add('pature')
+			->add('pature', 'entity', array(
+				'label' => 'Pature',
+				'class' => 'chevBoxBundle:Pature',
+				'query_builder' => function($er) use($user) {
+					if($user->hasRole('ROLE_ADMIN')) {
+                		return $er->createQueryBuilder('p');
+                	}
+                    return $er->createQueryBuilder('p')
+						->join('p.centre', 'c')
+                        ->where('c.gerant = :gerant')
+                        ->setParameter(':gerant', $user);
+				},
+				'required' => false,
+			))
 			->add('box', 'entity', array(
 				'label' => 'Box',
 				'class' => 'chevBoxBundle:Box',

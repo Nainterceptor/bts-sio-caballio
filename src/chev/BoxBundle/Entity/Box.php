@@ -65,7 +65,7 @@ class Box
      public function __toString()
      {
      	if ($this->cheval == null) {
-			 return(string) $this->numero . ', "Box vide"';
+			 return(string) $this->numero . '. "Box vide"';
 		 }
         return(string) $this->numero . '. '.'"'.$this->cheval->getNom().'"';
      }

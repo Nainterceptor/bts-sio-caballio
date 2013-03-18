@@ -56,8 +56,10 @@ class ChevalController extends Controller
      */
     public function newAction()
     {
+    	$em = $this->getDoctrine()->getManager();
+		
         $entity = new Cheval();
-        $chevalType = new ChevalType();
+        $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
         $form   = $this->createForm($chevalType, $entity);
 
@@ -73,8 +75,10 @@ class ChevalController extends Controller
      */
     public function createAction(Request $request)
     {
+    	$em = $this->getDoctrine()->getManager();
+		
         $entity  = new Cheval();
-        $chevalType = new ChevalType();
+        $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
         $form   = $this->createForm($chevalType, $entity);
         $form->bind($request);
@@ -107,7 +111,7 @@ class ChevalController extends Controller
             throw $this->createNotFoundException('Unable to find Cheval entity.');
         }
 
-        $chevalType = new ChevalType();
+        $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
         $editForm   = $this->createForm($chevalType, $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -134,7 +138,7 @@ class ChevalController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $chevalType = new ChevalType();
+        $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
         $editForm   = $this->createForm($chevalType, $entity);
         $editForm->bind($request);

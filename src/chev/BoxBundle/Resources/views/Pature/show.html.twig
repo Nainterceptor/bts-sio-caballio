@@ -25,19 +25,17 @@
 	        </tr>
 	        <tr>
 	            <th>Chevaux</th>
-	        {% for cheval in entity.cheval %}
-	        	<td>{{ cheval.nom }}</td>
-	        {% else %}
-		    	<td>Aucun cheval</td>
-			{% endfor %}
+	            <td>
+	            	{% for cheval in entity.chevaux %}
+	            	<p>- {{ cheval.nom }}</p>
+	            	{% else %}
+				    Aucun cheval
+					{% endfor %}
+	            </td>
 			</tr>
 	        <tr>
 	            <th>Centre</th>
 	            <td>{{ entity.centre }}</td>
-	        </tr>
-	        <tr>
-	            <th>Utilisé</th>
-	            <td>{% if entity.utilise %}oui{% else %}non{% endif %}</td>
 	        </tr>
 	        <tr>
 	            <th>Date d'ajout</th>

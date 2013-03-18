@@ -44,13 +44,6 @@ class Pature
     private $centre;
 
     /**
-     * @var boolean $utilise
-     *
-     * @ORM\Column(name="utilise", type="boolean")
-     */
-    private $utilise;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -60,7 +53,7 @@ class Pature
 	/**
      * @ORM\OneToMany(targetEntity="chev\ChevalBundle\Entity\Cheval", mappedBy="pature")
      */
-	private $cheval;
+	private $chevaux;
 	
 	/**
 	 * Constructeur de pature
@@ -68,6 +61,11 @@ class Pature
 	 public function __construct()
 	 {
 		$this->date = new \DateTime();
+	 }
+	 
+	 public function __toString()
+	 {
+	 	return(string) $this->libelle;
 	 }
 
     /**
@@ -196,35 +194,12 @@ class Pature
     }
 
     /**
-     * Get cheval
+     * Get chevaux
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return chevaux
      */
-    public function getCheval()
+    public function getChevaux()
     {
-        return $this->cheval;
-    }
-
-    /**
-     * Add cheval
-     *
-     * @param \chev\ChevalBundle\Entity\Cheval $cheval
-     * @return Pature
-     */
-    public function addCheval(\chev\ChevalBundle\Entity\Cheval $cheval)
-    {
-        $this->cheval[] = $cheval;
-    
-        return $this;
-    }
-
-    /**
-     * Remove cheval
-     *
-     * @param \chev\ChevalBundle\Entity\Cheval $cheval
-     */
-    public function removeCheval(\chev\ChevalBundle\Entity\Cheval $cheval)
-    {
-        $this->cheval->removeElement($cheval);
+        return $this->chevaux;
     }
 }

@@ -19,7 +19,6 @@ class PatureType extends AbstractType
             ->add('libelle')
             ->add('taille', 'text', array(
 			                                    'label' => "Nombre d'hectare",
-												
 										)
 				)
             ->add('centre', 'entity', array('label' => 'Mon Centre',
@@ -33,12 +32,6 @@ class PatureType extends AbstractType
                                                 ->setParameter(':gerant', $user);
                                             })
                  )
-				 
-            ->add('utilise', 'choice', array(
-                                                'choices' => array(true => 'oui', false => 'non')
-										)
-                )
-			->add('cheval')
         ;
     }
 

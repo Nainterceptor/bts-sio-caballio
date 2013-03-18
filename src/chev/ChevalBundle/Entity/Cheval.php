@@ -38,6 +38,29 @@ class Cheval
      * @Assert\NotBlank()
      */
     private $nourriture;
+	
+	/**
+	 * @var float $quantite
+	 * 
+	 * @ORM\Column(name="quantite", type="float", length=10)
+	 * @Assert\NotBlank()
+	 */
+	private $quantite;
+	
+	/**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+	private $description;
+	
+	/**
+     * @var string $sexe
+     *
+     * @ORM\Column(name="sexe", type="string", length=10)
+     * @Assert\NotBlank()
+     */
+	private $sexe;
 
     /**
      * @var \DateTime $date
@@ -61,39 +84,14 @@ class Cheval
     private $centre;
 	
 	/**
-     * @var string $description
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-	private $description;
-	
-	/**
-     * @var string $sexe
-     *
-     * @ORM\Column(name="sexe", type="string", length=10)
-     * @Assert\NotBlank()
-     */
-	private $sexe;
-	
-	/**
-	 * @var float $quantite
-	 * 
-	 * @ORM\Column(name="quantite", type="float", length=10)
-	 * @Assert\NotBlank()
-	 */
-	private $quantite;
-	
-	/**
      * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Pature")
      * @ORM\JoinColumn(onDelete="CASCADE")
-     * @Assert\NotBlank()
 	 */
 	private $pature;
 	
 	/**
-     * @ORM\ManyToOne(targetEntity="chev\BoxBundle\Entity\Box")
+     * @ORM\OneToOne(targetEntity="chev\BoxBundle\Entity\Box")
      * @ORM\JoinColumn(onDelete="CASCADE")
-     * @Assert\NotBlank()
 	 */
 	private $box;
        	

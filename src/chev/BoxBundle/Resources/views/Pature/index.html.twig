@@ -27,7 +27,7 @@
         	<td>{{ entity.libelle }}</td>
         	<td>{{ entity.taille }}</td>
         	<td>{{ entity.centre }}</td>
-		    <td>{% if entity.utilise %}oui{% else %}non{% endif %}</td>
+		    <td>{% if entity.chevaux is not empty %}oui{% else %}non{% endif %}</td>
             <td>{% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</td>
         	<td>
                 <a href="{{ path('pature_show', { 'id': entity.id }) }}" class="btn" title="Voir">

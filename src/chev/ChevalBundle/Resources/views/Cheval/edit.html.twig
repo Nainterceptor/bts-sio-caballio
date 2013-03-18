@@ -37,15 +37,27 @@
 				</div>
 			</div>
 			<div class="control-group">
+				{{ form_label(edit_form.description, 'Description' , {'label_attr': {'class': 'control-label'}}) }}
+				<div class="controls">
+					{{ form_widget(edit_form.description) }}
+				</div>
+			</div>
+			<div class="control-group">
 				{{ form_label(edit_form.centre, 'Centre' , {'label_attr': {'class': 'control-label'}}) }}
 				<div class="controls">
 					{{ form_widget(edit_form.centre) }}
 				</div>
 			</div>
 			<div class="control-group">
-				{{ form_label(edit_form.description, 'Description' , {'label_attr': {'class': 'control-label'}}) }}
+				{{ form_label(edit_form.box, 'Box' , {'label_attr': {'class': 'control-label'}}) }}
 				<div class="controls">
-					{{ form_widget(edit_form.description) }}
+					{{ form_widget(edit_form.box) }}
+				</div>
+			</div>
+			<div class="control-group">
+				{{ form_label(edit_form.pature, 'Pature' , {'label_attr': {'class': 'control-label'}}) }}
+				<div class="controls">
+					{{ form_widget(edit_form.pature) }}
 				</div>
 			</div>
 			{{ form_rest(edit_form) }}

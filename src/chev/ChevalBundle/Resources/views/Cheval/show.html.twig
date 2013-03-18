@@ -48,6 +48,20 @@
 					<td>{{ entity.description }}</td>
 				</tbody>
 			</table>
+			<table class="table table-bordered">
+				<tr>
+					<th>Box</th>
+					<td>
+						{% if entity.box %} {{ entity.box }} {% else %}Pas de box.{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th>Pature</th>
+					<td>
+						{% if entity.pature %} {{ entity.pature }} {% else %}Pas de pature associer.{% endif %}
+					</td>
+				</tr>
+			</table>
 		</div>
 </div>
 	<div class="row-fluid">

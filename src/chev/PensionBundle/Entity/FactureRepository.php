@@ -41,7 +41,7 @@ class FactureRepository extends EntityRepository
 		$facture['montant'] = $moisTotal*$facture['prix'];
 		$facture['TVA'] = ($moisTotal*$facture['prix']) * 0.196;
 		$facture['montantTVA'] = ($moisTotal*$facture['prix']) * 1.196;
-		$facture['montantTVA'] = number_format($facture['montantTVA'], 2);
+		$facture['montantTVA'] = round($facture['montantTVA'], 2);
 		
 		if ($facture['facture']->getSupplements() != null) {
 			$facture['totalMontantTVA'] = $facture['montantTVA'];

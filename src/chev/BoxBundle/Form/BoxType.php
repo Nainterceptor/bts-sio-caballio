@@ -16,6 +16,7 @@ class BoxType extends AbstractType
     {
         $user = $this->user;
         $builder
+        	->add('numero')
         	->add('centre', 'entity', array('label' => 'Mon Centre',
                                             'class' => 'chevBoxBundle:Centre',
                                             'query_builder' => function($er) use ($user) {
@@ -27,12 +28,6 @@ class BoxType extends AbstractType
                                                 ->setParameter(':gerant', $user);
                                             })
                  )
-			->add('cheval', 'entity', array(
-			                                   'empty_value' => 'Pas de cheval',
-			                                   'required' => false,
-			                                   'class' => 'chevChevalBundle:Cheval'
-			                            )
-			   )
         ;
     }
 

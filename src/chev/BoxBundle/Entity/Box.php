@@ -21,6 +21,14 @@ class Box
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	/**
+	 * @var integer $numero
+	 * 
+	 * @ORM\Column(name="numero", type="integer")
+	 * @Assert\NotBlank()
+	 */
+	private $numero;
 
     /**
      * @var \DateTime $dateAjout
@@ -37,10 +45,9 @@ class Box
     private $centre;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="chev\ChevalBundle\Entity\Cheval")
-	 * @ORM\JoinColumn(onDelete="SET NULL")
+	 * @ORM\OneToOne(targetEntity="chev\ChevalBundle\Entity\Cheval", mappedBy="box")
 	 */
-	private $cheval;
+	protected $cheval;
 
     /**
      * Constructeur du centre
@@ -48,7 +55,6 @@ class Box
      public function __construct()
      {
         $this->dateAjout = new \DateTime();
-        $this->date = new \DateTime();
      }
      
     /**
@@ -59,9 +65,9 @@ class Box
      public function __toString()
      {
      	if ($this->cheval == null) {
-			 return (string)$this->id . ', "Vide box"';
+			 return(string) $this->numero . ', "Box vide"';
 		 }
-        return (string)$this->id . '. '.'"'.$this->cheval->getNom().'"';
+        return(string) $this->numero . '. '.'"'.$this->cheval->getNom().'"';
      }
 
     /**
@@ -98,22 +104,9 @@ class Box
     }
 
     /**
-     * Set cheval
-     *
-     * @param \chev\ChevalBundle\Entity\Cheval $cheval
-     * @return Box
-     */
-    public function setCheval(\chev\ChevalBundle\Entity\Cheval $cheval = null)
-    {
-        $this->cheval = $cheval;
-    
-        return $this;
-    }
-
-    /**
      * Get cheval
      *
-     * @return \chev\ChevalBundle\Entity\Cheval 
+     * @return cheval
      */
     public function getCheval()
     {
@@ -141,5 +134,28 @@ class Box
     public function getCentre()
     {
         return $this->centre;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     * @return Box
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+    
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer 
+     */
+    public function getNumero()
+    {
+        return $this->numero;
     }
 }

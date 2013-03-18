@@ -208,19 +208,19 @@
 			<table class="table table-bordered">
 			    <thead>
 			    	<tr>
-			    		<th>Montant</th>
-			    		<th>Type de paiement</th>
 			    		<th>Date du paiement</th>
 			    		<th>Date d'encaissement</th>
+			    		<th>Type de paiement</th>
+			    		<th>Montant</th>
 			    	</tr>
 			    </thead>
 			    <tbody>
 			    	{% for paiement in entity.paiements %}
 			    	<tr>
-			            <td>{{ paiement.montant }} €</td>
-			            <td>{{ paiement.typePaiement }}</td>
 			            <td>{{ paiement.datePaiement|date('d/m/Y H:i:s') }}</td>
 			            <td>{{ paiement.dateEncaissement|date('d/m/Y H:i:s') }} </td>
+			            <td>{{ paiement.typePaiement }}</td>
+			            <td>{{ paiement.montant }} €</td>
 			        </tr>
 			        {% else %}
 			    	<tr>

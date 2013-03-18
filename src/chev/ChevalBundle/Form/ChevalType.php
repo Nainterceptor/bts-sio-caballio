@@ -19,6 +19,11 @@ class ChevalType extends AbstractType
 	 */
 	private $user;
 	
+	/**
+	 * @var box
+	 */
+	private $box;
+	
 	/*
 	 * Constructeur ChevalType
 	 */
@@ -32,20 +37,27 @@ class ChevalType extends AbstractType
         $this->user = $user;
         return $this;
     }
+	public function setCheval($entity)
+	{
+		$this->cheval = $entity;
+		return $this;
+	}
 	public function getBoxVide()
 	{
 		$em = $this->em->getRepository('chevBoxBundle:Box');
+		
 		if ($this->user->hasRole('ROLE_ADMIN')) {
-			$entities = $em->findAll();
+			$entities = (array) $em->findAll();
 		}
 		else if ($this->user->hasRole('ROLE_GERANT')) {
-			$entities = $em->findByBoxAndCentreGerant($this->user);
+			$entities = (array) $em->findByBoxAndCentreGerant($this->user);
 		}
-		$entities = (array) $entities;
 		$i = 0;
 		foreach ($entities as $box) {
 			if ($box->getCheval() != null) {
-				unset($entities[$i]);
+				if ($box->getCheval() != $this->cheval) {
+					unset($entities[$i]);
+				}
 			}
 			$i++;
 		}
@@ -92,7 +104,20 @@ class ChevalType extends AbstractType
 				'required' => false
 				)
 			)
-			->add('pature')
+			->add('pature', 'entity', array(
+				'label' => 'Pature',
+				'class' => 'chevBoxBundle:Pature',
+				'query_builder' => function($er) use($user) {
+					if($user->hasRole('ROLE_ADMIN')) {
+                		return $er->createQueryBuilder('p');
+                	}
+                    return $er->createQueryBuilder('p')
+						->join('p.centre', 'c')
+                        ->where('c.gerant = :gerant')
+                        ->setParameter(':gerant', $user);
+				},
+				'required' => false,
+			))
 			->add('box', 'entity', array(
 				'label' => 'Box',
 				'class' => 'chevBoxBundle:Box',

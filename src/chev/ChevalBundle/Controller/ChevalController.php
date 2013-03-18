@@ -113,6 +113,7 @@ class ChevalController extends Controller
 
         $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+		$chevalType->setCheval($entity);
         $editForm   = $this->createForm($chevalType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -140,6 +141,7 @@ class ChevalController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+		$chevalType->setCheval($entity);
         $editForm   = $this->createForm($chevalType, $entity);
         $editForm->bind($request);
 

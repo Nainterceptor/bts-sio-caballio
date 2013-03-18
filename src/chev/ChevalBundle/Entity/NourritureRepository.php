@@ -21,8 +21,8 @@ class NourritureRepository extends EntityRepository
      */
     public function findByCentreGerant($gerant) {
         return $this->_em
-                ->createQuery('SELECT r FROM chevChevalBundle:Race r
-                               JOIN r.centre c
+                ->createQuery('SELECT r FROM chevChevalBundle:Nourriture n
+                               JOIN n.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
@@ -38,8 +38,8 @@ class NourritureRepository extends EntityRepository
      */
     public function findOneByCentreGerant($gerant, $id) {
         return $this->_em
-                ->createQuery('SELECT r FROM chevChevalBundle:Race r
-                               JOIN r.centre c
+                ->createQuery('SELECT r FROM chevChevalBundle:Nourriture n
+                               JOIN n.centre c
                                WHERE c.gerant = :gerant
                                AND r.id = :id')
                 ->setParameter(':gerant', $gerant)

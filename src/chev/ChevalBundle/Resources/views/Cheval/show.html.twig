@@ -8,6 +8,11 @@
 {% endblock %}
 {% block body %}
 <h2>{{ entity.nom}}</h2>
+{% if entity.box is empty and entity.pature is empty %}
+	<div class="alert alert-error">
+		<h4>Attention</h4>Ce cheval n'est ni en box, ni en pature !
+	</div>
+{% endif %}
 <div class="row-fluid">
 	<div class="span6">
 		<table class="table table-bordered">
@@ -52,13 +57,13 @@
 				<tr>
 					<th>Box</th>
 					<td>
-						{% if entity.box %} {{ entity.box }} {% else %}Pas de box.{% endif %}
+						{% if entity.box %} {{ entity.box }} {% else %}Pas de box associé.{% endif %}
 					</td>
 				</tr>
 				<tr>
 					<th>Pature</th>
 					<td>
-						{% if entity.pature %} {{ entity.pature }} {% else %}Pas de pature associer.{% endif %}
+						{% if entity.pature %} {{ entity.pature }} {% else %}Pas de pature associé.{% endif %}
 					</td>
 				</tr>
 			</table>

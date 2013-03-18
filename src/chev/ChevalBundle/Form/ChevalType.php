@@ -97,6 +97,7 @@ class ChevalType extends AbstractType
 				'label' => 'Box',
 				'class' => 'chevBoxBundle:Box',
 				'choices' => $this->getBoxVide(),
+				'required' => false,
 			))
         ;
     }

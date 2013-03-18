@@ -8,6 +8,11 @@
 {% endblock %}
 {% block body %}
 <h2>{{ entity.nom}}</h2>
+{% if entity.box is empty and entity.pature is empty %}
+	<div class="alert alert-error">
+		<h4>Attention</h4>Ce cheval n'est ni en box, ni en pature !
+	</div>
+{% endif %}
 <div class="row-fluid">
 	<div class="span6">
 		<table class="table table-bordered">

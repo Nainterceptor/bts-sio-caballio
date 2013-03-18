@@ -39,7 +39,7 @@ class ChevalType extends AbstractType
 			$entities = $em->findAll();
 		}
 		else if ($this->user->hasRole('ROLE_GERANT')) {
-			$entities = $em->findByBoxAndCentreGerant();
+			$entities = $em->findByBoxAndCentreGerant($this->user);
 		}
 		$entities = (array) $entities;
 		$i = 0;

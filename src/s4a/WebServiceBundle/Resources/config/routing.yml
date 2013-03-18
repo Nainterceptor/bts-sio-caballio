@@ -1,0 +1,51 @@
+WSlogin:
+    pattern:  /{username}/{password}/response.json
+    defaults: { _controller: "s4aWebServiceBundle:Token:loginToken", _format: json }
+    requirements:
+      _method: GET
+      _format: json
+
+WScentres:
+    pattern:  /centres.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSCentre:list", _format: json }
+    requirements:
+      _method: GET
+      _format: json
+
+WScentre:
+    pattern:  /centre/{id}.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSCentre:infos", _format: json }
+    requirements:
+      _method: GET
+      _format: json
+      id: \d
+
+WSchevaux:
+    pattern:  /{token}/chevaux.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSCheval:list", _format: json }
+    requirements:
+      _method:  GET
+      _format: json
+   
+WScheval:
+    pattern:  /{token}/cheval/{id}.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSCheval:infos", _format: json }
+    requirements:
+      _method: GET
+      _format: json
+      id: \d
+      
+WSequipements:
+    pattern:  /{token}/equipements.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSEquipement:list", _format: json }
+    requirements:
+      _method:  GET
+      _format: json
+
+WSequipement:
+    pattern:  /{token}/equipement/{id}.{_format}
+    defaults: { _controller: "s4aWebServiceBundle:WSEquipement:infos", _format: json }
+    requirements:
+      _method: GET
+      _format: json
+      id: \d

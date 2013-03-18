@@ -46,5 +46,5 @@ class UserRepository extends EntityRepository
                 ->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u')
                 ->getSingleScalarResult();
     }
-
+	
 }

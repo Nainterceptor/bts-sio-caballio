@@ -23,9 +23,8 @@ class SupplementRepository extends EntityRepository
 		return $this->_em
                 ->createQuery('SELECT s FROM chevPensionBundle:Supplement s
                                JOIN s.facture f
-                               JOIN f.box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl 
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
@@ -42,9 +41,8 @@ class SupplementRepository extends EntityRepository
 		return $this->_em
                 ->createQuery('SELECT s FROM chevPensionBundle:Supplement s
                                JOIN s.facture f
-                               JOIN f.box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl 
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant
                                AND s.id = :id')
                 ->setParameter(':gerant', $gerant)

@@ -7,6 +7,7 @@
 {% endblock %}
 {% block body %}
 <h2>Liste des Boxes</h2>
+<a class="btn btn-success pull-right" href="{{ path('centre_box_new') }}">Ajouter</a>
 <div class="row-fluid">
 	<div class="span4">
 		<table class="table table-bordered">
@@ -23,7 +24,6 @@
 		</table>
 	</div>
 </div>
-<a class="btn btn-success pull-right" href="{{ path('centre_box_new') }}">Ajouter</a>
 <table class="table table-striped">
     <thead>
         <tr>

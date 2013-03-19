@@ -7,6 +7,22 @@
 {% endblock %}
 {% block body %}
 <h2>Liste des Boxes</h2>
+<div class="row-fluid">
+	<div class="span4">
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<th>Total des Box : </th>
+					<td>{{ boxVide.nbBox }}</td>
+				</tr>
+				<tr>
+					<th>Box vides : </th>
+					<td>{{ boxVide.boxVide }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 <a class="btn btn-success pull-right" href="{{ path('centre_box_new') }}">Ajouter</a>
 <table class="table table-striped">
     <thead>

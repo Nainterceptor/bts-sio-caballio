@@ -46,4 +46,21 @@ class BoxRepository extends EntityRepository
                 ->setParameter(':id', $id)
                 ->getOneOrNullResult();
     }
+	
+	public function getTotalBox($gerant)
+	{
+		$allBox = $this->findByBoxAndCentreGerant($gerant);
+		$nbBox = count($allBox);
+		
+		$i = 0;
+		foreach ($allBox as $box) {
+			if($box->getCheval() == null) {
+				$i ++;
+			}
+		}
+		return array(
+			'nbBox' => $nbBox, 
+			'boxVide' => $i
+		);
+	}
 }

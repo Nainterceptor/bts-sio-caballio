@@ -23,9 +23,12 @@ class BoxController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $this->getAllBox($em);
+		
+		$nbBox = $em->getRepository('chevBoxBundle:Box')->getTotalBox($this->get('security.context')->getToken()->getUser());
 
         return $this->render('chevBoxBundle:Box:index.html.twig', array(
             'entities' => $entities,
+            'boxVide' => $nbBox,
         ));
     }
 

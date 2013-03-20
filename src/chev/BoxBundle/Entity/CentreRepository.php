@@ -12,4 +12,37 @@ use Doctrine\ORM\EntityRepository;
  */
 class CentreRepository extends EntityRepository
 {
+    /**
+     * Récupère les informations des centres pour le webservice
+     * 
+     * @return array Les centres
+     */
+    public function WSCentres() {
+        $centres =  $this->_em
+                ->createQuery('SELECT c.id, c.nom, c.adresse, c.codePostal, c.ville
+                               FROM chevBoxBundle:Centre c
+                               ORDER BY c.codePostal')
+                ->getResult();
+        return $centres;
+    }
+    
+    /**
+     * Récupère les informations d'un centre pour le webservice
+     * 
+     * @return array Le centre
+     */
+    public function WSCentre($id) {
+        $centre =  $this->_em
+                ->createQuery('SELECT c.id, c.nom, c.adresse, c.codePostal, c.ville, c.telephone, c.date, c.dateAjout, g.nom, g.prenom
+                               FROM chevBoxBundle:Centre c
+                               JOIN c.gerant g
+                               WHERE c.id = :id')
+                ->setParameter(':id', (int) $id)
+                ->getSingleResult();
+        if(!empty($centre)) {
+            $centre['date'] = $centre['date']->format('d/m/Y');
+            $centre['dateAjout'] = $centre['dateAjout']->format('d/m/Y');
+        }
+        return $centre;
+    }
 }

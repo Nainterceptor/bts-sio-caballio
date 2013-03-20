@@ -1,0 +1,7 @@
+parameters:
+#    s4a_web_service.example.class: s4a\WebServiceBundle\Example
+
+services:
+#    s4a_web_service.example:
+#        class: %s4a_web_service.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -70,6 +70,15 @@ class FactureRepository extends EntityRepository
                 ->getResult();
     }
 	
+	public function findByUtilisateur($user) {
+		return $this->_em
+                ->createQuery('SELECT f FROM chevPensionBundle:Facture f
+                               JOIN f.cheval c
+                               WHERE c.proprietaire = :user')
+                ->setParameter(':user', $user)
+                ->getResult();
+	}
+	
 	/**
      * Trouver une facture par le centre ayant ce gérant
      * 
@@ -157,7 +166,8 @@ class FactureRepository extends EntityRepository
             $query = 'SELECT f AS facture, tl.prix'
                    . ' FROM chevPensionBundle:Facture f'
                    . ' JOIN f.typeLogement tl'
-                   . ' WHERE f.utilisateur = :utilisateur'
+                   . ' JOIN f.cheval c'
+                   . ' WHERE c.proprietaire = :utilisateur'
                    . ' AND f.id = :id';
     		$facture = $em->createQuery($query)
 						  ->setParameter(':utilisateur', $user)

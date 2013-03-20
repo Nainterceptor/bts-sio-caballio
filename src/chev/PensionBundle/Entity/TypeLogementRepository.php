@@ -21,8 +21,8 @@ class TypeLogementRepository extends EntityRepository
      */
 	public function findByGerant($gerant) {
 		return $this->_em
-                ->createQuery('SELECT s FROM chevPensionBundle:TypeLogement tp
-                               JOIN tp.centre c
+                ->createQuery('SELECT tl FROM chevPensionBundle:TypeLogement tl
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
@@ -37,10 +37,10 @@ class TypeLogementRepository extends EntityRepository
      */
 	public function findOneByGerant($gerant, $id) {
 		return $this->_em
-                ->createQuery('SELECT s FROM chevPensionBundle:TypeLogement tp
-                               JOIN tp.centre c
+                ->createQuery('SELECT tl FROM chevPensionBundle:TypeLogement tl
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant
-                               AND tp.id = :id')
+                               AND tl.id = :id')
                 ->setParameter(':gerant', $gerant)
 				->setParameter(':id', $id)
                 ->getOneOrNullResult();

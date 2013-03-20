@@ -27,9 +27,8 @@ class SupplementType extends AbstractType
 							return $er->createQueryBuilder('facture');
 						}
 						return $er->createQueryBuilder('facture')
-						->join('facture.box', 'b')
-						->join('b.type', 't')
-						->join('t.centre', 'c')
+						->join('facture.typeLogement', 'tl')
+						->join('tl.centre', 'c')
 						->where('c.gerant = :gerant')
 						->setParameter(':gerant', $user);
 					})

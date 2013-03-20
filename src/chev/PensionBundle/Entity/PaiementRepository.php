@@ -23,9 +23,8 @@ class PaiementRepository extends EntityRepository
 		return $this->_em
                 ->createQuery('SELECT p FROM chevPensionBundle:Paiement p
                                JOIN p.facture f
-                               JOIN f.box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant')
                 ->setParameter(':gerant', $gerant)
                 ->getResult();
@@ -42,9 +41,8 @@ class PaiementRepository extends EntityRepository
 		return $this->_em
                 ->createQuery('SELECT p FROM chevPensionBundle:Paiement p
                                JOIN p.facture f
-                               JOIN f.box b
-                               JOIN b.type t
-                               JOIN t.centre c
+                               JOIN f.typeLogement tl
+                               JOIN tl.centre c
                                WHERE c.gerant = :gerant
                                AND p.id = :id')
                 ->setParameter(':gerant', $gerant)

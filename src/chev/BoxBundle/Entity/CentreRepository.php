@@ -33,7 +33,7 @@ class CentreRepository extends EntityRepository
      */
     public function WSCentre($id) {
         $centre =  $this->_em
-                ->createQuery('SELECT c.id, c.nom, c.adresse, c.codePostal, c.ville, c.telephone, c.date, c.dateAjout, g.nom, g.prenom
+                ->createQuery('SELECT c.id, c.nom, c.adresse, c.codePostal, c.ville, c.telephone, c.date, c.dateAjout, g.firstname, g.lastname
                                FROM chevBoxBundle:Centre c
                                JOIN c.gerant g
                                WHERE c.id = :id')

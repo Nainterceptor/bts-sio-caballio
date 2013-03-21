@@ -43,6 +43,22 @@ class CentreRepository extends EntityRepository
             $centre['date'] = $centre['date']->format('d/m/Y');
             $centre['dateAjout'] = $centre['dateAjout']->format('d/m/Y');
         }
+        $centre = $this->WSGeolocalisation($centre);
+		
         return $centre;
     }
+	
+	public function WSGeolocalisation($centre) {
+		$adresse = (string)$centre['adresse'] . ',' . (string)$centre['ville'] . ',' . (string)$centre['codePostal'];
+		$prepAddr = str_replace(' ','+',$adresse);
+		$geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+		$output = json_decode($geocode);
+		
+		if (!empty($output->results[0])) {
+			$centre['latitude'] = $output->results[0]->geometry->location->lat;
+			$centre['longitude'] = $output->results[0]->geometry->location->lng;
+		}
+		
+		return $centre;
+	}
 }

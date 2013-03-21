@@ -1,5 +1,5 @@
 WSlogin:
-    pattern:  /{username}/{password}/response.json
+    pattern:  /login/{password}/{username}.json
     defaults: { _controller: "s4aWebServiceBundle:Token:loginToken", _format: json }
     requirements:
       _method: GET

@@ -22,7 +22,7 @@ class CentreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entities = $em->getRepository('chevBoxBundle:Centre')->findAll();
+        $entities = $this->getCentres($em);
 
         return $this->render('chevBoxBundle:Centre:index.html.twig', array(
             'entities' => $entities,
@@ -76,7 +76,7 @@ class CentreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        $entity = $this->getCentre($em, $id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -103,7 +103,10 @@ class CentreController extends Controller
             throw $this->createNotFoundException('Unable to find Centre entity.');
         }
 
-        $editForm = $this->createForm(new CentreType(), $entity);
+		$centreType = new CentreType();
+		$centreType->setUser($this->get('security.context')->getToken()->getUser());
+
+        $editForm = $this->createForm($centreType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevBoxBundle:Centre:edit.html.twig', array(

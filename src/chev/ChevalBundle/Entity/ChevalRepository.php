@@ -72,7 +72,7 @@ class ChevalRepository extends EntityRepository
     public function WSCheval($user, $id) {
     	try {
     		$cheval =  $this->_em
-                ->createQuery('SELECT c.id, c.nom, c.quantite, n.libelle as nourriture ce.nom as centre, p.firstname as prenom_proprio, p.lastname as nom_proprio, c.date
+                ->createQuery('SELECT c.id, c.nom, c.quantite, n.libelle as nourriture, ce.nom as centre, p.firstname as prenom_proprio, p.lastname as nom_proprio, c.date
                                FROM chevChevalBundle:Cheval c
                                JOIN c.centre ce
                                JOIN c.nourriture n

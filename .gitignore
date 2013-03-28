@@ -21,3 +21,5 @@ web/bundles
 bin/*
 web/compiled/*
 !web/compiled/.gitkeep
+.idea/dictionaries/*
+.idea/workspace.xml

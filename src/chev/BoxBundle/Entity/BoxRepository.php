@@ -49,7 +49,7 @@ class BoxRepository extends EntityRepository
 	
 	public function getTotalBox($gerant)
 	{
-		$allBox = $this->findByBoxAndCentreGerant($gerant);
+		$allBox = $this->findByCentreGerant($gerant);
 		$nbBox = count($allBox);
 		
 		$i = 0;

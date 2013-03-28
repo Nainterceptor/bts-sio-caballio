@@ -206,7 +206,7 @@ class BoxController extends Controller
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:Box')->findAll();
         
-        return $em->getRepository('chevBoxBundle:Box')->findByBoxAndCentreGerant($user);
+        return $em->getRepository('chevBoxBundle:Box')->findByCentreGerant($user);
     } 
     /**
      * Récupérer un box suivant les règles de gestion
@@ -222,7 +222,7 @@ class BoxController extends Controller
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
             return $em->getRepository('chevBoxBundle:Box')->find($id);
 		
-        return $em->getRepository('chevBoxBundle:Box')->findOneByBoxAndCentreGerant($user, $id);
+        return $em->getRepository('chevBoxBundle:Box')->findOneByCentreGerant($user, $id);
 
     }
 }

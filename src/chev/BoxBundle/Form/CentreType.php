@@ -29,8 +29,9 @@ class CentreType extends AbstractType
 	            'input' => 'datetime',
 	            'format' => 'dd/MM/yyyy',
 	            'attr' => array('class' => 'datepicker')
-            ))
-            ->add('gerant', 'entity', array( 
+            ));
+		if (!empty($user)) {
+			$builder->add('gerant', 'entity', array( 
             	'label' => 'Gerant',
             	'class' => 's4aUserBundle:User',
             	'query_builder' => function($er) use ($user) {
@@ -41,8 +42,8 @@ class CentreType extends AbstractType
 					->where('user = :gerant')
 					->setParameter(':gerant', $user);
 				 }
-			))
-        ;
+			));
+		}
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

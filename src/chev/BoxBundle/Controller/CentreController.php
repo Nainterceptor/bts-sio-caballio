@@ -104,8 +104,9 @@ class CentreController extends Controller
         }
 
 		$centreType = new CentreType();
-		$centreType->setUser($this->get('security.context')->getToken()->getUser());
-
+		if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')) {
+			$centreType->setUser($this->get('security.context')->getToken()->getUser());
+		}
         $editForm = $this->createForm($centreType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 

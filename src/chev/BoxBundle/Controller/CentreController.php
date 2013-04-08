@@ -76,7 +76,7 @@ class CentreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $em->getRepository('chevBoxBundle:Centre')->find($id);
+        $entity = $em->getRepository('chevBoxBundle:Centre')->findOneById($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -97,13 +97,17 @@ class CentreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $this->getCentre($em, $id);
+        $entity = $em->getRepository('chevBoxBundle:Centre')->findOneById($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
         }
 
-        $editForm = $this->createForm(new CentreType(), $entity);
+		$centreType = new CentreType();
+		if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')) {
+			$centreType->setUser($this->get('security.context')->getToken()->getUser());
+		}
+        $editForm = $this->createForm($centreType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('chevBoxBundle:Centre:edit.html.twig', array(
@@ -121,7 +125,7 @@ class CentreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $this->getCentre($em, $id);
+        $entity = $em->getRepository('chevBoxBundle:Centre')->findOneById($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -157,7 +161,7 @@ class CentreController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             
-            $entity = $this->getCentre($em, $id);;
+            $entity = $em->getRepository('chevBoxBundle:Centre')->findOneById($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Centre entity.');
@@ -183,35 +187,5 @@ class CentreController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
-    }
-    /**
-     * Récupérer la liste des centres suivant les règles de gestion
-     * 
-     * @param EntityManager $em
-     * @return Entity
-     */
-    private function getCentres(&$em) {
-        $user = $this->get('security.context')->getToken()->getUser();
-        
-        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
-            return $em->getRepository('chevBoxBundle:Centre')->findAll();
-        
-        return $em->getRepository('chevBoxBundle:Centre')->findByGerant($user);
-    } 
-    /**
-     * Récupérer un centre suivant les règles de gestion
-     * 
-     * @param EntityManager $em
-     * @param int $id
-     * 
-     * @return Entity
-     */
-    private function getCentre(&$em, $id) {
-        $user = $this->get('security.context')->getToken()->getUser();
-        
-        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
-            return $em->getRepository('chevBoxBundle:Centre')->find($id);
-        return $em->getRepository('chevBoxBundle:Centre')->findOneBy(array('id' => $id, 'gerant' => $user));
-
     }
 }

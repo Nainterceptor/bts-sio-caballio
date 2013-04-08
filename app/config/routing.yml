@@ -25,7 +25,3 @@ homepage_pattern:
 s4aUserBundle:
     resource: "@s4aUserBundle/Resources/config/routing.yml"
     prefix:   /
-    
-s4aWebServiceBundle:
-    resource: "@s4aWebServiceBundle/Resources/config/routing.yml"
-    prefix:   /ws

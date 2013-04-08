@@ -15,9 +15,8 @@ class UserRepository extends EntityRepository
             return $this->_em
                     ->createQuery('SELECT u FROM s4aUserBundle:User u
                                   JOIN u.factures f
-                                  JOIN f.box b
-                                  JOIN b.type t
-                                  JOIN t.centre c
+                                  JOIN f.typeLogement tl
+                                  JOIN tl.centre c
                                   WHERE c.gerant = :gerant
                                   ')
                     ->setParameter(':gerant', $user)
@@ -35,9 +34,8 @@ class UserRepository extends EntityRepository
             return (int)$this->_em
                 ->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u
                                   JOIN u.factures f
-                                  JOIN f.box b
-                                  JOIN b.type t
-                                  JOIN t.centre c
+                                  JOIN f.typeLogement tl
+                                  JOIN tl.centre c
                                   WHERE c.gerant = :gerant
                                   ')
                 ->setParameter(':gerant', $user)

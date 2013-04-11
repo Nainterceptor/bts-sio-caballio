@@ -125,6 +125,29 @@ class Pature
     }
 
     /**
+     * Set utilise
+     *
+     * @param boolean $utilise
+     * @return Pature
+     */
+    public function setUtilise($utilise)
+    {
+        $this->utilise = $utilise;
+    
+        return $this;
+    }
+
+    /**
+     * Get utilise
+     *
+     * @return boolean 
+     */
+    public function getUtilise()
+    {
+        return $this->utilise;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date

@@ -19,7 +19,7 @@ class BoxRepository extends EntityRepository
      *
      * @return Tableau d'entités
      */
-    public function findByCentreGerant($gerant) {
+    public function findByBoxAndCentreGerant($gerant) {
         return $this->_em
                 ->createQuery('SELECT b FROM chevBoxBundle:Box b
                                JOIN b.centre c
@@ -36,7 +36,7 @@ class BoxRepository extends EntityRepository
      * 
      * @return Entity
      */
-    public function findOneByCentreGerant($gerant, $id) {
+    public function findOneByBoxAndCentreGerant($gerant, $id) {
         return $this->_em
                 ->createQuery('SELECT b FROM chevBoxBundle:Box b
                                JOIN b.centre c
@@ -49,7 +49,7 @@ class BoxRepository extends EntityRepository
 	
 	public function getTotalBox($gerant)
 	{
-		$allBox = $this->findByCentreGerant($gerant);
+		$allBox = $this->findByBoxAndCentreGerant($gerant);
 		$nbBox = count($allBox);
 		
 		$i = 0;

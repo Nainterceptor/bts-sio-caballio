@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new chev\ChevalBundle\chevChevalBundle(),
             new chev\PensionBundle\chevPensionBundle(),
             new s4a\MenuBundle\s4aMenuBundle(),
+            new s4a\WebServiceBundle\s4aWebServiceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

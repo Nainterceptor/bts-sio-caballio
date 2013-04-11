@@ -9,28 +9,18 @@
 {% block body %}
 <h2>Modifier ce centre</h2>
 <div class="span6">
-	{% if entity.gerant == app.user or is_granted('ROLE_ADMIN') %}
 	<form action="{{ path('centre_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 		<fieldset>
 	       	{{ form_rest(edit_form) }}
 			<input type="submit" value="Modifier" class="btn btn-success pull-right">
 		</fieldset>
 	</form>
-	{% else %}
-		<div class="alert alert-warning">
-			<h4>Attention</h4>Vous n'êtes pas en charge de ce centre !
-		</div>
-	{% endif %}
 	<div class="row-fluid">
 		<div class="span6">
-			{% if is_granted('ROLE_GERANT') %}
-            	{% if entity.gerant == app.user or is_granted('ROLE_ADMIN') %}
-				<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
-		        	{{ form_widget(delete_form) }}
-		        	<button type="submit" class="btn btn-danger">Supprimer</button>
-		    	</form>
-		    	{% endif %}
-		    {% endif %}
+			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
+	        	{{ form_widget(delete_form) }}
+	        	<button type="submit" class="btn btn-danger">Supprimer</button>
+	    	</form>
 		</div>
 		<div class="span6 pagination-right">
 			<a href="{{ path('centre') }}" class="btn">Retour à la liste</a>

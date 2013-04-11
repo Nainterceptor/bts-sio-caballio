@@ -70,6 +70,7 @@ class Facture
      * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Supplement", mappedBy="facture")
      */
     protected $supplements;
+   
 	
 	public function __construct()
 	{

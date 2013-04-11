@@ -13,7 +13,7 @@
 	<li><a href="{{ path('cheval') }}">Cheval</a></li>
 	<li><a href="{{ path('facture')}}">Facture</a></li>
 	{% endif %}
-	{% if is_granted('ROLE_ADMIN') %}
+	{% if is_granted('ROLE_GERANT') %}
 	<li><a href="{{ path('s4admin_user') }}">Administration</a></li>
 	{% endif %}
 </ul>

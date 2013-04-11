@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Caballio{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block stylesheets %}
             {% stylesheets  
             				'css/style.css'
@@ -13,7 +14,7 @@
                 output='compiled/css/front.css'
                 combine=true
             %}
-                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
         <!--[if lt IE 9]>

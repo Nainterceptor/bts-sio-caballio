@@ -17,7 +17,7 @@ class UserType extends AbstractType
             //->add('emailCanonical')
             ->add('enabled', 'checkbox', array('required'  => false))
             //->add('salt')
-            ->add('password', 'password', array('required'=>false))
+            ->add('password', 'password')
             //->add('lastLogin')
             //->add('locked')
             //->add('expired')

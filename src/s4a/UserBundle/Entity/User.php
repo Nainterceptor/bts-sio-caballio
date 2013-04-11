@@ -85,9 +85,9 @@ class User extends BaseUser
     protected $email;
     
     /**
-     * @ORM\OneToMany(targetEntity="chev\PensionBundle\Entity\Facture", mappedBy="utilisateur")
+     * @ORM\OneToMany(targetEntity="chev\ChevalBundle\Entity\Cheval", mappedBy="proprietaire")
      */
-    protected $factures;
+    protected $chevaux;
     	
 	public function __construct() {
 		parent::__construct();

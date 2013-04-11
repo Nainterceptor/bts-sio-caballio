@@ -14,10 +14,8 @@ class UserRepository extends EntityRepository
         if($user != null && !$user->hasRole('ROLE_ADMIN'))
             return $this->_em
                     ->createQuery('SELECT u FROM s4aUserBundle:User u
-                                  JOIN u.factures f
-                                  JOIN f.box b
-                                  JOIN b.type t
-                                  JOIN t.centre c
+                                  JOIN u.chevaux ch
+                                  JOIN ch.centre c
                                   WHERE c.gerant = :gerant
                                   ')
                     ->setParameter(':gerant', $user)
@@ -34,10 +32,8 @@ class UserRepository extends EntityRepository
         if($user != null && !$user->hasRole('ROLE_ADMIN'))
             return (int)$this->_em
                 ->createQuery('SELECT COUNT(u) FROM s4aUserBundle:User u
-                                  JOIN u.factures f
-                                  JOIN f.box b
-                                  JOIN b.type t
-                                  JOIN t.centre c
+                                  JOIN u.chevaux ch
+                                  JOIN ch.centre c
                                   WHERE c.gerant = :gerant
                                   ')
                 ->setParameter(':gerant', $user)

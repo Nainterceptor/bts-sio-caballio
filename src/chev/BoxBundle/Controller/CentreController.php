@@ -184,20 +184,7 @@ class CentreController extends Controller
             ->getForm()
         ;
     }
-    /**
-     * Récupérer la liste des centres suivant les règles de gestion
-     * 
-     * @param EntityManager $em
-     * @return Entity
-     */
-    private function getCentres(&$em) {
-        $user = $this->get('security.context')->getToken()->getUser();
-        
-        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
-            return $em->getRepository('chevBoxBundle:Centre')->findAll();
-        
-        return $em->getRepository('chevBoxBundle:Centre')->findByGerant($user);
-    } 
+	
     /**
      * Récupérer un centre suivant les règles de gestion
      * 

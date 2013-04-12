@@ -71,14 +71,18 @@
 </div>
 	<div class="row-fluid">
 		<div class="span6">
+			{% if is_granted('ROLE_GERANT') %}
 			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('cheval_delete', { 'id': entity.id }) }}" method="post">
 	        	{{ form_widget(delete_form) }}
 	        	<button type="submit" class="btn btn-danger">Supprimer</button>
 	    	</form>
+	    	{% endif %}
 		</div>
 		<div class="span6 pagination-right">
 			<a href="{{ path('cheval') }}" class="btn">Retour à la liste</a>
+			{% if is_granted('ROLE_GERANT') %}
 			<a href="{{ path('cheval_edit', { 'id': entity.id }) }}" class="btn btn-primary">Modifier</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

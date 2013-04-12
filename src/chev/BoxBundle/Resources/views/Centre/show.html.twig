@@ -50,14 +50,18 @@
 			<form onsubmit="return confirm('{{ 'user.delete.confirm'|trans([], 'backoffice') }}')" action="{{ path('centre_delete', { 'id': entity.id }) }}" method="post">
 	        	{{ form_widget(delete_form) }}
 	        	{% if is_granted('ROLE_GERANT') %}
-	        	<button type="submit" class="btn btn-danger">Supprimer</button>
+	        		{% if entity.gerant == app.user or is_granted('ROLE_ADMIN') %}
+	        		<button type="submit" class="btn btn-danger">Supprimer</button>
+	        		{% endif %}
 	        	{% endif %}
 	    	</form>
 		</div>
 		<div class="span6 pagination-right">
 			<a href="{{ path('centre') }}" class="btn">Retour à la liste</a>
 			{% if is_granted('ROLE_GERANT') %}
-			<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+				{% if entity.gerant == app.user or is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editer</a>
+				{% endif %}
 			{% endif %}
 		</div>
 	</div>

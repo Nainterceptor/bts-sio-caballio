@@ -40,9 +40,11 @@
                 	Voir
                 </a>
                 {% if is_granted('ROLE_GERANT') %}
-    			<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">
-    				Modifier
-    			</a>
+               		{% if entity.gerant == app.user or is_granted('ROLE_ADMIN') %}
+						<a href="{{ path('centre_edit', { 'id': entity.id }) }}" class="btn btn-primary">
+							Modifier
+						</a>
+					{% endif %}
     			{% endif %}
             </td>
  		</tr>

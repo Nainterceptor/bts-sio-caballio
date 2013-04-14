@@ -102,7 +102,9 @@ class UserController extends Controller
 		$entity = $userManager->createUser(); 
         $form = $this->createForm($this->getFormBuilder(), $entity);
         $form->bind($request);
-		$form->getData()->setPlainPassword($form->getData()->getPassword());
+        $password = $form->getData()->getPassword();
+        $password = (!empty($password)) ? $password : $form->getData()->getUsername();
+		$form->getData()->setPlainPassword($password);
 		$form->getData()->setPassword(null);
 
         if ($form->isValid()) {

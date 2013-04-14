@@ -13,16 +13,16 @@ function refreshContent(html, url) {
 			success : function(html) {
 				$('nav#top').html(html);
 				aInAjax();
-			},
-		});
+			}
+        });
 		$.ajax({
 			url : Routing.generate('_menu'),
 			cache : false,
 			success : function(html) {
 				$('.well.sidebar-nav').html(html);
 				aInAjax();
-			},
-		});
+			}
+        });
 	}
 	aInAjax();
 	datetimepicker();
@@ -89,10 +89,12 @@ function styleAjax() {
 	$("div.ajaxOn label").click(function() {
 		if($(this).hasClass('btn-success')) {
 			$("div.ajaxOn input#ajaxOn").attr('checked', false);
+            $.cookie('CaballioAjax', false, { path: '/' });
 			$(this).removeClass('btn-success');
 			$(this).addClass('btn-danger');
 		} else {
 			$("div.ajaxOn input#ajaxOn").attr('checked', true);
+            $.cookie('CaballioAjax', true, { path: '/' });
 			$(this).removeClass('btn-danger');
 			$(this).addClass('btn-success');
 		}
@@ -127,5 +129,10 @@ function generateError(code, message) {
 $(document).ready(function() {
 	aInAjax();
 	$("div.ajaxOn").show();
+    if($.cookie('CaballioAjax') == "false") {
+        $("#ajaxOn").attr('checked', null);
+        $("div.ajaxOn label").removeClass('btn-success');
+        $("div.ajaxOn label").addClass('btn-danger');
+    }
 	styleAjax();
 });

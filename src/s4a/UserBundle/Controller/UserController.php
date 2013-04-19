@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use s4a\UserBundle\Entity\User;
 use s4a\UserBundle\Form\UserType;
+use s4a\UserBundle\Form\UserAdminType;
 use s4a\UserBundle\Form\perpageType;
 
 
@@ -25,12 +25,9 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager()->getRepository('s4aUserBundle:User');
         $user = $this->get('security.context')->getToken()->getUser();
-		$translator = $this->get('translator');
 		$request = $this->get('request');
 		$session = $request->getSession();
 
-		
-		//$session->start();
 		
 		if(!$session->has('perPage')) {
 			$session->set('perPage', 30);
@@ -39,7 +36,7 @@ class UserController extends Controller
 		
 		$perPageForm = $this->createForm(new perpageType($perPage));
 		if( $request->getMethod() == 'POST' ) {
-			$perPageForm->bindRequest($request);	
+			$perPageForm->bind($request);
 				$perPage = $perPageForm->getData();
 				$perPage = $perPage['perpage'];
 				$session->set('perPage', $perPage);
@@ -87,7 +84,7 @@ class UserController extends Controller
     {
     	$userManager = $this->get('fos_user.user_manager');
 		$entity = $userManager->createUser(); 
-        $form   = $this->createForm(new UserType(), $entity);
+        $form   = $this->createForm($this->getFormBuilder(), $entity);
 
         return $this->render('s4aUserBundle:User:new.html.twig', array(
             'entity' => $entity,
@@ -103,9 +100,11 @@ class UserController extends Controller
     {
     	$userManager = $this->get('fos_user.user_manager');
 		$entity = $userManager->createUser(); 
-        $form = $this->createForm(new UserType(), $entity);
+        $form = $this->createForm($this->getFormBuilder(), $entity);
         $form->bind($request);
-		$form->getData()->setPlainPassword($form->getData()->getPassword());
+        $password = $form->getData()->getPassword();
+        $password = (!empty($password)) ? $password : $form->getData()->getUsername();
+		$form->getData()->setPlainPassword($password);
 		$form->getData()->setPassword(null);
 
         if ($form->isValid()) {
@@ -130,17 +129,15 @@ class UserController extends Controller
      */
     public function editAction($id)
     {
-        //$em = $this->getDoctrine()->getManager();
 		$userManager = $this->get('fos_user.user_manager');
 		$translator = $this->get('translator');
-        //$entity = $em->getRepository('s4aUserBundle:User')->find($id);
 		$entity = $userManager->findUserBy(array('id' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException($translator->trans('user.errors.notfound', array('%id%' => $id), 'backoffice'));
         }
 
-        $editForm = $this->createForm(new UserType(), $entity);
+        $editForm = $this->createForm($this->getFormBuilder(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('s4aUserBundle:User:edit.html.twig', array(
@@ -156,10 +153,8 @@ class UserController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        //$em = $this->getDoctrine()->getManager();
 		$userManager = $this->get('fos_user.user_manager');
 		$translator = $this->get('translator');
-        //$entity = $em->getRepository('s4aUserBundle:User')->find($id);
 		$entity = $userManager->findUserBy(array('id' => $id));
 
         if (!$entity) {
@@ -168,7 +163,7 @@ class UserController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 		$password_old = $entity->getPassword();
-        $editForm = $this->createForm(new UserType(), $entity);
+        $editForm = $this->createForm($this->getFormBuilder(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -186,8 +181,6 @@ class UserController extends Controller
 
         	$userManager->updateUser($entity);
 			$session->getFlashBag()->add('success', $translator->trans('success.update', array(), 'backoffice'));
-            //$em->persist($entity);
-            //$em->flush();
 
             return $this->redirect($this->generateUrl('s4admin_user_edit', array('id' => $id)));
         }
@@ -212,9 +205,7 @@ class UserController extends Controller
         if ($form->isValid()) {
 			$request = $this->get('request');
 			$session = $request->getSession();
-	        //$em = $this->getDoctrine()->getManager();
 			$userManager = $this->get('fos_user.user_manager');
-	        //$entity = $em->getRepository('s4aUserBundle:User')->find($id);
 			$entity = $userManager->findUserBy(array('id' => $id));
 
             if (!$entity) {
@@ -222,8 +213,6 @@ class UserController extends Controller
             }
 			$userManager->deleteUser($entity);
 			$session->getFlashBag()->add('success', $translator->trans('success.delete', array(), 'backoffice'));
-            //$em->remove($entity);
-            //$em->flush();
         }
 
         return $this->redirect($this->generateUrl('s4admin_user'));
@@ -235,5 +224,11 @@ class UserController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    private function getFormBuilder() {
+        if($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return new UserAdminType;
+        }
+        return new UserType;
     }
 }

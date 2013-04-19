@@ -2,6 +2,11 @@
 <ul class="nav nav-list">
     <li><a href="{{ path('front_homepage') }}">Accueil</a></li>
     {% if error is not defined %}
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="{{ path('fos_user_security_logout')}}">Déconnexion</a></li>
+        {% else %}
+            <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
+        {% endif %}
 	    <li class="nav-header">Centre</li>
 	    <li><a href="{{ path('centre') }}">Centre</a></li>
 	    {% if is_granted('ROLE_GERANT') %}

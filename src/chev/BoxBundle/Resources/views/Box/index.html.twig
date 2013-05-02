@@ -29,7 +29,7 @@
             <th>Id</th>
             <th>Numero</th>
             <th>Cheval</th>
-            <th>Date d'ajout</th>
+            <th class="hidden-phone">Date d'ajout</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -39,7 +39,7 @@
             <td><a href="{{ path('centre_box_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.numero }}</td>
             <td>{% if entity.cheval %}{{ entity.cheval.nom }}{% else %}Pas de cheval{% endif %}</td>
-            <td>{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</td>
+            <td class="hidden-phone">{% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</td>
             <td>
                 <a href="{{ path('centre_box_show', { 'id': entity.id }) }}" class="btn" title="Voir">
                 	Voir

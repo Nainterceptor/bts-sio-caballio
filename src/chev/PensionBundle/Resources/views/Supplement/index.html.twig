@@ -11,7 +11,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
+            <th class="hidden-phone">#</th>
             <th>Facture</th>
             <th>Libelle</th>
             <th>Prix</th>
@@ -21,7 +21,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('supplement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td class="hidden-phone"><a href="{{ path('supplement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td><a href="{{ path('facture_show', { 'id': entity.facture.id }) }}">Facture {{ entity.facture }}</a></td>
             <td>{{ entity.libelle }}</td>
             <td>{{ entity.prix }} €</td>

@@ -12,10 +12,10 @@
         <tr>
         	<th>Id</th>
         	<th>Libelle</th>
-        	<th>Taille</th>
+        	<th class="hidden-phone">Taille</th>
         	<th>Centre</th>
-        	<th>Utilisé</th>
-        	<th>Date d'ajout</th>
+        	<th class="hidden-phone">Utilisé</th>
+        	<th class="hidden-phone">Date d'ajout</th>
         	<th>Actions</th>
         </tr>
 	</thead>
@@ -24,10 +24,10 @@
         <tr>
 			<td class="id-td"><a href="{{ path('pature_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
         	<td>{{ entity.libelle }}</td>
-        	<td>{{ entity.taille }}</td>
+        	<td class="hidden-phone">{{ entity.taille }}</td>
         	<td>{{ entity.centre }}</td>
-		    <td>{% if entity.chevaux is not empty %}oui{% else %}non{% endif %}</td>
-            <td>{% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</td>
+		    <td class="hidden-phone">{% if entity.chevaux is not empty %}oui{% else %}non{% endif %}</td>
+            <td class="hidden-phone">{% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</td>
         	<td>
                 <a href="{{ path('pature_show', { 'id': entity.id }) }}" class="btn" title="Voir">
                 	Voir

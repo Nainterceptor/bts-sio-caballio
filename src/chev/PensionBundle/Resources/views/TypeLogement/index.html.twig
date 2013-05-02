@@ -13,7 +13,7 @@
         <tr>
             <th>#</th>
             <th>Libelle</th>
-            <th>Description</th>
+            <th class="hidden-phone">Description</th>
             <th>Tarif</th>
             <th>Actions</th>
         </tr>
@@ -23,7 +23,7 @@
         <tr>
             <td><a href="{{ path('typelogement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.description }}</td>
+            <td class="hidden-phone">{{ entity.description }}</td>
             <td>{{ entity.prix }} €</td>
             <td>
                 <a href="{{ path('typelogement_show', { 'id': entity.id }) }}" class="btn">

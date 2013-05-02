@@ -1,12 +1,13 @@
 {% extends app.request.isXmlHttpRequest ?'::ajax_frontoffice.html.twig':'::frontoffice.html.twig' %}
 {% block hero %}
 <div class="page-header">
-    <h1>{{ 'user.title'|trans([], 'backoffice') }}<br><small>{{ 'user.subtitle'|trans([], 'backoffice') }}</small></h1>
+	<h1>{{ 'user.title'|trans([], 'backoffice') }}</h1>
+	<p class="lead">{{ 'user.subtitle'|trans([], 'backoffice') }}</p>
 </div>
 {% endblock %}
 {% block breadcrumbs %}
 {{ parent() }}
- <li>
-      <a href="{{ path('s4admin_user') }}">{{ 'user.title'|trans([], 'backoffice') }}</a>
- </li>
+<li>
+	<a href="{{ path('s4admin_user') }}">{{ 'user.title'|trans([], 'backoffice') }}</a>
+</li>
 {% endblock %}

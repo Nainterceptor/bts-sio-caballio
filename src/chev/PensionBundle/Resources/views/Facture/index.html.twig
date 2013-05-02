@@ -28,10 +28,10 @@
             <th>#</th>
             <th>Client</th>
             <th>Cheval</th>
-            <th>Type de Logement</th>
-            <th>Dates du bail</th>
-            <th>Date d'ajout</th>
-            <th>Restant à payer</th>
+            <th class="hidden-phone">Type de Logement</th>
+            <th class="hidden-phone">Dates du bail</th>
+            <th class="hidden-phone">Date d'ajout</th>
+            <th class="hidden-phone">Restant à payer</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -41,15 +41,15 @@
             <td><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.cheval.proprietaire }}</td>
             <td>{{ entity.cheval }}</td>
-            <td>
+            <td class="hidden-phone">
             	{{ entity.typeLogement }}
            	</td>
-            <td>
+            <td class="hidden-phone">
             	{% if entity.dateDebut %}<p>Date de debut : {{ entity.dateDebut|date('d/m/Y') }}</p>{% endif %}
             	{% if entity.dateFin %}<p>Date de fin : {{ entity.dateFin|date('d/m/Y') }}</p>{% endif %}
             </td>
-            <td>{% if entity.dateFacture %}{{ entity.dateFacture|date('d/m/Y') }}{% endif %}</td>
-            <td>{{ entity.RAP }} €</td>
+            <td class="hidden-phone">{% if entity.dateFacture %}{{ entity.dateFacture|date('d/m/Y') }}{% endif %}</td>
+            <td class="hidden-phone">{{ entity.RAP }} €</td>
             <td>
                 <a href="{{ path('facture_show', { 'id': entity.id }) }}" class="btn" title="Voir">
                 	Voir

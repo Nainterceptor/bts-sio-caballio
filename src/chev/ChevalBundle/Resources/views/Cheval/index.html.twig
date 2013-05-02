@@ -6,10 +6,11 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Liste des chevaux</h2>
+<h2>Liste des chevaux
 {% if is_granted('ROLE_GERANT') %}
 <a class="btn btn-success pull-right" href="{{ path('cheval_new') }}">Ajouter</a>
-{% endif %}
+{% endif %}</h2>
+
 <table class="table table-striped">
 	    <thead>
 	        <tr>

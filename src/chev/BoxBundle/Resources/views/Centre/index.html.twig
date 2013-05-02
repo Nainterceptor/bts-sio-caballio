@@ -6,18 +6,18 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Listes des centres</h2>
+<h2>Listes des centres
 {% if is_granted('ROLE_ADMIN') %}
 <a class="btn btn-success pull-right" href="{{ path('centre_new') }}">Ajouter</a>
-{% endif %}
+{% endif %}</h2>
 <table class="table table-striped">
     <thead>
         <tr>
         	<th>Id</th>
         	<th>Libelle</th>
         	<th>Gerant</th>
-        	<th>Adresse</th>
-        	<th>Date</th>
+        	<th class="hidden-phone">Adresse</th>
+        	<th class="hidden-phone">Date</th>
         	<th>Actions</th>
         </tr>
 	</thead>
@@ -27,11 +27,11 @@
 			<td><a href="{{ path('centre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
         	<td>{{ entity.nom }}</td>
         	<td>{{ entity.gerant }}</td>
-        	<td>
+        	<td class="hidden-phone">
         		<p>{{ entity.adresse }}</p>
 				<p>{{ entity.codePostal }}</p>
             	<p>{{ entity.ville }}</p></td>
-        	<td>
+        	<td class="hidden-phone">
         		<p>Date d'ajout : {% if entity.date %}{{ entity.date|date('d/m/Y') }}{% endif %}</p>
             	<p>Date de création : {% if entity.dateAjout %}{{ entity.dateAjout|date('d/m/Y') }}{% endif %}</p>
             </td>

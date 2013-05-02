@@ -6,8 +6,7 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>{{ 'user.title'|trans([], 'backoffice') }}</h2>
-<a class="btn btn-success pull-right" href="{{ path('s4admin_user_new') }}">Ajouter</a>
+<h2>{{ 'user.title'|trans([], 'backoffice') }}<a class="btn btn-success pull-right" href="{{ path('s4admin_user_new') }}">Ajouter</a></h2>
 <table class="table table-striped">
     <thead>
         <tr>

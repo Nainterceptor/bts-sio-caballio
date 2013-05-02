@@ -61,6 +61,7 @@ class ChevalController extends Controller
         $entity = new Cheval();
         $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+		$chevalType->setCheval($entity);
         $form   = $this->createForm($chevalType, $entity);
 
         return $this->render('chevChevalBundle:Cheval:new.html.twig', array(
@@ -80,6 +81,7 @@ class ChevalController extends Controller
         $entity  = new Cheval();
         $chevalType = new ChevalType($em);
         $chevalType->setUser($this->get('security.context')->getToken()->getUser());
+		$chevalType->setCheval($entity);
         $form   = $this->createForm($chevalType, $entity);
         $form->bind($request);
 

@@ -6,10 +6,10 @@
 </li>
 {% endblock %}
 {% block body %}
-<h2>Liste des factures</h2>
+<h2>Liste des factures
 {% if is_granted('ROLE_GERANT') %}
 <a class="btn btn-success pull-right" href="{{ path('facture_new') }}">Ajouter</a>
-{% endif %}
+{% endif %}</h2>
 <div class="row-fluid">
 	<div class="span4">
 		<table class="table table-bordered">

@@ -14,3 +14,8 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: s4a_user_profile }
+    login_listener:
+        class: 's4a\UserBundle\Listener\LoginListener'
+        arguments: ['@security.context', '@doctrine']
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }

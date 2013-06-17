@@ -1,0 +1,38 @@
+{% extends 's4aUserBundle:User:layout.html.twig' %}
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('s4admin_user')}}">Index</a>
+    </li>
+{% endblock %}
+{% block body %}
+    <h2>Statistiques de connexion</h2>
+    <div class="row-fluid">
+        <div class="span4">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>Total des connexions : </th>
+                    <td>{{ count }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Nombre de connexions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for entity in mostConnect %}
+                <tr>
+                    <td>{{ entity.0.user }}</td>
+                    <td>{{ entity.nbr }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

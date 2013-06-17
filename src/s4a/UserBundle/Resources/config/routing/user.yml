@@ -4,6 +4,10 @@ s4admin_user:
     requirements:
        page:  \d+
 
+s4admin_stats:
+    pattern:  /stats
+    defaults: { _controller: "s4aUserBundle:Stats:index" }
+
 s4admin_user_show:
     pattern:  /{id}/show
     defaults: { _controller: "s4aUserBundle:User:show" }

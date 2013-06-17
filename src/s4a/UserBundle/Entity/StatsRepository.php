@@ -12,5 +12,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class StatsRepository extends EntityRepository
 {
+    public function count()
+    {
+        return (int)$this->_em
+            ->createQuery('SELECT COUNT(s) FROM s4aUserBundle:Stats s')
+            ->getSingleScalarResult();
+    }
+    public function mostConnect($nbr)
+    {
+        return $this->_em
+                ->createQuery('SELECT u, COUNT(s.id) as nbr, s FROM s4aUserBundle:Stats s JOIN s.user u GROUP BY u')
+                ->setMaxResults($nbr)
+                ->getResult();
+    }
 
+    public function getLastConnexions()
+    {
+        $rsm = new ResultSetMappingBuilder($this->getEntityManager());
+        $rsm->addRootEntityFromClassMetadata('', 'a');
+
+        $sql = 'SELECT YEAR(a.date_ajout) FROM statistique a';
+
+        $query = $this->_em->createNativeQuery($sql, $rsm);
+
+        return $query->getResult();
+    }
 }
